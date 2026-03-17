@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор режимов резания | YG-1 RUS</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔧</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .calculator-grid {
+                grid-template-columns: 1fr;
+            }
+            header h1 {
+                font-size: 1.8rem;
+            }
+        }
+        
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .card h2 {
+            font-size: 1.3rem;
+            color: #1a1a2e;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 18px;
+        }
+        
+        label {
+            display: block;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 6px;
+            font-size: 0.9rem;
+        }
+        
+        select, input[type="number"] {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background: white;
+        }
+        
+        select:focus, input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .btn-calculate {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 10px;
+        }
+        
+        .btn-calculate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+        
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        @media (max-width: 600px) {
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .result-item {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .result-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+        
+        .result-label {
+            font-size: 0.85rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .product-recommendation {
+            background: linear-gradient(135deg, #fff9e6 0%, #ffefc2 100%);
+            border: 2px solid #ffc107;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .product-recommendation h3 {
+            color: #856404;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .product-info h4 {
+            color: #1a1a2e;
+            margin-bottom: 5px;
+        }
+        
+        .product-info p {
+            font-size: 0.85rem;
+            color: #666;
+        }
+        
+        .btn-product {
+            background: #ffc107;
+            color: #856404;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .language-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        
+        .language-switch button {
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-left: 5px;
+            transition: background 0.3s;
+        }
+        
+        .language-switch button.active {
+            background: white;
+            color: #667eea;
+        }
+        
+        .save-section {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .btn-save {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        
+        .btn-pdf {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switch">
+        <button class="active" onclick="setLanguage('ru')">RU</button>
+        <button onclick="setLanguage('en')">EN</button>
+    </div>
+    
+    <div class="container">
+        <header>
+            <h1>🔧 Калькулятор режимов резания</h1>
+            <p>Профессиональный расчет параметров обработки для инструментов YG-1</p>
+        </header>
+        
+        <div class="calculator-grid">
+            <div class="card">
+                <h2>⚙️ Параметры обработки</h2>
+                
+                <div class="form-group">
+                    <label>Тип операции</label>
+                    <select id="operationType">
+                        <option value="milling">Фрезерование</option>
+                        <option value="drilling">Сверление</option>
+                        <option value="turning">Токарная обработка</option>
+                        <option value="threading">Нарезание резьбы</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Обрабатываемый материал</label>
+                    <select id="material">
+                        <option value="steel_1020">Углеродистая сталь (C45, 1045)</option>
+                        <option value="steel_4140">Легированная сталь (4140, 4340)</option>
+                        <option value="steel_hardened">Закаленная сталь (>45 HRC)</option>
+                        <option value="stainless_304">Нержавеющая сталь (304, 316)</option>
+                        <option value="aluminum">Алюминий и сплавы</option>
+                        <option value="titanium">Титан и сплавы</option>
+                        <option value="cast_iron">Чугун</option>
+                        <option value="brass">Латунь/бронза</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Тип инструмента</label>
+                    <select id="toolType">
+                        <option value="endmill_2flute">Концевая фреза (2 зуба)</option>
+                        <option value="endmill_3flute">Концевая фреза (3 зуба)</option>
+                        <option value="endmill_4flute">Концевая фреза (4 зуба)</option>
+                        <option value="roughing">Черновая фреза</option>
+                        <option value="ballmill">Сферическая фреза</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Диаметр инструмента (мм)</label>
+                    <input type="number" id="toolDiameter" value="10" min="0.1" max="100" step="0.1">
+                </div>
+                
+                <div class="form-group">
+                    <label>Длина обработки (мм) - опционально</label>
+                    <input type="number" id="cutLength" value="50" min="1" max="1000" step="1">
+                </div>
+                
+                <button class="btn-calculate" onclick="calculate()">Рассчитать параметры</button>
+            </div>
+            
+            <div class="card">
+                <h2>📊 Результаты расчета</h2>
+                
+                <div id="resultsPlaceholder" style="text-align: center; color: #999; padding: 40px 0;">
+                    <p>Заполните параметры и нажмите "Рассчитать"</p>
+                </div>
+                
+                <div id="resultsContent" class="hidden">
+                    <div class="results-grid">
+                        <div class="result-item">
+                            <div class="result-value" id="rpmResult">0</div>
+                            <div class="result-label">об/мин</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-value" id="feedResult">0</div>
+                            <div class="result-label">мм/мин</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-value" id="feedPerTooth">0</div>
+                            <div class="result-label">мм/зуб</div>
+                        </div>
+                    </div>
+                    
+                    <div class="results-grid" style="margin-top: 15px;">
+                        <div class="result-item">
+                            <div class="result-value" id="cuttingSpeed">0</div>
+                            <div class="result-label">м/мин</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-value" id="mrr">0</div>
+                            <div class="result-label">см³/мин</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-value" id="power">0</div>
+                            <div class="result-label">кВт</div>
+                        </div>
+                    </div>
+                    
+                    <div class="save-section">
+                        <button class="btn-save" onclick="saveCalculation()">💾 Сохранить</button>
+                        <button class="btn-pdf" onclick="exportPDF()">📄 PDF</button>
+                    </div>
+                    
+                    <div class="product-recommendation">
+                        <h3>⭐ Рекомендуемые инструменты YG-1</h3>
+                        <div id="productList"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // База данных материалов и параметров резания
+        const materialData = {
+            steel_1020: {
+                name: { ru: 'Углеродистая сталь', en: 'Carbon Steel' },
+                vc: { roughing: 180, finishing: 220 },
+                fz: { roughing: 0.15, finishing: 0.08 },
+                ap: { roughing: 0.5, finishing: 0.2 },
+                ae: { roughing: 0.7, finishing: 0.2 },
+                kc: 1800
+            },
+            steel_4140: {
+                name: { ru: 'Легированная сталь', en: 'Alloy Steel' },
+                vc: { roughing: 120, finishing: 160 },
+                fz: { roughing: 0.12, finishing: 0.06 },
+                ap: { roughing: 0.4, finishing: 0.15 },
+                ae: { roughing: 0.6, finishing: 0.15 },
+                kc: 2200
+            },
+            steel_hardened: {
+                name: { ru: 'Закаленная сталь', en: 'Hardened Steel' },
+                vc: { roughing: 60, finishing: 80 },
+                fz: { roughing: 0.08, finishing: 0.04 },
+                ap: { roughing: 0.2, finishing: 0.1 },
+                ae: { roughing: 0.3, finishing: 0.1 },
+                kc: 2800
+            },
+            stainless_304: {
+                name: { ru: 'Нержавеющая сталь', en: 'Stainless Steel' },
+                vc: { roughing: 80, finishing: 120 },
+                fz: { roughing: 0.1, finishing: 0.05 },
+                ap: { roughing: 0.3, finishing: 0.15 },
+                ae: { roughing: 0.5, finishing: 0.15 },
+                kc: 2400
+            },
+            aluminum: {
+                name: { ru: 'Алюминий', en: 'Aluminum' },
+                vc: { roughing: 400, finishing: 600 },
+                fz: { roughing: 0.2, finishing: 0.1 },
+                ap: { roughing: 0.8, finishing: 0.3 },
+                ae: { roughing: 0.8, finishing: 0.3 },
+                kc: 800
+            },
+            titanium: {
+                name: { ru: 'Титан', en: 'Titanium' },
+                vc: { roughing: 40, finishing: 60 },
+                fz: { roughing: 0.1, finishing: 0.05 },
+                ap: { roughing: 0.25, finishing: 0.1 },
+                ae: { roughing: 0.4, finishing: 0.1 },
+                kc: 1600
+            },
+            cast_iron: {
+                name: { ru: 'Чугун', en: 'Cast Iron' },
+                vc: { roughing: 150, finishing: 200 },
+                fz: { roughing: 0.18, finishing: 0.08 },
+                ap: { roughing: 0.6, finishing: 0.25 },
+                ae: { roughing: 0.7, finishing: 0.25 },
+                kc: 1200
+            },
+            brass: {
+                name: { ru: 'Латунь', en: 'Brass' },
+                vc: { roughing: 250, finishing: 350 },
+                fz: { roughing: 0.15, finishing: 0.08 },
+                ap: { roughing: 0.7, finishing: 0.25 },
+                ae: { roughing: 0.8, finishing: 0.25 },
+                kc: 1000
+            }
+        };
+
+        // База данных продуктов YG-1
+        const yg1Products = {
+            steel_roughing: [
+                { code: 'X5070', name: 'X-POWER PRO', desc: 'Для стали до 55 HRC, высокая подача', series: 'X5070' },
+                { code: 'V7PLUS', name: 'V7 PLUS', desc: 'Универсальная фреза для стали', series: 'V7 Plus' }
+            ],
+            steel_finishing: [
+                { code: 'HPC', name: 'HPC', desc: 'Высокопроизводительная чистовая обработка', series: 'HPC' },
+                { code: 'X5070F', name: 'X-POWER PRO Finishing', desc: 'Чистовая обработка закаленной стали', series: 'X5070' }
+            ],
+            stainless: [
+                { code: 'POWER', name: 'POWER', desc: 'Специально для нержавеющей стали', series: 'POWER' },
+                { code: 'ST3070', name: 'ST3070', desc: 'Оптимизирована для жаропрочных сплавов', series: 'ST3070' }
+            ],
+            aluminum: [
+                { code: 'ALU', name: 'ALU-POWER', desc: 'Максимальная скорость для алюминия', series: 'ALU-POWER' },
+                { code: 'ALU3', name: 'ALU-POWER 3', desc: '3-зубая для высокой подачи', series: 'ALU-POWER' }
+            ],
+            titanium: [
+                { code: 'TITA', name: 'TITA-NIUM', desc: 'Специально для титановых сплавов', series: 'TITA-NIUM' },
+                { code: 'V7PLUS', name: 'V7 PLUS', desc: 'Универсальное решение', series: 'V7 Plus' }
+            ],
+            hardened: [
+                { code: 'X5070', name: 'X-POWER PRO', desc: 'До 70 HRC', series: 'X5070' },
+                { code: 'I-XMILL', name: 'I-XMILL', desc: 'Со сменными пластинами до 65 HRC', series: 'I-XMILL' }
+            ]
+        };
+
+        let currentLang = 'ru';
+        let lastCalculation = null;
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.querySelectorAll('.language-switch button').forEach(btn => {
+                btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
+            });
+            // Здесь можно добавить полную локализацию
+        }
+
+        function calculate() {
+            const material = document.getElementById('material').value;
+            const toolType = document.getElementById('toolType').value;
+            const diameter = parseFloat(document.getElementById('toolDiameter').value);
+            const operation = document.getElementById('operationType').value;
+            
+            if (!diameter || diameter <= 0) {
+                alert('Введите корректный диаметр инструмента');
+                return;
+            }
+            
+            const matData = materialData[material];
+            const isRoughing = toolType.includes('roughing');
+            const mode = isRoughing ? 'roughing' : 'finishing';
+            
+            // Расчет режимов резания
+            const vc = matData.vc[mode]; // Скорость резания м/мин
+            const fz = matData.fz[mode]; // Подача на зуб мм
+            const ap = matData.ap[mode] * diameter; // Глубина резания
+            const ae = matData.ae[mode] * diameter; // Ширина резания
+            
+            // Количество зубьев
+            let flutes = 4;
+            if (toolType.includes('2flute')) flutes = 2;
+            else if (toolType.includes('3flute')) flutes = 3;
+            else if (toolType.includes('roughing')) flutes = 4;
+            
+            // Расчет оборотов шпинделя
+            const rpm = Math.round((vc * 1000) / (Math.PI * diameter));
+            
+            // Расчет минутной подачи
+            const feed = Math.round(rpm * fz * flutes);
+            
+            // Объем снятия металла
+            const mrr = (ap * ae * feed / 1000).toFixed(1);
+            
+            // Мощность резания (упрощенно)
+            const power = ((matData.kc * ap * ae * feed) / (60000 * 0.8)).toFixed(2);
+            
+            // Отображение результатов
+            document.getElementById('resultsPlaceholder').classList.add('hidden');
+            document.getElementById('resultsContent').classList.remove('hidden');
+            
+            document.getElementById('rpmResult').textContent = rpm.toLocaleString();
+            document.getElementById('feedResult').textContent = feed.toLocaleString();
+            document.getElementById('feedPerTooth').textContent = fz.toFixed(3);
+            document.getElementById('cuttingSpeed').textContent = vc;
+            document.getElementById('mrr').textContent = mrr;
+            document.getElementById('power').textContent = power;
+            
+            // Сохранение расчета
+            lastCalculation = {
+                material: matData.name.ru,
+                toolType: toolType,
+                diameter: diameter,
+                rpm: rpm,
+                feed: feed,
+                fz: fz,
+                vc: vc,
+                mrr: mrr,
+                power: power,
+                timestamp: new Date().toISOString()
+            };
+            
+            // Рекомендации продуктов
+            showProductRecommendations(material, isRoughing);
+        }
+
+        function showProductRecommendations(material, isRoughing) {
+            let products = [];
+            
+            if (material === 'steel_hardened') {
+                products = yg1Products.hardened;
+            } else if (material === 'stainless_304') {
+                products = yg1Products.stainless;
+            } else if (material === 'aluminum') {
+                products = yg1Products.aluminum;
+            } else if (material === 'titanium') {
+                products = yg1Products.titanium;
+            } else if (isRoughing) {
+                products = yg1Products.steel_roughing;
+            } else {
+                products = yg1Products.steel_finishing;
+            }
+            
+            const productList = document.getElementById('productList');
+            productList.innerHTML = products.map(p => `
+                <div class="product-card">
+                    <div class="product-info">
+                        <h4>${p.name}</h4>
+                        <p>${p.desc}</p>
+                    </div>
+                    <a href="https://cccnc.ru/products.html?series=${p.series}" class="btn-product">Подробнее</a>
+                </div>
+            `).join('');
+        }
+
+        function saveCalculation() {
+            if (!lastCalculation) return;
+            
+            const saved = JSON.parse(localStorage.getItem('yg1_calculations') || '[]');
+            saved.push(lastCalculation);
+            localStorage.setItem('yg1_calculations', JSON.stringify(saved));
+            
+            alert('Расчет сохранен! Всего сохранено: ' + saved.length);
+        }
+
+        function exportPDF() {
+            if (!lastCalculation) return;
+            
+            // Простая реализация - открыть печать
+            window.print();
+        }
+
+        // Инициализация
+        document.addEventListener('DOMContentLoaded', function() {
+            // Загрузить сохраненные расчеты при необходимости
+        });
+    </script>
+</body>
+</html>
