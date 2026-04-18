@@ -3,541 +3,774 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>硬质合金钻头 | CCCNC - 麻花钻 中心钻 深孔钻 内冷钻</title>
-    <meta name="description" content="CCCNC硬质合金钻头系列：麻花钻、中心钻、深孔钻、内冷钻。3D/5D/8D倍径可选，适用于钢件、不锈钢、铝合金等材料钻孔加工。">
+    <title>硬质合金钻头 - CCCNC</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --primary: #e31837;
-            --primary-dark: #c41230;
-            --secondary: #1a1a1a;
-            --text: #333;
-            --text-light: #666;
-            --bg: #fff;
-            --bg-light: #f5f5f5;
-            --border: #e0e0e0;
+            --primary: #0071e3;
+            --primary-dark: #0077ed;
+            --text: #1d1d1f;
+            --text-secondary: #86868b;
+            --bg: #ffffff;
+            --bg-secondary: #f5f5f7;
+            --bg-dark: #000000;
+            --border: #d2d2d7;
         }
-        body { font-family: 'Inter', sans-serif; color: var(--text); line-height: 1.6; }
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
         
-        /* Header */
-        .header { background: var(--secondary); color: white; position: fixed; width: 100%; top: 0; z-index: 1000; }
-        .header-top { background: var(--primary); padding: 8px 0; font-size: 13px; }
-        .header-top .container { display: flex; justify-content: space-between; align-items: center; }
-        .header-contact a { color: white; text-decoration: none; font-weight: 600; }
-        .header-main { padding: 15px 0; }
-        .header-main .container { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 28px; font-weight: 800; color: white; text-decoration: none; display: flex; align-items: center; gap: 10px; }
-        .logo span { color: var(--primary); }
-        .nav { display: flex; gap: 35px; }
-        .nav a { color: white; text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.3s; position: relative; }
-        .nav a:hover { color: var(--primary); }
-        .nav a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--primary); transition: width 0.3s; }
-        .nav a:hover::after { width: 100%; }
-        .nav a.active { color: var(--primary); }
+        body { 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; 
+            color: var(--text); 
+            line-height: 1.47059;
+            font-weight: 400;
+            letter-spacing: -0.022em;
+        }
+        
+        .container { max-width: 1024px; margin: 0 auto; padding: 0 22px; }
+        
+        /* Navigation */
+        .nav-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            background: rgba(251, 251, 253, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .nav {
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .nav-logo {
+            font-size: 21px;
+            font-weight: 700;
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 36px;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            font-size: 12px;
+            color: var(--text);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .nav-links a:hover { opacity: 1; }
+        .nav-links a.active { opacity: 1; font-weight: 500; }
+        
+        .lang-switcher {
+            display: flex;
+            gap: 4px;
+            background: rgba(0,0,0,0.05);
+            padding: 3px;
+            border-radius: 12px;
+        }
+        
+        .lang-btn {
+            padding: 4px 10px;
+            border: none;
+            background: transparent;
+            color: var(--text);
+            font-size: 11px;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 9px;
+            transition: all 0.3s;
+        }
+        
+        .lang-btn.active {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        /* Catalog Button */
+        .catalog-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 980px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .catalog-btn:hover { background: var(--primary-dark); }
+        
+        /* Catalog Dropdown */
+        .catalog-dropdown {
+            position: fixed;
+            top: 52px;
+            left: 0;
+            right: 0;
+            background: rgba(251, 251, 253, 0.95);
+            backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            z-index: 9998;
+        }
+        
+        .catalog-dropdown.active { max-height: 600px; }
+        
+        .catalog-content {
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 30px 22px;
+        }
+        
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+        
+        .catalog-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        
+        .catalog-item:hover { background: rgba(0,0,0,0.04); }
+        
+        .catalog-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--bg-secondary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        
+        .catalog-text {
+            flex: 1;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .catalog-arrow {
+            color: var(--text-secondary);
+            font-size: 12px;
+        }
         
         /* Page Header */
-        .page-header { margin-top: 110px; background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); color: white; padding: 80px 0; position: relative; overflow: hidden; }
-        .page-header::before { content: ''; position: absolute; top: 0; right: 0; width: 50%; height: 100%; background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="80" cy="20" r="60" fill="%23e31837" opacity="0.08"/></svg>'); background-size: cover; }
-        .page-header-content { position: relative; z-index: 1; }
-        .breadcrumb { display: flex; gap: 15px; margin-bottom: 20px; font-size: 14px; color: #888; }
-        .breadcrumb a { color: #888; text-decoration: none; }
-        .breadcrumb a:hover { color: var(--primary); }
-        .page-header h1 { font-size: 48px; font-weight: 800; margin-bottom: 15px; }
-        .page-header p { font-size: 18px; color: #aaa; max-width: 600px; }
+        .page-header {
+            padding: 140px 0 60px;
+            background: var(--bg);
+            text-align: center;
+        }
         
-        /* Filter Bar */
-        .filter-bar { background: white; padding: 25px 0; border-bottom: 1px solid var(--border); position: sticky; top: 110px; z-index: 100; }
-        .filter-container { display: flex; gap: 30px; align-items: center; flex-wrap: wrap; }
-        .filter-group { display: flex; align-items: center; gap: 12px; }
-        .filter-label { font-size: 14px; font-weight: 600; color: var(--text); }
-        .filter-select { padding: 10px 20px; border: 1px solid var(--border); border-radius: 6px; font-size: 14px; background: white; cursor: pointer; min-width: 150px; }
-        .filter-select:focus { outline: none; border-color: var(--primary); }
+        .page-eyebrow {
+            font-size: 17px;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: block;
+        }
         
-        /* Products Grid */
-        .products-section { padding: 60px 0; background: var(--bg-light); }
-        .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-        .product-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.04); transition: all 0.3s; border: 1px solid var(--border); }
-        .product-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); border-color: var(--primary); }
-        .product-img { height: 260px; background: linear-gradient(135deg, #f8f8f8 0%, #f0f0f0 100%); display: flex; align-items: center; justify-content: center; position: relative; font-size: 80px; }
-        .product-badges { position: absolute; top: 15px; left: 15px; display: flex; flex-direction: column; gap: 8px; }
-        .product-badge { padding: 6px 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; border-radius: 4px; color: white; }
-        .product-badge.hot { background: #ff6b35; }
-        .product-badge.new { background: #28a745; }
-        .product-badge.sale { background: var(--primary); }
-        .product-info { padding: 28px; }
-        .product-code { font-size: 13px; color: var(--primary); font-weight: 700; margin-bottom: 8px; }
-        .product-name { font-size: 18px; font-weight: 700; margin-bottom: 15px; }
-        .product-desc { font-size: 14px; color: var(--text-light); margin-bottom: 20px; line-height: 1.6; }
-        .product-specs { background: var(--bg-light); padding: 18px; border-radius: 8px; margin-bottom: 20px; }
-        .spec-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
-        .spec-row:last-child { border-bottom: none; }
-        .spec-label { color: var(--text-light); }
-        .spec-value { font-weight: 600; color: var(--text); }
-        .product-sizes { margin-bottom: 20px; }
-        .sizes-title { font-size: 13px; font-weight: 600; margin-bottom: 10px; }
-        .sizes-list { display: flex; flex-wrap: wrap; gap: 8px; }
-        .size-tag { font-size: 12px; background: var(--bg-light); padding: 6px 12px; border-radius: 4px; color: var(--text); border: 1px solid var(--border); }
-        .size-tag:hover { background: var(--primary); color: white; border-color: var(--primary); cursor: pointer; }
-        .product-actions { display: flex; gap: 12px; }
-        .btn { flex: 1; padding: 14px; font-size: 14px; font-weight: 600; text-decoration: none; border-radius: 6px; transition: all 0.3s; cursor: pointer; border: none; text-align: center; }
-        .btn-primary { background: var(--primary); color: white; }
-        .btn-primary:hover { background: var(--primary-dark); }
-        .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
-        .btn-outline:hover { background: var(--secondary); color: white; border-color: var(--secondary); }
+        .page-title {
+            font-size: 64px;
+            font-weight: 700;
+            line-height: 1.0625;
+            letter-spacing: -0.021em;
+            margin-bottom: 20px;
+        }
+        
+        .page-desc {
+            font-size: 21px;
+            line-height: 1.381;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Category Filter */
+        .category-filter {
+            padding: 20px 0;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 52px;
+            z-index: 100;
+        }
+        
+        .filter-container {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+        
+        .filter-btn {
+            padding: 10px 20px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn:hover { background: var(--bg-secondary); }
+        .filter-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        /* Section */
+        .section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .product-card {
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            padding: 40px 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .product-card.featured {
+            grid-column: span 2;
+            background: var(--bg-dark);
+            color: white;
+        }
+        
+        .product-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+        
+        .product-card.featured .product-icon { font-size: 80px; }
+        
+        .product-name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .product-card.featured .product-name { font-size: 32px; }
+        
+        .product-desc {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .product-card.featured .product-desc { color: #a1a1a6; }
+        
+        .product-specs {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .spec-tag {
+            background: rgba(0,0,0,0.05);
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        
+        .product-card.featured .spec-tag { background: rgba(255,255,255,0.1); }
+        
+        .product-link {
+            color: var(--primary);
+            font-size: 15px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .product-card.featured .product-link { color: #2997ff; }
         
         /* Footer */
-        .footer { background: #0d0d0d; color: white; padding: 80px 0 30px; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; margin-bottom: 60px; }
-        .footer-brand .logo { margin-bottom: 20px; display: inline-block; }
-        .footer-brand p { color: #666; font-size: 14px; line-height: 1.8; margin-bottom: 25px; }
-        .footer-title { font-size: 16px; font-weight: 700; margin-bottom: 25px; color: white; }
-        .footer-links { list-style: none; }
-        .footer-links li { margin-bottom: 14px; }
-        .footer-links a { color: #666; text-decoration: none; font-size: 14px; transition: all 0.3s; }
-        .footer-links a:hover { color: var(--primary); }
-        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; display: flex; justify-content: space-between; align-items: center; }
-        .footer-copy { color: #444; font-size: 13px; }
-        
-        @media (max-width: 1024px) {
-            .products-grid { grid-template-columns: repeat(2, 1fr); }
-            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+        .footer {
+            background: var(--bg-secondary);
+            padding: 40px 0 20px;
+            border-top: 1px solid var(--border);
         }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .footer-links a {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+        
+        .footer-bottom {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+        
         @media (max-width: 768px) {
-            .container { padding: 0 20px; }
-            .nav { display: none; }
-            .page-header { margin-top: 80px; }
-            .page-header h1 { font-size: 32px; }
-            .products-grid { grid-template-columns: 1fr; }
+            .page-title { font-size: 40px; }
+            .product-grid { grid-template-columns: 1fr; }
+            .product-card.featured { grid-column: span 1; }
+            .catalog-grid { grid-template-columns: repeat(2, 1fr); }
+            .nav-links { display: none; }
+            .section-title { font-size: 24px; }
+        }
+        
+        @media (max-width: 480px) {
+            .catalog-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="header-top">
-            <div class="container">
-                <div>专业硬质合金刀具制造商 | Professional Carbide Tools Manufacturer</div>
-                <div class="header-contact">
-                    <a href="tel:+8612345678900">+86 123 4567 8900</a>
+    <div class="nav-wrapper">
+        <div class="container">
+            <nav class="nav">
+                <a href="/" class="nav-logo">CCCNC</a>
+                <div class="nav-links">
+                    <button class="catalog-btn" id="catalogBtn">
+                        <span>☰</span>
+                        <span data-i18n="nav.catalog">目录</span>
+                    </button>
+                    <a href="/" data-i18n="nav.home">首页</a>
+                    <a href="/products/endmills.html" data-i18n="nav.endmills">铣刀</a>
+                    <a href="/products/drills.html" class="active" data-i18n="nav.drills">钻头</a>
+                    <a href="/products/taps.html" data-i18n="nav.taps">丝锥</a>
+                    <a href="/products/reamers.html" data-i18n="nav.reamers">铰刀</a>
+                    <a href="/products/inserts.html" data-i18n="nav.inserts">刀片</a>
+                    <a href="/contact.html" data-i18n="nav.contact">联系</a>
+                    <div class="lang-switcher">
+                        <button class="lang-btn active" data-lang="zh">中</button>
+                        <button class="lang-btn" data-lang="ru">RU</button>
+                    </div>
                 </div>
-            </div>
+            </nav>
         </div>
-        <div class="header-main">
-            <div class="container">
-                <a href="/" class="logo">🔧 CCC<span>NC</span></a>
-                <nav class="nav">
-                    <a href="/">首页</a>
-                    <a href="/products/endmills.html">铣刀</a>
-                    <a href="/products/drills.html" class="active">钻头</a>
-                    <a href="/products/taps.html">丝锥</a>
-                    <a href="/products/reamers.html">铰刀</a>
-                    <a href="/products/inserts.html">刀片</a>
-                    <a href="/calculator.html">🔧 计算器</a>
-                    <a href="/contact.html">联系我们</a>
-                </nav>
-            </div>
+    </div>
+
+    <header class="page-header">
+        <div class="container">
+            <span class="page-eyebrow">Carbide Drills</span>
+            <h1 class="page-title" data-i18n="page.drills.title">硬质合金钻头</h1>
+            <p class="page-desc" data-i18n="page.drills.desc">全系列硬质合金钻头，包括麻花钻、内冷钻、深孔钻、中心钻等多种类型</p>
         </div>
     </header>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <div class="container">
-            <div class="page-header-content">
-                <div class="breadcrumb">
-                    <a href="/">首页</a>
-                    <span>/</span>
-                    <span>钻头系列</span>
-                </div>
-                <h1>硬质合金钻头</h1>
-                <p>全系列硬质合金钻头，包括麻花钻、中心钻、深孔钻、内冷钻等，3D/5D/8D倍径可选，满足各种钻孔加工需求</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Filter Bar -->
-    <div class="filter-bar">
+    <div class="category-filter">
         <div class="container">
             <div class="filter-container">
-                <div class="filter-group">
-                    <span class="filter-label">钻头类型：</span>
-                    <select class="filter-select">
-                        <option>全部类型</option>
-                        <option>麻花钻</option>
-                        <option>中心钻</option>
-                        <option>深孔钻</option>
-                        <option>内冷钻</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <span class="filter-label">倍径：</span>
-                    <select class="filter-select">
-                        <option>全部倍径</option>
-                        <option>3D</option>
-                        <option>5D</option>
-                        <option>8D</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <span class="filter-label">冷却方式：</span>
-                    <select class="filter-select">
-                        <option>全部</option>
-                        <option>外冷</option>
-                        <option>内冷</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <span class="filter-label">直径范围：</span>
-                    <select class="filter-select">
-                        <option>全部直径</option>
-                        <option>Φ1-3mm</option>
-                        <option>Φ3-6mm</option>
-                        <option>Φ6-12mm</option>
-                        <option>Φ12-20mm</option>
-                    </select>
-                </div>
+                <button class="filter-btn active" data-filter="all">全部</button>
+                <button class="filter-btn" data-filter="twist">麻花钻</button>
+                <button class="filter-btn" data-filter="coolant">内冷钻</button>
+                <button class="filter-btn" data-filter="deep">深孔钻</button>
+                <button class="filter-btn" data-filter="center">中心钻</button>
+                <button class="filter-btn" data-filter="special">特殊钻头</button>
             </div>
         </div>
     </div>
 
-    <!-- Products Grid -->
-    <section class="products-section">
+    <!-- Twist Drills -->
+    <section class="section" data-category="twist">
         <div class="container">
-            <div class="products-grid">
-                <!-- Product 1 -->
-                <div class="product-card">
-                    <div class="product-img">
-                        <div class="product-badges">
-                            <span class="product-badge hot">热销</span>
-                        </div>
-                        🔩
+            <h2 class="section-title">麻花钻系列</h2>
+            <div class="product-grid">
+                <div class="product-card featured">
+                    <div class="product-icon">🔩</div>
+                    <h3 class="product-name" data-i18n="product.dr3d.name">3D麻花钻 DR-3D</h3>
+                    <p class="product-desc" data-i18n="product.dr3d.desc">通用型3倍径麻花钻，适用于钢件、不锈钢、铝合金等多种材料</p>
+                    <div class="product-specs">
+                        <span class="spec-tag">3D</span>
+                        <span class="spec-tag">140°顶角</span>
+                        <span class="spec-tag">TiAlN涂层</span>
+                        <span class="spec-tag">Φ1-20mm</span>
                     </div>
-                    <div class="product-info">
-                        <div class="product-code">DC-3D-TW</div>
-                        <h3 class="product-name">3D麻花钻（标准型）</h3>
-                        <p class="product-desc">通用型3倍径麻花钻，适用于钢件、不锈钢的通孔和盲孔加工</p>
-                        <div class="product-specs">
-                            <div class="spec-row">
-                                <span class="spec-label">倍径</span>
-                                <span class="spec-value">3D</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">顶角</span>
-                                <span class="spec-value">140°</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">涂层</span>
-                                <span class="spec-value">TiAlN</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">冷却</span>
-                                <span class="spec-value">外冷</span>
-                            </div>
-                        </div>
-                        <div class="product-sizes">
-                            <div class="sizes-title">可选直径：</div>
-                            <div class="sizes-list">
-                                <span class="size-tag">Φ1</span>
-                                <span class="size-tag">Φ2</span>
-                                <span class="size-tag">Φ3</span>
-                                <span class="size-tag">Φ4</span>
-                                <span class="size-tag">Φ5</span>
-                                <span class="size-tag">Φ6</span>
-                                <span class="size-tag">Φ8</span>
-                                <span class="size-tag">Φ10</span>
-                                <span class="size-tag">Φ12</span>
-                            </div>
-                        </div>
-                        <div class="product-actions">
-                            <a href="#" class="btn btn-primary">查看详情</a>
-                            <a href="#" class="btn btn-outline">咨询报价</a>
-                        </div>
-                    </div>
+                    <a href="#" class="product-link" data-i18n="common.details">了解详情 →</a>
                 </div>
-
-                <!-- Product 2 -->
+                
                 <div class="product-card">
-                    <div class="product-img">
-                        <div class="product-badges">
-                            <span class="product-badge new">新品</span>
-                        </div>
-                        🔩
+                    <div class="product-icon">🔩</div>
+                    <h3 class="product-name" data-i18n="product.dr5d.name">5D麻花钻 DR-5D</h3>
+                    <p class="product-desc" data-i18n="product.dr5d.desc">5倍径加长钻，适合深孔加工，排屑顺畅</p>
+                    <div class="product-specs">
+                        <span class="spec-tag">5D</span>
+                        <span class="spec-tag">140°顶角</span>
+                        <span class="spec-tag">TiAlN涂层</span>
                     </div>
-                    <div class="product-info">
-                        <div class="product-code">DC-5D-IC</div>
-                        <h3 class="product-name">5D内冷深孔钻</h3>
-                        <p class="product-desc">内冷设计，5倍径深孔加工，排屑顺畅，适合深孔钻削</p>
-                        <div class="product-specs">
-                            <div class="spec-row">
-                                <span class="spec-label">倍径</span>
-                                <span class="spec-value">5D</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">顶角</span>
-                                <span class="spec-value">140°</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">涂层</span>
-                                <span class="spec-value">TiSiN</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">冷却</span>
-                                <span class="spec-value">内冷</span>
-                            </div>
-                        </div>
-                        <div class="product-sizes">
-                            <div class="sizes-title">可选直径：</div>
-                            <div class="sizes-list">
-                                <span class="size-tag">Φ3</span>
-                                <span class="size-tag">Φ4</span>
-                                <span class="size-tag">Φ5</span>
-                                <span class="size-tag">Φ6</span>
-                                <span class="size-tag">Φ8</span>
-                                <span class="size-tag">Φ10</span>
-                                <span class="size-tag">Φ12</span>
-                                <span class="size-tag">Φ16</span>
-                            </div>
-                        </div>
-                        <div class="product-actions">
-                            <a href="#" class="btn btn-primary">查看详情</a>
-                            <a href="#" class="btn btn-outline">咨询报价</a>
-                        </div>
-                    </div>
+                    <a href="#" class="product-link" data-i18n="common.details">了解详情 →</a>
                 </div>
-
-                <!-- Product 3 -->
+                
                 <div class="product-card">
-                    <div class="product-img">
-                        🔩
+                    <div class="product-icon">🔩</div>
+                    <h3 class="product-name" data-i18n="product.dr8d.name">8D深孔钻 DR-8D</h3>
+                    <p class="product-desc" data-i18n="product.dr8d.desc">8倍径超深孔钻，特殊槽型设计保证排屑</p>
+                    <div class="product-specs">
+                        <span class="spec-tag">8D</span>
+                        <span class="spec-tag">特殊槽型</span>
+                        <span class="spec-tag">TiSiN涂层</span>
                     </div>
-                    <div class="product-info">
-                        <div class="product-code">DC-8D-DP</div>
-                        <h3 class="product-name">8D超深孔钻</h3>
-                        <p class="product-desc">专为超深孔设计，8倍径加工能力，特殊槽型优化排屑</p>
-                        <div class="product-specs">
-                            <div class="spec-row">
-                                <span class="spec-label">倍径</span>
-                                <span class="spec-value">8D</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">顶角</span>
-                                <span class="spec-value">130°</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">涂层</span>
-                                <span class="spec-value">TiSiN</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">冷却</span>
-                                <span class="spec-value">内冷</span>
-                            </div>
-                        </div>
-                        <div class="product-sizes">
-                            <div class="sizes-title">可选直径：</div>
-                            <div class="sizes-list">
-                                <span class="size-tag">Φ4</span>
-                                <span class="size-tag">Φ5</span>
-                                <span class="size-tag">Φ6</span>
-                                <span class="size-tag">Φ8</span>
-                                <span class="size-tag">Φ10</span>
-                                <span class="size-tag">Φ12</span>
-                            </div>
-                        </div>
-                        <div class="product-actions">
-                            <a href="#" class="btn btn-primary">查看详情</a>
-                            <a href="#" class="btn btn-outline">咨询报价</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 4 -->
-                <div class="product-card">
-                    <div class="product-img">
-                        🔩
-                    </div>
-                    <div class="product-info">
-                        <div class="product-code">DC-CTR-60</div>
-                        <h3 class="product-name">60°中心钻</h3>
-                        <p class="product-desc">A型中心钻，60°顶角，用于定位孔和预钻孔加工</p>
-                        <div class="product-specs">
-                            <div class="spec-row">
-                                <span class="spec-label">类型</span>
-                                <span class="spec-value">A型</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">顶角</span>
-                                <span class="spec-value">60°</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">涂层</span>
-                                <span class="spec-value">TiN</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">适用</span>
-                                <span class="spec-value">定位/预钻</span>
-                            </div>
-                        </div>
-                        <div class="product-sizes">
-                            <div class="sizes-title">可选直径：</div>
-                            <div class="sizes-list">
-                                <span class="size-tag">Φ1</span>
-                                <span class="size-tag">Φ1.5</span>
-                                <span class="size-tag">Φ2</span>
-                                <span class="size-tag">Φ2.5</span>
-                                <span class="size-tag">Φ3</span>
-                                <span class="size-tag">Φ4</span>
-                                <span class="size-tag">Φ5</span>
-                                <span class="size-tag">Φ6</span>
-                            </div>
-                        </div>
-                        <div class="product-actions">
-                            <a href="#" class="btn btn-primary">查看详情</a>
-                            <a href="#" class="btn btn-outline">咨询报价</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 5 -->
-                <div class="product-card">
-                    <div class="product-img">
-                        <div class="product-badges">
-                            <span class="product-badge hot">热销</span>
-                        </div>
-                        🔩
-                    </div>
-                    <div class="product-info">
-                        <div class="product-code">DC-AL-3D</div>
-                        <h3 class="product-name">铝用3D钻头</h3>
-                        <p class="product-desc">专为铝合金优化设计，大螺旋角，高光效果，无毛刺</p>
-                        <div class="product-specs">
-                            <div class="spec-row">
-                                <span class="spec-label">倍径</span>
-                                <span class="spec-value">3D</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">顶角</span>
-                                <span class="spec-value">118°</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">涂层</span>
-                                <span class="spec-value">无/DLC</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">适用</span>
-                                <span class="spec-value">铝合金/铜</span>
-                            </div>
-                        </div>
-                        <div class="product-sizes">
-                            <div class="sizes-title">可选直径：</div>
-                            <div class="sizes-list">
-                                <span class="size-tag">Φ1</span>
-                                <span class="size-tag">Φ2</span>
-                                <span class="size-tag">Φ3</span>
-                                <span class="size-tag">Φ4</span>
-                                <span class="size-tag">Φ5</span>
-                                <span class="size-tag">Φ6</span>
-                                <span class="size-tag">Φ8</span>
-                                <span class="size-tag">Φ10</span>
-                                <span class="size-tag">Φ12</span>
-                            </div>
-                        </div>
-                        <div class="product-actions">
-                            <a href="#" class="btn btn-primary">查看详情</a>
-                            <a href="#" class="btn btn-outline">咨询报价</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 6 -->
-                <div class="product-card">
-                    <div class="product-img">
-                        <div class="product-badges">
-                            <span class="product-badge new">新品</span>
-                        </div>
-                        🔩
-                    </div>
-                    <div class="product-info">
-                        <div class="product-code">DC-HARD-3D</div>
-                        <h3 class="product-name">高硬度钻头（HRC55）</h3>
-                        <p class="product-desc">专为淬火钢设计，可钻削硬度高达HRC55的材料</p>
-                        <div class="product-specs">
-                            <div class="spec-row">
-                                <span class="spec-label">倍径</span>
-                                <span class="spec-value">3D</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">顶角</span>
-                                <span class="spec-value">130°</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">涂层</span>
-                                <span class="spec-value">TiSiN</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">适用</span>
-                                <span class="spec-value">HRC≤55</span>
-                            </div>
-                        </div>
-                        <div class="product-sizes">
-                            <div class="sizes-title">可选直径：</div>
-                            <div class="sizes-list">
-                                <span class="size-tag">Φ2</span>
-                                <span class="size-tag">Φ3</span>
-                                <span class="size-tag">Φ4</span>
-                                <span class="size-tag">Φ5</span>
-                                <span class="size-tag">Φ6</span>
-                                <span class="size-tag">Φ8</span>
-                                <span class="size-tag">Φ10</span>
-                            </div>
-                        </div>
-                        <div class="product-actions">
-                            <a href="#" class="btn btn-primary">查看详情</a>
-                            <a href="#" class="btn btn-outline">咨询报价</a>
-                        </div>
-                    </div>
+                    <a href="#" class="product-link" data-i18n="common.details">了解详情 →</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
+    <!-- Coolant Drills -->
+    <section class="section" data-category="coolant">
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <a href="/" class="logo">🔧 CCC<span>NC</span></a>
-                    <p>专业硬质合金刀具制造商，致力于为各行业提供高品质、高精度的切削工具解决方案。</p>
+            <h2 class="section-title">内冷钻头系列</h2>
+            <div class="product-grid">
+                <div class="product-card featured">
+                    <div class="product-icon">🔩</div>
+                    <h3 class="product-name" data-i18n="product.drcool3.name">3D内冷钻 DR-COOL-3D</h3>
+                    <p class="product-desc" data-i18n="product.drcool3.desc">带内冷孔设计，高压冷却液直达刃口，适合高效加工</p>
+                    <div class="product-specs">
+                        <span class="spec-tag">内冷孔</span>
+                        <span class="spec-tag">3D</span>
+                        <span class="spec-tag">TiAlN涂层</span>
+                        <span class="spec-tag">Φ3-16mm</span>
+                    </div>
+                    <a href="#" class="product-link" data-i18n="common.details">了解详情 →</a>
                 </div>
-                <div class="footer-col">
-                    <h4 class="footer-title">产品系列</h4>
-                    <ul class="footer-links">
-                        <li><a href="/products/endmills.html">硬质合金铣刀</a></li>
-                        <li><a href="/products/drills.html">硬质合金钻头</a></li>
-                        <li><a href="/products/taps.html">丝锥系列</a></li>
-                        <li><a href="/products/reamers.html">铰刀系列</a></li>
-                    </ul>
+                
+                <div class="product-card">
+                    <div class="product-icon">🔩</div>
+                    <h3 class="product-name" data-i18n="product.drcool5.name">5D内冷深孔钻 DR-COOL-5D</h3>
+                    <p class="product-desc" data-i18n="product.drcool5.desc">5倍径内冷钻，深孔加工排屑冷却两不误</p>
+                    <div class="product-specs">
+                        <span class="spec-tag">内冷孔</span>
+                        <span class="spec-tag">5D</span>
+                        <span class="spec-tag">TiSiN涂层</span>
+                    </div>
+                    <a href="#" class="product-link" data-i18n="common.details">了解详情 →</a>
                 </div>
-                <div class="footer-col">
-                    <h4 class="footer-title">技术支持</h4>
-                    <ul class="footer-links">
-                        <li><a href="/calculator.html">切削计算器</a></li>
-                        <li><a href="#">刀具选型指南</a></li>
-                        <li><a href="#">切削参数推荐</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4 class="footer-title">联系我们</h4>
-                    <ul class="footer-links">
-                        <li><a href="/contact.html">联系方式</a></li>
-                        <li><a href="#">在线咨询</a></li>
-                    </ul>
+                
+                <div class="product-card">
+                    <div class="product-icon">🔩</div>
+                    <h3 class="product-name" data-i18n="product.drcool8.name">8D超深孔内冷钻 DR-COOL-8D</h3>
+                    <p class="product-desc" data-i18n="product.drcool8.desc">8倍径超深孔内冷钻，专为深孔加工设计</p>
+                    <div class="product-specs">
+                        <span class="spec-tag">内冷孔</span>
+                        <span class="spec-tag">8D</span>
+                        <span class="spec-tag">TiSiN涂层</span>
+                    </div>
+                    <a href="#" class="product-link" data-i18n="common.details">了解详情 →</a>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <div class="footer-copy">© 2025 CCCNC. All rights reserved.</div>
+        </div>
+    </section>
+
+    <!-- Deep Hole Drills -->
+    <section class="section" data-category="deep">
+        <div class="container">
+            <h2 class="section-title">深孔钻系列</h2>
+            <div class="product-grid">
+                <div class="product-card featured">
+                    <div class="product-icon">🔩</div>
+                    <h3 class="product-name" data-i18n="product.drdeep12.name">12D深孔钻 DR-DEEP-12D</h3>
+                    <p class="product-desc" data-i18n="product.drdeep12.desc">12倍径深孔钻，专为深孔加工优化，稳定性好</p>
+                    <div class="product-specs">
+                        <span class="spec-tag">12D</span>
+                        <span class="spec-tag">加强芯厚</span>
+                        <span class="spec-tag">TiSiN涂层</span>
+                        <span class="spec-tag">Φ3-12mm</span>
+                    </div>
+                    <a href="#" class="product-link" data-i18n="common.details">了解详情 →</a>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-icon">🔩</div>
+                    <h3 class="product-name" data-i18n="product.drdeep20.name">20D枪钻 DR-DEEP-20D</h3>
+                    <p class="product-desc" data-i18n="product.drdeep20.desc">20倍径枪钻，超深孔加工专用，直线度优异</p>
+                    <div class="product-specs">
+                        <span class="spec-tag">20D</span>
+                        <span class="spec-tag">单刃</span>
+                        <span class="spec-tag">专用涂层</span>
+                    </div>
+                    <a href="#" class="product-link" data-i18n="common.details">了解详情 →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Center Drills -->
+    <section class="section" data-category="center">
+        <div class="container">
+            <h2 class="section-title">中心钻系列</h2>
+            <div class="product-grid">
+                <div class="product-card featured">
+                    <div class="product-icon">🔩</div>
+                    <h3 class="product-name" data-i18n="product.dr60.name">60°中心钻 DR-CENTER-60</h3>
+                    <p class="product-desc" data-i18n="product.dr60.desc">标准60°中心钻，用于钻孔前定位，保证孔位精度</p>
+                    <div class="product-specs">
+                        <span class="spec-tag">60°</span>
+                        <span class="spec-tag">A型/B型</span>
+                        <span class="spec-tag">TiN涂层</span>
+                        <span class="spec-tag">Φ1-6mm</span>
+                    </div>
+                    <a href="#" class="product-link" data-i18n="common.details">了解详情 →</a>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-icon">🔩</div>
+                    <h3 class="product-name" data-i18n="product.dr90.name">90°定点钻 DR-SPOT-90</h3>
+                    <p class="product-desc" data-i18n="product.dr90.desc">90°定点钻，用于倒角和定位，多功能设计</p>
+                    <div class="product-specs">
+                        <span class="spec-tag">90°</span>
+                        <span class="spec-tag">倒角+定位</span>
+                        <span class="spec-tag">TiN涂层</span>
+                    </div>
+                    <a href="#" class="product-link" data-i18n="common.details">了解详情 →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Drills -->
+    <section class="section" data-category="special">
+        <div class="container">
+            <h2 class="section-title">特殊用途钻头</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-icon">🔩</div>
+                    <h3 class="product-name" data-i18n="product.dral.name">铝用钻头 DR-AL</h3>
+                    <p class="product-desc" data-i18n="product.dral.desc">专为铝合金设计，大前角，抛光刃口，无毛刺</p>
+                    <div class="product-specs">
+                        <span class="spec-tag">大前角</span>
+                        <span class="spec-tag">抛光刃口</span>
+                        <span class="spec-tag">无涂层</span>
+                    </div>
+                    <a href="#" class="product-link" data-i18n="common.details">了解详情 →</a>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-icon">🔩</div>
+                    <h3 class="product-name" data-i18n="product.drhrc.name">高硬度钻头 DR-HRC</h3>
+                    <p class="product-desc" data-i18n="product.drhrc.desc">适用于HRC45-65淬硬钢，耐磨性优异</p>
+                    <div class="product-specs">
+                        <span class="spec-tag">高硬度</span>
+                        <span class="spec-tag">HRC45-65</span>
+                        <span class="spec-tag">TiSiN涂层</span>
+                    </div>
+                    <a href="#" class="product-link" data-i18n="common.details">了解详情 →</a>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-icon">🔩</div>
+                    <h3 class="product-name" data-i18n="product.drstep.name">阶梯钻 DR-STEP</h3>
+                    <p class="product-desc" data-i18n="product.drstep.desc">多台阶一次成型，适合沉头孔加工</p>
+                    <div class="product-specs">
+                        <span class="spec-tag">多台阶</span>
+                        <span class="spec-tag">沉头孔</span>
+                        <span class="spec-tag">TiN涂层</span>
+                    </div>
+                    <a href="#" class="product-link" data-i18n="common.details">了解详情 →</a>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-icon">🔩</div>
+                    <h3 class="product-name" data-i18n="product.drmicro.name">微孔钻 DR-MICRO</h3>
+                    <p class="product-desc" data-i18n="product.drmicro.desc">微型钻头，Φ0.1-3mm，精密加工专用</p>
+                    <div class="product-specs">
+                        <span class="spec-tag">微孔</span>
+                        <span class="spec-tag">Φ0.1-3mm</span>
+                        <span class="spec-tag">TiAlN涂层</span>
+                    </div>
+                    <a href="#" class="product-link" data-i18n="common.details">了解详情 →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <a href="/" class="nav-logo">CCCNC</a>
+                <div class="footer-links">
+                    <a href="/products/endmills.html" data-i18n="nav.endmills">铣刀</a>
+                    <a href="/products/drills.html" data-i18n="nav.drills">钻头</a>
+                    <a href="/products/taps.html" data-i18n="nav.taps">丝锥</a>
+                    <a href="/contact.html" data-i18n="nav.contact">联系</a>
+                </div>
+            </div>
+            <div class="footer-bottom" data-i18n="footer.copyright">
+                © 2025 CCCNC. All rights reserved.
             </div>
         </div>
     </footer>
+
+    <!-- Catalog Dropdown -->
+    <div class="catalog-dropdown" id="catalogDropdown">
+        <div class="catalog-content">
+            <div class="catalog-grid">
+                <a href="/products/inserts.html" class="catalog-item">
+                    <div class="catalog-icon">💎</div>
+                    <span class="catalog-text" data-i18n="cat.inserts.name">车刀片</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="/products/endmills.html" class="catalog-item">
+                    <div class="catalog-icon">🔧</div>
+                    <span class="catalog-text" data-i18n="cat.endmills.name">硬质合金铣刀</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="/products/drills.html" class="catalog-item">
+                    <div class="catalog-icon">🔩</div>
+                    <span class="catalog-text" data-i18n="cat.drills.name">硬质合金钻头</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="/products/reamers.html" class="catalog-item">
+                    <div class="catalog-icon">⚙️</div>
+                    <span class="catalog-text" data-i18n="cat.reamers.name">铰刀系列</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="/products/taps.html" class="catalog-item">
+                    <div class="catalog-icon">🌀</div>
+                    <span class="catalog-text" data-i18n="cat.taps.name">丝锥系列</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="#" class="catalog-item">
+                    <div class="catalog-icon">📏</div>
+                    <span class="catalog-text" data-i18n="catalog.measure">测量工具</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="#" class="catalog-item">
+                    <div class="catalog-icon">🛠️</div>
+                    <span class="catalog-text" data-i18n="catalog.tooling">刀柄刀杆</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="#" class="catalog-item">
+                    <div class="catalog-icon">⚡</div>
+                    <span class="catalog-text" data-i18n="catalog.accessories">机床附件</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="#" class="catalog-item">
+                    <div class="catalog-icon">🔬</div>
+                    <span class="catalog-text" data-i18n="catalog.inspection">检测仪器</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="#" class="catalog-item">
+                    <div class="catalog-icon">✂️</div>
+                    <span class="catalog-text" data-i18n="catalog.deburring">去毛刺工具</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="#" class="catalog-item">
+                    <div class="catalog-icon">🎯</div>
+                    <span class="catalog-text" data-i18n="catalog.center">中心钻定点钻</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="#" class="catalog-item">
+                    <div class="catalog-icon">🔩</div>
+                    <span class="catalog-text" data-i18n="catalog.die">板牙</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/i18n.js"></script>
+    <script>
+        // Category filter functionality
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const filter = this.getAttribute('data-filter');
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                document.querySelectorAll('.section[data-category]').forEach(section => {
+                    if (filter === 'all' || section.getAttribute('data-category') === filter) {
+                        section.style.display = 'block';
+                    } else {
+                        section.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Catalog hover functionality
+        const catalogBtn = document.getElementById('catalogBtn');
+        const catalogDropdown = document.getElementById('catalogDropdown');
+        let hoverTimeout;
+        
+        function showCatalog() {
+            clearTimeout(hoverTimeout);
+            catalogDropdown.classList.add('active');
+        }
+        
+        function hideCatalog() {
+            hoverTimeout = setTimeout(() => {
+                catalogDropdown.classList.remove('active');
+            }, 200);
+        }
+        
+        catalogBtn.addEventListener('mouseenter', showCatalog);
+        catalogBtn.addEventListener('mouseleave', hideCatalog);
+        catalogDropdown.addEventListener('mouseenter', showCatalog);
+        catalogDropdown.addEventListener('mouseleave', hideCatalog);
+        
+        document.querySelectorAll('.catalog-item').forEach(item => {
+            item.addEventListener('click', function() {
+                catalogDropdown.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>

@@ -215,14 +215,45 @@ const i18n = {
         
         // Page specific - Drills
         'page.drills.title': '硬质合金钻头',
-        'page.drills.desc': '全系列钻头，包括麻花钻、中心钻、深孔钻、内冷钻等',
-        'page.drills.featured': '5D内冷深孔钻',
-        'page.drills.featured.desc': '内冷设计，5倍径深孔加工，排屑顺畅',
-        'page.drills.standard': '3D麻花钻',
-        'page.drills.standard.desc': '通用型3倍径麻花钻，适用于通孔和盲孔',
-        'page.drills.deep': '8D超深孔钻',
-        'page.drills.deep.desc': '专为超深孔设计，8倍径加工能力',
-        'page.drills.all': '全部钻头产品',
+        'page.drills.desc': '全系列硬质合金钻头，包括麻花钻、内冷钻、深孔钻、中心钻等多种类型',
+        
+        // Product Names - Drills - Twist
+        'product.dr3d.name': '3D麻花钻 DR-3D',
+        'product.dr3d.desc': '通用型3倍径麻花钻，适用于钢件、不锈钢、铝合金等多种材料',
+        'product.dr5d.name': '5D麻花钻 DR-5D',
+        'product.dr5d.desc': '5倍径加长钻，适合深孔加工，排屑顺畅',
+        'product.dr8d.name': '8D深孔钻 DR-8D',
+        'product.dr8d.desc': '8倍径超深孔钻，特殊槽型设计保证排屑',
+        
+        // Product Names - Drills - Coolant
+        'product.drcool3.name': '3D内冷钻 DR-COOL-3D',
+        'product.drcool3.desc': '带内冷孔设计，高压冷却液直达刃口，适合高效加工',
+        'product.drcool5.name': '5D内冷深孔钻 DR-COOL-5D',
+        'product.drcool5.desc': '5倍径内冷钻，深孔加工排屑冷却两不误',
+        'product.drcool8.name': '8D超深孔内冷钻 DR-COOL-8D',
+        'product.drcool8.desc': '8倍径超深孔内冷钻，专为深孔加工设计',
+        
+        // Product Names - Drills - Deep
+        'product.drdeep12.name': '12D深孔钻 DR-DEEP-12D',
+        'product.drdeep12.desc': '12倍径深孔钻，专为深孔加工优化，稳定性好',
+        'product.drdeep20.name': '20D枪钻 DR-DEEP-20D',
+        'product.drdeep20.desc': '20倍径枪钻，超深孔加工专用，直线度优异',
+        
+        // Product Names - Drills - Center
+        'product.dr60.name': '60°中心钻 DR-CENTER-60',
+        'product.dr60.desc': '标准60°中心钻，用于钻孔前定位，保证孔位精度',
+        'product.dr90.name': '90°定点钻 DR-SPOT-90',
+        'product.dr90.desc': '90°定点钻，用于倒角和定位，多功能设计',
+        
+        // Product Names - Drills - Special
+        'product.dral.name': '铝用钻头 DR-AL',
+        'product.dral.desc': '专为铝合金设计，大前角，抛光刃口，无毛刺',
+        'product.drhrc.name': '高硬度钻头 DR-HRC',
+        'product.drhrc.desc': '适用于HRC45-65淬硬钢，耐磨性优异',
+        'product.drstep.name': '阶梯钻 DR-STEP',
+        'product.drstep.desc': '多台阶一次成型，适合沉头孔加工',
+        'product.drmicro.name': '微孔钻 DR-MICRO',
+        'product.drmicro.desc': '微型钻头，Φ0.1-3mm，精密加工专用',
         
         // Page specific - Taps
         'page.taps.title': '丝锥系列',
@@ -504,7 +535,47 @@ const i18n = {
         
         // Page specific - Drills
         'page.drills.title': 'Твердосплавные сверла',
-        'page.drills.desc': 'Полная серия сверл: спиральные, центровочные, глубокого сверления',
+        'page.drills.desc': 'Полная серия твердосплавных сверл: спиральные, с подачей СОЖ, глубокого сверления, центровочные',
+        
+        // Product Names - Drills - Twist
+        'product.dr3d.name': 'Спиральное сверло 3D DR-3D',
+        'product.dr3d.desc': 'Универсальное спиральное сверло 3D, для стали, нержавейки, алюминия',
+        'product.dr5d.name': 'Спиральное сверло 5D DR-5D',
+        'product.dr5d.desc': 'Удлиненное сверло 5D, для глубоких отверстий, хорошее удаление стружки',
+        'product.dr8d.name': 'Сверло 8D DR-8D',
+        'product.dr8d.desc': 'Сверло 8D сверхглубокое, специальная канавка для удаления стружки',
+        
+        // Product Names - Drills - Coolant
+        'product.drcool3.name': 'Сверло с СОЖ 3D DR-COOL-3D',
+        'product.drcool3.desc': 'С внутренним каналом подачи СОЖ, высокое давление охлаждения, высокая эффективность',
+        'product.drcool5.name': 'Сверло с СОЖ 5D DR-COOL-5D',
+        'product.drcool5.desc': 'Сверло 5D с СОЖ, удаление стружки и охлаждение для глубоких отверстий',
+        'product.drcool8.name': 'Сверло с СОЖ 8D DR-COOL-8D',
+        'product.drcool8.desc': 'Сверло 8D сверхглубокое с СОЖ, специально для глубокого сверления',
+        
+        // Product Names - Drills - Deep
+        'product.drdeep12.name': 'Сверло 12D DR-DEEP-12D',
+        'product.drdeep12.desc': 'Сверло 12D глубокое, оптимизировано для глубокого сверления, стабильность',
+        'product.drdeep20.name': 'Сверло-пушка 20D DR-DEEP-20D',
+        'product.drdeep20.desc': 'Сверло-пушка 20D, для сверхглубокого сверления, отличная прямолинейность',
+        
+        // Product Names - Drills - Center
+        'product.dr60.name': 'Центровочное сверло 60° DR-CENTER-60',
+        'product.dr60.desc': 'Стандартное центровочное сверло 60°, для позиционирования перед сверлением',
+        'product.dr90.name': 'Центровочное сверло 90° DR-SPOT-90',
+        'product.dr90.desc': 'Центровочное сверло 90°, для зенкования и позиционирования',
+        
+        // Product Names - Drills - Special
+        'product.dral.name': 'Сверло для алюминия DR-AL',
+        'product.dral.desc': 'Специально для алюминия, большой передний угол, полированная кромка',
+        'product.drhrc.name': 'Сверло для закаленной стали DR-HRC',
+        'product.drhrc.desc': 'Для закаленной стали HRC45-65, отличная износостойкость',
+        'product.drstep.name': 'Ступенчатое сверло DR-STEP',
+        'product.drstep.desc': 'Многоступенчатое сверло за один проход, для зенковочных отверстий',
+        'product.drmicro.name': 'Микросверло DR-MICRO',
+        'product.drmicro.desc': 'Микросверло Φ0.1-3мм, для прецизионной обработки',
+        
+        // Legacy Drills
         'page.drills.featured': 'Сверло с подачей СОЖ 5D',
         'page.drills.featured.desc': 'Внутренняя подача СОЖ, глубокое сверление 5D',
         'page.drills.standard': 'Спиральное сверло 3D',
