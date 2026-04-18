@@ -152,13 +152,57 @@ const i18n = {
         'page.endmills.ball.desc': '精密球头设计，3D曲面加工首选',
         'page.endmills.all': '全部铣刀产品',
         
-        // Product Names - Endmills
+        // Product Names - Endmills - Steel Series
         'product.em4f.name': '4刃平底铣刀 EM-4F',
         'product.em4f.desc': '通用型4刃平底铣刀，适用于钢件、不锈钢的侧铣和槽铣加工',
+        'product.em3fsteel.name': '3刃钢用铣刀 EM-3F-STEEL',
+        'product.em3fsteel.desc': '专为钢材设计，大芯径高刚性，适合重切削',
+        'product.em4fhrc.name': '高硬度铣刀 EM-4F-HRC',
+        'product.em4fhrc.desc': '适用于HRC45-65淬硬钢加工，耐磨性优异',
+        'product.em6ffin.name': '6刃精加工铣刀 EM-6F-FIN',
+        'product.em6ffin.desc': '多刃设计，高进给精加工，表面质量优异',
+        
+        // Product Names - Endmills - Aluminum Series
         'product.em2fal.name': '2刃铝用铣刀 EM-2F-AL',
         'product.em2fal.desc': '专为铝合金设计的大排屑槽铣刀，高光效果，无毛刺',
+        'product.em3fal.name': '3刃铝用铣刀 EM-3F-AL',
+        'product.em3fal.desc': '3刃设计兼顾效率和排屑，适合大批量铝件加工',
+        'product.em2falpol.name': '铝用抛光铣刀 EM-2F-AL-POL',
+        'product.em2falpol.desc': '镜面刃口设计，铝合金高光加工专用',
+        
+        // Product Names - Endmills - Stainless Series
+        'product.em4fss.name': '不锈钢专用铣刀 EM-4F-SS',
+        'product.em4fss.desc': '专为304/316不锈钢设计，抗粘刀，耐磨损',
+        'product.em5fss.name': '5刃不锈钢铣刀 EM-5F-SS',
+        'product.em5fss.desc': '5刃设计高效率，适合不锈钢批量生产',
+        
+        // Product Names - Endmills - Ball Nose
         'product.emball.name': '2刃球头铣刀 EM-BALL-2F',
         'product.emball.desc': '精密球头设计，适用于3D曲面加工和模具精加工',
+        'product.emball4.name': '4刃球头铣刀 EM-BALL-4F',
+        'product.emball4.desc': '4刃球头高效率精加工，适合模具半精加工',
+        'product.emballtaper.name': '锥度球头铣刀 EM-BALL-TAPER',
+        'product.emballtaper.desc': '带锥度的球头设计，适合模具深腔加工',
+        
+        // Product Names - Endmills - Corner Radius
+        'product.emcorn4.name': '4刃圆鼻铣刀 EM-CORN-4F',
+        'product.emcorn4.desc': 'R角设计增强刀尖强度，适合高硬度材料',
+        'product.emcorn6.name': '6刃圆鼻铣刀 EM-CORN-6F',
+        'product.emcorn6.desc': '6刃高效率，适合精加工和半精加工',
+        
+        // Product Names - Endmills - Roughing
+        'product.emrough3.name': '3刃粗皮铣刀 EM-ROUGH-3F',
+        'product.emrough3.desc': '波纹刃设计，大切削量高效率粗加工',
+        'product.emrough4.name': '4刃粗皮铣刀 EM-ROUGH-4F',
+        'product.emrough4.desc': '4刃粗加工兼顾效率和平稳性',
+        
+        // Product Names - Endmills - Special
+        'product.emtaper.name': '锥度铣刀 EM-TAPER',
+        'product.emtaper.desc': '带锥度设计，适合模具拔模斜度加工',
+        'product.emthread.name': '螺纹铣刀 EM-THREAD',
+        'product.emthread.desc': '用于内外螺纹加工，M系列全规格',
+        'product.emsaw.name': '锯片铣刀 EM-SAW',
+        'product.emsaw.desc': '超薄设计，用于窄槽和切断加工',
         
         // Page specific - Drills
         'page.drills.title': '硬质合金钻头',
@@ -388,13 +432,57 @@ const i18n = {
         'page.endmills.ball.desc': 'Прецизионная сферическая фреза для 3D поверхностей',
         'page.endmills.all': 'Все фрезы',
         
-        // Product Names - Endmills
+        // Product Names - Endmills - Steel Series
         'product.em4f.name': 'Концевая фреза 4 зуба EM-4F',
         'product.em4f.desc': 'Универсальная фреза 4 зуба для боковой и канавочной обработки стали и нержавейки',
+        'product.em3fsteel.name': 'Фреза для стали 3 зуба EM-3F-STEEL',
+        'product.em3fsteel.desc': 'Большое сердцевинное отверстие для высокой жесткости, тяжелое фрезерование',
+        'product.em4fhrc.name': 'Фреза для закаленной стали EM-4F-HRC',
+        'product.em4fhrc.desc': 'Для обработки закаленной стали HRC45-65, отличная износостойкость',
+        'product.em6ffin.name': 'Чистовая фреза 6 зубьев EM-6F-FIN',
+        'product.em6ffin.desc': 'Многозубая конструкция, высокая подача, отличное качество поверхности',
+        
+        // Product Names - Endmills - Aluminum Series
         'product.em2fal.name': 'Фреза для алюминия 2 зуба EM-2F-AL',
         'product.em2fal.desc': 'Фреза с большими канавками для алюминия, зеркальная поверхность без заусенцев',
+        'product.em3fal.name': 'Фреза для алюминия 3 зуба EM-3F-AL',
+        'product.em3fal.desc': '3 зуба баланс эффективности и удаления стружки, массовая обработка алюминия',
+        'product.em2falpol.name': 'Полировальная фреза для алюминия EM-2F-AL-POL',
+        'product.em2falpol.desc': 'Зеркальная кромка, специально для полировки алюминия',
+        
+        // Product Names - Endmills - Stainless Series
+        'product.em4fss.name': 'Фреза для нержавейки EM-4F-SS',
+        'product.em4fss.desc': 'Специально для 304/316 нержавейки, антипригарное покрытие, износостойкая',
+        'product.em5fss.name': 'Фреза для нержавейки 5 зубьев EM-5F-SS',
+        'product.em5fss.desc': '5 зубьев высокой эффективности, массовое производство нержавейки',
+        
+        // Product Names - Endmills - Ball Nose
         'product.emball.name': 'Сферическая фреза 2 зуба EM-BALL-2F',
         'product.emball.desc': 'Прецизионная сферическая фреза для 3D поверхностей и чистовой обработки пресс-форм',
+        'product.emball4.name': 'Сферическая фреза 4 зуба EM-BALL-4F',
+        'product.emball4.desc': '4 зуба высокоэффективная чистовая обработка, полуфинишная обработка пресс-форм',
+        'product.emballtaper.name': 'Коническая сферическая фреза EM-BALL-TAPER',
+        'product.emballtaper.desc': 'Сферическая фреза с конусом, для глубоких полостей пресс-форм',
+        
+        // Product Names - Endmills - Corner Radius
+        'product.emcorn4.name': 'Фреза с радиусом 4 зуба EM-CORN-4F',
+        'product.emcorn4.desc': 'R-угол усиливает режущую кромку, для высокотвердых материалов',
+        'product.emcorn6.name': 'Фреза с радиусом 6 зубьев EM-CORN-6F',
+        'product.emcorn6.desc': '6 зубьев высокой эффективности, для чистовой и полуфинишной обработки',
+        
+        // Product Names - Endmills - Roughing
+        'product.emrough3.name': 'Черновая фреза 3 зуба EM-ROUGH-3F',
+        'product.emrough3.desc': 'Волнистая кромка, большой объем съема, высокоэффективное черновое фрезерование',
+        'product.emrough4.name': 'Черновая фреза 4 зуба EM-ROUGH-4F',
+        'product.emrough4.desc': '4 зуба черновая обработка балансирует эффективность и стабильность',
+        
+        // Product Names - Endmills - Special
+        'product.emtaper.name': 'Коническая фреза EM-TAPER',
+        'product.emtaper.desc': 'Коническая конструкция, для обработки уклонов пресс-форм',
+        'product.emthread.name': 'Резьбофреза EM-THREAD',
+        'product.emthread.desc': 'Для нарезания внутренней и наружной резьбы, полный диапазон M',
+        'product.emsaw.name': 'Отрезная фреза EM-SAW',
+        'product.emsaw.desc': 'Сверхтонкая конструкция, для узких канавок и отрезки',
         
         // Page specific - Drills
         'page.drills.title': 'Твердосплавные сверла',
