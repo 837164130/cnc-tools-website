@@ -1,602 +1,1013 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Калькулятор режимов резания | YG-1 RUS</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔧</text></svg>">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>切削参数计算器 - CCCNC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/enhanced.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #0071e3;
+            --primary-dark: #0077ed;
+            --text: #1d1d1f;
+            --text-secondary: #86868b;
+            --bg: #ffffff;
+            --bg-secondary: #f5f5f7;
+            --bg-dark: #000000;
+            --border: #d2d2d7;
         }
         
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
+        body { 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; 
+            color: var(--text); 
+            line-height: 1.47059;
+            font-weight: 400;
+            letter-spacing: -0.022em;
+            background: var(--bg);
         }
         
-        .container {
-            max-width: 1200px;
+        .container { max-width: 1024px; margin: 0 auto; padding: 0 22px; }
+        
+        /* Navigation */
+        .nav-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            background: rgba(251, 251, 253, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .nav {
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .nav-logo {
+            font-size: 21px;
+            font-weight: 700;
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 36px;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            font-size: 12px;
+            color: var(--text);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .nav-links a:hover { opacity: 1; }
+        .nav-links a.active { opacity: 1; font-weight: 500; }
+        
+        .lang-switcher {
+            display: flex;
+            gap: 4px;
+            background: rgba(0,0,0,0.05);
+            padding: 3px;
+            border-radius: 12px;
+        }
+        
+        .lang-btn {
+            padding: 4px 10px;
+            border: none;
+            background: transparent;
+            color: var(--text);
+            font-size: 11px;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 9px;
+            transition: all 0.3s;
+        }
+        
+        .lang-btn.active {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        /* Catalog Button */
+        .catalog-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 980px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .catalog-btn:hover { background: var(--primary-dark); }
+        
+        /* Catalog Dropdown */
+        .catalog-dropdown {
+            position: fixed;
+            top: 52px;
+            left: 0;
+            right: 0;
+            background: rgba(251, 251, 253, 0.95);
+            backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            z-index: 9998;
+        }
+        
+        .catalog-dropdown.active { max-height: 600px; }
+        
+        .catalog-content {
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 30px 22px;
+        }
+        
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+        
+        .catalog-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        
+        .catalog-item:hover { background: rgba(0,0,0,0.04); }
+        
+        .catalog-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--bg-secondary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        
+        .catalog-text {
+            flex: 1;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .catalog-arrow {
+            color: var(--text-secondary);
+            font-size: 12px;
+        }
+        
+        /* Page Header */
+        .page-header {
+            padding: 140px 0 60px;
+            background: var(--bg);
+            text-align: center;
+        }
+        
+        .page-eyebrow {
+            font-size: 17px;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: block;
+        }
+        
+        .page-title {
+            font-size: 64px;
+            font-weight: 700;
+            line-height: 1.0625;
+            letter-spacing: -0.021em;
+            margin-bottom: 20px;
+        }
+        
+        .page-desc {
+            font-size: 21px;
+            line-height: 1.381;
+            color: var(--text-secondary);
+            max-width: 600px;
             margin: 0 auto;
         }
         
-        header {
-            text-align: center;
+        /* Calculator Section */
+        .calculator-section {
+            padding: 60px 0;
+        }
+        
+        .calc-tabs {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 40px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .calc-tab {
+            padding: 12px 24px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .calc-tab:hover { background: var(--bg-secondary); }
+        .calc-tab.active {
+            background: var(--primary);
             color: white;
-            margin-bottom: 30px;
+            border-color: var(--primary);
         }
         
-        header h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
+        .calc-panel {
+            display: none;
         }
         
-        header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
+        .calc-panel.active {
+            display: block;
+        }
+        
+        /* Calculator Container */
+        .calculator-container {
+            background: var(--bg-secondary);
+            border-radius: 24px;
+            padding: 40px;
         }
         
         .calculator-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-bottom: 30px;
         }
         
-        @media (max-width: 768px) {
-            .calculator-grid {
-                grid-template-columns: 1fr;
-            }
-            header h1 {
-                font-size: 1.8rem;
-            }
-        }
-        
-        .card {
-            background: white;
-            border-radius: 16px;
-            padding: 24px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-        }
-        
-        .card h2 {
-            font-size: 1.3rem;
-            color: #1a1a2e;
-            margin-bottom: 20px;
+        .calculator-input {
             display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .form-group {
-            margin-bottom: 18px;
-        }
-        
-        label {
-            display: block;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 6px;
-            font-size: 0.9rem;
-        }
-        
-        select, input[type="number"] {
-            width: 100%;
-            padding: 12px 16px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-size: 1rem;
-            transition: all 0.3s;
-            background: white;
-        }
-        
-        select:focus, input:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-        
-        .btn-calculate {
-            width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            margin-top: 10px;
-        }
-        
-        .btn-calculate:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-        }
-        
-        .results-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        
-        @media (max-width: 600px) {
-            .results-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        .result-item {
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
-            padding: 20px;
-            border-radius: 12px;
-            text-align: center;
-        }
-        
-        .result-value {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #667eea;
-            margin-bottom: 5px;
-        }
-        
-        .result-label {
-            font-size: 0.85rem;
-            color: #666;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .product-recommendation {
-            background: linear-gradient(135deg, #fff9e6 0%, #ffefc2 100%);
-            border: 2px solid #ffc107;
-            border-radius: 12px;
-            padding: 20px;
-            margin-top: 20px;
-        }
-        
-        .product-recommendation h3 {
-            color: #856404;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
+            flex-direction: column;
             gap: 8px;
         }
         
-        .product-card {
-            background: white;
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        .calculator-input label {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text);
         }
         
-        .product-info h4 {
-            color: #1a1a2e;
-            margin-bottom: 5px;
+        .calculator-input input,
+        .calculator-input select {
+            padding: 14px 18px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            font-size: 16px;
+            font-family: inherit;
+            background: var(--bg);
+            transition: all 0.3s;
         }
         
-        .product-info p {
-            font-size: 0.85rem;
-            color: #666;
+        .calculator-input input:focus,
+        .calculator-input select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(0,113,227,0.1);
         }
         
-        .btn-product {
-            background: #ffc107;
-            color: #856404;
+        .calc-btn {
+            width: 100%;
+            padding: 16px 32px;
+            background: var(--primary);
+            color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 8px;
+            border-radius: 12px;
+            font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
+            transition: all 0.3s;
         }
         
-        .hidden {
+        .calc-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        /* Results */
+        .calculator-result {
+            background: var(--bg);
+            border-radius: 16px;
+            padding: 30px;
+            margin-top: 30px;
             display: none;
         }
         
-        .language-switch {
-            position: absolute;
-            top: 20px;
-            right: 20px;
+        .calculator-result.active {
+            display: block;
         }
         
-        .language-switch button {
-            background: rgba(255,255,255,0.2);
-            border: 1px solid rgba(255,255,255,0.3);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            cursor: pointer;
-            margin-left: 5px;
-            transition: background 0.3s;
-        }
-        
-        .language-switch button.active {
-            background: white;
-            color: #667eea;
-        }
-        
-        .save-section {
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid #e0e0e0;
-        }
-        
-        .btn-save {
-            background: #28a745;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 8px;
+        .result-title {
+            font-size: 18px;
             font-weight: 600;
-            cursor: pointer;
-            margin-right: 10px;
+            margin-bottom: 20px;
+            text-align: center;
         }
         
-        .btn-pdf {
-            background: #dc3545;
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
+        .result-item {
+            text-align: center;
+            padding: 20px;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+        }
+        
+        .result-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+        
+        .result-unit {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .result-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-top: 8px;
+        }
+        
+        /* Reference Table */
+        .reference-section {
+            padding: 60px 0;
+            background: var(--bg);
+        }
+        
+        .reference-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .reference-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        
+        .reference-table th,
+        .reference-table td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .reference-table th {
+            background: var(--bg-dark);
             color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 8px;
             font-weight: 600;
-            cursor: pointer;
+        }
+        
+        .reference-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .reference-table tr:hover td {
+            background: rgba(0,113,227,0.03);
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--bg-secondary);
+            padding: 40px 0 20px;
+            border-top: 1px solid var(--border);
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .footer-links a {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+        
+        .footer-bottom {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .page-title { font-size: 40px; }
+            .calculator-grid { grid-template-columns: 1fr; }
+            .result-grid { grid-template-columns: 1fr; }
+            .catalog-grid { grid-template-columns: repeat(2, 1fr); }
+            .nav-links { display: none; }
+            .reference-table { font-size: 14px; }
+            .reference-table th,
+            .reference-table td { padding: 12px; }
         }
     </style>
 </head>
 <body>
-    <div class="language-switch">
-        <button class="active" onclick="setLanguage('ru')">RU</button>
-        <button onclick="setLanguage('en')">EN</button>
+    <div class="nav-wrapper">
+        <div class="container">
+            <nav class="nav">
+                <a href="/" class="nav-logo">CCCNC</a>
+                <div class="nav-links">
+                    <button class="catalog-btn" id="catalogBtn">
+                        <span>☰</span>
+                        <span data-i18n="nav.catalog">目录</span>
+                    </button>
+                    <a href="/" data-i18n="nav.home">首页</a>
+                    <a href="/products/endmills.html" data-i18n="nav.endmills">铣刀</a>
+                    <a href="/products/drills.html" data-i18n="nav.drills">钻头</a>
+                    <a href="/products/taps.html" data-i18n="nav.taps">丝锥</a>
+                    <a href="/products/reamers.html" data-i18n="nav.reamers">铰刀</a>
+                    <a href="/products/inserts.html" data-i18n="nav.inserts">刀片</a>
+                    <a href="/calculator.html" class="active" data-i18n="nav.calculator">计算器</a>
+                    <a href="/contact.html" data-i18n="nav.contact">联系</a>
+                    <div class="lang-switcher">
+                        <button class="lang-btn active" data-lang="zh">中</button>
+                        <button class="lang-btn" data-lang="ru">RU</button>
+                    </div>
+                </div>
+            </nav>
+        </div>
     </div>
-    
-    <div class="container">
-        <header>
-            <h1>🔧 Калькулятор режимов резания</h1>
-            <p>Профессиональный расчет параметров обработки для инструментов YG-1</p>
-        </header>
-        
-        <div class="calculator-grid">
-            <div class="card">
-                <h2>⚙️ Параметры обработки</h2>
-                
-                <div class="form-group">
-                    <label>Тип операции</label>
-                    <select id="operationType">
-                        <option value="milling">Фрезерование</option>
-                        <option value="drilling">Сверление</option>
-                        <option value="turning">Токарная обработка</option>
-                        <option value="threading">Нарезание резьбы</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label>Обрабатываемый материал</label>
-                    <select id="material">
-                        <option value="steel_1020">Углеродистая сталь (C45, 1045)</option>
-                        <option value="steel_4140">Легированная сталь (4140, 4340)</option>
-                        <option value="steel_hardened">Закаленная сталь (>45 HRC)</option>
-                        <option value="stainless_304">Нержавеющая сталь (304, 316)</option>
-                        <option value="aluminum">Алюминий и сплавы</option>
-                        <option value="titanium">Титан и сплавы</option>
-                        <option value="cast_iron">Чугун</option>
-                        <option value="brass">Латунь/бронза</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label>Тип инструмента</label>
-                    <select id="toolType">
-                        <option value="endmill_2flute">Концевая фреза (2 зуба)</option>
-                        <option value="endmill_3flute">Концевая фреза (3 зуба)</option>
-                        <option value="endmill_4flute">Концевая фреза (4 зуба)</option>
-                        <option value="roughing">Черновая фреза</option>
-                        <option value="ballmill">Сферическая фреза</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label>Диаметр инструмента (мм)</label>
-                    <input type="number" id="toolDiameter" value="10" min="0.1" max="100" step="0.1">
-                </div>
-                
-                <div class="form-group">
-                    <label>Длина обработки (мм) - опционально</label>
-                    <input type="number" id="cutLength" value="50" min="1" max="1000" step="1">
-                </div>
-                
-                <button class="btn-calculate" onclick="calculate()">Рассчитать параметры</button>
+
+    <header class="page-header">
+        <div class="container">
+            <span class="page-eyebrow">Cutting Parameters Calculator</span>
+            <h1 class="page-title" data-i18n="calc.title">切削参数计算器</h1>
+            <p class="page-desc" data-i18n="calc.desc">快速计算切削速度、进给率、主轴转速等关键参数</p>
+        </div>
+    </header>
+
+    <section class="calculator-section">
+        <div class="container">
+            <div class="calc-tabs">
+                <button class="calc-tab active" data-calc="milling">铣削计算</button>
+                <button class="calc-tab" data-calc="drilling">钻削计算</button>
+                <button class="calc-tab" data-calc="turning">车削计算</button>
+                <button class="calc-tab" data-calc="tapping">攻丝计算</button>
             </div>
-            
-            <div class="card">
-                <h2>📊 Результаты расчета</h2>
-                
-                <div id="resultsPlaceholder" style="text-align: center; color: #999; padding: 40px 0;">
-                    <p>Заполните параметры и нажмите "Рассчитать"</p>
+
+            <!-- Milling Calculator -->
+            <div class="calc-panel active" id="milling-calc">
+                <div class="calculator-container">
+                    <div class="calculator-grid">
+                        <div class="calculator-input">
+                            <label>刀具直径 D (mm)</label>
+                            <input type="number" id="mill-diameter" placeholder="例如: 10" step="0.1">
+                        </div>
+                        <div class="calculator-input">
+                            <label>刃数 Z</label>
+                            <input type="number" id="mill-flutes" placeholder="例如: 4" min="1">
+                        </div>
+                        <div class="calculator-input">
+                            <label>切削速度 Vc (m/min)</label>
+                            <input type="number" id="mill-vc" placeholder="例如: 150" step="1">
+                        </div>
+                        <div class="calculator-input">
+                            <label>每齿进给 fz (mm/z)</label>
+                            <input type="number" id="mill-fz" placeholder="例如: 0.1" step="0.01">
+                        </div>
+                    </div>
+                    <button class="calc-btn" onclick="calculateMilling()">计算切削参数</button>
+                    
+                    <div class="calculator-result" id="mill-result">
+                        <div class="result-title">计算结果</div>
+                        <div class="result-grid">
+                            <div class="result-item">
+                                <div class="result-value" id="mill-rpm">-</div>
+                                <div class="result-unit">rpm</div>
+                                <div class="result-label">主轴转速</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-value" id="mill-vf">-</div>
+                                <div class="result-unit">mm/min</div>
+                                <div class="result-label">进给速度</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-value" id="mill-mrr">-</div>
+                                <div class="result-unit">cm³/min</div>
+                                <div class="result-label">材料去除率</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                
-                <div id="resultsContent" class="hidden">
-                    <div class="results-grid">
-                        <div class="result-item">
-                            <div class="result-value" id="rpmResult">0</div>
-                            <div class="result-label">об/мин</div>
+            </div>
+
+            <!-- Drilling Calculator -->
+            <div class="calc-panel" id="drilling-calc">
+                <div class="calculator-container">
+                    <div class="calculator-grid">
+                        <div class="calculator-input">
+                            <label>钻头直径 D (mm)</label>
+                            <input type="number" id="drill-diameter" placeholder="例如: 8" step="0.1">
                         </div>
-                        <div class="result-item">
-                            <div class="result-value" id="feedResult">0</div>
-                            <div class="result-label">мм/мин</div>
+                        <div class="calculator-input">
+                            <label>切削速度 Vc (m/min)</label>
+                            <input type="number" id="drill-vc" placeholder="例如: 40" step="1">
                         </div>
-                        <div class="result-item">
-                            <div class="result-value" id="feedPerTooth">0</div>
-                            <div class="result-label">мм/зуб</div>
+                        <div class="calculator-input">
+                            <label>每转进给 f (mm/r)</label>
+                            <input type="number" id="drill-f" placeholder="例如: 0.2" step="0.01">
                         </div>
-                    </div>
-                    
-                    <div class="results-grid" style="margin-top: 15px;">
-                        <div class="result-item">
-                            <div class="result-value" id="cuttingSpeed">0</div>
-                            <div class="result-label">м/мин</div>
-                        </div>
-                        <div class="result-item">
-                            <div class="result-value" id="mrr">0</div>
-                            <div class="result-label">см³/мин</div>
-                        </div>
-                        <div class="result-item">
-                            <div class="result-value" id="power">0</div>
-                            <div class="result-label">кВт</div>
+                        <div class="calculator-input">
+                            <label>钻孔深度 (mm)</label>
+                            <input type="number" id="drill-depth" placeholder="例如: 20" step="1">
                         </div>
                     </div>
+                    <button class="calc-btn" onclick="calculateDrilling()">计算钻削参数</button>
                     
-                    <div class="save-section">
-                        <button class="btn-save" onclick="saveCalculation()">💾 Сохранить</button>
-                        <button class="btn-pdf" onclick="exportPDF()">📄 PDF</button>
+                    <div class="calculator-result" id="drill-result">
+                        <div class="result-title">计算结果</div>
+                        <div class="result-grid">
+                            <div class="result-item">
+                                <div class="result-value" id="drill-rpm">-</div>
+                                <div class="result-unit">rpm</div>
+                                <div class="result-label">主轴转速</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-value" id="drill-vf">-</div>
+                                <div class="result-unit">mm/min</div>
+                                <div class="result-label">进给速度</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-value" id="drill-time">-</div>
+                                <div class="result-unit">s</div>
+                                <div class="result-label">钻孔时间</div>
+                            </div>
+                        </div>
                     </div>
+                </div>
+            </div>
+
+            <!-- Turning Calculator -->
+            <div class="calc-panel" id="turning-calc">
+                <div class="calculator-container">
+                    <div class="calculator-grid">
+                        <div class="calculator-input">
+                            <label>工件直径 D (mm)</label>
+                            <input type="number" id="turn-diameter" placeholder="例如: 50" step="0.1">
+                        </div>
+                        <div class="calculator-input">
+                            <label>切削速度 Vc (m/min)</label>
+                            <input type="number" id="turn-vc" placeholder="例如: 200" step="1">
+                        </div>
+                        <div class="calculator-input">
+                            <label>每转进给 f (mm/r)</label>
+                            <input type="number" id="turn-f" placeholder="例如: 0.2" step="0.01">
+                        </div>
+                        <div class="calculator-input">
+                            <label>切削深度 ap (mm)</label>
+                            <input type="number" id="turn-ap" placeholder="例如: 2" step="0.1">
+                        </div>
+                    </div>
+                    <button class="calc-btn" onclick="calculateTurning()">计算车削参数</button>
                     
-                    <div class="product-recommendation">
-                        <h3>⭐ Рекомендуемые инструменты YG-1</h3>
-                        <div id="productList"></div>
+                    <div class="calculator-result" id="turn-result">
+                        <div class="result-title">计算结果</div>
+                        <div class="result-grid">
+                            <div class="result-item">
+                                <div class="result-value" id="turn-rpm">-</div>
+                                <div class="result-unit">rpm</div>
+                                <div class="result-label">主轴转速</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-value" id="turn-vf">-</div>
+                                <div class="result-unit">mm/min</div>
+                                <div class="result-label">进给速度</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-value" id="turn-mrr">-</div>
+                                <div class="result-unit">cm³/min</div>
+                                <div class="result-label">材料去除率</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tapping Calculator -->
+            <div class="calc-panel" id="tapping-calc">
+                <div class="calculator-container">
+                    <div class="calculator-grid">
+                        <div class="calculator-input">
+                            <label>螺纹规格</label>
+                            <select id="tap-size">
+                                <option value="3">M3</option>
+                                <option value="4">M4</option>
+                                <option value="5">M5</option>
+                                <option value="6" selected>M6</option>
+                                <option value="8">M8</option>
+                                <option value="10">M10</option>
+                                <option value="12">M12</option>
+                                <option value="16">M16</option>
+                                <option value="20">M20</option>
+                            </select>
+                        </div>
+                        <div class="calculator-input">
+                            <label>切削速度 Vc (m/min)</label>
+                            <input type="number" id="tap-vc" placeholder="例如: 10" step="1">
+                        </div>
+                        <div class="calculator-input">
+                            <label>螺距 P (mm)</label>
+                            <input type="number" id="tap-pitch" placeholder="例如: 1" step="0.1" value="1">
+                        </div>
+                        <div class="calculator-input">
+                            <label>攻丝深度 (mm)</label>
+                            <input type="number" id="tap-depth" placeholder="例如: 15" step="1">
+                        </div>
+                    </div>
+                    <button class="calc-btn" onclick="calculateTapping()">计算攻丝参数</button>
+                    
+                    <div class="calculator-result" id="tap-result">
+                        <div class="result-title">计算结果</div>
+                        <div class="result-grid">
+                            <div class="result-item">
+                                <div class="result-value" id="tap-rpm">-</div>
+                                <div class="result-unit">rpm</div>
+                                <div class="result-label">主轴转速</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-value" id="tap-vf">-</div>
+                                <div class="result-unit">mm/min</div>
+                                <div class="result-label">进给速度</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-value" id="tap-time">-</div>
+                                <div class="result-unit">s</div>
+                                <div class="result-label">攻丝时间</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
+
+    <!-- Reference Data -->
+    <section class="reference-section">
+        <div class="container">
+            <h2 class="reference-title">切削参数参考表</h2>
+            <table class="reference-table">
+                <thead>
+                    <tr>
+                        <th>材料</th>
+                        <th>硬度(HB)</th>
+                        <th>铣削Vc(m/min)</th>
+                        <th>钻削Vc(m/min)</th>
+                        <th>车削Vc(m/min)</th>
+                        <th>攻丝Vc(m/min)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>低碳钢</td>
+                        <td>125-175</td>
+                        <td>120-180</td>
+                        <td>30-40</td>
+                        <td>180-250</td>
+                        <td>8-12</td>
+                    </tr>
+                    <tr>
+                        <td>中碳钢</td>
+                        <td>175-225</td>
+                        <td>100-150</td>
+                        <td>25-35</td>
+                        <td>150-200</td>
+                        <td>6-10</td>
+                    </tr>
+                    <tr>
+                        <td>合金钢</td>
+                        <td>200-280</td>
+                        <td>80-120</td>
+                        <td>20-30</td>
+                        <td>120-180</td>
+                        <td>5-8</td>
+                    </tr>
+                    <tr>
+                        <td>不锈钢304</td>
+                        <td>150-200</td>
+                        <td>60-100</td>
+                        <td>15-25</td>
+                        <td>100-150</td>
+                        <td>4-7</td>
+                    </tr>
+                    <tr>
+                        <td>不锈钢316</td>
+                        <td>150-220</td>
+                        <td>50-80</td>
+                        <td>12-20</td>
+                        <td>80-120</td>
+                        <td>3-6</td>
+                    </tr>
+                    <tr>
+                        <td>铝合金</td>
+                        <td>30-100</td>
+                        <td>300-600</td>
+                        <td>80-150</td>
+                        <td>400-800</td>
+                        <td>15-25</td>
+                    </tr>
+                    <tr>
+                        <td>铜合金</td>
+                        <td>50-150</td>
+                        <td>200-400</td>
+                        <td>50-100</td>
+                        <td>300-500</td>
+                        <td>10-20</td>
+                    </tr>
+                    <tr>
+                        <td>铸铁</td>
+                        <td>180-260</td>
+                        <td>80-150</td>
+                        <td>20-40</td>
+                        <td>120-200</td>
+                        <td>6-10</td>
+                    </tr>
+                    <tr>
+                        <td>钛合金</td>
+                        <td>250-350</td>
+                        <td>30-60</td>
+                        <td>10-20</td>
+                        <td>40-80</td>
+                        <td>2-5</td>
+                    </tr>
+                    <tr>
+                        <td>淬硬钢(45-55HRC)</td>
+                        <td>-</td>
+                        <td>40-80</td>
+                        <td>8-15</td>
+                        <td>60-100</td>
+                        <td>2-4</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <a href="/" class="nav-logo">CCCNC</a>
+                <div class="footer-links">
+                    <a href="/products/endmills.html" data-i18n="nav.endmills">铣刀</a>
+                    <a href="/products/drills.html" data-i18n="nav.drills">钻头</a>
+                    <a href="/products/taps.html" data-i18n="nav.taps">丝锥</a>
+                    <a href="/contact.html" data-i18n="nav.contact">联系</a>
+                </div>
+            </div>
+            <div class="footer-bottom" data-i18n="footer.copyright">
+                © 2025 CCCNC. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Catalog Dropdown -->
+    <div class="catalog-dropdown" id="catalogDropdown">
+        <div class="catalog-content">
+            <div class="catalog-grid">
+                <a href="/products/inserts.html" class="catalog-item">
+                    <div class="catalog-icon">💎</div>
+                    <span class="catalog-text" data-i18n="cat.inserts.name">车刀片</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="/products/endmills.html" class="catalog-item">
+                    <div class="catalog-icon">🔧</div>
+                    <span class="catalog-text" data-i18n="cat.endmills.name">硬质合金铣刀</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="/products/drills.html" class="catalog-item">
+                    <div class="catalog-icon">🔩</div>
+                    <span class="catalog-text" data-i18n="cat.drills.name">硬质合金钻头</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="/products/reamers.html" class="catalog-item">
+                    <div class="catalog-icon">⚙️</div>
+                    <span class="catalog-text" data-i18n="cat.reamers.name">铰刀系列</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="/products/taps.html" class="catalog-item">
+                    <div class="catalog-icon">🌀</div>
+                    <span class="catalog-text" data-i18n="cat.taps.name">丝锥系列</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="#" class="catalog-item">
+                    <div class="catalog-icon">📏</div>
+                    <span class="catalog-text" data-i18n="catalog.measure">测量工具</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="#" class="catalog-item">
+                    <div class="catalog-icon">🛠️</div>
+                    <span class="catalog-text" data-i18n="catalog.tooling">刀柄刀杆</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="#" class="catalog-item">
+                    <div class="catalog-icon">⚡</div>
+                    <span class="catalog-text" data-i18n="catalog.accessories">机床附件</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="#" class="catalog-item">
+                    <div class="catalog-icon">🔬</div>
+                    <span class="catalog-text" data-i18n="catalog.inspection">检测仪器</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="#" class="catalog-item">
+                    <div class="catalog-icon">✂️</div>
+                    <span class="catalog-text" data-i18n="catalog.deburring">去毛刺工具</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="#" class="catalog-item">
+                    <div class="catalog-icon">🎯</div>
+                    <span class="catalog-text" data-i18n="catalog.center">中心钻定点钻</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="#" class="catalog-item">
+                    <div class="catalog-icon">🔩</div>
+                    <span class="catalog-text" data-i18n="catalog.die">板牙</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+            </div>
+        </div>
     </div>
 
+    <script src="/js/i18n.js"></script>
     <script>
-        // База данных материалов и параметров резания
-        const materialData = {
-            steel_1020: {
-                name: { ru: 'Углеродистая сталь', en: 'Carbon Steel' },
-                vc: { roughing: 180, finishing: 220 },
-                fz: { roughing: 0.15, finishing: 0.08 },
-                ap: { roughing: 0.5, finishing: 0.2 },
-                ae: { roughing: 0.7, finishing: 0.2 },
-                kc: 1800
-            },
-            steel_4140: {
-                name: { ru: 'Легированная сталь', en: 'Alloy Steel' },
-                vc: { roughing: 120, finishing: 160 },
-                fz: { roughing: 0.12, finishing: 0.06 },
-                ap: { roughing: 0.4, finishing: 0.15 },
-                ae: { roughing: 0.6, finishing: 0.15 },
-                kc: 2200
-            },
-            steel_hardened: {
-                name: { ru: 'Закаленная сталь', en: 'Hardened Steel' },
-                vc: { roughing: 60, finishing: 80 },
-                fz: { roughing: 0.08, finishing: 0.04 },
-                ap: { roughing: 0.2, finishing: 0.1 },
-                ae: { roughing: 0.3, finishing: 0.1 },
-                kc: 2800
-            },
-            stainless_304: {
-                name: { ru: 'Нержавеющая сталь', en: 'Stainless Steel' },
-                vc: { roughing: 80, finishing: 120 },
-                fz: { roughing: 0.1, finishing: 0.05 },
-                ap: { roughing: 0.3, finishing: 0.15 },
-                ae: { roughing: 0.5, finishing: 0.15 },
-                kc: 2400
-            },
-            aluminum: {
-                name: { ru: 'Алюминий', en: 'Aluminum' },
-                vc: { roughing: 400, finishing: 600 },
-                fz: { roughing: 0.2, finishing: 0.1 },
-                ap: { roughing: 0.8, finishing: 0.3 },
-                ae: { roughing: 0.8, finishing: 0.3 },
-                kc: 800
-            },
-            titanium: {
-                name: { ru: 'Титан', en: 'Titanium' },
-                vc: { roughing: 40, finishing: 60 },
-                fz: { roughing: 0.1, finishing: 0.05 },
-                ap: { roughing: 0.25, finishing: 0.1 },
-                ae: { roughing: 0.4, finishing: 0.1 },
-                kc: 1600
-            },
-            cast_iron: {
-                name: { ru: 'Чугун', en: 'Cast Iron' },
-                vc: { roughing: 150, finishing: 200 },
-                fz: { roughing: 0.18, finishing: 0.08 },
-                ap: { roughing: 0.6, finishing: 0.25 },
-                ae: { roughing: 0.7, finishing: 0.25 },
-                kc: 1200
-            },
-            brass: {
-                name: { ru: 'Латунь', en: 'Brass' },
-                vc: { roughing: 250, finishing: 350 },
-                fz: { roughing: 0.15, finishing: 0.08 },
-                ap: { roughing: 0.7, finishing: 0.25 },
-                ae: { roughing: 0.8, finishing: 0.25 },
-                kc: 1000
-            }
-        };
-
-        // База данных продуктов YG-1
-        const yg1Products = {
-            steel_roughing: [
-                { code: 'X5070', name: 'X-POWER PRO', desc: 'Для стали до 55 HRC, высокая подача', series: 'X5070' },
-                { code: 'V7PLUS', name: 'V7 PLUS', desc: 'Универсальная фреза для стали', series: 'V7 Plus' }
-            ],
-            steel_finishing: [
-                { code: 'HPC', name: 'HPC', desc: 'Высокопроизводительная чистовая обработка', series: 'HPC' },
-                { code: 'X5070F', name: 'X-POWER PRO Finishing', desc: 'Чистовая обработка закаленной стали', series: 'X5070' }
-            ],
-            stainless: [
-                { code: 'POWER', name: 'POWER', desc: 'Специально для нержавеющей стали', series: 'POWER' },
-                { code: 'ST3070', name: 'ST3070', desc: 'Оптимизирована для жаропрочных сплавов', series: 'ST3070' }
-            ],
-            aluminum: [
-                { code: 'ALU', name: 'ALU-POWER', desc: 'Максимальная скорость для алюминия', series: 'ALU-POWER' },
-                { code: 'ALU3', name: 'ALU-POWER 3', desc: '3-зубая для высокой подачи', series: 'ALU-POWER' }
-            ],
-            titanium: [
-                { code: 'TITA', name: 'TITA-NIUM', desc: 'Специально для титановых сплавов', series: 'TITA-NIUM' },
-                { code: 'V7PLUS', name: 'V7 PLUS', desc: 'Универсальное решение', series: 'V7 Plus' }
-            ],
-            hardened: [
-                { code: 'X5070', name: 'X-POWER PRO', desc: 'До 70 HRC', series: 'X5070' },
-                { code: 'I-XMILL', name: 'I-XMILL', desc: 'Со сменными пластинами до 65 HRC', series: 'I-XMILL' }
-            ]
-        };
-
-        let currentLang = 'ru';
-        let lastCalculation = null;
-
-        function setLanguage(lang) {
-            currentLang = lang;
-            document.querySelectorAll('.language-switch button').forEach(btn => {
-                btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
+        // Tab switching
+        document.querySelectorAll('.calc-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                const calcType = this.getAttribute('data-calc');
+                
+                // Update tabs
+                document.querySelectorAll('.calc-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Update panels
+                document.querySelectorAll('.calc-panel').forEach(p => p.classList.remove('active'));
+                document.getElementById(calcType + '-calc').classList.add('active');
             });
-            // Здесь можно добавить полную локализацию
-        }
-
-        function calculate() {
-            const material = document.getElementById('material').value;
-            const toolType = document.getElementById('toolType').value;
-            const diameter = parseFloat(document.getElementById('toolDiameter').value);
-            const operation = document.getElementById('operationType').value;
+        });
+        
+        // Milling Calculator
+        function calculateMilling() {
+            const D = parseFloat(document.getElementById('mill-diameter').value);
+            const Z = parseFloat(document.getElementById('mill-flutes').value);
+            const Vc = parseFloat(document.getElementById('mill-vc').value);
+            const fz = parseFloat(document.getElementById('mill-fz').value);
             
-            if (!diameter || diameter <= 0) {
-                alert('Введите корректный диаметр инструмента');
+            if (!D || !Z || !Vc || !fz) {
+                alert('请填写所有参数');
                 return;
             }
             
-            const matData = materialData[material];
-            const isRoughing = toolType.includes('roughing');
-            const mode = isRoughing ? 'roughing' : 'finishing';
+            const n = Math.round((Vc * 1000) / (Math.PI * D));
+            const Vf = Math.round(n * Z * fz);
+            const MRR = Math.round((Vf * D * 0.1) / 100) / 10; // Simplified MRR
             
-            // Расчет режимов резания
-            const vc = matData.vc[mode]; // Скорость резания м/мин
-            const fz = matData.fz[mode]; // Подача на зуб мм
-            const ap = matData.ap[mode] * diameter; // Глубина резания
-            const ae = matData.ae[mode] * diameter; // Ширина резания
-            
-            // Количество зубьев
-            let flutes = 4;
-            if (toolType.includes('2flute')) flutes = 2;
-            else if (toolType.includes('3flute')) flutes = 3;
-            else if (toolType.includes('roughing')) flutes = 4;
-            
-            // Расчет оборотов шпинделя
-            const rpm = Math.round((vc * 1000) / (Math.PI * diameter));
-            
-            // Расчет минутной подачи
-            const feed = Math.round(rpm * fz * flutes);
-            
-            // Объем снятия металла
-            const mrr = (ap * ae * feed / 1000).toFixed(1);
-            
-            // Мощность резания (упрощенно)
-            const power = ((matData.kc * ap * ae * feed) / (60000 * 0.8)).toFixed(2);
-            
-            // Отображение результатов
-            document.getElementById('resultsPlaceholder').classList.add('hidden');
-            document.getElementById('resultsContent').classList.remove('hidden');
-            
-            document.getElementById('rpmResult').textContent = rpm.toLocaleString();
-            document.getElementById('feedResult').textContent = feed.toLocaleString();
-            document.getElementById('feedPerTooth').textContent = fz.toFixed(3);
-            document.getElementById('cuttingSpeed').textContent = vc;
-            document.getElementById('mrr').textContent = mrr;
-            document.getElementById('power').textContent = power;
-            
-            // Сохранение расчета
-            lastCalculation = {
-                material: matData.name.ru,
-                toolType: toolType,
-                diameter: diameter,
-                rpm: rpm,
-                feed: feed,
-                fz: fz,
-                vc: vc,
-                mrr: mrr,
-                power: power,
-                timestamp: new Date().toISOString()
-            };
-            
-            // Рекомендации продуктов
-            showProductRecommendations(material, isRoughing);
+            document.getElementById('mill-rpm').textContent = n.toLocaleString();
+            document.getElementById('mill-vf').textContent = Vf.toLocaleString();
+            document.getElementById('mill-mrr').textContent = MRR.toFixed(1);
+            document.getElementById('mill-result').classList.add('active');
         }
-
-        function showProductRecommendations(material, isRoughing) {
-            let products = [];
+        
+        // Drilling Calculator
+        function calculateDrilling() {
+            const D = parseFloat(document.getElementById('drill-diameter').value);
+            const Vc = parseFloat(document.getElementById('drill-vc').value);
+            const f = parseFloat(document.getElementById('drill-f').value);
+            const depth = parseFloat(document.getElementById('drill-depth').value);
             
-            if (material === 'steel_hardened') {
-                products = yg1Products.hardened;
-            } else if (material === 'stainless_304') {
-                products = yg1Products.stainless;
-            } else if (material === 'aluminum') {
-                products = yg1Products.aluminum;
-            } else if (material === 'titanium') {
-                products = yg1Products.titanium;
-            } else if (isRoughing) {
-                products = yg1Products.steel_roughing;
-            } else {
-                products = yg1Products.steel_finishing;
+            if (!D || !Vc || !f || !depth) {
+                alert('请填写所有参数');
+                return;
             }
             
-            const productList = document.getElementById('productList');
-            productList.innerHTML = products.map(p => `
-                <div class="product-card">
-                    <div class="product-info">
-                        <h4>${p.name}</h4>
-                        <p>${p.desc}</p>
-                    </div>
-                    <a href="https://cccnc.ru/products.html?series=${p.series}" class="btn-product">Подробнее</a>
-                </div>
-            `).join('');
-        }
-
-        function saveCalculation() {
-            if (!lastCalculation) return;
+            const n = Math.round((Vc * 1000) / (Math.PI * D));
+            const Vf = Math.round(n * f);
+            const time = Math.round((depth / Vf) * 60);
             
-            const saved = JSON.parse(localStorage.getItem('yg1_calculations') || '[]');
-            saved.push(lastCalculation);
-            localStorage.setItem('yg1_calculations', JSON.stringify(saved));
-            
-            alert('Расчет сохранен! Всего сохранено: ' + saved.length);
+            document.getElementById('drill-rpm').textContent = n.toLocaleString();
+            document.getElementById('drill-vf').textContent = Vf.toLocaleString();
+            document.getElementById('drill-time').textContent = time;
+            document.getElementById('drill-result').classList.add('active');
         }
-
-        function exportPDF() {
-            if (!lastCalculation) return;
+        
+        // Turning Calculator
+        function calculateTurning() {
+            const D = parseFloat(document.getElementById('turn-diameter').value);
+            const Vc = parseFloat(document.getElementById('turn-vc').value);
+            const f = parseFloat(document.getElementById('turn-f').value);
+            const ap = parseFloat(document.getElementById('turn-ap').value);
             
-            // Простая реализация - открыть печать
-            window.print();
+            if (!D || !Vc || !f || !ap) {
+                alert('请填写所有参数');
+                return;
+            }
+            
+            const n = Math.round((Vc * 1000) / (Math.PI * D));
+            const Vf = Math.round(n * f);
+            const MRR = Math.round(Vf * ap * 0.1) / 10;
+            
+            document.getElementById('turn-rpm').textContent = n.toLocaleString();
+            document.getElementById('turn-vf').textContent = Vf.toLocaleString();
+            document.getElementById('turn-mrr').textContent = MRR.toFixed(1);
+            document.getElementById('turn-result').classList.add('active');
         }
-
-        // Инициализация
-        document.addEventListener('DOMContentLoaded', function() {
-            // Загрузить сохраненные расчеты при необходимости
+        
+        // Tapping Calculator
+        function calculateTapping() {
+            const D = parseFloat(document.getElementById('tap-size').value);
+            const Vc = parseFloat(document.getElementById('tap-vc').value);
+            const P = parseFloat(document.getElementById('tap-pitch').value);
+            const depth = parseFloat(document.getElementById('tap-depth').value);
+            
+            if (!D || !Vc || !P || !depth) {
+                alert('请填写所有参数');
+                return;
+            }
+            
+            const n = Math.round((Vc * 1000) / (Math.PI * D));
+            const Vf = Math.round(n * P);
+            const time = Math.round((depth / Vf) * 60);
+            
+            document.getElementById('tap-rpm').textContent = n.toLocaleString();
+            document.getElementById('tap-vf').textContent = Vf.toLocaleString();
+            document.getElementById('tap-time').textContent = time;
+            document.getElementById('tap-result').classList.add('active');
+        }
+        
+        // Catalog hover functionality
+        const catalogBtn = document.getElementById('catalogBtn');
+        const catalogDropdown = document.getElementById('catalogDropdown');
+        let hoverTimeout;
+        
+        function showCatalog() {
+            clearTimeout(hoverTimeout);
+            catalogDropdown.classList.add('active');
+        }
+        
+        function hideCatalog() {
+            hoverTimeout = setTimeout(() => {
+                catalogDropdown.classList.remove('active');
+            }, 200);
+        }
+        
+        catalogBtn.addEventListener('mouseenter', showCatalog);
+        catalogBtn.addEventListener('mouseleave', hideCatalog);
+        catalogDropdown.addEventListener('mouseenter', showCatalog);
+        catalogDropdown.addEventListener('mouseleave', hideCatalog);
+        
+        document.querySelectorAll('.catalog-item').forEach(item => {
+            item.addEventListener('click', function() {
+                catalogDropdown.classList.remove('active');
+            });
         });
     </script>
 </body>
