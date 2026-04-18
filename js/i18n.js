@@ -585,8 +585,44 @@ const i18n = {
         'page.drills.all': 'Все сверла',
         
         // Page specific - Taps
-        'page.taps.title': 'Серия метчиков',
-        'page.taps.desc': 'Полная серия: машинные, формовочные метчики, резьбофрезы',
+        'page.taps.title': 'Метчики и резьбовой инструмент',
+        'page.taps.desc': 'Полная серия метчиков: машинные, формовочные, резьбофрезы, метрические M, дюймовые UN',
+        
+        // Product Names - Taps - Metric
+        'product.tpmcut.name': 'Машинный метчик М TP-M-CUT',
+        'product.tpmcut.desc': 'Универсальный машинный метчик, прямая канавка, для сквозных и глухих отверстий',
+        'product.tpmform.name': 'Формовочный метчик М TP-M-FORM',
+        'product.tpmform.desc': 'Без стружки, высокая прочность резьбы, хорошее качество поверхности',
+        'product.tpmspiral.name': 'Спиральный метчик М TP-M-SPIRAL',
+        'product.tpmspiral.desc': 'Спиральная канавка, хорошее удаление стружки, для глухих отверстий',
+        
+        // Product Names - Taps - Inch
+        'product.tpuncut.name': 'Машинный метчик UNC TP-UNC-CUT',
+        'product.tpuncut.desc': 'Дюймовый метчик, UNC/UNF полный диапазон',
+        'product.tpunfspiral.name': 'Спиральный метчик UNF TP-UNF-SPIRAL',
+        'product.tpunfspiral.desc': 'UNF мелкий шаг спиральный, для прецизионной резьбы',
+        
+        // Product Names - Taps - Forming
+        'product.tpalform.name': 'Формовочный метчик для алюминия TP-AL-FORM',
+        'product.tpalform.desc': 'Специально для алюминия, без стружки, высокое качество поверхности резьбы',
+        'product.tpssform.name': 'Формовочный метчик для нержавейки TP-SS-FORM',
+        'product.tpssform.desc': 'Специально для нержавейки, специальное покрытие, износостойкий',
+        
+        // Product Names - Taps - Spiral Flute
+        'product.tpmspiral35.name': 'Спиральный метчик 35° TP-M-SPIRAL-35',
+        'product.tpmspiral35.desc': 'Угол спирали 35°, для глухих отверстий, отличное удаление стружки',
+        'product.tpmspiral45.name': 'Спиральный метчик 45° TP-M-SPIRAL-45',
+        'product.tpmspiral45.desc': 'Большой угол спирали 45°, для вязких материалов',
+        
+        // Product Names - Taps - Pipe
+        'product.tprc.name': 'Конический трубный метчик TP-RC',
+        'product.tprc.desc': 'Коническая трубная резьба, угол профиля 55°, герметичная',
+        'product.tprp.name': 'Цилиндрический трубный метчик TP-RP',
+        'product.tprp.desc': 'Цилиндрическая трубная резьба, в паре с RC',
+        'product.tpnpt.name': 'Американский трубный метчик TP-NPT',
+        'product.tpnpt.desc': 'Американская трубная резьба NPT, угол профиля 60°',
+        
+        // Legacy Taps
         'page.taps.featured': 'Машинный метчик М',
         'page.taps.featured.desc': 'Универсальный машинный метчик для сквозных и глухих отверстий',
         'page.taps.forming': 'Формовочный метчик',
@@ -597,7 +633,43 @@ const i18n = {
         
         // Page specific - Reamers
         'page.reamers.title': 'Серия разверток',
-        'page.reamers.desc': 'Высокоточный инструмент: цилиндрические, конические, регулируемые',
+        'page.reamers.desc': 'Высокоточные развертки: цилиндрические, конические, регулируемые, H7/H8 точность',
+        
+        // Product Names - Reamers - Straight Shank
+        'product.rmstraight6.name': 'Развертка 6 зубьев RM-STRAIGHT-6F',
+        'product.rmstraight6.desc': 'Высокоточная развертка с цилиндрическим хвостовиком, 6 зубьев, H7, для сквозных отверстий',
+        'product.rmstraight4.name': 'Развертка 4 зуба RM-STRAIGHT-4F',
+        'product.rmstraight4.desc': '4 зуба балансируют эффективность и точность, для полуфинишной обработки',
+        'product.rmstraight8.name': 'Развертка 8 зубьев RM-STRAIGHT-8F',
+        'product.rmstraight8.desc': '8 зубьев высокой точности, H6, отличное качество поверхности',
+        
+        // Product Names - Reamers - Taper Shank
+        'product.rmmt.name': 'Развертка Морзе RM-MT',
+        'product.rmmt.desc': 'Конический хвостовик Морзе, для больших диаметров, хорошая жесткость',
+        'product.rmbt.name': 'Развертка BT/HSK RM-BT',
+        'product.rmbt.desc': 'Интерфейс BT/HSK, для обрабатывающих центров',
+        
+        // Product Names - Reamers - Adjustable
+        'product.rmadjust.name': 'Регулируемая развертка RM-ADJUST',
+        'product.rmadjust.desc': 'Диаметр регулируется в диапазоне 0.5мм, один инструмент для нескольких размеров',
+        'product.rmmicro.name': 'Микроразвертка RM-MICRO',
+        'product.rmmicro.desc': 'Регулировка с точностью микрон, для прецизионных отверстий',
+        
+        // Product Names - Reamers - Machine
+        'product.rmhigh.name': 'Высокоскоростная развертка RM-HIGH',
+        'product.rmhigh.desc': 'Для высокоскоростной обработки, специальное покрытие, износостойкая',
+        'product.rmcarbide.name': 'Твердосплавная развертка RM-CARBIDE',
+        'product.rmcarbide.desc': 'Полностью твердосплавная, для высокотвердых материалов',
+        'product.rmtaperhole.name': 'Коническая развертка RM-TAPER-HOLE',
+        'product.rmtaperhole.desc': 'Для конических отверстий Морзе, BT',
+        
+        // Product Names - Reamers - Hand
+        'product.rmhand.name': 'Ручная развертка RM-HAND',
+        'product.rmhand.desc': 'Квадратный хвостовик, для ручной доводки и прецизионной регулировки',
+        'product.rmexpansion.name': 'Разжимная развертка RM-EXPANSION',
+        'product.rmexpansion.desc': 'Регулируемый диаметр, для ремонтных работ',
+        
+        // Legacy Reamers
         'page.reamers.featured': 'Развертка с цилиндрическим хвостовиком',
         'page.reamers.featured.desc': 'Высокоточная развертка, 6 зубьев, точность H7',
         'page.reamers.taper': 'Развертка с коническим хвостовиком',
@@ -608,7 +680,45 @@ const i18n = {
         
         // Page specific - Inserts
         'page.inserts.title': 'Токарные пластины',
-        'page.inserts.desc': 'Серия CNMG, WNMG, TNMG и другие стандартные модели',
+        'page.inserts.desc': 'Полная серия токарных пластин: CNMG, WNMG, TNMG и др., для стали, нержавейки, алюминия',
+        
+        // Product Names - Inserts - CNMG
+        'product.cnmgrough.name': 'Пластина CNMG черновая CNMG-ROUGH',
+        'product.cnmgrough.desc': 'Высокопрочная геометрия, большая глубина и подача, для черновой обработки стали',
+        'product.cnmgfinish.name': 'Пластина CNMG чистовая CNMG-FINISH',
+        'product.cnmgfinish.desc': 'Острая кромка, отличное качество поверхности, для чистовой обработки',
+        'product.cnmgss.name': 'Пластина CNMG для нержавейки CNMG-SS',
+        'product.cnmgss.desc': 'Специально для 304/316 нержавейки, антипригарная, износостойкая',
+        
+        // Product Names - Inserts - WNMG
+        'product.wnmgrough.name': 'Пластина WNMG черновая WNMG-ROUGH',
+        'product.wnmgrough.desc': 'Персиковая форма, высокая прочность кромки, для тяжелого резания',
+        'product.wnmgfinish.name': 'Пластина WNMG чистовая WNMG-FINISH',
+        'product.wnmgfinish.desc': 'Чистовая обработка, высокое качество поверхности',
+        
+        // Product Names - Inserts - TNMG
+        'product.tnmground.name': 'Пластина TNMG черновая TNMG-ROUGH',
+        'product.tnmground.desc': 'Треугольная форма, три режущих кромки, экономичная',
+        'product.tnmgfinish.name': 'Пластина TNMG чистовая TNMG-FINISH',
+        'product.tnmgfinish.desc': 'Чистовая обработка, острая кромка, хорошее качество поверхности',
+        
+        // Product Names - Inserts - DNMG
+        'product.dnmground.name': 'Пластина DNMG черновая DNMG-ROUGH',
+        'product.dnmground.desc': 'Ромб 55°, для копировальной обработки и контурного точения',
+        'product.dnmgfinish.name': 'Пластина DNMG чистовая DNMG-FINISH',
+        'product.dnmgfinish.desc': 'Чистовая обработка, для контурного точения и копирования',
+        
+        // Product Names - Inserts - Special
+        'product.vnmgal.name': 'Пластина VNMG для алюминия VNMG-AL',
+        'product.vnmgal.desc': 'Специально для алюминия, большой передний угол, полированная кромка, зеркальная поверхность',
+        'product.ccmt.name': 'Пластина CCMT для расточки CCMT-FINISH',
+        'product.ccmt.desc': 'Ромб 80° малая пластина, для внутренней чистовой обработки',
+        'product.vbmt.name': 'Пластина VBMT для профиля VBMT-PROFILE',
+        'product.vbmt.desc': 'Ромб 35°, для копировальной обработки и прецизионных контуров',
+        'product.dcmt.name': 'Пластина DCMT для чистовой DCMT-FINISH',
+        'product.dcmt.desc': 'Ромб 55° малая пластина, для прецизионной наружной обработки',
+        
+        // Legacy Inserts
         'page.inserts.featured': 'Пластина CNMG для черновой обработки',
         'page.inserts.featured.desc': 'Ромб 80°, большая глубина резания',
         'page.inserts.finish': 'Пластина для чистовой обработки',
