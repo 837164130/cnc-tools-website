@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>铰刀系列 | CCCNC - 直柄铰刀 锥柄铰刀 可调铰刀 精镗刀</title>
+    <meta name="description" content="CCCNC铰刀系列：直柄铰刀、锥柄铰刀、可调铰刀、精镗刀。高精度孔加工工具，H7/H8精度等级，适用于精密孔加工和修整。">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #e31837;
+            --primary-dark: #c41230;
+            --secondary: #1a1a1a;
+            --text: #333;
+            --text-light: #666;
+            --bg: #fff;
+            --bg-light: #f5f5f5;
+            --border: #e0e0e0;
+        }
+        body { font-family: 'Inter', sans-serif; color: var(--text); line-height: 1.6; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+        
+        .header { background: var(--secondary); color: white; position: fixed; width: 100%; top: 0; z-index: 1000; }
+        .header-top { background: var(--primary); padding: 8px 0; font-size: 13px; }
+        .header-top .container { display: flex; justify-content: space-between; align-items: center; }
+        .header-contact a { color: white; text-decoration: none; font-weight: 600; }
+        .header-main { padding: 15px 0; }
+        .header-main .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 28px; font-weight: 800; color: white; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+        .logo span { color: var(--primary); }
+        .nav { display: flex; gap: 35px; }
+        .nav a { color: white; text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.3s; position: relative; }
+        .nav a:hover { color: var(--primary); }
+        .nav a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--primary); transition: width 0.3s; }
+        .nav a:hover::after { width: 100%; }
+        .nav a.active { color: var(--primary); }
+        
+        .page-header { margin-top: 110px; background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); color: white; padding: 80px 0; position: relative; overflow: hidden; }
+        .page-header::before { content: ''; position: absolute; top: 0; right: 0; width: 50%; height: 100%; background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="80" cy="20" r="60" fill="%23e31837" opacity="0.08"/></svg>'); background-size: cover; }
+        .page-header-content { position: relative; z-index: 1; }
+        .breadcrumb { display: flex; gap: 15px; margin-bottom: 20px; font-size: 14px; color: #888; }
+        .breadcrumb a { color: #888; text-decoration: none; }
+        .breadcrumb a:hover { color: var(--primary); }
+        .page-header h1 { font-size: 48px; font-weight: 800; margin-bottom: 15px; }
+        .page-header p { font-size: 18px; color: #aaa; max-width: 600px; }
+        
+        .filter-bar { background: white; padding: 25px 0; border-bottom: 1px solid var(--border); position: sticky; top: 110px; z-index: 100; }
+        .filter-container { display: flex; gap: 30px; align-items: center; flex-wrap: wrap; }
+        .filter-group { display: flex; align-items: center; gap: 12px; }
+        .filter-label { font-size: 14px; font-weight: 600; color: var(--text); }
+        .filter-select { padding: 10px 20px; border: 1px solid var(--border); border-radius: 6px; font-size: 14px; background: white; cursor: pointer; min-width: 150px; }
+        .filter-select:focus { outline: none; border-color: var(--primary); }
+        
+        .products-section { padding: 60px 0; background: var(--bg-light); }
+        .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .product-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.04); transition: all 0.3s; border: 1px solid var(--border); }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); border-color: var(--primary); }
+        .product-img { height: 260px; background: linear-gradient(135deg, #f8f8f8 0%, #f0f0f0 100%); display: flex; align-items: center; justify-content: center; position: relative; font-size: 80px; }
+        .product-badges { position: absolute; top: 15px; left: 15px; display: flex; flex-direction: column; gap: 8px; }
+        .product-badge { padding: 6px 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; border-radius: 4px; color: white; }
+        .product-badge.hot { background: #ff6b35; }
+        .product-badge.new { background: #28a745; }
+        .product-info { padding: 28px; }
+        .product-code { font-size: 13px; color: var(--primary); font-weight: 700; margin-bottom: 8px; }
+        .product-name { font-size: 18px; font-weight: 700; margin-bottom: 15px; }
+        .product-desc { font-size: 14px; color: var(--text-light); margin-bottom: 20px; line-height: 1.6; }
+        .product-specs { background: var(--bg-light); padding: 18px; border-radius: 8px; margin-bottom: 20px; }
+        .spec-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+        .spec-row:last-child { border-bottom: none; }
+        .spec-label { color: var(--text-light); }
+        .spec-value { font-weight: 600; color: var(--text); }
+        .product-sizes { margin-bottom: 20px; }
+        .sizes-title { font-size: 13px; font-weight: 600; margin-bottom: 10px; }
+        .sizes-list { display: flex; flex-wrap: wrap; gap: 8px; }
+        .size-tag { font-size: 12px; background: var(--bg-light); padding: 6px 12px; border-radius: 4px; color: var(--text); border: 1px solid var(--border); }
+        .size-tag:hover { background: var(--primary); color: white; border-color: var(--primary); cursor: pointer; }
+        .product-actions { display: flex; gap: 12px; }
+        .btn { flex: 1; padding: 14px; font-size: 14px; font-weight: 600; text-decoration: none; border-radius: 6px; transition: all 0.3s; cursor: pointer; border: none; text-align: center; }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-primary:hover { background: var(--primary-dark); }
+        .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
+        .btn-outline:hover { background: var(--secondary); color: white; border-color: var(--secondary); }
+        
+        .footer { background: #0d0d0d; color: white; padding: 80px 0 30px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; margin-bottom: 60px; }
+        .footer-brand .logo { margin-bottom: 20px; display: inline-block; }
+        .footer-brand p { color: #666; font-size: 14px; line-height: 1.8; margin-bottom: 25px; }
+        .footer-title { font-size: 16px; font-weight: 700; margin-bottom: 25px; color: white; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 14px; }
+        .footer-links a { color: #666; text-decoration: none; font-size: 14px; transition: all 0.3s; }
+        .footer-links a:hover { color: var(--primary); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; display: flex; justify-content: space-between; align-items: center; }
+        .footer-copy { color: #444; font-size: 13px; }
+        
+        @media (max-width: 1024px) {
+            .products-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .container { padding: 0 20px; }
+            .nav { display: none; }
+            .page-header { margin-top: 80px; }
+            .page-header h1 { font-size: 32px; }
+            .products-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-top">
+            <div class="container">
+                <div>专业硬质合金刀具制造商 | Professional Carbide Tools Manufacturer</div>
+                <div class="header-contact">
+                    <a href="tel:+8612345678900">+86 123 4567 8900</a>
+                </div>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="container">
+                <a href="/" class="logo">🔧 CCC<span>NC</span></a>
+                <nav class="nav">
+                    <a href="/">首页</a>
+                    <a href="/products/endmills.html">铣刀</a>
+                    <a href="/products/drills.html">钻头</a>
+                    <a href="/products/taps.html">丝锥</a>
+                    <a href="/products/reamers.html" class="active">铰刀</a>
+                    <a href="/products/inserts.html">刀片</a>
+                    <a href="/calculator.html">🔧 计算器</a>
+                    <a href="/contact.html">联系我们</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <div class="breadcrumb">
+                    <a href="/">首页</a>
+                    <span>/</span>
+                    <span>铰刀系列</span>
+                </div>
+                <h1>铰刀与精镗刀</h1>
+                <p>高精度孔加工工具，包括直柄铰刀、锥柄铰刀、可调铰刀、精镗刀等，H7/H8精度等级，确保精密孔加工质量</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="filter-bar">
+        <div class="container">
+            <div class="filter-container">
+                <div class="filter-group">
+                    <span class="filter-label">铰刀类型：</span>
+                    <select class="filter-select">
+                        <option>全部类型</option>
+                        <option>直柄铰刀</option>
+                        <option>锥柄铰刀</option>
+                        <option>可调铰刀</option>
+                        <option>精镗刀</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <span class="filter-label">精度等级：</span>
+                    <select class="filter-select">
+                        <option>全部精度</option>
+                        <option>H7</option>
+                        <option>H8</option>
+                        <option>H9</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <span class="filter-label">直径范围：</span>
+                    <select class="filter-select">
+                        <option>全部直径</option>
+                        <option>Φ3-10mm</option>
+                        <option>Φ10-20mm</option>
+                        <option>Φ20-50mm</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="products-section">
+        <div class="container">
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-img">
+                        <div class="product-badges">
+                            <span class="product-badge hot">热销</span>
+                        </div>
+                        ⚙️
+                    </div>
+                    <div class="product-info">
+                        <div class="product-code">RM-SH-H7</div>
+                        <h3 class="product-name">直柄机用铰刀（H7精度）</h3>
+                        <p class="product-desc">高精度直柄铰刀，6刃设计，H7精度等级，适用于精密孔加工</p>
+                        <div class="product-specs">
+                            <div class="spec-row">
+                                <span class="spec-label">柄型</span>
+                                <span class="spec-value">直柄</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">精度等级</span>
+                                <span class="spec-value">H7</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">刃数</span>
+                                <span class="spec-value">6刃</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">适用材料</span>
+                                <span class="spec-value">钢件/铸铁</span>
+                            </div>
+                        </div>
+                        <div class="product-sizes">
+                            <div class="sizes-title">可选直径：</div>
+                            <div class="sizes-list">
+                                <span class="size-tag">Φ3</span>
+                                <span class="size-tag">Φ4</span>
+                                <span class="size-tag">Φ5</span>
+                                <span class="size-tag">Φ6</span>
+                                <span class="size-tag">Φ8</span>
+                                <span class="size-tag">Φ10</span>
+                                <span class="size-tag">Φ12</span>
+                                <span class="size-tag">Φ16</span>
+                                <span class="size-tag">Φ20</span>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-primary">查看详情</a>
+                            <a href="#" class="btn btn-outline">咨询报价</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <div class="product-badges">
+                            <span class="product-badge new">新品</span>
+                        </div>
+                        ⚙️
+                    </div>
+                    <div class="product-info">
+                        <div class="product-code">RM-MH-H7</div>
+                        <h3 class="product-name">锥柄机用铰刀（H7精度）</h3>
+                        <p class="product-desc">莫氏锥柄设计，适合大直径孔加工，刚性好，精度高</p>
+                        <div class="product-specs">
+                            <div class="spec-row">
+                                <span class="spec-label">柄型</span>
+                                <span class="spec-value">莫氏锥柄</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">精度等级</span>
+                                <span class="spec-value">H7</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">刃数</span>
+                                <span class="spec-value">8刃</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">适用材料</span>
+                                <span class="spec-value">钢件/铸铁</span>
+                            </div>
+                        </div>
+                        <div class="product-sizes">
+                            <div class="sizes-title">可选直径：</div>
+                            <div class="sizes-list">
+                                <span class="size-tag">Φ10</span>
+                                <span class="size-tag">Φ12</span>
+                                <span class="size-tag">Φ16</span>
+                                <span class="size-tag">Φ20</span>
+                                <span class="size-tag">Φ25</span>
+                                <span class="size-tag">Φ30</span>
+                                <span class="size-tag">Φ40</span>
+                                <span class="size-tag">Φ50</span>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-primary">查看详情</a>
+                            <a href="#" class="btn btn-outline">咨询报价</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        ⚙️
+                    </div>
+                    <div class="product-info">
+                        <div class="product-code">RM-ADJ-H8</div>
+                        <h3 class="product-name">可调铰刀（H8精度）</h3>
+                        <p class="product-desc">直径可调设计，适用范围广，适合维修和单件生产</p>
+                        <div class="product-specs">
+                            <div class="spec-row">
+                                <span class="spec-label">类型</span>
+                                <span class="spec-value">可调式</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">精度等级</span>
+                                <span class="spec-value">H8</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">调节范围</span>
+                                <span class="spec-value">±0.5mm</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">适用材料</span>
+                                <span class="spec-value">全材料</span>
+                            </div>
+                        </div>
+                        <div class="product-sizes">
+                            <div class="sizes-title">可选范围：</div>
+                            <div class="sizes-list">
+                                <span class="size-tag">Φ10-12</span>
+                                <span class="size-tag">Φ12-15</span>
+                                <span class="size-tag">Φ15-18</span>
+                                <span class="size-tag">Φ18-22</span>
+                                <span class="size-tag">Φ22-26</span>
+                                <span class="size-tag">Φ26-30</span>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-primary">查看详情</a>
+                            <a href="#" class="btn btn-outline">咨询报价</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        ⚙️
+                    </div>
+                    <div class="product-info">
+                        <div class="product-code">RB-FIN-MICRO</div>
+                        <h3 class="product-name">微调精镗刀（0.01mm精度）</h3>
+                        <p class="product-desc">精密微调机构，0.01mm调节精度，适合高精度孔加工</p>
+                        <div class="product-specs">
+                            <div class="spec-row">
+                                <span class="spec-label">类型</span>
+                                <span class="spec-value">微调精镗</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">调节精度</span>
+                                <span class="spec-value">0.01mm</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">刀片</span>
+                                <span class="spec-value">可换刀片</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">适用</span>
+                                <span class="spec-value">精密孔</span>
+                            </div>
+                        </div>
+                        <div class="product-sizes">
+                            <div class="sizes-title">可选范围：</div>
+                            <div class="sizes-list">
+                                <span class="size-tag">Φ6-10</span>
+                                <span class="size-tag">Φ10-16</span>
+                                <span class="size-tag">Φ16-25</span>
+                                <span class="size-tag">Φ25-40</span>
+                                <span class="size-tag">Φ40-60</span>
+                                <span class="size-tag">Φ60-100</span>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-primary">查看详情</a>
+                            <a href="#" class="btn btn-outline">咨询报价</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <div class="product-badges">
+                            <span class="product-badge hot">热销</span>
+                        </div>
+                        ⚙️
+                    </div>
+                    <div class="product-info">
+                        <div class="product-code">RM-HS-H7</div>
+                        <h3 class="product-name">高速铰刀（H7精度）</h3>
+                        <p class="product-desc">专为高速加工设计，螺旋槽排屑顺畅，效率高</p>
+                        <div class="product-specs">
+                            <div class="spec-row">
+                                <span class="spec-label">柄型</span>
+                                <span class="spec-value">直柄/HSK</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">精度等级</span>
+                                <span class="spec-value">H7</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">槽型</span>
+                                <span class="spec-value">螺旋槽</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">适用材料</span>
+                                <span class="spec-value">钢件/不锈钢</span>
+                            </div>
+                        </div>
+                        <div class="product-sizes">
+                            <div class="sizes-title">可选直径：</div>
+                            <div class="sizes-list">
+                                <span class="size-tag">Φ4</span>
+                                <span class="size-tag">Φ5</span>
+                                <span class="size-tag">Φ6</span>
+                                <span class="size-tag">Φ8</span>
+                                <span class="size-tag">Φ10</span>
+                                <span class="size-tag">Φ12</span>
+                                <span class="size-tag">Φ16</span>
+                                <span class="size-tag">Φ20</span>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-primary">查看详情</a>
+                            <a href="#" class="btn btn-outline">咨询报价</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        ⚙️
+                    </div>
+                    <div class="product-info">
+                        <div class="product-code">RM-TAP-REP</div>
+                        <h3 class="product-name">锥度铰刀（莫氏/公制）</h3>
+                        <p class="product-desc">用于锥孔加工，莫氏锥度和公制锥度规格齐全</p>
+                        <div class="product-specs">
+                            <div class="spec-row">
+                                <span class="spec-label">锥度类型</span>
+                                <span class="spec-value">莫氏/公制</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">精度等级</span>
+                                <span class="spec-value">AT3</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">刃数</span>
+                                <span class="spec-value">4/6刃</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">适用材料</span>
+                                <span class="spec-value">全材料</span>
+                            </div>
+                        </div>
+                        <div class="product-sizes">
+                            <div class="sizes-title">可选规格：</div>
+                            <div class="sizes-list">
+                                <span class="size-tag">MT1</span>
+                                <span class="size-tag">MT2</span>
+                                <span class="size-tag">MT3</span>
+                                <span class="size-tag">MT4</span>
+                                <span class="size-tag">MT5</span>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-primary">查看详情</a>
+                            <a href="#" class="btn btn-outline">咨询报价</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="logo">🔧 CCC<span>NC</span></a>
+                    <p>专业硬质合金刀具制造商，致力于为各行业提供高品质、高精度的切削工具解决方案。</p>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">产品系列</h4>
+                    <ul class="footer-links">
+                        <li><a href="/products/endmills.html">硬质合金铣刀</a></li>
+                        <li><a href="/products/drills.html">硬质合金钻头</a></li>
+                        <li><a href="/products/taps.html">丝锥系列</a></li>
+                        <li><a href="/products/reamers.html">铰刀系列</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">技术支持</h4>
+                    <ul class="footer-links">
+                        <li><a href="/calculator.html">切削计算器</a></li>
+                        <li><a href="#">刀具选型指南</a></li>
+                        <li><a href="#">切削参数推荐</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">联系我们</h4>
+                    <ul class="footer-links">
+                        <li><a href="/contact.html">联系方式</a></li>
+                        <li><a href="#">在线咨询</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-copy">© 2025 CCCNC. All rights reserved.</div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>车刀片系列 | CCCNC - 硬质合金刀片 数控刀片</title>
+    <meta name="description" content="CCCNC车刀片系列：硬质合金刀片、数控刀片、车削刀片。CNMG、WNMG、TNMG等标准型号，适用于钢件、不锈钢、铸铁、铝合金等材料车削加工。">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #e31837;
+            --primary-dark: #c41230;
+            --secondary: #1a1a1a;
+            --text: #333;
+            --text-light: #666;
+            --bg: #fff;
+            --bg-light: #f5f5f5;
+            --border: #e0e0e0;
+        }
+        body { font-family: 'Inter', sans-serif; color: var(--text); line-height: 1.6; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+        
+        .header { background: var(--secondary); color: white; position: fixed; width: 100%; top: 0; z-index: 1000; }
+        .header-top { background: var(--primary); padding: 8px 0; font-size: 13px; }
+        .header-top .container { display: flex; justify-content: space-between; align-items: center; }
+        .header-contact a { color: white; text-decoration: none; font-weight: 600; }
+        .header-main { padding: 15px 0; }
+        .header-main .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 28px; font-weight: 800; color: white; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+        .logo span { color: var(--primary); }
+        .nav { display: flex; gap: 35px; }
+        .nav a { color: white; text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.3s; position: relative; }
+        .nav a:hover { color: var(--primary); }
+        .nav a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--primary); transition: width 0.3s; }
+        .nav a:hover::after { width: 100%; }
+        .nav a.active { color: var(--primary); }
+        
+        .page-header { margin-top: 110px; background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); color: white; padding: 80px 0; position: relative; overflow: hidden; }
+        .page-header::before { content: ''; position: absolute; top: 0; right: 0; width: 50%; height: 100%; background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="80" cy="20" r="60" fill="%23e31837" opacity="0.08"/></svg>'); background-size: cover; }
+        .page-header-content { position: relative; z-index: 1; }
+        .breadcrumb { display: flex; gap: 15px; margin-bottom: 20px; font-size: 14px; color: #888; }
+        .breadcrumb a { color: #888; text-decoration: none; }
+        .breadcrumb a:hover { color: var(--primary); }
+        .page-header h1 { font-size: 48px; font-weight: 800; margin-bottom: 15px; }
+        .page-header p { font-size: 18px; color: #aaa; max-width: 600px; }
+        
+        .filter-bar { background: white; padding: 25px 0; border-bottom: 1px solid var(--border); position: sticky; top: 110px; z-index: 100; }
+        .filter-container { display: flex; gap: 30px; align-items: center; flex-wrap: wrap; }
+        .filter-group { display: flex; align-items: center; gap: 12px; }
+        .filter-label { font-size: 14px; font-weight: 600; color: var(--text); }
+        .filter-select { padding: 10px 20px; border: 1px solid var(--border); border-radius: 6px; font-size: 14px; background: white; cursor: pointer; min-width: 150px; }
+        .filter-select:focus { outline: none; border-color: var(--primary); }
+        
+        .products-section { padding: 60px 0; background: var(--bg-light); }
+        .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .product-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.04); transition: all 0.3s; border: 1px solid var(--border); }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); border-color: var(--primary); }
+        .product-img { height: 260px; background: linear-gradient(135deg, #f8f8f8 0%, #f0f0f0 100%); display: flex; align-items: center; justify-content: center; position: relative; font-size: 80px; }
+        .product-badges { position: absolute; top: 15px; left: 15px; display: flex; flex-direction: column; gap: 8px; }
+        .product-badge { padding: 6px 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; border-radius: 4px; color: white; }
+        .product-badge.hot { background: #ff6b35; }
+        .product-badge.new { background: #28a745; }
+        .product-info { padding: 28px; }
+        .product-code { font-size: 13px; color: var(--primary); font-weight: 700; margin-bottom: 8px; }
+        .product-name { font-size: 18px; font-weight: 700; margin-bottom: 15px; }
+        .product-desc { font-size: 14px; color: var(--text-light); margin-bottom: 20px; line-height: 1.6; }
+        .product-specs { background: var(--bg-light); padding: 18px; border-radius: 8px; margin-bottom: 20px; }
+        .spec-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+        .spec-row:last-child { border-bottom: none; }
+        .spec-label { color: var(--text-light); }
+        .spec-value { font-weight: 600; color: var(--text); }
+        .product-sizes { margin-bottom: 20px; }
+        .sizes-title { font-size: 13px; font-weight: 600; margin-bottom: 10px; }
+        .sizes-list { display: flex; flex-wrap: wrap; gap: 8px; }
+        .size-tag { font-size: 12px; background: var(--bg-light); padding: 6px 12px; border-radius: 4px; color: var(--text); border: 1px solid var(--border); }
+        .size-tag:hover { background: var(--primary); color: white; border-color: var(--primary); cursor: pointer; }
+        .product-actions { display: flex; gap: 12px; }
+        .btn { flex: 1; padding: 14px; font-size: 14px; font-weight: 600; text-decoration: none; border-radius: 6px; transition: all 0.3s; cursor: pointer; border: none; text-align: center; }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-primary:hover { background: var(--primary-dark); }
+        .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
+        .btn-outline:hover { background: var(--secondary); color: white; border-color: var(--secondary); }
+        
+        .footer { background: #0d0d0d; color: white; padding: 80px 0 30px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; margin-bottom: 60px; }
+        .footer-brand .logo { margin-bottom: 20px; display: inline-block; }
+        .footer-brand p { color: #666; font-size: 14px; line-height: 1.8; margin-bottom: 25px; }
+        .footer-title { font-size: 16px; font-weight: 700; margin-bottom: 25px; color: white; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 14px; }
+        .footer-links a { color: #666; text-decoration: none; font-size: 14px; transition: all 0.3s; }
+        .footer-links a:hover { color: var(--primary); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; display: flex; justify-content: space-between; align-items: center; }
+        .footer-copy { color: #444; font-size: 13px; }
+        
+        @media (max-width: 1024px) {
+            .products-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .container { padding: 0 20px; }
+            .nav { display: none; }
+            .page-header { margin-top: 80px; }
+            .page-header h1 { font-size: 32px; }
+            .products-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-top">
+            <div class="container">
+                <div>专业硬质合金刀具制造商 | Professional Carbide Tools Manufacturer</div>
+                <div class="header-contact">
+                    <a href="tel:+8612345678900">+86 123 4567 8900</a>
+                </div>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="container">
+                <a href="/" class="logo">🔧 CCC<span>NC</span></a>
+                <nav class="nav">
+                    <a href="/">首页</a>
+                    <a href="/products/endmills.html">铣刀</a>
+                    <a href="/products/drills.html">钻头</a>
+                    <a href="/products/taps.html">丝锥</a>
+                    <a href="/products/reamers.html">铰刀</a>
+                    <a href="/products/inserts.html" class="active">刀片</a>
+                    <a href="/calculator.html">🔧 计算器</a>
+                    <a href="/contact.html">联系我们</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <div class="breadcrumb">
+                    <a href="/">首页</a>
+                    <span>/</span>
+                    <span>车刀片系列</span>
+                </div>
+                <h1>硬质合金车刀片</h1>
+                <p>数控车刀片系列，包括CNMG、WNMG、TNMG等标准型号，适用于钢件、不锈钢、铸铁、铝合金等材料的车削加工</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="filter-bar">
+        <div class="container">
+            <div class="filter-container">
+                <div class="filter-group">
+                    <span class="filter-label">刀片型号：</span>
+                    <select class="filter-select">
+                        <option>全部型号</option>
+                        <option>CNMG</option>
+                        <option>WNMG</option>
+                        <option>TNMG</option>
+                        <option>DNMG</option>
+                        <option>SNMG</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <span class="filter-label">加工类型：</span>
+                    <select class="filter-select">
+                        <option>全部类型</option>
+                        <option>粗加工</option>
+                        <option>半精加工</option>
+                        <option>精加工</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <span class="filter-label">适用材料：</span>
+                    <select class="filter-select">
+                        <option>全部材料</option>
+                        <option>钢件</option>
+                        <option>不锈钢</option>
+                        <option>铸铁</option>
+                        <option>铝合金</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="products-section">
+        <div class="container">
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-img">
+                        <div class="product-badges">
+                            <span class="product-badge hot">热销</span>
+                        </div>
+                        ⚙️
+                    </div>
+                    <div class="product-info">
+                        <div class="product-code">CNMG1204-ROUGH</div>
+                        <h3 class="product-name">CNMG1204 粗加工刀片</h3>
+                        <p class="product-desc">80°菱形刀片，大切深设计，适合重切削粗加工，钢件铸铁通用</p>
+                        <div class="product-specs">
+                            <div class="spec-row">
+                                <span class="spec-label">型号</span>
+                                <span class="spec-value">CNMG120408</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">槽型</span>
+                                <span class="spec-value">粗加工</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">材质</span>
+                                <span class="spec-value">P30/CVD</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">适用材料</span>
+                                <span class="spec-value">钢件/铸铁</span>
+                            </div>
+                        </div>
+                        <div class="product-sizes">
+                            <div class="sizes-title">可选材质：</div>
+                            <div class="sizes-list">
+                                <span class="size-tag">P20</span>
+                                <span class="size-tag">P30</span>
+                                <span class="size-tag">P40</span>
+                                <span class="size-tag">K20</span>
+                                <span class="size-tag">K30</span>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-primary">查看详情</a>
+                            <a href="#" class="btn btn-outline">咨询报价</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <div class="product-badges">
+                            <span class="product-badge new">新品</span>
+                        </div>
+                        ⚙️
+                    </div>
+                    <div class="product-info">
+                        <div class="product-code">CNMG1204-FINISH</div>
+                        <h3 class="product-name">CNMG1204 精加工刀片</h3>
+                        <p class="product-desc">精加工槽型，低切削力设计，表面质量优异，适合精车和半精车</p>
+                        <div class="product-specs">
+                            <div class="spec-row">
+                                <span class="spec-label">型号</span>
+                                <span class="spec-value">CNMG120404</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">槽型</span>
+                                <span class="spec-value">精加工</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">材质</span>
+                                <span class="spec-value">P10/CVD</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">适用材料</span>
+                                <span class="spec-value">钢件</span>
+                            </div>
+                        </div>
+                        <div class="product-sizes">
+                            <div class="sizes-title">可选材质：</div>
+                            <div class="sizes-list">
+                                <span class="size-tag">P10</span>
+                                <span class="size-tag">P20</span>
+                                <span class="size-tag">PVD</span>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-primary">查看详情</a>
+                            <a href="#" class="btn btn-outline">咨询报价</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        ⚙️
+                    </div>
+                    <div class="product-info">
+                        <div class="product-code">WNMG0804-ROUGH</div>
+                        <h3 class="product-name">WNMG0804 桃形刀片</h3>
+                        <p class="product-desc">六边形设计，6个刃口，经济性好，适合外圆和端面加工</p>
+                        <div class="product-specs">
+                            <div class="spec-row">
+                                <span class="spec-label">型号</span>
+                                <span class="spec-value">WNMG080408</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">槽型</span>
+                                <span class="spec-value">粗加工</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">材质</span>
+                                <span class="spec-value">P30/CVD</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">适用材料</span>
+                                <span class="spec-value">钢件/不锈钢</span>
+                            </div>
+                        </div>
+                        <div class="product-sizes">
+                            <div class="sizes-title">可选材质：</div>
+                            <div class="sizes-list">
+                                <span class="size-tag">P20</span>
+                                <span class="size-tag">P30</span>
+                                <span class="size-tag">M20</span>
+                                <span class="size-tag">M30</span>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-primary">查看详情</a>
+                            <a href="#" class="btn btn-outline">咨询报价</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        ⚙️
+                    </div>
+                    <div class="product-info">
+                        <div class="product-code">TNMG1604-ROUGH</div>
+                        <h3 class="product-name">TNMG1604 三角形刀片</h3>
+                        <p class="product-desc">三角形设计，3个刃口，适合外圆、内孔和仿形加工</p>
+                        <div class="product-specs">
+                            <div class="spec-row">
+                                <span class="spec-label">型号</span>
+                                <span class="spec-value">TNMG160408</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">槽型</span>
+                                <span class="spec-value">粗加工</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">材质</span>
+                                <span class="spec-value">P30/CVD</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">适用材料</span>
+                                <span class="spec-value">钢件</span>
+                            </div>
+                        </div>
+                        <div class="product-sizes">
+                            <div class="sizes-title">可选材质：</div>
+                            <div class="sizes-list">
+                                <span class="size-tag">P20</span>
+                                <span class="size-tag">P30</span>
+                                <span class="size-tag">P40</span>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-primary">查看详情</a>
+                            <a href="#" class="btn btn-outline">咨询报价</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <div class="product-badges">
+                            <span class="product-badge hot">热销</span>
+                        </div>
+                        ⚙️
+                    </div>
+                    <div class="product-info">
+                        <div class="product-code">CNMG1204-SS</div>
+                        <h3 class="product-name">CNMG1204 不锈钢专用</h3>
+                        <p class="product-desc">专为不锈钢设计，抗崩刃性能好，断屑流畅，适合304/316等不锈钢加工</p>
+                        <div class="product-specs">
+                            <div class="spec-row">
+                                <span class="spec-label">型号</span>
+                                <span class="spec-value">CNMG120408</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">槽型</span>
+                                <span class="spec-value">不锈钢专用</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">材质</span>
+                                <span class="spec-value">M30/CVD</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">适用材料</span>
+                                <span class="spec-value">304/316</span>
+                            </div>
+                        </div>
+                        <div class="product-sizes">
+                            <div class="sizes-title">可选材质：</div>
+                            <div class="sizes-list">
+                                <span class="size-tag">M20</span>
+                                <span class="size-tag">M30</span>
+                                <span class="size-tag">M40</span>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-primary">查看详情</a>
+                            <a href="#" class="btn btn-outline">咨询报价</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        ⚙️
+                    </div>
+                    <div class="product-info">
+                        <div class="product-code">CNMG1204-AL</div>
+                        <h3 class="product-name">CNMG1204 铝用高光刀片</h3>
+                        <p class="product-desc">专为铝合金设计，高抛光刃口，无毛刺，表面质量优异</p>
+                        <div class="product-specs">
+                            <div class="spec-row">
+                                <span class="spec-label">型号</span>
+                                <span class="spec-value">CNMG120404</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">槽型</span>
+                                <span class="spec-value">精加工</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">材质</span>
+                                <span class="spec-value">K10/无涂层</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">适用材料</span>
+                                <span class="spec-value">铝合金/铜</span>
+                            </div>
+                        </div>
+                        <div class="product-sizes">
+                            <div class="sizes-title">可选材质：</div>
+                            <div class="sizes-list">
+                                <span class="size-tag">K10</span>
+                                <span class="size-tag">K20</span>
+                                <span class="size-tag">DLC</span>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-primary">查看详情</a>
+                            <a href="#" class="btn btn-outline">咨询报价</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="logo">🔧 CCC<span>NC</span></a>
+                    <p>专业硬质合金刀具制造商，致力于为各行业提供高品质、高精度的切削工具解决方案。</p>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">产品系列</h4>
+                    <ul class="footer-links">
+                        <li><a href="/products/endmills.html">硬质合金铣刀</a></li>
+                        <li><a href="/products/drills.html">硬质合金钻头</a></li>
+                        <li><a href="/products/taps.html">丝锥系列</a></li>
+                        <li><a href="/products/reamers.html">铰刀系列</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">技术支持</h4>
+                    <ul class="footer-links">
+                        <li><a href="/calculator.html">切削计算器</a></li>
+                        <li><a href="#">刀具选型指南</a></li>
+                        <li><a href="#">切削参数推荐</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">联系我们</h4>
+                    <ul class="footer-links">
+                        <li><a href="/contact.html">联系方式</a></li>
+                        <li><a href="#">在线咨询</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-copy">© 2025 CCCNC. All rights reserved.</div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

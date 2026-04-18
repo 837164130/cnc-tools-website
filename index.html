@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YG-1 RUS - Профессиональные инструменты ЧПУ | Официальный дистрибьютор</title>
-    <meta name="description" content="Официальный дистрибьютор YG-1 в России. Концевые фрезы, сверла, пластины для обработки стали, нержавейки, титана, алюминия. Тел: +7 (911) 156-51-10">
+    <title>CCCNC - 专业硬质合金刀具 | 铣刀 钻头 丝锥 铰刀</title>
+    <meta name="description" content="CCCNC专业提供各类硬质合金刀具：铣刀、钻头、丝锥、铰刀、车刀片等。高品质CNC加工工具，适用于钢件、不锈钢、铝合金、钛合金等材料加工。">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -17,250 +17,357 @@
             --bg: #fff;
             --bg-light: #f5f5f5;
             --border: #e0e0e0;
+            --gold: #d4af37;
         }
-        body { font-family: 'Inter', sans-serif; color: var(--text); line-height: 1.6; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); line-height: 1.6; }
         .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
         
+        /* Header */
         .header { background: var(--secondary); color: white; position: fixed; width: 100%; top: 0; z-index: 1000; }
         .header-top { background: var(--primary); padding: 8px 0; font-size: 13px; }
         .header-top .container { display: flex; justify-content: space-between; align-items: center; }
+        .header-contact a { color: white; text-decoration: none; font-weight: 600; }
         .header-main { padding: 15px 0; }
         .header-main .container { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 28px; font-weight: 800; color: white; text-decoration: none; }
+        .logo { font-size: 28px; font-weight: 800; color: white; text-decoration: none; display: flex; align-items: center; gap: 10px; }
         .logo span { color: var(--primary); }
-        .nav { display: flex; gap: 40px; }
-        .nav a { color: white; text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.3s; }
+        .nav { display: flex; gap: 35px; }
+        .nav a { color: white; text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.3s; position: relative; }
         .nav a:hover { color: var(--primary); }
-        .nav a.calculator-link { background: var(--primary); padding: 8px 20px; border-radius: 4px; }
-        .nav a.calculator-link:hover { background: var(--primary-dark); color: white; }
+        .nav a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--primary); transition: width 0.3s; }
+        .nav a:hover::after { width: 100%; }
+        .nav a.active { color: var(--primary); }
         
-        .hero { margin-top: 110px; background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); color: white; padding: 120px 0; position: relative; overflow: hidden; }
-        .hero::before { content: ''; position: absolute; top: 0; right: 0; width: 50%; height: 100%; background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="80" cy="20" r="60" fill="%23e31837" opacity="0.1"/></svg>'); background-size: cover; }
-        .hero-content { position: relative; z-index: 1; max-width: 700px; }
-        .hero-badge { display: inline-block; background: var(--primary); color: white; padding: 8px 20px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; }
-        .hero h1 { font-size: 56px; font-weight: 800; line-height: 1.1; margin-bottom: 25px; }
+        /* Hero */
+        .hero { margin-top: 110px; background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); color: white; padding: 140px 0; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; right: 0; width: 60%; height: 100%; background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><circle cx="150" cy="50" r="100" fill="%23e31837" opacity="0.08"/><circle cx="180" cy="150" r="80" fill="%23d4af37" opacity="0.05"/></svg>'); background-size: cover; }
+        .hero-content { position: relative; z-index: 1; max-width: 750px; }
+        .hero-badge { display: inline-block; background: var(--primary); color: white; padding: 10px 24px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; border-radius: 4px; }
+        .hero h1 { font-size: 58px; font-weight: 800; line-height: 1.1; margin-bottom: 25px; }
         .hero h1 span { color: var(--primary); }
-        .hero-desc { font-size: 20px; color: #aaa; margin-bottom: 40px; line-height: 1.7; }
-        .hero-buttons { display: flex; gap: 20px; }
-        .btn { display: inline-flex; align-items: center; padding: 16px 40px; font-size: 15px; font-weight: 600; text-decoration: none; border-radius: 4px; transition: all 0.3s; cursor: pointer; border: none; }
+        .hero-desc { font-size: 20px; color: #aaa; margin-bottom: 40px; line-height: 1.7; max-width: 600px; }
+        .hero-buttons { display: flex; gap: 20px; flex-wrap: wrap; }
+        .btn { display: inline-flex; align-items: center; padding: 16px 36px; font-size: 15px; font-weight: 600; text-decoration: none; border-radius: 6px; transition: all 0.3s; cursor: pointer; border: none; gap: 8px; }
         .btn-primary { background: var(--primary); color: white; }
-        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
-        .btn-outline { background: transparent; color: white; border: 2px solid white; }
-        .btn-outline:hover { background: white; color: var(--secondary); }
+        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(227,24,55,0.3); }
+        .btn-outline { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.3); }
+        .btn-outline:hover { background: white; color: var(--secondary); border-color: white; }
+        .btn-gold { background: var(--gold); color: var(--secondary); }
+        .btn-gold:hover { background: #c9a42f; transform: translateY(-2px); }
         
+        /* Stats Bar */
+        .stats-bar { background: var(--secondary); padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.1); }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; text-align: center; }
+        .stat-item { color: white; }
+        .stat-number { font-size: 42px; font-weight: 800; color: var(--primary); margin-bottom: 8px; }
+        .stat-label { font-size: 14px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+        
+        /* Categories */
         .categories { padding: 100px 0; background: var(--bg-light); }
         .section-header { text-align: center; margin-bottom: 70px; }
         .section-tag { display: inline-block; color: var(--primary); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 15px; }
-        .section-title { font-size: 42px; font-weight: 700; margin-bottom: 20px; }
+        .section-title { font-size: 44px; font-weight: 700; margin-bottom: 20px; }
         .section-desc { font-size: 18px; color: var(--text-light); max-width: 700px; margin: 0 auto; }
         
         .cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
-        .cat-card { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: all 0.3s; }
-        .cat-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
-        .cat-img { height: 200px; background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%); display: flex; align-items: center; justify-content: center; font-size: 60px; }
+        .cat-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.06); transition: all 0.4s; border: 1px solid var(--border); }
+        .cat-card:hover { transform: translateY(-10px); box-shadow: 0 25px 50px rgba(0,0,0,0.12); border-color: var(--primary); }
+        .cat-img { height: 220px; background: linear-gradient(135deg, #f8f8f8 0%, #e8e8e8 100%); display: flex; align-items: center; justify-content: center; font-size: 70px; position: relative; overflow: hidden; }
+        .cat-img::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: var(--primary); transform: scaleX(0); transition: transform 0.3s; }
+        .cat-card:hover .cat-img::after { transform: scaleX(1); }
         .cat-content { padding: 30px; }
         .cat-title { font-size: 20px; font-weight: 700; margin-bottom: 12px; }
         .cat-desc { font-size: 14px; color: var(--text-light); margin-bottom: 20px; line-height: 1.6; }
-        .cat-link { color: var(--primary); font-size: 14px; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        .cat-features { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+        .cat-feature { font-size: 12px; background: var(--bg-light); padding: 4px 12px; border-radius: 20px; color: var(--text-light); }
+        .cat-link { color: var(--primary); font-size: 14px; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 8px; transition: gap 0.3s; }
+        .cat-link:hover { gap: 12px; }
         
+        /* Products Preview */
         .products-preview { padding: 100px 0; }
-        .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 50px; }
-        .product-card { background: white; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; transition: all 0.3s; }
-        .product-card:hover { border-color: var(--primary); box-shadow: 0 10px 30px rgba(227,24,55,0.1); }
-        .product-img { height: 220px; background: linear-gradient(135deg, #f8f8f8 0%, #f0f0f0 100%); display: flex; align-items: center; justify-content: center; position: relative; }
-        .product-badge { position: absolute; top: 15px; left: 15px; background: var(--primary); color: white; padding: 5px 12px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
-        .product-info { padding: 25px; }
-        .product-series { font-size: 12px; color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
-        .product-name { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
-        .product-specs { display: flex; gap: 15px; margin-bottom: 15px; }
-        .product-spec { font-size: 13px; color: var(--text-light); }
-        .product-spec strong { color: var(--text); }
-        .product-desc { font-size: 14px; color: var(--text-light); line-height: 1.6; margin-bottom: 20px; }
-        .product-btn { display: inline-block; padding: 10px 25px; background: var(--bg-light); color: var(--text); font-size: 13px; font-weight: 600; text-decoration: none; border-radius: 4px; transition: all 0.3s; }
-        .product-btn:hover { background: var(--primary); color: white; }
+        .products-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 50px; }
+        .products-header .section-header { text-align: left; margin-bottom: 0; }
+        .view-all { color: var(--primary); font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .product-card { background: white; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: all 0.3s; }
+        .product-card:hover { border-color: var(--primary); box-shadow: 0 15px 40px rgba(227,24,55,0.1); transform: translateY(-5px); }
+        .product-img { height: 240px; background: linear-gradient(135deg, #f8f8f8 0%, #f0f0f0 100%); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+        .product-badge { position: absolute; top: 15px; left: 15px; background: var(--primary); color: white; padding: 6px 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; border-radius: 4px; }
+        .product-badge.new { background: #28a745; }
+        .product-badge.hot { background: #ff6b35; }
+        .product-info { padding: 28px; }
+        .product-category { font-size: 12px; color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+        .product-name { font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+        .product-specs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 18px; }
+        .product-spec { font-size: 13px; color: var(--text-light); display: flex; justify-content: space-between; }
+        .product-spec span { color: var(--text); font-weight: 600; }
+        .product-sizes { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+        .size-tag { font-size: 12px; background: var(--bg-light); padding: 6px 12px; border-radius: 4px; color: var(--text); }
+        .product-btn { display: block; padding: 14px; background: var(--secondary); color: white; font-size: 14px; font-weight: 600; text-decoration: none; border-radius: 6px; transition: all 0.3s; text-align: center; }
+        .product-btn:hover { background: var(--primary); }
         
+        /* Features */
         .features { padding: 100px 0; background: var(--secondary); color: white; }
         .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-top: 60px; }
-        .feature-item { text-align: center; padding: 40px 20px; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; transition: all 0.3s; }
-        .feature-item:hover { border-color: var(--primary); background: rgba(227,24,55,0.05); }
-        .feature-icon { width: 70px; height: 70px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 25px; font-size: 28px; }
-        .feature-number { font-size: 48px; font-weight: 800; color: var(--primary); margin-bottom: 10px; }
-        .feature-label { font-size: 16px; color: #aaa; }
+        .feature-item { text-align: center; padding: 50px 30px; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; transition: all 0.3s; background: rgba(255,255,255,0.02); }
+        .feature-item:hover { border-color: var(--primary); background: rgba(227,24,55,0.05); transform: translateY(-5px); }
+        .feature-icon { width: 80px; height: 80px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 25px; font-size: 32px; }
+        .feature-title { font-size: 20px; font-weight: 700; margin-bottom: 12px; }
+        .feature-desc { font-size: 14px; color: #888; line-height: 1.6; }
         
-        .downloads { padding: 100px 0; background: var(--bg-light); }
-        .downloads-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-top: 50px; }
-        .download-card { background: white; padding: 30px; border-radius: 8px; display: flex; align-items: center; gap: 20px; transition: all 0.3s; }
-        .download-card:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .download-icon { width: 60px; height: 60px; background: var(--bg-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
-        .download-info { flex: 1; }
-        .download-title { font-size: 16px; font-weight: 700; margin-bottom: 5px; }
-        .download-meta { font-size: 13px; color: var(--text-light); }
-        .download-btn { padding: 10px 20px; background: var(--primary); color: white; font-size: 13px; font-weight: 600; text-decoration: none; border-radius: 4px; white-space: nowrap; }
+        /* Applications */
+        .applications { padding: 100px 0; background: var(--bg-light); }
+        .app-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 50px; }
+        .app-card { background: white; border-radius: 12px; padding: 40px; text-align: center; transition: all 0.3s; border: 1px solid var(--border); }
+        .app-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.08); }
+        .app-icon { width: 90px; height: 90px; background: var(--bg-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 25px; font-size: 40px; }
+        .app-title { font-size: 20px; font-weight: 700; margin-bottom: 15px; }
+        .app-desc { font-size: 15px; color: var(--text-light); line-height: 1.7; }
+        .app-materials { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 20px; }
+        .app-material { font-size: 12px; background: var(--bg-light); padding: 6px 14px; border-radius: 20px; color: var(--text-light); }
         
-        .contact { padding: 100px 0; }
-        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 50px; }
-        .contact-info h3 { font-size: 24px; margin-bottom: 30px; }
-        .contact-item { display: flex; gap: 20px; margin-bottom: 30px; }
-        .contact-icon { width: 50px; height: 50px; background: var(--bg-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
-        .contact-details h4 { font-size: 14px; color: var(--text-light); margin-bottom: 5px; }
-        .contact-details p { font-size: 18px; font-weight: 600; }
-        .contact-details a { color: var(--primary); text-decoration: none; }
-        .contact-form { background: var(--bg-light); padding: 40px; border-radius: 8px; }
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; }
-        .form-group input, .form-group textarea { width: 100%; padding: 14px; border: 1px solid var(--border); border-radius: 4px; font-size: 15px; font-family: inherit; }
-        .form-group textarea { resize: vertical; min-height: 120px; }
-        .form-submit { width: 100%; padding: 16px; background: var(--primary); color: white; border: none; border-radius: 4px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.3s; }
-        .form-submit:hover { background: var(--primary-dark); }
+        /* Contact CTA */
+        .contact-cta { padding: 100px 0; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: white; text-align: center; }
+        .contact-cta h2 { font-size: 42px; font-weight: 700; margin-bottom: 20px; }
+        .contact-cta p { font-size: 18px; opacity: 0.9; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .contact-cta .btn { background: white; color: var(--primary); }
+        .contact-cta .btn:hover { background: var(--secondary); color: white; }
         
-        .footer { background: var(--secondary); color: white; padding: 60px 0 30px; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; margin-bottom: 50px; }
+        /* Footer */
+        .footer { background: #0d0d0d; color: white; padding: 80px 0 30px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; margin-bottom: 60px; }
         .footer-brand .logo { margin-bottom: 20px; display: inline-block; }
-        .footer-brand p { color: #aaa; font-size: 14px; line-height: 1.8; margin-bottom: 20px; }
+        .footer-brand p { color: #666; font-size: 14px; line-height: 1.8; margin-bottom: 25px; }
+        .footer-contact { display: flex; flex-direction: column; gap: 12px; }
+        .footer-contact-item { display: flex; align-items: center; gap: 12px; color: #888; font-size: 14px; }
         .footer-title { font-size: 16px; font-weight: 700; margin-bottom: 25px; color: white; }
         .footer-links { list-style: none; }
-        .footer-links li { margin-bottom: 12px; }
-        .footer-links a { color: #aaa; text-decoration: none; font-size: 14px; transition: color 0.3s; }
-        .footer-links a:hover { color: var(--primary); }
-        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; display: flex; justify-content: space-between; align-items: center; }
-        .footer-copy { color: #666; font-size: 14px; }
+        .footer-links li { margin-bottom: 14px; }
+        .footer-links a { color: #666; text-decoration: none; font-size: 14px; transition: all 0.3s; display: flex; align-items: center; gap: 8px; }
+        .footer-links a:hover { color: var(--primary); padding-left: 5px; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; display: flex; justify-content: space-between; align-items: center; }
+        .footer-copy { color: #444; font-size: 13px; }
+        .footer-social { display: flex; gap: 15px; }
+        .footer-social a { width: 40px; height: 40px; background: rgba(255,255,255,0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #666; text-decoration: none; transition: all 0.3s; }
+        .footer-social a:hover { background: var(--primary); color: white; }
         
+        /* Responsive */
         @media (max-width: 1024px) {
             .cat-grid { grid-template-columns: repeat(2, 1fr); }
             .products-grid { grid-template-columns: repeat(2, 1fr); }
             .features-grid { grid-template-columns: repeat(2, 1fr); }
-            .contact-grid { grid-template-columns: 1fr; }
+            .app-grid { grid-template-columns: repeat(2, 1fr); }
             .footer-grid { grid-template-columns: repeat(2, 1fr); }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
         }
         @media (max-width: 768px) {
             .container { padding: 0 20px; }
             .nav { display: none; }
+            .hero { padding: 100px 0; margin-top: 80px; }
             .hero h1 { font-size: 36px; }
-            .cat-grid, .products-grid, .features-grid, .downloads-grid { grid-template-columns: 1fr; }
+            .cat-grid, .products-grid, .features-grid, .app-grid { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+            .products-header { flex-direction: column; align-items: flex-start; gap: 20px; }
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header class="header">
         <div class="header-top">
             <div class="container">
-                <div>Официальный дистрибьютор YG-1 в России</div>
+                <div>专业硬质合金刀具制造商 | Professional Carbide Tools Manufacturer</div>
                 <div class="header-contact">
-                    <a href="tel:+79111565110">+7 (911) 156-51-10</a>
+                    <a href="tel:+8612345678900">+86 123 4567 8900</a>
                 </div>
             </div>
         </div>
         <div class="header-main">
             <div class="container">
-                <a href="/" class="logo">YG-1 <span>RUS</span></a>
+                <a href="/" class="logo">🔧 CCC<span>NC</span></a>
                 <nav class="nav">
-                    <a href="/">Главная</a>
-                    <a href="/products.html">Продукция</a>
-                    <a href="/calculator.html" class="calculator-link">🔧 Калькулятор</a>
-                    <a href="/downloads.html">Каталоги</a>
-                    <a href="/contact.html">Контакты</a>
+                    <a href="/" class="active">首页</a>
+                    <a href="/products/endmills.html">铣刀</a>
+                    <a href="/products/drills.html">钻头</a>
+                    <a href="/products/taps.html">丝锥</a>
+                    <a href="/products/reamers.html">铰刀</a>
+                    <a href="/products/inserts.html">刀片</a>
+                    <a href="/calculator.html">🔧 计算器</a>
+                    <a href="/contact.html">联系我们</a>
                 </nav>
             </div>
         </div>
     </header>
 
+    <!-- Hero -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-badge">Официальный дистрибьютор</div>
-                <h1>Профессиональные<br><span>инструменты ЧПУ</span></h1>
-                <p class="hero-desc">Полный ассортимент режущего инструмента YG-1: фрезы, сверла, пластины и оснастка для обработки стали, нержавеющей стали, титана и алюминия</p>
+                <div class="hero-badge">Professional CNC Tools</div>
+                <h1>精密硬质合金<br><span>刀具解决方案</span></h1>
+                <p class="hero-desc">专注于高品质硬质合金刀具研发与制造，为航空航天、汽车制造、模具加工等行业提供专业的切削工具解决方案</p>
                 <div class="hero-buttons">
-                    <a href="/products.html" class="btn btn-primary">Каталог продукции</a>
-                    <a href="/contact.html" class="btn btn-outline">Получить консультацию</a>
+                    <a href="/products/endmills.html" class="btn btn-primary">浏览产品系列 →</a>
+                    <a href="/contact.html" class="btn btn-outline">获取技术咨询</a>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Stats Bar -->
+    <section class="stats-bar">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">5000+</div>
+                    <div class="stat-label">产品型号</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">年行业经验</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">出口国家</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">99%</div>
+                    <div class="stat-label">客户满意度</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
     <section class="categories">
         <div class="container">
             <div class="section-header">
-                <div class="section-tag">Продукция</div>
-                <h2 class="section-title">Категории инструментов</h2>
-                <p class="section-desc">Полный спектр режущего инструмента для решения любых задач обработки</p>
+                <div class="section-tag">Product Categories</div>
+                <h2 class="section-title">产品分类</h2>
+                <p class="section-desc">全系列硬质合金刀具，满足各种材料加工需求</p>
             </div>
             <div class="cat-grid">
                 <div class="cat-card">
                     <div class="cat-img">🔧</div>
                     <div class="cat-content">
-                        <h3 class="cat-title">Фрезерование</h3>
-                        <p class="cat-desc">Концевые фрезы, граночные фрезы, фрезы со сменными пластинами для обработки стали, чугуна, нержавейки</p>
-                        <a href="/products.html" class="cat-link">Подробнее →</a>
+                        <h3 class="cat-title">硬质合金铣刀</h3>
+                        <p class="cat-desc">平底铣刀、球头铣刀、圆鼻铣刀、粗皮铣刀等全系列</p>
+                        <div class="cat-features">
+                            <span class="cat-feature">2刃</span>
+                            <span class="cat-feature">3刃</span>
+                            <span class="cat-feature">4刃</span>
+                            <span class="cat-feature">多刃</span>
+                        </div>
+                        <a href="/products/endmills.html" class="cat-link">查看详情 →</a>
                     </div>
                 </div>
                 <div class="cat-card">
                     <div class="cat-img">🔩</div>
                     <div class="cat-content">
-                        <h3 class="cat-title">Сверление</h3>
-                        <p class="cat-desc">Твердосплавные и HSS сверла, сверла со сменными пластинами для глубокого и высокоскоростного сверления</p>
-                        <a href="/products.html" class="cat-link">Подробнее →</a>
+                        <h3 class="cat-title">硬质合金钻头</h3>
+                        <p class="cat-desc">麻花钻、中心钻、深孔钻、内冷钻等精密钻头</p>
+                        <div class="cat-features">
+                            <span class="cat-feature">3D</span>
+                            <span class="cat-feature">5D</span>
+                            <span class="cat-feature">8D</span>
+                            <span class="cat-feature">内冷</span>
+                        </div>
+                        <a href="/products/drills.html" class="cat-link">查看详情 →</a>
                     </div>
                 </div>
                 <div class="cat-card">
                     <div class="cat-img">🌀</div>
                     <div class="cat-content">
-                        <h3 class="cat-title">Нарезание резьбы</h3>
-                        <p class="cat-desc">Метчики машинные и ручные, плашки, резьбофрезы для нарезания метрической и дюймовой резьбы</p>
-                        <a href="/products.html" class="cat-link">Подробнее →</a>
+                        <h3 class="cat-title">丝锥与螺纹工具</h3>
+                        <p class="cat-desc">机用丝锥、挤压丝锥、螺纹铣刀等螺纹加工工具</p>
+                        <div class="cat-features">
+                            <span class="cat-feature">M系列</span>
+                            <span class="cat-feature">UN系列</span>
+                            <span class="cat-feature">挤压</span>
+                            <span class="cat-feature">切削</span>
+                        </div>
+                        <a href="/products/taps.html" class="cat-link">查看详情 →</a>
                     </div>
                 </div>
                 <div class="cat-card">
                     <div class="cat-img">⚙️</div>
                     <div class="cat-content">
-                        <h3 class="cat-title">Сменные пластины</h3>
-                        <p class="cat-desc">Твердосплавные пластины для токарной обработки, фрезерования и сверления. Широкий выбор геометрий и покрытий</p>
-                        <a href="/products.html" class="cat-link">Подробнее →</a>
+                        <h3 class="cat-title">铰刀与镗刀</h3>
+                        <p class="cat-desc">直柄铰刀、锥柄铰刀、可调铰刀、精镗刀等精密孔加工工具</p>
+                        <div class="cat-features">
+                            <span class="cat-feature">直柄</span>
+                            <span class="cat-feature">锥柄</span>
+                            <span class="cat-feature">可调</span>
+                            <span class="cat-feature">精镗</span>
+                        </div>
+                        <a href="/products/reamers.html" class="cat-link">查看详情 →</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Products Preview -->
     <section class="products-preview">
         <div class="container">
-            <div class="section-header">
-                <div class="section-tag">Популярные серии</div>
-                <h2 class="section-title">Рекомендуемые продукты</h2>
-                <p class="section-desc">Наиболее востребованные инструменты для современного производства</p>
+            <div class="products-header">
+                <div class="section-header">
+                    <div class="section-tag">Featured Products</div>
+                    <h2 class="section-title">热门产品</h2>
+                    <p class="section-desc">精选高性能刀具产品，广泛应用于精密加工领域</p>
+                </div>
+                <a href="/products/endmills.html" class="view-all">查看全部 →</a>
             </div>
             <div class="products-grid">
                 <div class="product-card">
                     <div class="product-img">
-                        <span class="product-badge">Хит</span>
+                        <span class="product-badge hot">热销</span>
                         🔧
                     </div>
                     <div class="product-info">
-                        <div class="product-series">X-POWER PRO</div>
-                        <h3 class="product-name">Твердосплавные фрезы</h3>
+                        <div class="product-category">立铣刀系列</div>
+                        <h3 class="product-name">高性能平底铣刀 EM-4F</h3>
                         <div class="product-specs">
-                            <span class="product-spec"><strong>Материал:</strong> Сталь</span>
-                            <span class="product-spec"><strong>до HRC:</strong> 55</span>
+                            <div class="product-spec">刃数 <span>4刃</span></div>
+                            <div class="product-spec">柄径 <span>Φ3-20mm</span></div>
+                            <div class="product-spec">刃长 <span>3-5倍径</span></div>
+                            <div class="product-spec">涂层 <span>TiAlN</span></div>
                         </div>
-                        <p class="product-desc">Высокопроизводительные фрезы для предварительно закаленных сталей с увеличенной подачей</p>
-                        <a href="/products.html" class="product-btn">Подробнее</a>
+                        <div class="product-sizes">
+                            <span class="size-tag">Φ3</span>
+                            <span class="size-tag">Φ4</span>
+                            <span class="size-tag">Φ6</span>
+                            <span class="size-tag">Φ8</span>
+                            <span class="size-tag">Φ10</span>
+                            <span class="size-tag">Φ12</span>
+                        </div>
+                        <a href="/products/endmills.html" class="product-btn">查看详情</a>
                     </div>
                 </div>
                 <div class="product-card">
                     <div class="product-img">
-                        <span class="product-badge">Новинка</span>
+                        <span class="product-badge new">新品</span>
                         🔩
                     </div>
                     <div class="product-info">
-                        <div class="product-series">Dream Drill</div>
-                        <h3 class="product-name">Твердосплавные сверла</h3>
+                        <div class="product-category">钻头系列</div>
+                        <h3 class="product-name">内冷深孔钻 DC-5D</h3>
                         <div class="product-specs">
-                            <span class="product-spec"><strong>Диаметр:</strong> 3-25 мм</span>
-                            <span class="product-spec"><strong>Глубина:</strong> 3xD-5xD</span>
+                            <div class="product-spec">倍径 <span>5D</span></div>
+                            <div class="product-spec">柄径 <span>Φ3-16mm</span></div>
+                            <div class="product-spec">冷却 <span>内冷</span></div>
+                            <div class="product-spec">涂层 <span>TiSiN</span></div>
                         </div>
-                        <p class="product-desc">Высокоскоростное сверление с подачей СОЖ через корпус инструмента</p>
-                        <a href="/products.html" class="product-btn">Подробнее</a>
+                        <div class="product-sizes">
+                            <span class="size-tag">Φ3</span>
+                            <span class="size-tag">Φ5</span>
+                            <span class="size-tag">Φ8</span>
+                            <span class="size-tag">Φ10</span>
+                            <span class="size-tag">Φ12</span>
+                            <span class="size-tag">Φ16</span>
+                        </div>
+                        <a href="/products/drills.html" class="product-btn">查看详情</a>
                     </div>
                 </div>
                 <div class="product-card">
@@ -268,100 +375,195 @@
                         ⚙️
                     </div>
                     <div class="product-info">
-                        <div class="product-series">I-XMILL</div>
-                        <h3 class="product-name">Фрезы со сменными пластинами</h3>
+                        <div class="product-category">车刀片系列</div>
+                        <h3 class="product-name">精车刀片 CNMG</h3>
                         <div class="product-specs">
-                            <span class="product-spec"><strong>Тип:</strong> 90°</span>
-                            <span class="product-spec"><strong>до HRC:</strong> 65</span>
+                            <div class="product-spec">型号 <span>CNMG1204</span></div>
+                            <div class="product-spec">材质 <span>硬质合金</span></div>
+                            <div class="product-spec">槽型 <span>精加工</span></div>
+                            <div class="product-spec">涂层 <span>CVD</span></div>
                         </div>
-                        <p class="product-desc">Экономичное решение для обработки стали общего назначения и закаленных сталей</p>
-                        <a href="/products.html" class="product-btn">Подробнее</a>
+                        <div class="product-sizes">
+                            <span class="size-tag">钢件</span>
+                            <span class="size-tag">不锈钢</span>
+                            <span class="size-tag">铸铁</span>
+                            <span class="size-tag">铝件</span>
+                        </div>
+                        <a href="/products/inserts.html" class="product-btn">查看详情</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Features -->
     <section class="features">
         <div class="container">
             <div class="section-header">
-                <div class="section-tag">Преимущества</div>
-                <h2 class="section-title">Почему выбирают YG-1</h2>
-                <p class="section-desc" style="color: #aaa;">Мировой лидер в производстве режущего инструмента с 1981 года</p>
+                <div class="section-tag">Why Choose Us</div>
+                <h2 class="section-title">为什么选择 CCCNC</h2>
+                <p class="section-desc" style="color: #888;">专业品质，值得信赖的刀具合作伙伴</p>
             </div>
             <div class="features-grid">
                 <div class="feature-item">
                     <div class="feature-icon">🏭</div>
-                    <div class="feature-number">40+</div>
-                    <div class="feature-label">лет на рынке</div>
+                    <div class="feature-title">先进制造</div>
+                    <div class="feature-desc">引进德国、瑞士精密数控磨床，确保产品精度达到国际先进水平</div>
                 </div>
                 <div class="feature-item">
-                    <div class="feature-icon">🌍</div>
-                    <div class="feature-number">70+</div>
-                    <div class="feature-label">стран экспорта</div>
+                    <div class="feature-icon">🔬</div>
+                    <div class="feature-title">严格质检</div>
+                    <div class="feature-desc">全套进口检测设备，从原材料到成品全程质量管控，确保每支刀具品质稳定</div>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">⚡</div>
-                    <div class="feature-number">5</div>
-                    <div class="feature-label">заводов по миру</div>
+                    <div class="feature-title">快速交付</div>
+                    <div class="feature-desc">常备库存5000+型号，标准品24小时发货，非标定制7-15天交付</div>
                 </div>
                 <div class="feature-item">
-                    <div class="feature-icon">📦</div>
-                    <div class="feature-number">50000+</div>
-                    <div class="feature-label">наименований</div>
+                    <div class="feature-icon">🎯</div>
+                    <div class="feature-title">技术支持</div>
+                    <div class="feature-desc">专业技术团队提供刀具选型、切削参数优化、加工问题解决方案</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="downloads">
+    <!-- Applications -->
+    <section class="applications">
         <div class="container">
             <div class="section-header">
-                <div class="section-tag">Документация</div>
-                <h2 class="section-title">Каталоги и брошюры</h2>
-                <p class="section-desc">Скачайте актуальные каталоги продукции и техническую документацию</p>
+                <div class="section-tag">Applications</div>
+                <h2 class="section-title">应用领域</h2>
+                <p class="section-desc">广泛应用于各行业精密加工领域</p>
             </div>
-            <div class="downloads-grid">
-                <div class="download-card">
-                    <div class="download-icon">📄</div>
-                    <div class="download-info">
-                        <div class="download-title">Общий каталог 2025</div>
-                        <div class="download-meta">PDF, 45 MB • Полный ассортимент</div>
+            <div class="app-grid">
+                <div class="app-card">
+                    <div class="app-icon">✈️</div>
+                    <h3 class="app-title">航空航天</h3>
+                    <p class="app-desc">钛合金、高温合金等难加工材料的高效精密加工解决方案</p>
+                    <div class="app-materials">
+                        <span class="app-material">钛合金</span>
+                        <span class="app-material">高温合金</span>
+                        <span class="app-material">复合材料</span>
                     </div>
-                    <a href="https://disk.yandex.ru/i/Jdm1L5tPCFgpfA" class="download-btn" target="_blank">Скачать</a>
                 </div>
-                <div class="download-card">
-                    <div class="download-icon">📊</div>
-                    <div class="download-info">
-                        <div class="download-title">Best Selection 2025</div>
-                        <div class="download-meta">PDF, 28 MB • Лучшие продукты</div>
+                <div class="app-card">
+                    <div class="app-icon">🚗</div>
+                    <h3 class="app-title">汽车制造</h3>
+                    <p class="app-desc">发动机、变速箱、底盘零部件的高效批量加工刀具方案</p>
+                    <div class="app-materials">
+                        <span class="app-material">铸铁</span>
+                        <span class="app-material">铝合金</span>
+                        <span class="app-material">淬火钢</span>
                     </div>
-                    <a href="https://ead99884-06f4-4ce1-89b6-c0a721eafc13.selstorage.ru/Best%20of%20Selection%202025%20(yg1).pdf" class="download-btn" target="_blank">Скачать</a>
                 </div>
-                <div class="download-card">
-                    <div class="download-icon">🔧</div>
-                    <div class="download-info">
-                        <div class="download-title">Технические плакаты</div>
-                        <div class="download-meta">PDF, 15 MB • Рекомендации по применению</div>
+                <div class="app-card">
+                    <div class="app-icon">🔧</div>
+                    <h3 class="app-title">模具加工</h3>
+                    <p class="app-desc">注塑模、冲压模、压铸模的高精度加工与镜面抛光方案</p>
+                    <div class="app-materials">
+                        <span class="app-material">预硬钢</span>
+                        <span class="app-material">淬火钢</span>
+                        <span class="app-material">铜电极</span>
                     </div>
-                    <a href="https://yg-1-rus.ru/catalogs" class="download-btn" target="_blank">Смотреть</a>
+                </div>
+                <div class="app-card">
+                    <div class="app-icon">🏥</div>
+                    <h3 class="app-title">医疗器械</h3>
+                    <p class="app-desc">骨科植入物、手术器械的精密加工，满足医疗级表面质量要求</p>
+                    <div class="app-materials">
+                        <span class="app-material">钛合金</span>
+                        <span class="app-material">不锈钢</span>
+                        <span class="app-material">PEEK</span>
+                    </div>
+                </div>
+                <div class="app-card">
+                    <div class="app-icon">⚡</div>
+                    <h3 class="app-title">能源电力</h3>
+                    <p class="app-desc">风电、核电、水电等大型零部件的重型切削加工方案</p>
+                    <div class="app-materials">
+                        <span class="app-material">合金钢</span>
+                        <span class="app-material">不锈钢</span>
+                        <span class="app-material">镍基合金</span>
+                    </div>
+                </div>
+                <div class="app-card">
+                    <div class="app-icon">📱</div>
+                    <h3 class="app-title">3C电子</h3>
+                    <p class="app-desc">手机、笔记本等消费电子产品的铝合金外壳精密加工</p>
+                    <div class="app-materials">
+                        <span class="app-material">铝合金</span>
+                        <span class="app-material">镁合金</span>
+                        <span class="app-material">不锈钢</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="contact">
+    <!-- Contact CTA -->
+    <section class="contact-cta">
         <div class="container">
-            <div class="section-header">
-                <div class="section-tag">Контакты</div>
-                <h2 class="section-title">Связаться с нами</h2>
-                <p class="section-desc">Получите консультацию по подбору инструмента для ваших задач</p>
+            <h2>需要定制刀具解决方案？</h2>
+            <p>我们的技术团队随时为您提供专业的刀具选型建议和加工方案优化服务</p>
+            <a href="/contact.html" class="btn">联系我们 →</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="logo">🔧 CCC<span>NC</span></a>
+                    <p>专业硬质合金刀具制造商，致力于为各行业提供高品质、高精度的切削工具解决方案。15年行业经验，服务全球50+国家。</p>
+                    <div class="footer-contact">
+                        <div class="footer-contact-item">📍 中国江苏省常州市武进区</div>
+                        <div class="footer-contact-item">📞 +86 123 4567 8900</div>
+                        <div class="footer-contact-item">✉️ sales@cccnc.com</div>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">产品系列</h4>
+                    <ul class="footer-links">
+                        <li><a href="/products/endmills.html">→ 硬质合金铣刀</a></li>
+                        <li><a href="/products/drills.html">→ 硬质合金钻头</a></li>
+                        <li><a href="/products/taps.html">→ 丝锥系列</a></li>
+                        <li><a href="/products/reamers.html">→ 铰刀系列</a></li>
+                        <li><a href="/products/inserts.html">→ 车刀片</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">技术支持</h4>
+                    <ul class="footer-links">
+                        <li><a href="/calculator.html">→ 切削计算器</a></li>
+                        <li><a href="#">→ 刀具选型指南</a></li>
+                        <li><a href="#">→ 切削参数推荐</a></li>
+                        <li><a href="#">→ 常见问题解答</a></li>
+                        <li><a href="#">→ 下载中心</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">关于我们</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">→ 公司简介</a></li>
+                        <li><a href="#">→ 生产设备</a></li>
+                        <li><a href="#">→ 质量控制</a></li>
+                        <li><a href="/contact.html">→ 联系我们</a></li>
+                        <li><a href="#">→ 加入我们</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3>Контактная информация</h3>
-                    <div class="contact-item">
-                        <div class="contact-icon">📞</div>
-                        <div class="contact-details">
-                            <h4>Телефон</h4>
-                            <p><a href="tel:+79111565110">+7 (911) 156-51-10</a
+            <div class="footer-bottom">
+                <div class="footer-copy">© 2025 CCCNC. All rights reserved. 专业硬质合金刀具制造商</div>
+                <div class="footer-social">
+                    <a href="#">WX</a>
+                    <a href="#">LI</a>
+                    <a href="#">YT</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
