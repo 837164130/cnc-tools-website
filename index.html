@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CCCNC - 专业硬质合金刀具 | 铣刀 钻头 丝锥 铰刀</title>
-    <meta name="description" content="CCCNC专业提供各类硬质合金刀具：铣刀、钻头、丝锥、铰刀、车刀片等。高品质CNC加工工具，适用于钢件、不锈钢、铝合金、钛合金等材料加工。">
+    <title data-i18n="meta.title">CCCNC - 专业硬质合金刀具 | 铣刀 钻头 丝锥 铰刀</title>
+    <meta name="description" data-i18n="meta.description" content="CCCNC专业提供各类硬质合金刀具：铣刀、钻头、丝锥、铰刀、车刀片等。高品质CNC加工工具，适用于钢件、不锈钢、铝合金、钛合金等材料加工。">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -31,12 +31,18 @@
         .header-main .container { display: flex; justify-content: space-between; align-items: center; }
         .logo { font-size: 28px; font-weight: 800; color: white; text-decoration: none; display: flex; align-items: center; gap: 10px; }
         .logo span { color: var(--primary); }
-        .nav { display: flex; gap: 35px; }
+        .nav { display: flex; gap: 35px; align-items: center; }
         .nav a { color: white; text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.3s; position: relative; }
         .nav a:hover { color: var(--primary); }
         .nav a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--primary); transition: width 0.3s; }
         .nav a:hover::after { width: 100%; }
         .nav a.active { color: var(--primary); }
+        
+        /* Language Switcher */
+        .lang-switcher { display: flex; gap: 8px; background: rgba(255,255,255,0.1); padding: 4px; border-radius: 20px; }
+        .lang-btn { padding: 6px 14px; border: none; background: transparent; color: white; font-size: 13px; font-weight: 600; cursor: pointer; border-radius: 16px; transition: all 0.3s; }
+        .lang-btn:hover { background: rgba(255,255,255,0.1); }
+        .lang-btn.active { background: var(--primary); color: white; }
         
         /* Hero */
         .hero { margin-top: 110px; background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); color: white; padding: 140px 0; position: relative; overflow: hidden; }
@@ -177,7 +183,7 @@
     <header class="header">
         <div class="header-top">
             <div class="container">
-                <div>专业硬质合金刀具制造商 | Professional Carbide Tools Manufacturer</div>
+                <div data-i18n="header.tagline">专业硬质合金刀具制造商 | Professional Carbide Tools Manufacturer</div>
                 <div class="header-contact">
                     <a href="tel:+8612345678900">+86 123 4567 8900</a>
                 </div>
@@ -187,14 +193,18 @@
             <div class="container">
                 <a href="/" class="logo">🔧 CCC<span>NC</span></a>
                 <nav class="nav">
-                    <a href="/" class="active">首页</a>
-                    <a href="/products/endmills.html">铣刀</a>
-                    <a href="/products/drills.html">钻头</a>
-                    <a href="/products/taps.html">丝锥</a>
-                    <a href="/products/reamers.html">铰刀</a>
-                    <a href="/products/inserts.html">刀片</a>
-                    <a href="/calculator.html">🔧 计算器</a>
-                    <a href="/contact.html">联系我们</a>
+                    <a href="/" class="active" data-i18n="nav.home">首页</a>
+                    <a href="/products/endmills.html" data-i18n="nav.endmills">铣刀</a>
+                    <a href="/products/drills.html" data-i18n="nav.drills">钻头</a>
+                    <a href="/products/taps.html" data-i18n="nav.taps">丝锥</a>
+                    <a href="/products/reamers.html" data-i18n="nav.reamers">铰刀</a>
+                    <a href="/products/inserts.html" data-i18n="nav.inserts">刀片</a>
+                    <a href="/calculator.html">🔧 <span data-i18n="nav.calculator">计算器</span></a>
+                    <a href="/contact.html" data-i18n="nav.contact">联系我们</a>
+                    <div class="lang-switcher">
+                        <button class="lang-btn active" data-lang="zh">中文</button>
+                        <button class="lang-btn" data-lang="ru">RU</button>
+                    </div>
                 </nav>
             </div>
         </div>
@@ -204,12 +214,12 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-badge">Professional CNC Tools</div>
-                <h1>精密硬质合金<br><span>刀具解决方案</span></h1>
-                <p class="hero-desc">专注于高品质硬质合金刀具研发与制造，为航空航天、汽车制造、模具加工等行业提供专业的切削工具解决方案</p>
+                <div class="hero-badge" data-i18n="hero.badge">Professional CNC Tools</div>
+                <h1 data-i18n="hero.title">精密硬质合金<br><span>刀具解决方案</span></h1>
+                <p class="hero-desc" data-i18n="hero.desc">专注于高品质硬质合金刀具研发与制造，为航空航天、汽车制造、模具加工等行业提供专业的切削工具解决方案</p>
                 <div class="hero-buttons">
-                    <a href="/products/endmills.html" class="btn btn-primary">浏览产品系列 →</a>
-                    <a href="/contact.html" class="btn btn-outline">获取技术咨询</a>
+                    <a href="/products/endmills.html" class="btn btn-primary" data-i18n="hero.btn1">浏览产品系列 →</a>
+                    <a href="/contact.html" class="btn btn-outline" data-i18n="hero.btn2">获取技术咨询</a>
                 </div>
             </div>
         </div>
@@ -221,19 +231,19 @@
             <div class="stats-grid">
                 <div class="stat-item">
                     <div class="stat-number">5000+</div>
-                    <div class="stat-label">产品型号</div>
+                    <div class="stat-label" data-i18n="stats.products">产品型号</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number">15+</div>
-                    <div class="stat-label">年行业经验</div>
+                    <div class="stat-label" data-i18n="stats.experience">年行业经验</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number">50+</div>
-                    <div class="stat-label">出口国家</div>
+                    <div class="stat-label" data-i18n="stats.countries">出口国家</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number">99%</div>
-                    <div class="stat-label">客户满意度</div>
+                    <div class="stat-label" data-i18n="stats.satisfaction">客户满意度</div>
                 </div>
             </div>
         </div>
@@ -243,65 +253,65 @@
     <section class="categories">
         <div class="container">
             <div class="section-header">
-                <div class="section-tag">Product Categories</div>
-                <h2 class="section-title">产品分类</h2>
-                <p class="section-desc">全系列硬质合金刀具，满足各种材料加工需求</p>
+                <div class="section-tag" data-i18n="categories.tag">Product Categories</div>
+                <h2 class="section-title" data-i18n="categories.title">产品分类</h2>
+                <p class="section-desc" data-i18n="categories.desc">全系列硬质合金刀具，满足各种材料加工需求</p>
             </div>
             <div class="cat-grid">
                 <div class="cat-card">
                     <div class="cat-img">🔧</div>
                     <div class="cat-content">
-                        <h3 class="cat-title">硬质合金铣刀</h3>
-                        <p class="cat-desc">平底铣刀、球头铣刀、圆鼻铣刀、粗皮铣刀等全系列</p>
+                        <h3 class="cat-title" data-i18n="cat.endmills.title">硬质合金铣刀</h3>
+                        <p class="cat-desc" data-i18n="cat.endmills.desc">平底铣刀、球头铣刀、圆鼻铣刀、粗皮铣刀等全系列</p>
                         <div class="cat-features">
-                            <span class="cat-feature">2刃</span>
-                            <span class="cat-feature">3刃</span>
-                            <span class="cat-feature">4刃</span>
-                            <span class="cat-feature">多刃</span>
+                            <span class="cat-feature">2<span data-i18n="cat.flutes">刃</span></span>
+                            <span class="cat-feature">3<span data-i18n="cat.flutes">刃</span></span>
+                            <span class="cat-feature">4<span data-i18n="cat.flutes">刃</span></span>
+                            <span class="cat-feature" data-i18n="cat.multi">多刃</span>
                         </div>
-                        <a href="/products/endmills.html" class="cat-link">查看详情 →</a>
+                        <a href="/products/endmills.html" class="cat-link" data-i18n="cat.viewmore">查看详情 →</a>
                     </div>
                 </div>
                 <div class="cat-card">
                     <div class="cat-img">🔩</div>
                     <div class="cat-content">
-                        <h3 class="cat-title">硬质合金钻头</h3>
-                        <p class="cat-desc">麻花钻、中心钻、深孔钻、内冷钻等精密钻头</p>
+                        <h3 class="cat-title" data-i18n="cat.drills.title">硬质合金钻头</h3>
+                        <p class="cat-desc" data-i18n="cat.drills.desc">麻花钻、中心钻、深孔钻、内冷钻等精密钻头</p>
                         <div class="cat-features">
                             <span class="cat-feature">3D</span>
                             <span class="cat-feature">5D</span>
                             <span class="cat-feature">8D</span>
-                            <span class="cat-feature">内冷</span>
+                            <span class="cat-feature" data-i18n="cat.internal">内冷</span>
                         </div>
-                        <a href="/products/drills.html" class="cat-link">查看详情 →</a>
+                        <a href="/products/drills.html" class="cat-link" data-i18n="cat.viewmore">查看详情 →</a>
                     </div>
                 </div>
                 <div class="cat-card">
                     <div class="cat-img">🌀</div>
                     <div class="cat-content">
-                        <h3 class="cat-title">丝锥与螺纹工具</h3>
-                        <p class="cat-desc">机用丝锥、挤压丝锥、螺纹铣刀等螺纹加工工具</p>
+                        <h3 class="cat-title" data-i18n="cat.taps.title">丝锥与螺纹工具</h3>
+                        <p class="cat-desc" data-i18n="cat.taps.desc">机用丝锥、挤压丝锥、螺纹铣刀等螺纹加工工具</p>
                         <div class="cat-features">
-                            <span class="cat-feature">M系列</span>
-                            <span class="cat-feature">UN系列</span>
-                            <span class="cat-feature">挤压</span>
-                            <span class="cat-feature">切削</span>
+                            <span class="cat-feature">M<span data-i18n="cat.series">系列</span></span>
+                            <span class="cat-feature">UN<span data-i18n="cat.series">系列</span></span>
+                            <span class="cat-feature" data-i18n="cat.forming">挤压</span>
+                            <span class="cat-feature" data-i18n="cat.cutting">切削</span>
                         </div>
-                        <a href="/products/taps.html" class="cat-link">查看详情 →</a>
+                        <a href="/products/taps.html" class="cat-link" data-i18n="cat.viewmore">查看详情 →</a>
                     </div>
                 </div>
                 <div class="cat-card">
                     <div class="cat-img">⚙️</div>
                     <div class="cat-content">
-                        <h3 class="cat-title">铰刀与镗刀</h3>
-                        <p class="cat-desc">直柄铰刀、锥柄铰刀、可调铰刀、精镗刀等精密孔加工工具</p>
+                        <h3 class="cat-title" data-i18n="cat.reamers.title">铰刀与镗刀</h3>
+                        <p class="cat-desc" data-i18n="cat.reamers.desc">直柄铰刀、锥柄铰刀、可调铰刀、精镗刀等精密孔加工工具</p>
                         <div class="cat-features">
-                            <span class="cat-feature">直柄</span>
-                            <span class="cat-feature">锥柄</span>
-                            <span class="cat-feature">可调</span>
-                            <span class="cat-feature">精镗</span>
+                            <span class="cat-feature" data-i18n="cat.straight">直柄</span>
+                            <span class="cat-feature" data-i18n="cat.taper">锥柄</span>
+                            <span class="cat-feature" data-i18n="cat.adjustable">可调</span>
+                            <span class="cat-feature" data-i18n="cat.fine">精镗</span>
                         </div>
-                        <a href="/products/reamers.html" class="cat-link">查看详情 →</a>
+                        <a href="/products/reamers.html" class="cat-link" data-i18n="cat.viewmore">查看详情 →</a>
                     </div>
                 </div>
             </div>
@@ -313,26 +323,26 @@
         <div class="container">
             <div class="products-header">
                 <div class="section-header">
-                    <div class="section-tag">Featured Products</div>
-                    <h2 class="section-title">热门产品</h2>
-                    <p class="section-desc">精选高性能刀具产品，广泛应用于精密加工领域</p>
+                    <div class="section-tag" data-i18n="products.tag">Featured Products</div>
+                    <h2 class="section-title" data-i18n="products.title">热门产品</h2>
+                    <p class="section-desc" data-i18n="products.desc">精选高性能刀具产品，广泛应用于精密加工领域</p>
                 </div>
-                <a href="/products/endmills.html" class="view-all">查看全部 →</a>
+                <a href="/products/endmills.html" class="view-all" data-i18n="products.viewall">查看全部 →</a>
             </div>
             <div class="products-grid">
                 <div class="product-card">
                     <div class="product-img">
-                        <span class="product-badge hot">热销</span>
+                        <span class="product-badge hot" data-i18n="badge.hot">热销</span>
                         🔧
                     </div>
                     <div class="product-info">
-                        <div class="product-category">立铣刀系列</div>
-                        <h3 class="product-name">高性能平底铣刀 EM-4F</h3>
+                        <div class="product-category" data-i18n="prod.endmill.category">立铣刀系列</div>
+                        <h3 class="product-name" data-i18n="prod.endmill.name">高性能平底铣刀 EM-4F</h3>
                         <div class="product-specs">
-                            <div class="product-spec">刃数 <span>4刃</span></div>
-                            <div class="product-spec">柄径 <span>Φ3-20mm</span></div>
-                            <div class="product-spec">刃长 <span>3-5倍径</span></div>
-                            <div class="product-spec">涂层 <span>TiAlN</span></div>
+                            <div class="product-spec"><span data-i18n="spec.flutes">刃数</span> <span>4<span data-i18n="cat.flutes">刃</span></span></div>
+                            <div class="product-spec"><span data-i18n="spec.shank">柄径</span> <span>Φ3-20mm</span></div>
+                            <div class="product-spec"><span data-i18n="spec.length">刃长</span> <span>3-5<span data-i18n="spec.times">倍径</span></span></div>
+                            <div class="product-spec"><span data-i18n="spec.coating">涂层</span> <span>TiAlN</span></div>
                         </div>
                         <div class="product-sizes">
                             <span class="size-tag">Φ3</span>
@@ -342,22 +352,22 @@
                             <span class="size-tag">Φ10</span>
                             <span class="size-tag">Φ12</span>
                         </div>
-                        <a href="/products/endmills.html" class="product-btn">查看详情</a>
+                        <a href="/products/endmills.html" class="product-btn" data-i18n="btn.details">查看详情</a>
                     </div>
                 </div>
                 <div class="product-card">
                     <div class="product-img">
-                        <span class="product-badge new">新品</span>
+                        <span class="product-badge new" data-i18n="badge.new">新品</span>
                         🔩
                     </div>
                     <div class="product-info">
-                        <div class="product-category">钻头系列</div>
-                        <h3 class="product-name">内冷深孔钻 DC-5D</h3>
+                        <div class="product-category" data-i18n="prod.drill.category">钻头系列</div>
+                        <h3 class="product-name" data-i18n="prod.drill.name">内冷深孔钻 DC-5D</h3>
                         <div class="product-specs">
-                            <div class="product-spec">倍径 <span>5D</span></div>
-                            <div class="product-spec">柄径 <span>Φ3-16mm</span></div>
-                            <div class="product-spec">冷却 <span>内冷</span></div>
-                            <div class="product-spec">涂层 <span>TiSiN</span></div>
+                            <div class="product-spec"><span data-i18n="spec.ratio">倍径</span> <span>5D</span></div>
+                            <div class="product-spec"><span data-i18n="spec.shank">柄径</span> <span>Φ3-16mm</span></div>
+                            <div class="product-spec"><span data-i18n="spec.cooling">冷却</span> <span data-i18n="spec.internal">内冷</span></div>
+                            <div class="product-spec"><span data-i18n="spec.coating">涂层</span> <span>TiSiN</span></div>
                         </div>
                         <div class="product-sizes">
                             <span class="size-tag">Φ3</span>
@@ -367,7 +377,7 @@
                             <span class="size-tag">Φ12</span>
                             <span class="size-tag">Φ16</span>
                         </div>
-                        <a href="/products/drills.html" class="product-btn">查看详情</a>
+                        <a href="/products/drills.html" class="product-btn" data-i18n="btn.details">查看详情</a>
                     </div>
                 </div>
                 <div class="product-card">
@@ -375,21 +385,21 @@
                         ⚙️
                     </div>
                     <div class="product-info">
-                        <div class="product-category">车刀片系列</div>
-                        <h3 class="product-name">精车刀片 CNMG</h3>
+                        <div class="product-category" data-i18n="prod.insert.category">车刀片系列</div>
+                        <h3 class="product-name" data-i18n="prod.insert.name">精车刀片 CNMG</h3>
                         <div class="product-specs">
-                            <div class="product-spec">型号 <span>CNMG1204</span></div>
-                            <div class="product-spec">材质 <span>硬质合金</span></div>
-                            <div class="product-spec">槽型 <span>精加工</span></div>
-                            <div class="product-spec">涂层 <span>CVD</span></div>
+                            <div class="product-spec"><span data-i18n="spec.model">型号</span> <span>CNMG1204</span></div>
+                            <div class="product-spec"><span data-i18n="spec.material">材质</span> <span data-i18n="spec.carbide">硬质合金</span></div>
+                            <div class="product-spec"><span data-i18n="spec.groove">槽型</span> <span data-i18n="spec.finish">精加工</span></div>
+                            <div class="product-spec"><span data-i18n="spec.coating">涂层</span> <span>CVD</span></div>
                         </div>
                         <div class="product-sizes">
-                            <span class="size-tag">钢件</span>
-                            <span class="size-tag">不锈钢</span>
-                            <span class="size-tag">铸铁</span>
-                            <span class="size-tag">铝件</span>
+                            <span class="size-tag" data-i18n="mat.steel">钢件</span>
+                            <span class="size-tag" data-i18n="mat.stainless">不锈钢</span>
+                            <span class="size-tag" data-i18n="mat.iron">铸铁</span>
+                            <span class="size-tag" data-i18n="mat.aluminum">铝件</span>
                         </div>
-                        <a href="/products/inserts.html" class="product-btn">查看详情</a>
+                        <a href="/products/inserts.html" class="product-btn" data-i18n="btn.details">查看详情</a>
                     </div>
                 </div>
             </div>
@@ -400,30 +410,30 @@
     <section class="features">
         <div class="container">
             <div class="section-header">
-                <div class="section-tag">Why Choose Us</div>
-                <h2 class="section-title">为什么选择 CCCNC</h2>
-                <p class="section-desc" style="color: #888;">专业品质，值得信赖的刀具合作伙伴</p>
+                <div class="section-tag" data-i18n="features.tag">Why Choose Us</div>
+                <h2 class="section-title" data-i18n="features.title">为什么选择 CCCNC</h2>
+                <p class="section-desc" style="color: #888;" data-i18n="features.desc">专业品质，值得信赖的刀具合作伙伴</p>
             </div>
             <div class="features-grid">
                 <div class="feature-item">
                     <div class="feature-icon">🏭</div>
-                    <div class="feature-title">先进制造</div>
-                    <div class="feature-desc">引进德国、瑞士精密数控磨床，确保产品精度达到国际先进水平</div>
+                    <div class="feature-title" data-i18n="feat.manufacturing.title">先进制造</div>
+                    <div class="feature-desc" data-i18n="feat.manufacturing.desc">引进德国、瑞士精密数控磨床，确保产品精度达到国际先进水平</div>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">🔬</div>
-                    <div class="feature-title">严格质检</div>
-                    <div class="feature-desc">全套进口检测设备，从原材料到成品全程质量管控，确保每支刀具品质稳定</div>
+                    <div class="feature-title" data-i18n="feat.quality.title">严格质检</div>
+                    <div class="feature-desc" data-i18n="feat.quality.desc">全套进口检测设备，从原材料到成品全程质量管控，确保每支刀具品质稳定</div>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">⚡</div>
-                    <div class="feature-title">快速交付</div>
-                    <div class="feature-desc">常备库存5000+型号，标准品24小时发货，非标定制7-15天交付</div>
+                    <div class="feature-title" data-i18n="feat.delivery.title">快速交付</div>
+                    <div class="feature-desc" data-i18n="feat.delivery.desc">常备库存5000+型号，标准品24小时发货，非标定制7-15天交付</div>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">🎯</div>
-                    <div class="feature-title">技术支持</div>
-                    <div class="feature-desc">专业技术团队提供刀具选型、切削参数优化、加工问题解决方案</div>
+                    <div class="feature-title" data-i18n="feat.support.title">技术支持</div>
+                    <div class="feature-desc" data-i18n="feat.support.desc">专业技术团队提供刀具选型、切削参数优化、加工问题解决方案</div>
                 </div>
             </div>
         </div>
@@ -433,69 +443,69 @@
     <section class="applications">
         <div class="container">
             <div class="section-header">
-                <div class="section-tag">Applications</div>
-                <h2 class="section-title">应用领域</h2>
-                <p class="section-desc">广泛应用于各行业精密加工领域</p>
+                <div class="section-tag" data-i18n="apps.tag">Applications</div>
+                <h2 class="section-title" data-i18n="apps.title">应用领域</h2>
+                <p class="section-desc" data-i18n="apps.desc">广泛应用于各行业精密加工领域</p>
             </div>
             <div class="app-grid">
                 <div class="app-card">
                     <div class="app-icon">✈️</div>
-                    <h3 class="app-title">航空航天</h3>
-                    <p class="app-desc">钛合金、高温合金等难加工材料的高效精密加工解决方案</p>
+                    <h3 class="app-title" data-i18n="app.aerospace.title">航空航天</h3>
+                    <p class="app-desc" data-i18n="app.aerospace.desc">钛合金、高温合金等难加工材料的高效精密加工解决方案</p>
                     <div class="app-materials">
-                        <span class="app-material">钛合金</span>
-                        <span class="app-material">高温合金</span>
-                        <span class="app-material">复合材料</span>
+                        <span class="app-material" data-i18n="mat.titanium">钛合金</span>
+                        <span class="app-material" data-i18n="mat.superalloy">高温合金</span>
+                        <span class="app-material" data-i18n="mat.composite">复合材料</span>
                     </div>
                 </div>
                 <div class="app-card">
                     <div class="app-icon">🚗</div>
-                    <h3 class="app-title">汽车制造</h3>
-                    <p class="app-desc">发动机、变速箱、底盘零部件的高效批量加工刀具方案</p>
+                    <h3 class="app-title" data-i18n="app.automotive.title">汽车制造</h3>
+                    <p class="app-desc" data-i18n="app.automotive.desc">发动机、变速箱、底盘零部件的高效批量加工刀具方案</p>
                     <div class="app-materials">
-                        <span class="app-material">铸铁</span>
-                        <span class="app-material">铝合金</span>
-                        <span class="app-material">淬火钢</span>
+                        <span class="app-material" data-i18n="mat.iron">铸铁</span>
+                        <span class="app-material" data-i18n="mat.aluminum">铝合金</span>
+                        <span class="app-material" data-i18n="mat.hardened">淬火钢</span>
                     </div>
                 </div>
                 <div class="app-card">
                     <div class="app-icon">🔧</div>
-                    <h3 class="app-title">模具加工</h3>
-                    <p class="app-desc">注塑模、冲压模、压铸模的高精度加工与镜面抛光方案</p>
+                    <h3 class="app-title" data-i18n="app.mold.title">模具加工</h3>
+                    <p class="app-desc" data-i18n="app.mold.desc">注塑模、冲压模、压铸模的高精度加工与镜面抛光方案</p>
                     <div class="app-materials">
-                        <span class="app-material">预硬钢</span>
-                        <span class="app-material">淬火钢</span>
-                        <span class="app-material">铜电极</span>
+                        <span class="app-material" data-i18n="mat.prehardened">预硬钢</span>
+                        <span class="app-material" data-i18n="mat.hardened">淬火钢</span>
+                        <span class="app-material" data-i18n="mat.copper">铜电极</span>
                     </div>
                 </div>
                 <div class="app-card">
                     <div class="app-icon">🏥</div>
-                    <h3 class="app-title">医疗器械</h3>
-                    <p class="app-desc">骨科植入物、手术器械的精密加工，满足医疗级表面质量要求</p>
+                    <h3 class="app-title" data-i18n="app.medical.title">医疗器械</h3>
+                    <p class="app-desc" data-i18n="app.medical.desc">骨科植入物、手术器械的精密加工，满足医疗级表面质量要求</p>
                     <div class="app-materials">
-                        <span class="app-material">钛合金</span>
-                        <span class="app-material">不锈钢</span>
+                        <span class="app-material" data-i18n="mat.titanium">钛合金</span>
+                        <span class="app-material" data-i18n="mat.stainless">不锈钢</span>
                         <span class="app-material">PEEK</span>
                     </div>
                 </div>
                 <div class="app-card">
                     <div class="app-icon">⚡</div>
-                    <h3 class="app-title">能源电力</h3>
-                    <p class="app-desc">风电、核电、水电等大型零部件的重型切削加工方案</p>
+                    <h3 class="app-title" data-i18n="app.energy.title">能源电力</h3>
+                    <p class="app-desc" data-i18n="app.energy.desc">风电、核电、水电等大型零部件的重型切削加工方案</p>
                     <div class="app-materials">
-                        <span class="app-material">合金钢</span>
-                        <span class="app-material">不锈钢</span>
-                        <span class="app-material">镍基合金</span>
+                        <span class="app-material" data-i18n="mat.alloy">合金钢</span>
+                        <span class="app-material" data-i18n="mat.stainless">不锈钢</span>
+                        <span class="app-material" data-i18n="mat.nickel">镍基合金</span>
                     </div>
                 </div>
                 <div class="app-card">
                     <div class="app-icon">📱</div>
-                    <h3 class="app-title">3C电子</h3>
-                    <p class="app-desc">手机、笔记本等消费电子产品的铝合金外壳精密加工</p>
+                    <h3 class="app-title" data-i18n="app.electronics.title">3C电子</h3>
+                    <p class="app-desc" data-i18n="app.electronics.desc">手机、笔记本等消费电子产品的铝合金外壳精密加工</p>
                     <div class="app-materials">
-                        <span class="app-material">铝合金</span>
-                        <span class="app-material">镁合金</span>
-                        <span class="app-material">不锈钢</span>
+                        <span class="app-material" data-i18n="mat.aluminum">铝合金</span>
+                        <span class="app-material" data-i18n="mat.magnesium">镁合金</span>
+                        <span class="app-material" data-i18n="mat.stainless">不锈钢</span>
                     </div>
                 </div>
             </div>
@@ -505,9 +515,9 @@
     <!-- Contact CTA -->
     <section class="contact-cta">
         <div class="container">
-            <h2>需要定制刀具解决方案？</h2>
-            <p>我们的技术团队随时为您提供专业的刀具选型建议和加工方案优化服务</p>
-            <a href="/contact.html" class="btn">联系我们 →</a>
+            <h2 data-i18n="cta.title">需要定制刀具解决方案？</h2>
+            <p data-i18n="cta.desc">我们的技术团队随时为您提供专业的刀具选型建议和加工方案优化服务</p>
+            <a href="/contact.html" class="btn" data-i18n="cta.btn">联系我们 →</a>
         </div>
     </section>
 
@@ -517,46 +527,46 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <a href="/" class="logo">🔧 CCC<span>NC</span></a>
-                    <p>专业硬质合金刀具制造商，致力于为各行业提供高品质、高精度的切削工具解决方案。15年行业经验，服务全球50+国家。</p>
+                    <p data-i18n="footer.about">专业硬质合金刀具制造商，致力于为各行业提供高品质、高精度的切削工具解决方案。15年行业经验，服务全球50+国家。</p>
                     <div class="footer-contact">
-                        <div class="footer-contact-item">📍 中国江苏省常州市武进区</div>
+                        <div class="footer-contact-item">📍 <span data-i18n="footer.address">中国江苏省常州市武进区</span></div>
                         <div class="footer-contact-item">📞 +86 123 4567 8900</div>
                         <div class="footer-contact-item">✉️ sales@cccnc.com</div>
                     </div>
                 </div>
                 <div class="footer-col">
-                    <h4 class="footer-title">产品系列</h4>
+                    <h4 class="footer-title" data-i18n="footer.products">产品系列</h4>
                     <ul class="footer-links">
-                        <li><a href="/products/endmills.html">→ 硬质合金铣刀</a></li>
-                        <li><a href="/products/drills.html">→ 硬质合金钻头</a></li>
-                        <li><a href="/products/taps.html">→ 丝锥系列</a></li>
-                        <li><a href="/products/reamers.html">→ 铰刀系列</a></li>
-                        <li><a href="/products/inserts.html">→ 车刀片</a></li>
+                        <li><a href="/products/endmills.html">→ <span data-i18n="nav.endmills">硬质合金铣刀</span></a></li>
+                        <li><a href="/products/drills.html">→ <span data-i18n="nav.drills">硬质合金钻头</span></a></li>
+                        <li><a href="/products/taps.html">→ <span data-i18n="nav.taps">丝锥系列</span></a></li>
+                        <li><a href="/products/reamers.html">→ <span data-i18n="nav.reamers">铰刀系列</span></a></li>
+                        <li><a href="/products/inserts.html">→ <span data-i18n="nav.inserts">车刀片</span></a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4 class="footer-title">技术支持</h4>
+                    <h4 class="footer-title" data-i18n="footer.support">技术支持</h4>
                     <ul class="footer-links">
-                        <li><a href="/calculator.html">→ 切削计算器</a></li>
-                        <li><a href="#">→ 刀具选型指南</a></li>
-                        <li><a href="#">→ 切削参数推荐</a></li>
-                        <li><a href="#">→ 常见问题解答</a></li>
-                        <li><a href="#">→ 下载中心</a></li>
+                        <li><a href="/calculator.html">→ <span data-i18n="nav.calculator">切削计算器</span></a></li>
+                        <li><a href="#">→ <span data-i18n="footer.guide">刀具选型指南</span></a></li>
+                        <li><a href="#">→ <span data-i18n="footer.params">切削参数推荐</span></a></li>
+                        <li><a href="#">→ <span data-i18n="footer.faq">常见问题解答</span></a></li>
+                        <li><a href="#">→ <span data-i18n="footer.downloads">下载中心</span></a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4 class="footer-title">关于我们</h4>
+                    <h4 class="footer-title" data-i18n="footer.aboutus">关于我们</h4>
                     <ul class="footer-links">
-                        <li><a href="#">→ 公司简介</a></li>
-                        <li><a href="#">→ 生产设备</a></li>
-                        <li><a href="#">→ 质量控制</a></li>
-                        <li><a href="/contact.html">→ 联系我们</a></li>
-                        <li><a href="#">→ 加入我们</a></li>
+                        <li><a href="#">→ <span data-i18n="footer.company">公司简介</span></a></li>
+                        <li><a href="#">→ <span data-i18n="footer.equipment">生产设备</span></a></li>
+                        <li><a href="#">→ <span data-i18n="footer.quality">质量控制</span></a></li>
+                        <li><a href="/contact.html">→ <span data-i18n="nav.contact">联系我们</span></a></li>
+                        <li><a href="#">→ <span data-i18n="footer.careers">加入我们</span></a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <div class="footer-copy">© 2025 CCCNC. All rights reserved. 专业硬质合金刀具制造商</div>
+                <div class="footer-copy" data-i18n="footer.copyright">© 2025 CCCNC. All rights reserved. 专业硬质合金刀具制造商</div>
                 <div class="footer-social">
                     <a href="#">WX</a>
                     <a href="#">LI</a>
@@ -565,5 +575,304 @@
             </div>
         </div>
     </footer>
+
+    <!-- Language Switcher Script -->
+    <script>
+        const translations = {
+            zh: {
+                "meta.title": "CCCNC - 专业硬质合金刀具 | 铣刀 钻头 丝锥 铰刀",
+                "meta.description": "CCCNC专业提供各类硬质合金刀具：铣刀、钻头、丝锥、铰刀、车刀片等。高品质CNC加工工具，适用于钢件、不锈钢、铝合金、钛合金等材料加工。",
+                "header.tagline": "专业硬质合金刀具制造商 | Professional Carbide Tools Manufacturer",
+                "nav.home": "首页",
+                "nav.endmills": "铣刀",
+                "nav.drills": "钻头",
+                "nav.taps": "丝锥",
+                "nav.reamers": "铰刀",
+                "nav.inserts": "刀片",
+                "nav.calculator": "计算器",
+                "nav.contact": "联系我们",
+                "hero.badge": "Professional CNC Tools",
+                "hero.title": "精密硬质合金<br><span>刀具解决方案</span>",
+                "hero.desc": "专注于高品质硬质合金刀具研发与制造，为航空航天、汽车制造、模具加工等行业提供专业的切削工具解决方案",
+                "hero.btn1": "浏览产品系列 →",
+                "hero.btn2": "获取技术咨询",
+                "stats.products": "产品型号",
+                "stats.experience": "年行业经验",
+                "stats.countries": "出口国家",
+                "stats.satisfaction": "客户满意度",
+                "categories.tag": "Product Categories",
+                "categories.title": "产品分类",
+                "categories.desc": "全系列硬质合金刀具，满足各种材料加工需求",
+                "cat.endmills.title": "硬质合金铣刀",
+                "cat.endmills.desc": "平底铣刀、球头铣刀、圆鼻铣刀、粗皮铣刀等全系列",
+                "cat.drills.title": "硬质合金钻头",
+                "cat.drills.desc": "麻花钻、中心钻、深孔钻、内冷钻等精密钻头",
+                "cat.taps.title": "丝锥与螺纹工具",
+                "cat.taps.desc": "机用丝锥、挤压丝锥、螺纹铣刀等螺纹加工工具",
+                "cat.reamers.title": "铰刀与镗刀",
+                "cat.reamers.desc": "直柄铰刀、锥柄铰刀、可调铰刀、精镗刀等精密孔加工工具",
+                "cat.flutes": "刃",
+                "cat.multi": "多刃",
+                "cat.internal": "内冷",
+                "cat.series": "系列",
+                "cat.forming": "挤压",
+                "cat.cutting": "切削",
+                "cat.straight": "直柄",
+                "cat.taper": "锥柄",
+                "cat.adjustable": "可调",
+                "cat.fine": "精镗",
+                "cat.viewmore": "查看详情 →",
+                "products.tag": "Featured Products",
+                "products.title": "热门产品",
+                "products.desc": "精选高性能刀具产品，广泛应用于精密加工领域",
+                "products.viewall": "查看全部 →",
+                "badge.hot": "热销",
+                "badge.new": "新品",
+                "prod.endmill.category": "立铣刀系列",
+                "prod.endmill.name": "高性能平底铣刀 EM-4F",
+                "prod.drill.category": "钻头系列",
+                "prod.drill.name": "内冷深孔钻 DC-5D",
+                "prod.insert.category": "车刀片系列",
+                "prod.insert.name": "精车刀片 CNMG",
+                "spec.flutes": "刃数",
+                "spec.shank": "柄径",
+                "spec.length": "刃长",
+                "spec.coating": "涂层",
+                "spec.ratio": "倍径",
+                "spec.cooling": "冷却",
+                "spec.model": "型号",
+                "spec.material": "材质",
+                "spec.groove": "槽型",
+                "spec.times": "倍径",
+                "spec.internal": "内冷",
+                "spec.carbide": "硬质合金",
+                "spec.finish": "精加工",
+                "mat.steel": "钢件",
+                "mat.stainless": "不锈钢",
+                "mat.iron": "铸铁",
+                "mat.aluminum": "铝件",
+                "mat.titanium": "钛合金",
+                "mat.superalloy": "高温合金",
+                "mat.composite": "复合材料",
+                "mat.hardened": "淬火钢",
+                "mat.prehardened": "预硬钢",
+                "mat.copper": "铜电极",
+                "mat.alloy": "合金钢",
+                "mat.nickel": "镍基合金",
+                "mat.magnesium": "镁合金",
+                "btn.details": "查看详情",
+                "features.tag": "Why Choose Us",
+                "features.title": "为什么选择 CCCNC",
+                "features.desc": "专业品质，值得信赖的刀具合作伙伴",
+                "feat.manufacturing.title": "先进制造",
+                "feat.manufacturing.desc": "引进德国、瑞士精密数控磨床，确保产品精度达到国际先进水平",
+                "feat.quality.title": "严格质检",
+                "feat.quality.desc": "全套进口检测设备，从原材料到成品全程质量管控，确保每支刀具品质稳定",
+                "feat.delivery.title": "快速交付",
+                "feat.delivery.desc": "常备库存5000+型号，标准品24小时发货，非标定制7-15天交付",
+                "feat.support.title": "技术支持",
+                "feat.support.desc": "专业技术团队提供刀具选型、切削参数优化、加工问题解决方案",
+                "apps.tag": "Applications",
+                "apps.title": "应用领域",
+                "apps.desc": "广泛应用于各行业精密加工领域",
+                "app.aerospace.title": "航空航天",
+                "app.aerospace.desc": "钛合金、高温合金等难加工材料的高效精密加工解决方案",
+                "app.automotive.title": "汽车制造",
+                "app.automotive.desc": "发动机、变速箱、底盘零部件的高效批量加工刀具方案",
+                "app.mold.title": "模具加工",
+                "app.mold.desc": "注塑模、冲压模、压铸模的高精度加工与镜面抛光方案",
+                "app.medical.title": "医疗器械",
+                "app.medical.desc": "骨科植入物、手术器械的精密加工，满足医疗级表面质量要求",
+                "app.energy.title": "能源电力",
+                "app.energy.desc": "风电、核电、水电等大型零部件的重型切削加工方案",
+                "app.electronics.title": "3C电子",
+                "app.electronics.desc": "手机、笔记本等消费电子产品的铝合金外壳精密加工",
+                "cta.title": "需要定制刀具解决方案？",
+                "cta.desc": "我们的技术团队随时为您提供专业的刀具选型建议和加工方案优化服务",
+                "cta.btn": "联系我们 →",
+                "footer.about": "专业硬质合金刀具制造商，致力于为各行业提供高品质、高精度的切削工具解决方案。15年行业经验，服务全球50+国家。",
+                "footer.address": "中国江苏省常州市武进区",
+                "footer.products": "产品系列",
+                "footer.support": "技术支持",
+                "footer.guide": "刀具选型指南",
+                "footer.params": "切削参数推荐",
+                "footer.faq": "常见问题解答",
+                "footer.downloads": "下载中心",
+                "footer.aboutus": "关于我们",
+                "footer.company": "公司简介",
+                "footer.equipment": "生产设备",
+                "footer.quality": "质量控制",
+                "footer.careers": "加入我们",
+                "footer.copyright": "© 2025 CCCNC. All rights reserved. 专业硬质合金刀具制造商"
+            },
+            ru: {
+                "meta.title": "CCCNC - Профессиональные твердосплавные инструменты | Фрезы Сверла Метчики Развертки",
+                "meta.description": "CCCNC предоставляет профессиональные твердосплавные инструменты: фрезы, сверла, метчики, развертки, пластины. Высококачественные инструменты для обработки стали, нержавеющей стали, алюминия, титана.",
+                "header.tagline": "Производитель профессиональных твердосплавных инструментов | Professional Carbide Tools Manufacturer",
+                "nav.home": "Главная",
+                "nav.endmills": "Фрезы",
+                "nav.drills": "Сверла",
+                "nav.taps": "Метчики",
+                "nav.reamers": "Развертки",
+                "nav.inserts": "Пластины",
+                "nav.calculator": "Калькулятор",
+                "nav.contact": "Контакты",
+                "hero.badge": "Professional CNC Tools",
+                "hero.title": "Прецизионные твердосплавные<br><span>режущие инструменты</span>",
+                "hero.desc": "Специализируемся на разработке и производстве высококачественных твердосплавных инструментов для авиакосмической, автомобильной и пресс-формовой промышленности",
+                "hero.btn1": "Каталог продукции →",
+                "hero.btn2": "Техническая консультация",
+                "stats.products": "Моделей",
+                "stats.experience": "Лет опыта",
+                "stats.countries": "Стран экспорта",
+                "stats.satisfaction": "Удовлетворенность",
+                "categories.tag": "Product Categories",
+                "categories.title": "Категории продукции",
+                "categories.desc": "Полный ассортимент твердосплавных инструментов для всех видов обработки",
+                "cat.endmills.title": "Твердосплавные фрезы",
+                "cat.endmills.desc": "Концевые, сферические, с радиусом, черновые фрезы",
+                "cat.drills.title": "Твердосплавные сверла",
+                "cat.drills.desc": "Сверла, центровки, глубокого сверления, с подачей СОЖ",
+                "cat.taps.title": "Метчики и резьбовой инструмент",
+                "cat.taps.desc": "Машинные метчики, формовочные, резьбофрезы",
+                "cat.reamers.title": "Развертки и расточные инструменты",
+                "cat.reamers.desc": "Развертки с цилиндрическим и коническим хвостовиком, регулируемые, расточные",
+                "cat.flutes": "зуба",
+                "cat.multi": "Многозубые",
+                "cat.internal": "Внутренняя подача",
+                "cat.series": "серия",
+                "cat.forming": "Формовка",
+                "cat.cutting": "Резьбонарезание",
+                "cat.straight": "Цилиндрический",
+                "cat.taper": "Конический",
+                "cat.adjustable": "Регулируемые",
+                "cat.fine": "Расточные",
+                "cat.viewmore": "Подробнее →",
+                "products.tag": "Featured Products",
+                "products.title": "Популярные продукты",
+                "products.desc": "Высокопроизводительные инструменты для прецизионной обработки",
+                "products.viewall": "Все продукты →",
+                "badge.hot": "ХИТ",
+                "badge.new": "НОВИНКА",
+                "prod.endmill.category": "Серия фрез",
+                "prod.endmill.name": "Концевая фреза EM-4F",
+                "prod.drill.category": "Серия сверл",
+                "prod.drill.name": "Сверло с подачей СОЖ DC-5D",
+                "prod.insert.category": "Серия пластин",
+                "prod.insert.name": "Токарная пластина CNMG",
+                "spec.flutes": "Зубья",
+                "spec.shank": "Хвостовик",
+                "spec.length": "Длина",
+                "spec.coating": "Покрытие",
+                "spec.ratio": "Кратность",
+                "spec.cooling": "Охлаждение",
+                "spec.model": "Модель",
+                "spec.material": "Материал",
+                "spec.groove": "Геометрия",
+                "spec.times": "xD",
+                "spec.internal": "Внутренняя",
+                "spec.carbide": "Твердый сплав",
+                "spec.finish": "Чистовая",
+                "mat.steel": "Сталь",
+                "mat.stainless": "Нержавейка",
+                "mat.iron": "Чугун",
+                "mat.aluminum": "Алюминий",
+                "mat.titanium": "Титан",
+                "mat.superalloy": "Жаропрочные",
+                "mat.composite": "Композиты",
+                "mat.hardened": "Закаленная",
+                "mat.prehardened": "Предварительно закаленная",
+                "mat.copper": "Медь",
+                "mat.alloy": "Легированная",
+                "mat.nickel": "Никелевые",
+                "mat.magnesium": "Магниевые",
+                "btn.details": "Подробнее",
+                "features.tag": "Why Choose Us",
+                "features.title": "Почему выбирают CCCNC",
+                "features.desc": "Профессиональное качество, надежный партнер по режущим инструментам",
+                "feat.manufacturing.title": "Передовое производство",
+                "feat.manufacturing.desc": "Высокоточные шлифовальные станки из Германии и Швейцарии обеспечивают международный уровень точности",
+                "feat.quality.title": "Строгий контроль качества",
+                "feat.quality.desc": "Полный набор импортных измерительных приборов, контроль качества на всех этапах производства",
+                "feat.delivery.title": "Быстрая доставка",
+                "feat.delivery.desc": "5000+ моделей на складе, стандартная продукция отгружается за 24 часа, нестандартная за 7-15 дней",
+                "feat.support.title": "Техническая поддержка",
+                "feat.support.desc": "Профессиональная команда поможет с выбором инструментов, оптимизацией режимов резания",
+                "apps.tag": "Applications",
+                "apps.title": "Области применения",
+                "apps.desc": "Широко используются в различных отраслях прецизионной обработки",
+                "app.aerospace.title": "Авиакосмическая",
+                "app.aerospace.desc": "Решения для эффективной обработки труднообрабатываемых материалов: титановых сплавов, жаропрочных сплавов",
+                "app.automotive.title": "Автомобильная",
+                "app.automotive.desc": "Инструменты для массовой обработки деталей двигателей, трансмиссий, шасси",
+                "app.mold.title": "Пресс-формы",
+                "app.mold.desc": "Высокоточная обработка и полировка пресс-форм для литья под давлением, штамповки, литья",
+                "app.medical.title": "Медицинская",
+                "app.medical.desc": "Прецизионная обработка ортопедических имплантатов и хирургических инструментов",
+                "app.energy.title": "Энергетика",
+                "app.energy.desc": "Решения для тяжелой обработки крупных деталей ветровой, атомной, гидроэнергетики",
+                "app.electronics.title": "3C электроника",
+                "app.electronics.desc": "Прецизионная обработка алюминиевых корпусов мобильных телефонов и ноутбуков",
+                "cta.title": "Нужно индивидуальное решение?",
+                "cta.desc": "Наша техническая команда готова предоставить профессиональные рекомендации по выбору инструментов",
+                "cta.btn": "Связаться с нами →",
+                "footer.about": "Производитель профессиональных твердосплавных инструментов, предоставляющий высококачественные решения для различных отраслей. 15 лет опыта, экспорт в 50+ стран.",
+                "footer.address": "Удун, Чанчжоу, провинция Цзянсу, Китай",
+                "footer.products": "Продукция",
+                "footer.support": "Поддержка",
+                "footer.guide": "Руководство по выбору",
+                "footer.params": "Рекомендуемые режимы",
+                "footer.faq": "FAQ",
+                "footer.downloads": "Загрузки",
+                "footer.aboutus": "О компании",
+                "footer.company": "О нас",
+                "footer.equipment": "Оборудование",
+                "footer.quality": "Качество",
+                "footer.careers": "Карьера",
+                "footer.copyright": "© 2025 CCCNC. Все права защищены. Производитель твердосплавных инструментов"
+            }
+        };
+
+        let currentLang = localStorage.getItem('cccnc-lang') || 'zh';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('cccnc-lang', lang);
+            document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'ru';
+            
+            // Update all elements with data-i18n attribute
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    if (el.tagName === 'TITLE') {
+                        document.title = translations[lang][key];
+                    } else if (el.tagName === 'META') {
+                        el.setAttribute('content', translations[lang][key]);
+                    } else {
+                        el.innerHTML = translations[lang][key];
+                    }
+                }
+            });
+            
+            // Update language buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+            });
+        }
+
+        // Initialize language switcher
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set initial language
+            setLanguage(currentLang);
+            
+            // Add click handlers to language buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    setLanguage(lang);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
