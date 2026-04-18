@@ -17,12 +17,10 @@
             --bg-secondary: #f5f5f7;
             --bg-dark: #000000;
             --border: #d2d2d7;
-            --gradient-1: linear-gradient(135deg, #f5f5f7 0%, #ffffff 100%);
-            --gradient-2: linear-gradient(180deg, #1d1d1f 0%, #434344 100%);
         }
         
         body { 
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; 
             color: var(--text); 
             line-height: 1.47059;
             font-weight: 400;
@@ -30,13 +28,9 @@
             background: var(--bg);
         }
         
-        .container { 
-            max-width: 1024px; 
-            margin: 0 auto; 
-            padding: 0 22px; 
-        }
+        .container { max-width: 1024px; margin: 0 auto; padding: 0 22px; }
         
-        /* Navigation - Apple Style */
+        /* Navigation */
         .nav-wrapper {
             position: fixed;
             top: 0;
@@ -60,7 +54,6 @@
             font-weight: 700;
             color: var(--text);
             text-decoration: none;
-            letter-spacing: -0.021em;
         }
         
         .nav-links {
@@ -75,17 +68,10 @@
             text-decoration: none;
             opacity: 0.8;
             transition: opacity 0.3s;
-            font-weight: 400;
         }
         
-        .nav-links a:hover {
-            opacity: 1;
-        }
-        
-        .nav-links a.active {
-            opacity: 1;
-            font-weight: 500;
-        }
+        .nav-links a:hover { opacity: 1; }
+        .nav-links a.active { opacity: 1; font-weight: 500; }
         
         .lang-switcher {
             display: flex;
@@ -112,7 +98,7 @@
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
         
-        /* Hero Section */
+        /* Hero */
         .hero {
             padding: 160px 0 100px;
             text-align: center;
@@ -133,7 +119,7 @@
             line-height: 1.05;
             letter-spacing: -0.015em;
             margin-bottom: 20px;
-            background: var(--gradient-2);
+            background: linear-gradient(180deg, #1d1d1f 0%, #434344 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -165,12 +151,9 @@
             font-weight: 400;
             text-decoration: none;
             transition: all 0.3s;
-            letter-spacing: -0.022em;
         }
         
-        .btn-primary:hover {
-            background: var(--primary-dark);
-        }
+        .btn-primary:hover { background: var(--primary-dark); }
         
         .btn-link {
             color: var(--primary);
@@ -182,19 +165,11 @@
             transition: gap 0.3s;
         }
         
-        .btn-link:hover {
-            gap: 10px;
-        }
+        .btn-link:hover { gap: 10px; }
         
-        /* Section Styles */
-        .section {
-            padding: 100px 0;
-        }
-        
-        .section-dark {
-            background: var(--bg-dark);
-            color: white;
-        }
+        /* Section */
+        .section { padding: 100px 0; }
+        .section-dark { background: var(--bg-dark); color: white; }
         
         .section-header {
             text-align: center;
@@ -209,9 +184,7 @@
             display: block;
         }
         
-        .section-dark .section-eyebrow {
-            color: #2997ff;
-        }
+        .section-dark .section-eyebrow { color: #2997ff; }
         
         .section-title {
             font-size: 56px;
@@ -230,11 +203,9 @@
             margin: 0 auto;
         }
         
-        .section-dark .section-desc {
-            color: #a1a1a6;
-        }
+        .section-dark .section-desc { color: #a1a1a6; }
         
-        /* Product Grid - Apple Style Cards */
+        /* Product Grid */
         .product-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -271,9 +242,7 @@
             margin-bottom: 30px;
         }
         
-        .product-card.large .product-icon {
-            font-size: 120px;
-        }
+        .product-card.large .product-icon { font-size: 120px; }
         
         .product-name {
             font-size: 32px;
@@ -282,9 +251,7 @@
             letter-spacing: -0.021em;
         }
         
-        .product-card.large .product-name {
-            font-size: 48px;
-        }
+        .product-card.large .product-name { font-size: 48px; }
         
         .product-desc {
             font-size: 19px;
@@ -293,9 +260,7 @@
             line-height: 1.4211;
         }
         
-        .product-card.dark .product-desc {
-            color: #a1a1a6;
-        }
+        .product-card.dark .product-desc { color: #a1a1a6; }
         
         .product-link {
             color: var(--primary);
@@ -307,13 +272,8 @@
             transition: gap 0.3s;
         }
         
-        .product-card.dark .product-link {
-            color: #2997ff;
-        }
-        
-        .product-link:hover {
-            gap: 10px;
-        }
+        .product-card.dark .product-link { color: #2997ff; }
+        .product-link:hover { gap: 10px; }
         
         /* Features Grid */
         .features-grid {
@@ -323,9 +283,7 @@
             text-align: center;
         }
         
-        .feature-item {
-            padding: 20px;
-        }
+        .feature-item { padding: 20px; }
         
         .feature-number {
             font-size: 64px;
@@ -344,7 +302,7 @@
             font-weight: 500;
         }
         
-        /* Applications Grid */
+        /* Apps Grid */
         .apps-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -359,9 +317,7 @@
             transition: transform 0.3s;
         }
         
-        .app-card:hover {
-            transform: translateY(-5px);
-        }
+        .app-card:hover { transform: translateY(-5px); }
         
         .app-icon {
             width: 70px;
@@ -388,7 +344,7 @@
             line-height: 1.4;
         }
         
-        /* CTA Section */
+        /* CTA */
         .cta-section {
             padding: 120px 0;
             text-align: center;
@@ -438,13 +394,8 @@
             margin-bottom: 16px;
         }
         
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 10px;
-        }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 10px; }
         
         .footer-links a {
             font-size: 12px;
@@ -453,9 +404,7 @@
             transition: color 0.3s;
         }
         
-        .footer-links a:hover {
-            color: var(--text);
-        }
+        .footer-links a:hover { color: var(--text); }
         
         .footer-bottom {
             display: flex;
@@ -465,7 +414,6 @@
             color: var(--text-secondary);
         }
         
-        /* Responsive */
         @media (max-width: 1024px) {
             .hero h1 { font-size: 64px; }
             .section-title { font-size: 48px; }
@@ -495,13 +443,13 @@
             <nav class="nav">
                 <a href="/" class="nav-logo">CCCNC</a>
                 <div class="nav-links">
-                    <a href="/" class="active">首页</a>
-                    <a href="/products/endmills.html">铣刀</a>
-                    <a href="/products/drills.html">钻头</a>
-                    <a href="/products/taps.html">丝锥</a>
-                    <a href="/products/reamers.html">铰刀</a>
-                    <a href="/products/inserts.html">刀片</a>
-                    <a href="/contact.html">联系</a>
+                    <a href="/" class="active" data-i18n="nav.home">首页</a>
+                    <a href="/products/endmills.html" data-i18n="nav.endmills">铣刀</a>
+                    <a href="/products/drills.html" data-i18n="nav.drills">钻头</a>
+                    <a href="/products/taps.html" data-i18n="nav.taps">丝锥</a>
+                    <a href="/products/reamers.html" data-i18n="nav.reamers">铰刀</a>
+                    <a href="/products/inserts.html" data-i18n="nav.inserts">刀片</a>
+                    <a href="/contact.html" data-i18n="nav.contact">联系</a>
                     <div class="lang-switcher">
                         <button class="lang-btn active" data-lang="zh">中</button>
                         <button class="lang-btn" data-lang="ru">RU</button>
@@ -514,136 +462,136 @@
     <!-- Hero -->
     <section class="hero">
         <div class="container">
-            <div class="hero-badge">Professional CNC Tools</div>
-            <h1>硬质合金<br>刀具专家</h1>
-            <p class="hero-desc">精密制造，卓越品质。为航空航天、汽车制造、模具加工等行业提供专业的切削工具解决方案。</p>
+            <div class="hero-badge" data-i18n="hero.badge">Professional CNC Tools</div>
+            <h1 data-i18n="hero.title">硬质合金<br>刀具专家</h1>
+            <p class="hero-desc" data-i18n="hero.desc">为航空航天、汽车制造、模具加工等行业提供专业的切削工具解决方案。</p>
             <div class="hero-cta">
-                <a href="/products/endmills.html" class="btn-primary">浏览产品</a>
-                <a href="/contact.html" class="btn-link">联系咨询 →</a>
+                <a href="/products/endmills.html" class="btn-primary" data-i18n="hero.btn1">浏览产品</a>
+                <a href="/contact.html" class="btn-link" data-i18n="hero.btn2">联系咨询 →</a>
             </div>
         </div>
     </section>
 
-    <!-- Products Section -->
+    <!-- Products -->
     <section class="section">
         <div class="container">
             <div class="section-header">
-                <span class="section-eyebrow">Product Categories</span>
-                <h2 class="section-title">产品系列</h2>
-                <p class="section-desc">全系列硬质合金刀具，满足各种材料加工需求</p>
+                <span class="section-eyebrow" data-i18n="products.eyebrow">Product Categories</span>
+                <h2 class="section-title" data-i18n="products.title">产品系列</h2>
+                <p class="section-desc" data-i18n="products.desc">全系列硬质合金刀具，满足各种材料加工需求</p>
             </div>
             <div class="product-grid">
                 <div class="product-card large dark">
                     <div class="product-icon">🔧</div>
-                    <h3 class="product-name">硬质合金铣刀</h3>
-                    <p class="product-desc">平底铣刀、球头铣刀、圆鼻铣刀、粗皮铣刀。2/3/4刃可选，适用于钢件、不锈钢、铝合金加工。</p>
-                    <a href="/products/endmills.html" class="product-link">了解更多 →</a>
+                    <h3 class="product-name" data-i18n="cat.endmills.name">硬质合金铣刀</h3>
+                    <p class="product-desc" data-i18n="cat.endmills.desc">平底铣刀、球头铣刀、圆鼻铣刀、粗皮铣刀。2/3/4刃可选，适用于钢件、不锈钢、铝合金加工。</p>
+                    <a href="/products/endmills.html" class="product-link" data-i18n="cat.more">了解更多 →</a>
                 </div>
                 <div class="product-card">
                     <div class="product-icon">🔩</div>
-                    <h3 class="product-name">硬质合金钻头</h3>
-                    <p class="product-desc">麻花钻、中心钻、深孔钻、内冷钻。3D/5D/8D倍径可选。</p>
-                    <a href="/products/drills.html" class="product-link">了解更多 →</a>
+                    <h3 class="product-name" data-i18n="cat.drills.name">硬质合金钻头</h3>
+                    <p class="product-desc" data-i18n="cat.drills.desc">麻花钻、中心钻、深孔钻、内冷钻。3D/5D/8D倍径可选。</p>
+                    <a href="/products/drills.html" class="product-link" data-i18n="cat.more">了解更多 →</a>
                 </div>
                 <div class="product-card">
                     <div class="product-icon">🌀</div>
-                    <h3 class="product-name">丝锥系列</h3>
-                    <p class="product-desc">机用丝锥、挤压丝锥、螺纹铣刀。M系列、UN系列公制英制齐全。</p>
-                    <a href="/products/taps.html" class="product-link">了解更多 →</a>
+                    <h3 class="product-name" data-i18n="cat.taps.name">丝锥系列</h3>
+                    <p class="product-desc" data-i18n="cat.taps.desc">机用丝锥、挤压丝锥、螺纹铣刀。M系列、UN系列公制英制齐全。</p>
+                    <a href="/products/taps.html" class="product-link" data-i18n="cat.more">了解更多 →</a>
                 </div>
                 <div class="product-card">
                     <div class="product-icon">⚙️</div>
-                    <h3 class="product-name">铰刀系列</h3>
-                    <p class="product-desc">直柄铰刀、锥柄铰刀、可调铰刀、精镗刀。H7/H8精度等级。</p>
-                    <a href="/products/reamers.html" class="product-link">了解更多 →</a>
+                    <h3 class="product-name" data-i18n="cat.reamers.name">铰刀系列</h3>
+                    <p class="product-desc" data-i18n="cat.reamers.desc">直柄铰刀、锥柄铰刀、可调铰刀、精镗刀。H7/H8精度等级。</p>
+                    <a href="/products/reamers.html" class="product-link" data-i18n="cat.more">了解更多 →</a>
                 </div>
                 <div class="product-card">
                     <div class="product-icon">💎</div>
-                    <h3 class="product-name">车刀片</h3>
-                    <p class="product-desc">CNMG、WNMG、TNMG等标准型号。适用于钢件、不锈钢、铸铁、铝合金。</p>
-                    <a href="/products/inserts.html" class="product-link">了解更多 →</a>
+                    <h3 class="product-name" data-i18n="cat.inserts.name">车刀片</h3>
+                    <p class="product-desc" data-i18n="cat.inserts.desc">CNMG、WNMG、TNMG等标准型号。适用于钢件、不锈钢、铸铁、铝合金。</p>
+                    <a href="/products/inserts.html" class="product-link" data-i18n="cat.more">了解更多 →</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Stats Section -->
+    <!-- Stats -->
     <section class="section section-dark">
         <div class="container">
             <div class="section-header">
-                <span class="section-eyebrow">Company Overview</span>
-                <h2 class="section-title">实力数据</h2>
+                <span class="section-eyebrow" data-i18n="stats.title">实力数据</span>
+                <h2 class="section-title" data-i18n="stats.title">实力数据</h2>
             </div>
             <div class="features-grid">
                 <div class="feature-item">
                     <div class="feature-number">5000+</div>
-                    <div class="feature-label">产品型号</div>
+                    <div class="feature-label" data-i18n="stats.products">产品型号</div>
                 </div>
                 <div class="feature-item">
                     <div class="feature-number">15+</div>
-                    <div class="feature-label">年行业经验</div>
+                    <div class="feature-label" data-i18n="stats.experience">年行业经验</div>
                 </div>
                 <div class="feature-item">
                     <div class="feature-number">50+</div>
-                    <div class="feature-label">出口国家</div>
+                    <div class="feature-label" data-i18n="stats.countries">出口国家</div>
                 </div>
                 <div class="feature-item">
                     <div class="feature-number">99%</div>
-                    <div class="feature-label">客户满意度</div>
+                    <div class="feature-label" data-i18n="stats.satisfaction">客户满意度</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Applications Section -->
+    <!-- Applications -->
     <section class="section">
         <div class="container">
             <div class="section-header">
-                <span class="section-eyebrow">Applications</span>
-                <h2 class="section-title">应用领域</h2>
-                <p class="section-desc">广泛应用于各行业精密加工领域</p>
+                <span class="section-eyebrow" data-i18n="apps.eyebrow">Applications</span>
+                <h2 class="section-title" data-i18n="apps.title">应用领域</h2>
+                <p class="section-desc" data-i18n="apps.desc">广泛应用于各行业精密加工领域</p>
             </div>
             <div class="apps-grid">
                 <div class="app-card">
                     <div class="app-icon">✈️</div>
-                    <h3 class="app-title">航空航天</h3>
-                    <p class="app-desc">钛合金、高温合金等难加工材料的高效精密加工</p>
+                    <h3 class="app-title" data-i18n="app.aerospace.title">航空航天</h3>
+                    <p class="app-desc" data-i18n="app.aerospace.desc">钛合金、高温合金等难加工材料的高效精密加工</p>
                 </div>
                 <div class="app-card">
                     <div class="app-icon">🚗</div>
-                    <h3 class="app-title">汽车制造</h3>
-                    <p class="app-desc">发动机、变速箱、底盘零部件的高效批量加工</p>
+                    <h3 class="app-title" data-i18n="app.automotive.title">汽车制造</h3>
+                    <p class="app-desc" data-i18n="app.automotive.desc">发动机、变速箱、底盘零部件的高效批量加工</p>
                 </div>
                 <div class="app-card">
                     <div class="app-icon">🔧</div>
-                    <h3 class="app-title">模具加工</h3>
-                    <p class="app-desc">注塑模、冲压模、压铸模的高精度加工</p>
+                    <h3 class="app-title" data-i18n="app.mold.title">模具加工</h3>
+                    <p class="app-desc" data-i18n="app.mold.desc">注塑模、冲压模、压铸模的高精度加工</p>
                 </div>
                 <div class="app-card">
                     <div class="app-icon">🏥</div>
-                    <h3 class="app-title">医疗器械</h3>
-                    <p class="app-desc">骨科植入物、手术器械的精密加工</p>
+                    <h3 class="app-title" data-i18n="app.medical.title">医疗器械</h3>
+                    <p class="app-desc" data-i18n="app.medical.desc">骨科植入物、手术器械的精密加工</p>
                 </div>
                 <div class="app-card">
                     <div class="app-icon">⚡</div>
-                    <h3 class="app-title">能源电力</h3>
-                    <p class="app-desc">风电、核电、水电等大型零部件加工</p>
+                    <h3 class="app-title" data-i18n="app.energy.title">能源电力</h3>
+                    <p class="app-desc" data-i18n="app.energy.desc">风电、核电、水电等大型零部件加工</p>
                 </div>
                 <div class="app-card">
                     <div class="app-icon">📱</div>
-                    <h3 class="app-title">3C电子</h3>
-                    <p class="app-desc">手机、笔记本等消费电子产品的精密加工</p>
+                    <h3 class="app-title" data-i18n="app.electronics.title">3C电子</h3>
+                    <p class="app-desc" data-i18n="app.electronics.desc">手机、笔记本等消费电子产品的精密加工</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
+    <!-- CTA -->
     <section class="cta-section">
         <div class="container">
-            <h2 class="cta-title">需要定制刀具解决方案？</h2>
-            <p class="cta-desc">我们的技术团队随时为您提供专业的刀具选型建议</p>
-            <a href="/contact.html" class="btn-primary">联系我们</a>
+            <h2 class="cta-title" data-i18n="cta.title">需要定制刀具解决方案？</h2>
+            <p class="cta-desc" data-i18n="cta.desc">我们的技术团队随时为您提供专业的刀具选型建议</p>
+            <a href="/contact.html" class="btn-primary" data-i18n="cta.btn">联系我们</a>
         </div>
     </section>
 
@@ -653,168 +601,42 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <a href="/" class="nav-logo">CCCNC</a>
-                    <p>专业硬质合金刀具制造商，致力于为各行业提供高品质、高精度的切削工具解决方案。</p>
+                    <p data-i18n="footer.about">专业硬质合金刀具制造商，致力于为各行业提供高品质、高精度的切削工具解决方案。15年行业经验，服务全球50+国家。</p>
                 </div>
                 <div>
-                    <h4 class="footer-title">产品系列</h4>
+                    <h4 class="footer-title" data-i18n="footer.products">产品系列</h4>
                     <ul class="footer-links">
-                        <li><a href="/products/endmills.html">硬质合金铣刀</a></li>
-                        <li><a href="/products/drills.html">硬质合金钻头</a></li>
-                        <li><a href="/products/taps.html">丝锥系列</a></li>
-                        <li><a href="/products/reamers.html">铰刀系列</a></li>
-                        <li><a href="/products/inserts.html">车刀片</a></li>
+                        <li><a href="/products/endmills.html" data-i18n="nav.endmills">硬质合金铣刀</a></li>
+                        <li><a href="/products/drills.html" data-i18n="nav.drills">硬质合金钻头</a></li>
+                        <li><a href="/products/taps.html" data-i18n="nav.taps">丝锥系列</a></li>
+                        <li><a href="/products/reamers.html" data-i18n="nav.reamers">铰刀系列</a></li>
+                        <li><a href="/products/inserts.html" data-i18n="nav.inserts">车刀片</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="footer-title">技术支持</h4>
+                    <h4 class="footer-title" data-i18n="footer.support">技术支持</h4>
                     <ul class="footer-links">
-                        <li><a href="/calculator.html">切削计算器</a></li>
-                        <li><a href="#">刀具选型指南</a></li>
-                        <li><a href="#">切削参数推荐</a></li>
+                        <li><a href="/calculator.html" data-i18n="nav.calculator">切削计算器</a></li>
+                        <li><a href="#" data-i18n="footer.guide">刀具选型指南</a></li>
+                        <li><a href="#" data-i18n="footer.params">切削参数推荐</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="footer-title">联系我们</h4>
+                    <h4 class="footer-title" data-i18n="footer.about">关于我们</h4>
                     <ul class="footer-links">
+                        <li><a href="/contact.html" data-i18n="nav.contact">联系我们</a></li>
                         <li><a href="tel:+8612345678900">+86 123 4567 8900</a></li>
                         <li><a href="mailto:sales@cccnc.com">sales@cccnc.com</a></li>
-                        <li><a href="/contact.html">在线咨询</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <div>© 2025 CCCNC. All rights reserved.</div>
+                <div data-i18n="footer.copyright">© 2025 CCCNC. All rights reserved.</div>
                 <div>专业硬质合金刀具制造商</div>
             </div>
         </div>
     </footer>
 
-    <!-- Language Switcher Script -->
-    <script>
-        const translations = {
-            zh: {
-                "hero.badge": "Professional CNC Tools",
-                "hero.title": "硬质合金<br>刀具专家",
-                "hero.desc": "精密制造，卓越品质。为航空航天、汽车制造、模具加工等行业提供专业的切削工具解决方案。",
-                "hero.btn1": "浏览产品",
-                "hero.btn2": "联系咨询 →",
-                "products.eyebrow": "Product Categories",
-                "products.title": "产品系列",
-                "products.desc": "全系列硬质合金刀具，满足各种材料加工需求",
-                "cat.endmills.name": "硬质合金铣刀",
-                "cat.endmills.desc": "平底铣刀、球头铣刀、圆鼻铣刀、粗皮铣刀。2/3/4刃可选，适用于钢件、不锈钢、铝合金加工。",
-                "cat.drills.name": "硬质合金钻头",
-                "cat.drills.desc": "麻花钻、中心钻、深孔钻、内冷钻。3D/5D/8D倍径可选。",
-                "cat.taps.name": "丝锥系列",
-                "cat.taps.desc": "机用丝锥、挤压丝锥、螺纹铣刀。M系列、UN系列公制英制齐全。",
-                "cat.reamers.name": "铰刀系列",
-                "cat.reamers.desc": "直柄铰刀、锥柄铰刀、可调铰刀、精镗刀。H7/H8精度等级。",
-                "cat.inserts.name": "车刀片",
-                "cat.inserts.desc": "CNMG、WNMG、TNMG等标准型号。适用于钢件、不锈钢、铸铁、铝合金。",
-                "link.more": "了解更多 →",
-                "stats.eyebrow": "Company Overview",
-                "stats.title": "实力数据",
-                "stat.products": "产品型号",
-                "stat.experience": "年行业经验",
-                "stat.countries": "出口国家",
-                "stat.satisfaction": "客户满意度",
-                "apps.eyebrow": "Applications",
-                "apps.title": "应用领域",
-                "apps.desc": "广泛应用于各行业精密加工领域",
-                "app.aerospace": "航空航天",
-                "app.aerospace.desc": "钛合金、高温合金等难加工材料的高效精密加工",
-                "app.automotive": "汽车制造",
-                "app.automotive.desc": "发动机、变速箱、底盘零部件的高效批量加工",
-                "app.mold": "模具加工",
-                "app.mold.desc": "注塑模、冲压模、压铸模的高精度加工",
-                "app.medical": "医疗器械",
-                "app.medical.desc": "骨科植入物、手术器械的精密加工",
-                "app.energy": "能源电力",
-                "app.energy.desc": "风电、核电、水电等大型零部件加工",
-                "app.electronics": "3C电子",
-                "app.electronics.desc": "手机、笔记本等消费电子产品的精密加工",
-                "cta.title": "需要定制刀具解决方案？",
-                "cta.desc": "我们的技术团队随时为您提供专业的刀具选型建议",
-                "cta.btn": "联系我们"
-            },
-            ru: {
-                "hero.badge": "Professional CNC Tools",
-                "hero.title": "Эксперт<br>твердосплавных инструментов",
-                "hero.desc": "Прецизионное производство, превосходное качество. Профессиональные режущие инструменты для авиакосмической, автомобильной и пресс-формовой промышленности.",
-                "hero.btn1": "Каталог",
-                "hero.btn2": "Консультация →",
-                "products.eyebrow": "Product Categories",
-                "products.title": "Категории продукции",
-                "products.desc": "Полный ассортимент твердосплавных инструментов для всех видов обработки",
-                "cat.endmills.name": "Твердосплавные фрезы",
-                "cat.endmills.desc": "Концевые, сферические, с радиусом, черновые фрезы. 2/3/4 зуба для стали, нержавейки, алюминия.",
-                "cat.drills.name": "Твердосплавные сверла",
-                "cat.drills.desc": "Сверла, центровки, глубокого сверления, с подачей СОЖ. 3D/5D/8D кратность.",
-                "cat.taps.name": "Серия метчиков",
-                "cat.taps.desc": "Машинные метчики, формовочные, резьбофрезы. M-серия, UN-серия.",
-                "cat.reamers.name": "Серия разверток",
-                "cat.reamers.desc": "Развертки с цилиндрическим и коническим хвостовиком, регулируемые, расточные. Точность H7/H8.",
-                "cat.inserts.name": "Токарные пластины",
-                "cat.inserts.desc": "CNMG, WNMG, TNMG и другие стандартные модели. Для стали, нержавейки, чугуна, алюминия.",
-                "link.more": "Подробнее →",
-                "stats.eyebrow": "Company Overview",
-                "stats.title": "Компания в цифрах",
-                "stat.products": "Моделей",
-                "stat.experience": "Лет опыта",
-                "stat.countries": "Стран",
-                "stat.satisfaction": "Удовлетворенность",
-                "apps.eyebrow": "Applications",
-                "apps.title": "Области применения",
-                "apps.desc": "Широко используются в различных отраслях прецизионной обработки",
-                "app.aerospace": "Авиакосмическая",
-                "app.aerospace.desc": "Обработка труднообрабатываемых материалов: титановых и жаропрочных сплавов",
-                "app.automotive": "Автомобильная",
-                "app.automotive.desc": "Массовая обработка деталей двигателей, трансмиссий, шасси",
-                "app.mold": "Пресс-формы",
-                "app.mold.desc": "Высокоточная обработка пресс-форм для литья, штамповки",
-                "app.medical": "Медицинская",
-                "app.medical.desc": "Прецизионная обработка ортопедических имплантатов",
-                "app.energy": "Энергетика",
-                "app.energy.desc": "Обработка крупных деталей ветровой, атомной энергетики",
-                "app.electronics": "3C электроника",
-                "app.electronics.desc": "Обработка алюминиевых корпусов мобильных устройств",
-                "cta.title": "Нужно индивидуальное решение?",
-                "cta.desc": "Наша техническая команда готова предоставить профессиональные рекомендации",
-                "cta.btn": "Связаться"
-            }
-        };
-
-        let currentLang = localStorage.getItem('cccnc-lang') || 'zh';
-
-        function setLanguage(lang) {
-            currentLang = lang;
-            localStorage.setItem('cccnc-lang', lang);
-            document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'ru';
-            
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
-            });
-            
-            // Update content
-            const t = translations[lang];
-            if (t) {
-                document.querySelector('.hero-badge').textContent = t['hero.badge'];
-                document.querySelector('.hero h1').innerHTML = t['hero.title'];
-                document.querySelector('.hero-desc').textContent = t['hero.desc'];
-                document.querySelector('.btn-primary').textContent = t['hero.btn1'];
-                document.querySelector('.btn-link').textContent = t['hero.btn2'];
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            setLanguage(currentLang);
-            
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    setLanguage(this.getAttribute('data-lang'));
-                });
-            });
-        });
-    </script>
+    <script src="/js/i18n.js"></script>
 </body>
 </html>

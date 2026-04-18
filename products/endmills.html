@@ -14,6 +14,7 @@
             --bg: #ffffff;
             --bg-secondary: #f5f5f7;
             --bg-dark: #000000;
+            --border: #d2d2d7;
         }
         
         body { 
@@ -69,6 +70,31 @@
         .nav-links a:hover { opacity: 1; }
         .nav-links a.active { opacity: 1; font-weight: 500; }
         
+        .lang-switcher {
+            display: flex;
+            gap: 4px;
+            background: rgba(0,0,0,0.05);
+            padding: 3px;
+            border-radius: 12px;
+        }
+        
+        .lang-btn {
+            padding: 4px 10px;
+            border: none;
+            background: transparent;
+            color: var(--text);
+            font-size: 11px;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 9px;
+            transition: all 0.3s;
+        }
+        
+        .lang-btn.active {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
         /* Page Header */
         .page-header {
             padding: 140px 0 60px;
@@ -100,7 +126,7 @@
             margin: 0 auto;
         }
         
-        /* Product Showcase */
+        /* Showcase */
         .showcase {
             padding: 60px 0;
             background: var(--bg-secondary);
@@ -216,7 +242,7 @@
             gap: 40px;
             align-items: center;
             padding: 40px 0;
-            border-bottom: 1px solid #d2d2d7;
+            border-bottom: 1px solid var(--border);
         }
         
         .product-item:last-child {
@@ -268,7 +294,7 @@
         .footer {
             background: var(--bg-secondary);
             padding: 40px 0 20px;
-            border-top: 1px solid #d2d2d7;
+            border-top: 1px solid var(--border);
         }
         
         .footer-content {
@@ -276,7 +302,7 @@
             justify-content: space-between;
             align-items: center;
             padding-bottom: 20px;
-            border-bottom: 1px solid #d2d2d7;
+            border-bottom: 1px solid var(--border);
             margin-bottom: 20px;
         }
         
@@ -313,13 +339,17 @@
             <nav class="nav">
                 <a href="/" class="nav-logo">CCCNC</a>
                 <div class="nav-links">
-                    <a href="/">首页</a>
-                    <a href="/products/endmills.html" class="active">铣刀</a>
-                    <a href="/products/drills.html">钻头</a>
-                    <a href="/products/taps.html">丝锥</a>
-                    <a href="/products/reamers.html">铰刀</a>
-                    <a href="/products/inserts.html">刀片</a>
-                    <a href="/contact.html">联系</a>
+                    <a href="/" data-i18n="nav.home">首页</a>
+                    <a href="/products/endmills.html" class="active" data-i18n="nav.endmills">铣刀</a>
+                    <a href="/products/drills.html" data-i18n="nav.drills">钻头</a>
+                    <a href="/products/taps.html" data-i18n="nav.taps">丝锥</a>
+                    <a href="/products/reamers.html" data-i18n="nav.reamers">铰刀</a>
+                    <a href="/products/inserts.html" data-i18n="nav.inserts">刀片</a>
+                    <a href="/contact.html" data-i18n="nav.contact">联系</a>
+                    <div class="lang-switcher">
+                        <button class="lang-btn active" data-lang="zh">中</button>
+                        <button class="lang-btn" data-lang="ru">RU</button>
+                    </div>
                 </div>
             </nav>
         </div>
@@ -328,8 +358,8 @@
     <header class="page-header">
         <div class="container">
             <span class="page-eyebrow">End Mills</span>
-            <h1 class="page-title">硬质合金铣刀</h1>
-            <p class="page-desc">全系列立铣刀，包括平底、球头、圆鼻、粗皮等多种类型，2/3/4刃可选，适用于各种材料加工。</p>
+            <h1 class="page-title" data-i18n="page.endmills.title">硬质合金铣刀</h1>
+            <p class="page-desc" data-i18n="page.endmills.desc">全系列立铣刀，包括平底、球头、圆鼻、粗皮等多种类型</p>
         </div>
     </header>
 
@@ -338,41 +368,41 @@
             <div class="showcase-grid">
                 <div class="showcase-card featured">
                     <div class="product-visual">🔧</div>
-                    <h2 class="product-name">4刃平底铣刀</h2>
-                    <p class="product-tagline">通用型高性能铣刀，适用于钢件、不锈钢侧铣和槽铣</p>
+                    <h2 class="product-name" data-i18n="page.endmills.featured">4刃平底铣刀</h2>
+                    <p class="product-tagline" data-i18n="page.endmills.featured.desc">通用型高性能铣刀，适用于钢件、不锈钢侧铣和槽铣</p>
                     <div class="product-specs">
                         <div class="spec-item">
                             <span class="spec-value">4</span>
-                            <span class="spec-label">刃数</span>
+                            <span class="spec-label" data-i18n="spec.flutes">刃数</span>
                         </div>
                         <div class="spec-item">
                             <span class="spec-value">35°</span>
-                            <span class="spec-label">螺旋角</span>
+                            <span class="spec-label" data-i18n="spec.precision">精度</span>
                         </div>
                         <div class="spec-item">
                             <span class="spec-value">TiAlN</span>
-                            <span class="spec-label">涂层</span>
+                            <span class="spec-label" data-i18n="spec.coating">涂层</span>
                         </div>
                         <div class="spec-item">
                             <span class="spec-value">Φ3-20</span>
-                            <span class="spec-label">直径mm</span>
+                            <span class="spec-label">mm</span>
                         </div>
                     </div>
-                    <a href="#" class="product-link">了解详情 →</a>
+                    <a href="#" class="product-link" data-i18n="common.details">了解详情 →</a>
                 </div>
                 
                 <div class="showcase-card">
                     <div class="product-visual">🔧</div>
-                    <h2 class="product-name">2刃铝用铣刀</h2>
-                    <p class="product-tagline">专为铝合金优化，高光效果无毛刺</p>
-                    <a href="#" class="product-link">了解详情 →</a>
+                    <h2 class="product-name" data-i18n="page.endmills.aluminum">2刃铝用铣刀</h2>
+                    <p class="product-tagline" data-i18n="page.endmills.aluminum.desc">专为铝合金优化，高光效果无毛刺</p>
+                    <a href="#" class="product-link" data-i18n="common.details">了解详情 →</a>
                 </div>
                 
                 <div class="showcase-card">
                     <div class="product-visual">🔧</div>
-                    <h2 class="product-name">球头铣刀</h2>
-                    <p class="product-tagline">精密球头设计，3D曲面加工首选</p>
-                    <a href="#" class="product-link">了解详情 →</a>
+                    <h2 class="product-name" data-i18n="page.endmills.ball">球头铣刀</h2>
+                    <p class="product-tagline" data-i18n="page.endmills.ball.desc">精密球头设计，3D曲面加工首选</p>
+                    <a href="#" class="product-link" data-i18n="common.details">了解详情 →</a>
                 </div>
             </div>
         </div>
@@ -380,22 +410,22 @@
 
     <section class="product-list">
         <div class="container">
-            <h2 class="section-title">全部铣刀产品</h2>
+            <h2 class="section-title" data-i18n="page.endmills.all">全部铣刀产品</h2>
             
             <div class="product-item">
                 <div class="product-icon-large">🔧</div>
                 <div class="product-info">
                     <h3>4刃平底铣刀 EM-4F</h3>
-                    <p>通用型4刃平底铣刀，适用于钢件、不锈钢的侧铣和槽铣加工</p>
+                    <p data-i18n="page.endmills.featured.desc">通用型4刃平底铣刀，适用于钢件、不锈钢的侧铣和槽铣加工</p>
                     <div class="product-tags">
-                        <span class="tag">4刃</span>
-                        <span class="tag">35°螺旋角</span>
-                        <span class="tag">TiAlN涂层</span>
+                        <span class="tag">4 <span data-i18n="common.flutes">刃</span></span>
+                        <span class="tag">35°</span>
+                        <span class="tag">TiAlN</span>
                         <span class="tag">Φ3-20mm</span>
                     </div>
                 </div>
                 <div class="product-action">
-                    <a href="#" class="btn-text">查看详情 →</a>
+                    <a href="#" class="btn-text" data-i18n="common.details">查看详情 →</a>
                 </div>
             </div>
             
@@ -403,16 +433,16 @@
                 <div class="product-icon-large">🔧</div>
                 <div class="product-info">
                     <h3>2刃铝用铣刀 EM-2F-AL</h3>
-                    <p>专为铝合金设计的大排屑槽铣刀，高光效果，无毛刺</p>
+                    <p data-i18n="page.endmills.aluminum.desc">专为铝合金设计的大排屑槽铣刀，高光效果，无毛刺</p>
                     <div class="product-tags">
-                        <span class="tag">2刃</span>
-                        <span class="tag">45°螺旋角</span>
-                        <span class="tag">DLC涂层</span>
+                        <span class="tag">2 <span data-i18n="common.flutes">刃</span></span>
+                        <span class="tag">45°</span>
+                        <span class="tag">DLC</span>
                         <span class="tag">Φ1-12mm</span>
                     </div>
                 </div>
                 <div class="product-action">
-                    <a href="#" class="btn-text">查看详情 →</a>
+                    <a href="#" class="btn-text" data-i18n="common.details">查看详情 →</a>
                 </div>
             </div>
             
@@ -420,67 +450,16 @@
                 <div class="product-icon-large">🔧</div>
                 <div class="product-info">
                     <h3>2刃球头铣刀 EM-BALL-2F</h3>
-                    <p>精密球头设计，适用于3D曲面加工和模具精加工</p>
+                    <p data-i18n="page.endmills.ball.desc">精密球头设计，适用于3D曲面加工和模具精加工</p>
                     <div class="product-tags">
-                        <span class="tag">2刃</span>
-                        <span class="tag">R精度±0.005mm</span>
-                        <span class="tag">TiSiN涂层</span>
+                        <span class="tag">2 <span data-i18n="common.flutes">刃</span></span>
+                        <span class="tag">R±0.005mm</span>
+                        <span class="tag">TiSiN</span>
                         <span class="tag">R0.5-R6</span>
                     </div>
                 </div>
                 <div class="product-action">
-                    <a href="#" class="btn-text">查看详情 →</a>
-                </div>
-            </div>
-            
-            <div class="product-item">
-                <div class="product-icon-large">🔧</div>
-                <div class="product-info">
-                    <h3>4刃圆鼻铣刀 EM-CORNER-4F</h3>
-                    <p>圆角设计增强刀尖强度，适用于高硬度材料和重切削</p>
-                    <div class="product-tags">
-                        <span class="tag">4刃</span>
-                        <span class="tag">R0.2-R2</span>
-                        <span class="tag">TiAlN涂层</span>
-                        <span class="tag">Φ4-20mm</span>
-                    </div>
-                </div>
-                <div class="product-action">
-                    <a href="#" class="btn-text">查看详情 →</a>
-                </div>
-            </div>
-            
-            <div class="product-item">
-                <div class="product-icon-large">🔧</div>
-                <div class="product-info">
-                    <h3>3刃粗皮铣刀 EM-ROUGH-3F</h3>
-                    <p>波纹刃设计，大切削量高效率粗加工，排屑顺畅</p>
-                    <div class="product-tags">
-                        <span class="tag">3刃</span>
-                        <span class="tag">波纹刃</span>
-                        <span class="tag">TiAlN涂层</span>
-                        <span class="tag">Φ6-25mm</span>
-                    </div>
-                </div>
-                <div class="product-action">
-                    <a href="#" class="btn-text">查看详情 →</a>
-                </div>
-            </div>
-            
-            <div class="product-item">
-                <div class="product-icon-large">🔧</div>
-                <div class="product-info">
-                    <h3>高硬度铣刀 EM-HARD-4F</h3>
-                    <p>专为淬火钢设计，可加工硬度高达HRC65的材料</p>
-                    <div class="product-tags">
-                        <span class="tag">4刃</span>
-                        <span class="tag">30°螺旋角</span>
-                        <span class="tag">TiSiN涂层</span>
-                        <span class="tag">HRC≤65</span>
-                    </div>
-                </div>
-                <div class="product-action">
-                    <a href="#" class="btn-text">查看详情 →</a>
+                    <a href="#" class="btn-text" data-i18n="common.details">查看详情 →</a>
                 </div>
             </div>
         </div>
@@ -491,16 +470,18 @@
             <div class="footer-content">
                 <a href="/" class="nav-logo">CCCNC</a>
                 <div class="footer-links">
-                    <a href="/products/endmills.html">铣刀</a>
-                    <a href="/products/drills.html">钻头</a>
-                    <a href="/products/taps.html">丝锥</a>
-                    <a href="/contact.html">联系</a>
+                    <a href="/products/endmills.html" data-i18n="nav.endmills">铣刀</a>
+                    <a href="/products/drills.html" data-i18n="nav.drills">钻头</a>
+                    <a href="/products/taps.html" data-i18n="nav.taps">丝锥</a>
+                    <a href="/contact.html" data-i18n="nav.contact">联系</a>
                 </div>
             </div>
-            <div class="footer-bottom">
+            <div class="footer-bottom" data-i18n="footer.copyright">
                 © 2025 CCCNC. All rights reserved.
             </div>
         </div>
     </footer>
+
+    <script src="/js/i18n.js"></script>
 </body>
 </html>
