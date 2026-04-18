@@ -141,6 +141,15 @@ const i18n = {
         'footer.careers': '加入我们',
         'footer.copyright': '© 2025 CCCNC. All rights reserved.',
         
+        // Catalog Menu
+        'catalog.measure': '测量工具',
+        'catalog.tooling': '刀柄刀杆',
+        'catalog.accessories': '机床附件',
+        'catalog.inspection': '检测仪器',
+        'catalog.deburring': '去毛刺工具',
+        'catalog.center': '中心钻定点钻',
+        'catalog.die': '板牙',
+        
         // Page specific - Endmills
         'page.endmills.title': '硬质合金铣刀',
         'page.endmills.desc': '全系列立铣刀，包括平底、球头、圆鼻、粗皮等多种类型',
@@ -420,6 +429,15 @@ const i18n = {
         'footer.quality': 'Качество',
         'footer.careers': 'Карьера',
         'footer.copyright': '© 2025 CCCNC. Все права защищены.',
+        
+        // Catalog Menu
+        'catalog.measure': 'Измерительный инструмент',
+        'catalog.tooling': 'Оснастка и держатели',
+        'catalog.accessories': 'Станочные принадлежности',
+        'catalog.inspection': 'Контрольно-измерительные приборы',
+        'catalog.deburring': 'Инструмент для снятия заусенцев',
+        'catalog.center': 'Центровки и сверла под центр',
+        'catalog.die': 'Плашки',
         
         // Page specific - Endmills
         'page.endmills.title': 'Твердосплавные фрезы',

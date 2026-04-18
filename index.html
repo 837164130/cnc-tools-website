@@ -98,6 +98,108 @@
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
         
+        /* Catalog Menu Button */
+        .catalog-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 980px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .catalog-btn:hover {
+            background: var(--primary-dark);
+        }
+        
+        /* Catalog Dropdown */
+        .catalog-dropdown {
+            position: fixed;
+            top: 52px;
+            left: 0;
+            right: 0;
+            background: rgba(251, 251, 253, 0.95);
+            backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            z-index: 9998;
+        }
+        
+        .catalog-dropdown.active {
+            max-height: 600px;
+        }
+        
+        .catalog-content {
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 30px 22px;
+        }
+        
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+        
+        .catalog-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        
+        .catalog-item:hover {
+            background: rgba(0,0,0,0.04);
+        }
+        
+        .catalog-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--bg-secondary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        
+        .catalog-text {
+            flex: 1;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .catalog-arrow {
+            color: var(--text-secondary);
+            font-size: 12px;
+        }
+        
+        @media (max-width: 768px) {
+            .catalog-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .catalog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
         /* Hero */
         .hero {
             padding: 160px 0 100px;
@@ -443,6 +545,10 @@
             <nav class="nav">
                 <a href="/" class="nav-logo">CCCNC</a>
                 <div class="nav-links">
+                    <button class="catalog-btn" id="catalogBtn">
+                        <span>☰</span>
+                        <span data-i18n="nav.catalog">目录</span>
+                    </button>
                     <a href="/" class="active" data-i18n="nav.home">首页</a>
                     <a href="/products/endmills.html" data-i18n="nav.endmills">铣刀</a>
                     <a href="/products/drills.html" data-i18n="nav.drills">钻头</a>
@@ -637,6 +743,98 @@
         </div>
     </footer>
 
+    <!-- Catalog Dropdown -->
+    <div class="catalog-dropdown" id="catalogDropdown">
+        <div class="catalog-content">
+            <div class="catalog-grid">
+                <a href="/products/inserts.html" class="catalog-item">
+                    <div class="catalog-icon">💎</div>
+                    <span class="catalog-text" data-i18n="cat.inserts.name">车刀片</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="/products/endmills.html" class="catalog-item">
+                    <div class="catalog-icon">🔧</div>
+                    <span class="catalog-text" data-i18n="cat.endmills.name">硬质合金铣刀</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="/products/drills.html" class="catalog-item">
+                    <div class="catalog-icon">🔩</div>
+                    <span class="catalog-text" data-i18n="cat.drills.name">硬质合金钻头</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="/products/reamers.html" class="catalog-item">
+                    <div class="catalog-icon">⚙️</div>
+                    <span class="catalog-text" data-i18n="cat.reamers.name">铰刀系列</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="/products/taps.html" class="catalog-item">
+                    <div class="catalog-icon">🌀</div>
+                    <span class="catalog-text" data-i18n="cat.taps.name">丝锥系列</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="#" class="catalog-item">
+                    <div class="catalog-icon">📏</div>
+                    <span class="catalog-text" data-i18n="catalog.measure">测量工具</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="#" class="catalog-item">
+                    <div class="catalog-icon">🛠️</div>
+                    <span class="catalog-text" data-i18n="catalog.tooling">刀柄刀杆</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="#" class="catalog-item">
+                    <div class="catalog-icon">⚡</div>
+                    <span class="catalog-text" data-i18n="catalog.accessories">机床附件</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="#" class="catalog-item">
+                    <div class="catalog-icon">🔬</div>
+                    <span class="catalog-text" data-i18n="catalog.inspection">检测仪器</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="#" class="catalog-item">
+                    <div class="catalog-icon">✂️</div>
+                    <span class="catalog-text" data-i18n="catalog.deburring">去毛刺工具</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="#" class="catalog-item">
+                    <div class="catalog-icon">🎯</div>
+                    <span class="catalog-text" data-i18n="catalog.center">中心钻定点钻</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="#" class="catalog-item">
+                    <div class="catalog-icon">🔩</div>
+                    <span class="catalog-text" data-i18n="catalog.die">板牙</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
     <script src="/js/i18n.js"></script>
+    <script>
+        // Catalog toggle functionality
+        const catalogBtn = document.getElementById('catalogBtn');
+        const catalogDropdown = document.getElementById('catalogDropdown');
+        
+        catalogBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            catalogDropdown.classList.toggle('active');
+        });
+        
+        // Close catalog when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!catalogDropdown.contains(e.target) && !catalogBtn.contains(e.target)) {
+                catalogDropdown.classList.remove('active');
+            }
+        });
+        
+        // Close catalog when clicking a link
+        document.querySelectorAll('.catalog-item').forEach(item => {
+            item.addEventListener('click', function() {
+                catalogDropdown.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
