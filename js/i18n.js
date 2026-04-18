@@ -788,12 +788,17 @@ function setLanguage(lang) {
 
 // Initialize
 document.addEventListener('DOMContentLoaded', function() {
-    setLanguage(currentLang);
+    console.log('i18n loaded, current lang:', currentLang);
     
     // Add click handlers to language buttons
     document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.addEventListener('click', function() {
-            setLanguage(this.getAttribute('data-lang'));
+            const lang = this.getAttribute('data-lang');
+            console.log('Switching to:', lang);
+            setLanguage(lang);
         });
     });
+    
+    // Apply initial language
+    setLanguage(currentLang);
 });
