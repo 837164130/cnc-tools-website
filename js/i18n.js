@@ -152,6 +152,14 @@ const i18n = {
         'page.endmills.ball.desc': '精密球头设计，3D曲面加工首选',
         'page.endmills.all': '全部铣刀产品',
         
+        // Product Names - Endmills
+        'product.em4f.name': '4刃平底铣刀 EM-4F',
+        'product.em4f.desc': '通用型4刃平底铣刀，适用于钢件、不锈钢的侧铣和槽铣加工',
+        'product.em2fal.name': '2刃铝用铣刀 EM-2F-AL',
+        'product.em2fal.desc': '专为铝合金设计的大排屑槽铣刀，高光效果，无毛刺',
+        'product.emball.name': '2刃球头铣刀 EM-BALL-2F',
+        'product.emball.desc': '精密球头设计，适用于3D曲面加工和模具精加工',
+        
         // Page specific - Drills
         'page.drills.title': '硬质合金钻头',
         'page.drills.desc': '全系列钻头，包括麻花钻、中心钻、深孔钻、内冷钻等',
@@ -379,6 +387,14 @@ const i18n = {
         'page.endmills.ball': 'Сферическая фреза',
         'page.endmills.ball.desc': 'Прецизионная сферическая фреза для 3D поверхностей',
         'page.endmills.all': 'Все фрезы',
+        
+        // Product Names - Endmills
+        'product.em4f.name': 'Концевая фреза 4 зуба EM-4F',
+        'product.em4f.desc': 'Универсальная фреза 4 зуба для боковой и канавочной обработки стали и нержавейки',
+        'product.em2fal.name': 'Фреза для алюминия 2 зуба EM-2F-AL',
+        'product.em2fal.desc': 'Фреза с большими канавками для алюминия, зеркальная поверхность без заусенцев',
+        'product.emball.name': 'Сферическая фреза 2 зуба EM-BALL-2F',
+        'product.emball.desc': 'Прецизионная сферическая фреза для 3D поверхностей и чистовой обработки пресс-форм',
         
         // Page specific - Drills
         'page.drills.title': 'Твердосплавные сверла',
