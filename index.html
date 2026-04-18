@@ -813,23 +813,31 @@
 
     <script src="/js/i18n.js"></script>
     <script>
-        // Catalog toggle functionality
+        // Catalog hover functionality
         const catalogBtn = document.getElementById('catalogBtn');
         const catalogDropdown = document.getElementById('catalogDropdown');
+        let hoverTimeout;
         
-        catalogBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            catalogDropdown.classList.toggle('active');
-        });
+        function showCatalog() {
+            clearTimeout(hoverTimeout);
+            catalogDropdown.classList.add('active');
+        }
         
-        // Close catalog when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!catalogDropdown.contains(e.target) && !catalogBtn.contains(e.target)) {
+        function hideCatalog() {
+            hoverTimeout = setTimeout(() => {
                 catalogDropdown.classList.remove('active');
-            }
-        });
+            }, 200);
+        }
         
-        // Close catalog when clicking a link
+        // Show on button hover
+        catalogBtn.addEventListener('mouseenter', showCatalog);
+        catalogBtn.addEventListener('mouseleave', hideCatalog);
+        
+        // Keep open when hovering dropdown
+        catalogDropdown.addEventListener('mouseenter', showCatalog);
+        catalogDropdown.addEventListener('mouseleave', hideCatalog);
+        
+        // Close when clicking a link
         document.querySelectorAll('.catalog-item').forEach(item => {
             item.addEventListener('click', function() {
                 catalogDropdown.classList.remove('active');

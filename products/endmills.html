@@ -705,6 +705,74 @@
         </div>
     </footer>
 
+    <!-- Catalog Dropdown -->
+    <div class="catalog-dropdown" id="catalogDropdown">
+        <div class="catalog-content">
+            <div class="catalog-grid">
+                <a href="/products/inserts.html" class="catalog-item">
+                    <div class="catalog-icon">💎</div>
+                    <span class="catalog-text" data-i18n="cat.inserts.name">车刀片</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="/products/endmills.html" class="catalog-item">
+                    <div class="catalog-icon">🔧</div>
+                    <span class="catalog-text" data-i18n="cat.endmills.name">硬质合金铣刀</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="/products/drills.html" class="catalog-item">
+                    <div class="catalog-icon">🔩</div>
+                    <span class="catalog-text" data-i18n="cat.drills.name">硬质合金钻头</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="/products/reamers.html" class="catalog-item">
+                    <div class="catalog-icon">⚙️</div>
+                    <span class="catalog-text" data-i18n="cat.reamers.name">铰刀系列</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="/products/taps.html" class="catalog-item">
+                    <div class="catalog-icon">🌀</div>
+                    <span class="catalog-text" data-i18n="cat.taps.name">丝锥系列</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="#" class="catalog-item">
+                    <div class="catalog-icon">📏</div>
+                    <span class="catalog-text" data-i18n="catalog.measure">测量工具</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="#" class="catalog-item">
+                    <div class="catalog-icon">🛠️</div>
+                    <span class="catalog-text" data-i18n="catalog.tooling">刀柄刀杆</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="#" class="catalog-item">
+                    <div class="catalog-icon">⚡</div>
+                    <span class="catalog-text" data-i18n="catalog.accessories">机床附件</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="#" class="catalog-item">
+                    <div class="catalog-icon">🔬</div>
+                    <span class="catalog-text" data-i18n="catalog.inspection">检测仪器</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="#" class="catalog-item">
+                    <div class="catalog-icon">✂️</div>
+                    <span class="catalog-text" data-i18n="catalog.deburring">去毛刺工具</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="#" class="catalog-item">
+                    <div class="catalog-icon">🎯</div>
+                    <span class="catalog-text" data-i18n="catalog.center">中心钻定点钻</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="#" class="catalog-item">
+                    <div class="catalog-icon">🔩</div>
+                    <span class="catalog-text" data-i18n="catalog.die">板牙</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
     <script src="/js/i18n.js"></script>
     <script>
         // Category filter functionality
@@ -714,7 +782,7 @@
                 
                 // Update active button
                 document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');;
+                this.classList.add('active');
                 
                 // Show/hide sections
                 document.querySelectorAll('.section[data-category]').forEach(section => {
@@ -724,6 +792,37 @@
                         section.style.display = 'none';
                     }
                 });
+            });
+        });
+        
+        // Catalog hover functionality
+        const catalogBtn = document.getElementById('catalogBtn');
+        const catalogDropdown = document.getElementById('catalogDropdown');
+        let hoverTimeout;
+        
+        function showCatalog() {
+            clearTimeout(hoverTimeout);
+            catalogDropdown.classList.add('active');
+        }
+        
+        function hideCatalog() {
+            hoverTimeout = setTimeout(() => {
+                catalogDropdown.classList.remove('active');
+            }, 200);
+        }
+        
+        // Show on button hover
+        catalogBtn.addEventListener('mouseenter', showCatalog);
+        catalogBtn.addEventListener('mouseleave', hideCatalog);
+        
+        // Keep open when hovering dropdown
+        catalogDropdown.addEventListener('mouseenter', showCatalog);
+        catalogDropdown.addEventListener('mouseleave', hideCatalog);
+        
+        // Close when clicking a link
+        document.querySelectorAll('.catalog-item').forEach(item => {
+            item.addEventListener('click', function() {
+                catalogDropdown.classList.remove('active');
             });
         });
     </script>
