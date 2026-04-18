@@ -1,0 +1,5 @@
+# Yandex Cloud Static Website Configuration
+bucket: cccnc-website
+region: ru-central1
+index_document: index.html
+error_document: 404.html

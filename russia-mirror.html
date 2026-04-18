@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCCNC - Зеркала для доступа из России</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            text-align: center;
+        }
+        .logo {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #0071e3, #00d4aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #86868b;
+            margin-bottom: 40px;
+        }
+        .mirror-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .mirror-item {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 24px;
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .mirror-item:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+        .mirror-item.primary {
+            border-color: #0071e3;
+            background: rgba(0,113,227,0.1);
+        }
+        .mirror-info {
+            text-align: left;
+        }
+        .mirror-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .mirror-url {
+            font-size: 14px;
+            color: #0071e3;
+        }
+        .mirror-status {
+            font-size: 12px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            background: #22c55e;
+            color: #000;
+            font-weight: 600;
+        }
+        .mirror-status.working {
+            background: #22c55e;
+        }
+        .footer {
+            margin-top: 40px;
+            color: #86868b;
+            font-size: 14px;
+        }
+        .lang-switch {
+            margin-top: 20px;
+        }
+        .lang-switch a {
+            color: #0071e3;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">CCCNC</div>
+        <h1>Доступ к сайту из России</h1>
+        <p class="subtitle">Выберите рабочее зеркало / 选择可用镜像</p>
+        
+        <div class="mirror-list">
+            <a href="https://837164130.github.io/cnc-tools-website/" class="mirror-item primary">
+                <div class="mirror-info">
+                    <div class="mirror-name">🇷🇺 GitHub Pages (Рекомендуется)</div>
+                    <div class="mirror-url">837164130.github.io/cnc-tools-website</div>
+                </div>
+                <span class="mirror-status working">Работает</span>
+            </a>
+            
+            <a href="https://cnc-tools-website.vercel.app/" class="mirror-item">
+                <div class="mirror-info">
+                    <div class="mirror-name">🌍 Vercel (Global)</div>
+                    <div class="mirror-url">cnc-tools-website.vercel.app</div>
+                </div>
+                <span class="mirror-status working">Проверить</span>
+            </a>
+            
+            <a href="https://cccnc.netlify.app/" class="mirror-item">
+                <div class="mirror-info">
+                    <div class="mirror-name">🌐 Netlify Mirror</div>
+                    <div class="mirror-url">cccnc.netlify.app</div>
+                </div>
+                <span class="mirror-status working">Проверить</span>
+            </a>
+            
+            <a href="https://cccnc.surge.sh/" class="mirror-item">
+                <div class="mirror-info">
+                    <div class="mirror-name">⚡ Surge.sh Mirror</div>
+                    <div class="mirror-url">cccnc.surge.sh</div>
+                </div>
+                <span class="mirror-status working">Проверить</span>
+            </a>
+        </div>
+        
+        <div class="lang-switch">
+            <a href="https://837164130.github.io/cnc-tools-website/">中文</a>
+            <a href="https://837164130.github.io/cnc-tools-website/?lang=ru">Русский</a>
+        </div>
+        
+        <div class="footer">
+            <p>Если все зеркала недоступны, напишите нам:</p>
+            <p>support@cccnc.com | WhatsApp: +86 138-XXXX-XXXX</p>
+        </div>
+    </div>
+    
+    <script>
+        // Auto-redirect to working mirror
+        const mirrors = [
+            'https://837164130.github.io/cnc-tools-website/',
+            'https://cnc-tools-website.vercel.app/',
+            'https://cccnc.netlify.app/'
+        ];
+        
+        // Check if current domain is blocked
+        if (window.location.hostname.includes('cccnc.ru')) {
+            // Offer redirect
+            if (confirm('Домен cccnc.ru может быть недоступен в России. Перейти на рабочее зеркало?')) {
+                window.location.href = mirrors[0];
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+name: Deploy to Russian-Friendly Hosts
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    # Deploy to GitHub Pages (always accessible)
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./
+    
+    # Deploy to Surge.sh (Russia-friendly CDN)
+    - name: Deploy to Surge
+      run: |
+        npm install -g surge
+        surge ./ cccnc-russia.surge.sh --token ${{ secrets.SURGE_TOKEN }}
+      continue-on-error: true
+    
+    # Deploy to Netlify (alternative)
+    - name: Deploy to Netlify
+      uses: nwtgck/actions-netlify@v2.0
+      with:
+        publish-dir: './'
+        production-branch: main
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        deploy-message: "Deploy from GitHub Actions"
+      env:
+        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+      continue-on-error: true
