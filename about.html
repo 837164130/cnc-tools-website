@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我们 - CCCNC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #0071e3;
+            --primary-dark: #0077ed;
+            --text: #1d1d1f;
+            --text-secondary: #86868b;
+            --bg: #ffffff;
+            --bg-secondary: #f5f5f7;
+            --bg-dark: #000000;
+            --border: #d2d2d7;
+        }
+        
+        body { 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; 
+            color: var(--text); 
+            line-height: 1.47059;
+            font-weight: 400;
+            letter-spacing: -0.022em;
+            background: var(--bg);
+        }
+        
+        .container { max-width: 1024px; margin: 0 auto; padding: 0 22px; }
+        
+        /* Navigation */
+        .nav-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            background: rgba(251, 251, 253, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .nav {
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .nav-logo {
+            font-size: 21px;
+            font-weight: 700;
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 36px;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            font-size: 12px;
+            color: var(--text);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .nav-links a:hover { opacity: 1; }
+        .nav-links a.active { opacity: 1; font-weight: 500; }
+        
+        .lang-switcher {
+            display: flex;
+            gap: 4px;
+            background: rgba(0,0,0,0.05);
+            padding: 3px;
+            border-radius: 12px;
+        }
+        
+        .lang-btn {
+            padding: 4px 10px;
+            border: none;
+            background: transparent;
+            color: var(--text);
+            font-size: 11px;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 9px;
+            transition: all 0.3s;
+        }
+        
+        .lang-btn.active {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .catalog-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 980px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .catalog-btn:hover { background: var(--primary-dark); }
+        
+        .catalog-dropdown {
+            position: fixed;
+            top: 52px;
+            left: 0;
+            right: 0;
+            background: rgba(251, 251, 253, 0.95);
+            backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            z-index: 9998;
+        }
+        
+        .catalog-dropdown.active { max-height: 600px; }
+        
+        .catalog-content {
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 30px 22px;
+        }
+        
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+        
+        .catalog-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        
+        .catalog-item:hover { background: rgba(0,0,0,0.04); }
+        
+        .catalog-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--bg-secondary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        
+        .catalog-text {
+            flex: 1;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .catalog-arrow {
+            color: var(--text-secondary);
+            font-size: 12px;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            padding: 140px 0 80px;
+            background: var(--bg);
+            text-align: center;
+        }
+        
+        .hero-eyebrow {
+            font-size: 17px;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: block;
+        }
+        
+        .hero-title {
+            font-size: 64px;
+            font-weight: 700;
+            line-height: 1.0625;
+            letter-spacing: -0.021em;
+            margin-bottom: 20px;
+        }
+        
+        .hero-desc {
+            font-size: 21px;
+            line-height: 1.381;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Story Section */
+        .story-section {
+            padding: 80px 0;
+            background: var(--bg-secondary);
+        }
+        
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .story-content h2 {
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            line-height: 1.1;
+        }
+        
+        .story-content p {
+            font-size: 17px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+        
+        .story-image {
+            background: linear-gradient(135deg, #e8e8ed 0%, #d2d2d7 100%);
+            border-radius: 24px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 120px;
+        }
+        
+        /* Stats Section */
+        .stats-section {
+            padding: 80px 0;
+            background: var(--bg);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 40px 20px;
+            background: var(--bg-secondary);
+            border-radius: 20px;
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+        
+        .stat-label {
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+        
+        /* Values Section */
+        .values-section {
+            padding: 80px 0;
+            background: var(--bg-secondary);
+        }
+        
+        .section-title {
+            font-size: 40px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .value-card {
+            background: var(--bg);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .value-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .value-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .value-desc {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        
+        /* Timeline Section */
+        .timeline-section {
+            padding: 80px 0;
+            background: var(--bg);
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--border);
+        }
+        
+        .timeline-item {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 50%;
+            position: relative;
+            margin-bottom: 50px;
+        }
+        
+        .timeline-item:nth-child(even) {
+            justify-content: flex-start;
+            padding-right: 0;
+            padding-left: 50%;
+        }
+        
+        .timeline-content {
+            background: var(--bg-secondary);
+            padding: 24px 30px;
+            border-radius: 16px;
+            max-width: 350px;
+            position: relative;
+        }
+        
+        .timeline-year {
+            font-size: 14px;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .timeline-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .timeline-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: var(--primary);
+            border-radius: 50%;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 4px solid var(--bg);
+        }
+        
+        /* Team Section */
+        .team-section {
+            padding: 80px 0;
+            background: var(--bg-secondary);
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        
+        .team-member {
+            text-align: center;
+        }
+        
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+        }
+        
+        .team-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .team-role {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        /* Certifications */
+        .cert-section {
+            padding: 80px 0;
+            background: var(--bg);
+        }
+        
+        .cert-grid {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+        
+        .cert-item {
+            text-align: center;
+            padding: 30px;
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            min-width: 180px;
+        }
+        
+        .cert-icon {
+            font-size: 48px;
+            margin-bottom: 12px;
+        }
+        
+        .cert-name {
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--bg-secondary);
+            padding: 40px 0 20px;
+            border-top: 1px solid var(--border);
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .footer-links a {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+        
+        .footer-bottom {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title { font-size: 40px; }
+            .story-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .values-grid { grid-template-columns: 1fr; }
+            .team-grid { grid-template-columns: repeat(2, 1fr); }
+            .catalog-grid { grid-template-columns: repeat(2, 1fr); }
+            .nav-links { display: none; }
+            .timeline::before { left: 20px; }
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                padding-left: 50px;
+                padding-right: 0;
+                justify-content: flex-start;
+            }
+            .timeline-dot { left: 20px; transform: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-wrapper">
+        <div class="container">
+            <nav class="nav">
+                <a href="/" class="nav-logo">CCCNC</a>
+                <div class="nav-links">
+                    <button class="catalog-btn" id="catalogBtn">
+                        <span>☰</span>
+                        <span>目录</span>
+                    </button>
+                    <a href="/">首页</a>
+                    <a href="/products/endmills.html">铣刀</a>
+                    <a href="/products/drills.html">钻头</a>
+                    <a href="/products/taps.html">丝锥</a>
+                    <a href="/products/reamers.html">铰刀</a>
+                    <a href="/products/inserts.html">刀片</a>
+                    <a href="/calculator.html">计算器</a>
+                    <a href="/about.html" class="active">关于</a>
+                    <a href="/contact.html">联系</a>
+                    <div class="lang-switcher">
+                        <button class="lang-btn active" data-lang="zh">中</button>
+                        <button class="lang-btn" data-lang="ru">RU</button>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <section class="hero-section">
+        <div class="container">
+            <span class="hero-eyebrow">About CCCNC</span>
+            <h1 class="hero-title">关于我们</h1>
+            <p class="hero-desc">专注于高端数控刀具研发与制造，为全球制造业提供卓越的切削解决方案</p>
+        </div>
+    </section>
+
+    <section class="story-section">
+        <div class="container">
+            <div class="story-grid">
+                <div class="story-content">
+                    <h2>我们的故事</h2>
+                    <p>CCCNC成立于2008年，总部位于中国江苏省常州市——中国著名的工具产业聚集地。十余年来，我们始终专注于硬质合金刀具的研发与制造，从一家小型工厂发展成为拥有现代化生产基地的行业领先企业。</p>
+                    <p>我们深知，在精密制造领域，每一微米的精度都至关重要。因此，我们引进了世界先进的数控磨削设备和检测设备，建立了完善的质量管理体系，确保每一件产品都达到国际一流水准。</p>
+                    <p>今天，CCCNC的产品已远销全球30多个国家和地区，服务于航空航天、汽车制造、医疗器械、模具加工等众多高端制造领域。我们将继续秉承"精益求精，追求卓越"的理念，为客户创造更大价值。</p>
+                </div>
+                <div class="story-image">
+                    🏭
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">年行业经验</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">70+</div>
+                    <div class="stat-label">产品系列</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">30+</div>
+                    <div class="stat-label">服务国家</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">5000+</div>
+                    <div class="stat-label">满意客户</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="values-section">
+        <div class="container">
+            <h2 class="section-title">我们的价值观</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">⚡</div>
+                    <h3 class="value-title">品质卓越</h3>
+                    <p class="value-desc">采用进口原材料和先进制造工艺，确保每一件产品都达到最高品质标准</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🔬</div>
+                    <h3 class="value-title">技术创新</h3>
+                    <p class="value-desc">持续投入研发，不断优化刀具几何设计和涂层技术，提升加工效率</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🤝</div>
+                    <h3 class="value-title">客户至上</h3>
+                    <p class="value-desc">提供专业的技术支持和定制化服务，与客户共同成长</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="timeline-section">
+        <div class="container">
+            <h2 class="section-title">发展历程</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2008</div>
+                        <h3 class="timeline-title">公司成立</h3>
+                        <p class="timeline-desc">在常州成立，开始硬质合金刀具的生产制造</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2012</div>
+                        <h3 class="timeline-title">产能扩张</h3>
+                        <p class="timeline-desc">新建现代化厂房，引进德国数控磨削设备</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2016</div>
+                        <h3 class="timeline-title">国际认证</h3>
+                        <p class="timeline-desc">通过ISO9001质量管理体系认证，产品出口欧洲市场</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2020</div>
+                        <h3 class="timeline-title">技术突破</h3>
+                        <p class="timeline-desc">成功研发高硬度材料加工专用刀具系列</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2024</div>
+                        <h3 class="timeline-title">全球布局</h3>
+                        <p class="timeline-desc">建立海外仓储中心，服务网络覆盖全球30+国家</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="team-section">
+        <div class="container">
+            <h2 class="section-title">核心团队</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-avatar">👨‍💼</div>
+                    <h3 class="team-name">张总</h3>
+                    <p class="team-role">创始人 & CEO</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-avatar">👨‍🔬</div>
+                    <h3 class="team-name">李工</h3>
+                    <p class="team-role">技术总监</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-avatar">👩‍💼</div>
+                    <h3 class="team-name">王经理</h3>
+                    <p class="team-role">销售总监</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-avatar">👨‍🏭</div>
+                    <h3 class="team-name">陈主管</h3>
+                    <p class="team-role">生产总监</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cert-section">
+        <div class="container">
+            <h2 class="section-title">资质认证</h2>
+            <div class="cert-grid">
+                <div class="cert-item">
+                    <div class="cert-icon">📜</div>
+                    <p class="cert-name">ISO 9001:2015</p>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-icon">🏆</div>
+                    <p class="cert-name">高新技术企业</p>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-icon">🌟</div>
+                    <p class="cert-name">CE认证</p>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-icon">✅</div>
+                    <p class="cert-name">RoHS认证</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <a href="/" class="nav-logo">CCCNC</a>
+                <div class="footer-links">
+                    <a href="/products/endmills.html">铣刀</a>
+                    <a href="/products/drills.html">钻头</a>
+                    <a href="/products/taps.html">丝锥</a>
+                    <a href="/contact.html">联系</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                © 2025 CCCNC. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Catalog Dropdown -->
+    <div class="catalog-dropdown" id="catalogDropdown">
+        <div class="catalog-content">
+            <div class="catalog-grid">
+                <a href="/products/inserts.html" class="catalog-item">
+                    <div class="catalog-icon">💎</div>
+                    <span class="catalog-text">车刀片</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="/products/endmills.html" class="catalog-item">
+                    <div class="catalog-icon">🔧</div>
+                    <span class="catalog-text">硬质合金铣刀</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="/products/drills.html" class="catalog-item">
+                    <div class="catalog-icon">🔩</div>
+                    <span class="catalog-text">硬质合金钻头</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="/products/reamers.html" class="catalog-item">
+                    <div class="catalog-icon">⚙️</div>
+                    <span class="catalog-text">铰刀系列</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+                <a href="/products/taps.html" class="catalog-item">
+                    <div class="catalog-icon">🌀</div>
+                    <span class="catalog-text">丝锥系列</span>
+                    <span class="catalog-arrow">→</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/i18n.js"></script>
+    <script>
+        // Catalog hover functionality
+        const catalogBtn = document.getElementById('catalogBtn');
+        const catalogDropdown = document.getElementById('catalogDropdown');
+        let hoverTimeout;
+        
+        function showCatalog() {
+            clearTimeout(hoverTimeout);
+            catalogDropdown.classList.add('active');
+        }
+        
+        function hideCatalog() {
+            hoverTimeout = setTimeout(() => {
+                catalogDropdown.classList.remove('active');
+            }, 200);
+        }
+        
+        catalogBtn.addEventListener('mouseenter', showCatalog);
+        catalogBtn.addEventListener('mouseleave', hideCatalog);
+        catalogDropdown.addEventListener('mouseenter', showCatalog);
+        catalogDropdown.addEventListener('mouseleave', hideCatalog);
+    </script>
+</body>
+</html>
