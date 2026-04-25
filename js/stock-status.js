@@ -1,50 +1,65 @@
-// Stock Status Display
+// Product Stock Status
 class StockStatus {
   constructor() {
     this.init();
   }
 
   init() {
-    document.querySelectorAll('[data-stock]').forEach(el => {
-      this.displayStock(el);
-    });
+    this.displayStockStatus();
   }
 
-  displayStock(element) {
-    const stock = parseInt(element.dataset.stock) || 0;
-    const status = this.getStatus(stock);
+  displayStockStatus() {
+    const container = document.querySelector('[data-stock]');
+    if (!container) return;
 
-    element.innerHTML = `
-      <div style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: ${status.bg}; border-radius: 20px; font-size: 14px; font-weight: 600; color: ${status.color};">
-        <span style="width: 8px; height: 8px; border-radius: 50%; background: ${status.color}; animation: ${stock > 0 ? 'pulse 2s infinite' : 'none'};"></span>
-        <span>${status.text}</span>
-        ${stock > 0 ? `<span style="opacity: 0.7;">(${stock}件)</span>` : ''}
+    const stock = JSON.parse(container.dataset.stock || '{}');
+
+    const statusConfig = {
+      'in-stock': { color: '#34c759', text: '现货', icon: '✓' },
+      'low-stock': { color: '#ff9500', text: '库存紧张', icon: '!' },
+      'out-of-stock': { color: '#ff3b30', text: '暂时缺货', icon: '✕' },
+      'pre-order': { color: '#0071e3', text: '可预订', icon: '◷' }
+    };
+
+    const config = statusConfig[stock.status] || statusConfig['in-stock'];
+
+    container.innerHTML = `
+      <div style="
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        background: ${config.color}15;
+        border-radius: 20px;
+        border: 1px solid ${config.color}30;
+      ">
+        <span style="
+          width: 8px;
+          height: 8px;
+          background: ${config.color};
+          border-radius: 50%;
+          display: inline-block;
+          ${stock.status === 'in-stock' ? 'animation: pulse 2s infinite;' : ''}
+        "></span>
+        <span style="color: ${config.color}; font-weight: 600; font-size: 14px;">${config.text}</span>
+        ${stock.quantity ? `<span style="color: var(--text-secondary); font-size: 14px;">(${stock.quantity} 件)</span>` : ''}
       </div>
     `;
-  }
 
-  getStatus(stock) {
-    if (stock === 0) {
-      return { text: '暂时缺货', color: '#ff3b30', bg: 'rgba(255, 59, 48, 0.1)' };
-    } else if (stock < 10) {
-      return { text: '库存紧张', color: '#ff9500', bg: 'rgba(255, 149, 0, 0.1)' };
-    } else if (stock < 50) {
-      return { text: '现货供应', color: '#34c759', bg: 'rgba(52, 199, 89, 0.1)' };
-    } else {
-      return { text: '充足库存', color: '#0071e3', bg: 'rgba(0, 113, 227, 0.1)' };
+    // Add pulse animation
+    if (!document.querySelector('#stock-pulse-style')) {
+      const style = document.createElement('style');
+      style.id = 'stock-pulse-style';
+      style.textContent = `
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.5; }
+        }
+      `;
+      document.head.appendChild(style);
     }
   }
 }
-
-// Add pulse animation
-const style = document.createElement('style');
-style.textContent = `
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
-  }
-`;
-document.head.appendChild(style);
 
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
