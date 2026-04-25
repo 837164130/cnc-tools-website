@@ -1,6 +1,7 @@
 {
   "version": 2,
   "name": "cnc-tools-website",
+  "outputDirectory": ".",
   "rewrites": [
     { "source": "/(.*)", "destination": "/$1" }
   ],
