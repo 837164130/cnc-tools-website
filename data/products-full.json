@@ -85,6 +85,329 @@
           ]
         }
       ]
+    },
+    {
+      "id": "drills",
+      "name": "硬质合金钻头",
+      "nameEn": "Carbide Drills",
+      "icon": "🔩",
+      "heroImage": "drill-hero",
+      "description": "高精度硬质合金钻头，麻花钻、中心钻、深孔钻、内冷钻。3D/5D/8D倍径可选，适用于各种材料的钻孔加工。",
+      "features": ["3D/5D/8D倍径", "内冷/外冷可选", "HRC45-55材料加工", "精度等级h7"],
+      "subcategories": [
+        {
+          "id": "twist-drills",
+          "name": "麻花钻",
+          "nameEn": "Twist Drills",
+          "description": "标准麻花钻，通用钻孔加工，3D/5D/8D倍径可选",
+          "specs": {"diameterRange": "1-20mm", "ratio": "3D/5D/8D", "material": "K40", "coating": "TiAlN"},
+          "products": [
+            {"model": "TD-3D-3", "diameter": "3mm", "ratio": "3D", "length": "40mm", "overallLength": "60mm", "shankDiameter": "3mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC45", "price": "¥38", "priceUSD": "$5.5", "application": "通用钻孔", "stock": "现货"},
+            {"model": "TD-3D-4", "diameter": "4mm", "ratio": "3D", "length": "45mm", "overallLength": "70mm", "shankDiameter": "4mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC45", "price": "¥42", "priceUSD": "$6", "application": "通用钻孔", "stock": "现货"},
+            {"model": "TD-3D-5", "diameter": "5mm", "ratio": "3D", "length": "55mm", "overallLength": "80mm", "shankDiameter": "5mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC45", "price": "¥48", "priceUSD": "$6.9", "application": "通用钻孔", "stock": "现货"},
+            {"model": "TD-3D-6", "diameter": "6mm", "ratio": "3D", "length": "65mm", "overallLength": "90mm", "shankDiameter": "6mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC45", "price": "¥55", "priceUSD": "$7.9", "application": "通用钻孔", "stock": "现货"},
+            {"model": "TD-3D-8", "diameter": "8mm", "ratio": "3D", "length": "80mm", "overallLength": "110mm", "shankDiameter": "8mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC45", "price": "¥72", "priceUSD": "$10.3", "application": "通用钻孔", "stock": "现货"},
+            {"model": "TD-3D-10", "diameter": "10mm", "ratio": "3D", "length": "95mm", "overallLength": "130mm", "shankDiameter": "10mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC45", "price": "¥88", "priceUSD": "$12.6", "application": "通用钻孔", "stock": "现货"},
+            {"model": "TD-3D-12", "diameter": "12mm", "ratio": "3D", "length": "110mm", "overallLength": "150mm", "shankDiameter": "12mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC45", "price": "¥105", "priceUSD": "$15", "application": "通用钻孔", "stock": "现货"},
+            {"model": "TD-5D-6", "diameter": "6mm", "ratio": "5D", "length": "85mm", "overallLength": "110mm", "shankDiameter": "6mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC45", "price": "¥68", "priceUSD": "$9.8", "application": "深孔加工", "stock": "现货"},
+            {"model": "TD-5D-8", "diameter": "8mm", "ratio": "5D", "length": "105mm", "overallLength": "135mm", "shankDiameter": "8mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC45", "price": "¥88", "priceUSD": "$12.6", "application": "深孔加工", "stock": "现货"},
+            {"model": "TD-5D-10", "diameter": "10mm", "ratio": "5D", "length": "125mm", "overallLength": "160mm", "shankDiameter": "10mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC45", "price": "¥108", "priceUSD": "$15.5", "application": "深孔加工", "stock": "现货"},
+            {"model": "TD-5D-12", "diameter": "12mm", "ratio": "5D", "length": "145mm", "overallLength": "185mm", "shankDiameter": "12mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC45", "price": "¥128", "priceUSD": "$18.4", "application": "深孔加工", "stock": "现货"},
+            {"model": "TD-8D-8", "diameter": "8mm", "ratio": "8D", "length": "140mm", "overallLength": "175mm", "shankDiameter": "8mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC45", "price": "¥105", "priceUSD": "$15", "application": "超深孔加工", "stock": "现货"},
+            {"model": "TD-8D-10", "diameter": "10mm", "ratio": "8D", "length": "165mm", "overallLength": "205mm", "shankDiameter": "10mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC45", "price": "¥130", "priceUSD": "$18.6", "application": "超深孔加工", "stock": "现货"},
+            {"model": "TD-8D-12", "diameter": "12mm", "ratio": "8D", "length": "190mm", "overallLength": "235mm", "shankDiameter": "12mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC45", "price": "¥155", "priceUSD": "$22.2", "application": "超深孔加工", "stock": "现货"}
+          ]
+        },
+        {
+          "id": "center-drills",
+          "name": "中心钻",
+          "nameEn": "Center Drills",
+          "description": "中心钻，A型/B型可选，用于定位孔加工",
+          "specs": {"diameterRange": "1-6mm", "type": "A型/B型", "angle": "60°", "material": "K40"},
+          "products": [
+            {"model": "CD-A1", "type": "A型", "diameter": "1mm", "angle": "60°", "length": "20mm", "overallLength": "35mm", "shankDiameter": "3mm", "material": "K40", "coating": "无", "hardness": "HRC45", "price": "¥25", "priceUSD": "$3.6", "application": "中心定位", "stock": "现货"},
+            {"model": "CD-A2", "type": "A型", "diameter": "2mm", "angle": "60°", "length": "25mm", "overallLength": "40mm", "shankDiameter": "4mm", "material": "K40", "coating": "无", "hardness": "HRC45", "price": "¥28", "priceUSD": "$4", "application": "中心定位", "stock": "现货"},
+            {"model": "CD-A3", "type": "A型", "diameter": "3mm", "angle": "60°", "length": "30mm", "overallLength": "45mm", "shankDiameter": "5mm", "material": "K40", "coating": "无", "hardness": "HRC45", "price": "¥32", "priceUSD": "$4.6", "application": "中心定位", "stock": "现货"},
+            {"model": "CD-A4", "type": "A型", "diameter": "4mm", "angle": "60°", "length": "35mm", "overallLength": "50mm", "shankDiameter": "6mm", "material": "K40", "coating": "无", "hardness": "HRC45", "price": "¥38", "priceUSD": "$5.5", "application": "中心定位", "stock": "现货"},
+            {"model": "CD-A5", "type": "A型", "diameter": "5mm", "angle": "60°", "length": "40mm", "overallLength": "55mm", "shankDiameter": "8mm", "material": "K40", "coating": "无", "hardness": "HRC45", "price": "¥45", "priceUSD": "$6.5", "application": "中心定位", "stock": "现货"},
+            {"model": "CD-B2", "type": "B型", "diameter": "2mm", "angle": "60°", "length": "25mm", "overallLength": "40mm", "shankDiameter": "4mm", "material": "K40", "coating": "无", "hardness": "HRC45", "price": "¥30", "priceUSD": "$4.3", "application": "带护锥中心孔", "stock": "现货"},
+            {"model": "CD-B3", "type": "B型", "diameter": "3mm", "angle": "60°", "length": "30mm", "overallLength": "45mm", "shankDiameter": "5mm", "material": "K40", "coating": "无", "hardness": "HRC45", "price": "¥35", "priceUSD": "$5", "application": "带护锥中心孔", "stock": "现货"},
+            {"model": "CD-B4", "type": "B型", "diameter": "4mm", "angle": "60°", "length": "35mm", "overallLength": "50mm", "shankDiameter": "6mm", "material": "K40", "coating": "无", "hardness": "HRC45", "price": "¥42", "priceUSD": "$6", "application": "带护锥中心孔", "stock": "现货"}
+          ]
+        },
+        {
+          "id": "internal-coolant",
+          "name": "内冷钻",
+          "nameEn": "Internal Coolant Drills",
+          "description": "内冷钻头，中心出水设计，高效排屑，适用于深孔加工",
+          "specs": {"diameterRange": "3-20mm", "ratio": "5D/8D", "coolant": "中心出水", "material": "K40", "coating": "TiAlN"},
+          "products": [
+            {"model": "ICD-5D-6", "diameter": "6mm", "ratio": "5D", "length": "85mm", "overallLength": "110mm", "coolant": "中心出水", "shankDiameter": "6mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC50", "price": "¥95", "priceUSD": "$13.6", "application": "高效深孔加工", "stock": "现货"},
+            {"model": "ICD-5D-8", "diameter": "8mm", "ratio": "5D", "length": "105mm", "overallLength": "135mm", "coolant": "中心出水", "shankDiameter": "8mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC50", "price": "¥125", "priceUSD": "$17.9", "application": "高效深孔加工", "stock": "现货"},
+            {"model": "ICD-5D-10", "diameter": "10mm", "ratio": "5D", "length": "125mm", "overallLength": "160mm", "coolant": "中心出水", "shankDiameter": "10mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC50", "price": "¥155", "priceUSD": "$22.2", "application": "高效深孔加工", "stock": "现货"},
+            {"model": "ICD-5D-12", "diameter": "12mm", "ratio": "5D", "length": "145mm", "overallLength": "185mm", "coolant": "中心出水", "shankDiameter": "12mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC50", "price": "¥185", "priceUSD": "$26.5", "application": "高效深孔加工", "stock": "现货"},
+            {"model": "ICD-5D-16", "diameter": "16mm", "ratio": "5D", "length": "185mm", "overallLength": "230mm", "coolant": "中心出水", "shankDiameter": "16mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC50", "price": "¥265", "priceUSD": "$38", "application": "高效深孔加工", "stock": "现货"},
+            {"model": "ICD-8D-8", "diameter": "8mm", "ratio": "8D", "length": "140mm", "overallLength": "175mm", "coolant": "中心出水", "shankDiameter": "8mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC50", "price": "¥145", "priceUSD": "$20.8", "application": "超深孔高效加工", "stock": "现货"},
+            {"model": "ICD-8D-10", "diameter": "10mm", "ratio": "8D", "length": "165mm", "overallLength": "205mm", "coolant": "中心出水", "shankDiameter": "10mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC50", "price": "¥180", "priceUSD": "$25.8", "application": "超深孔高效加工", "stock": "现货"},
+            {"model": "ICD-8D-12", "diameter": "12mm", "ratio": "8D", "length": "190mm", "overallLength": "235mm", "coolant": "中心出水", "shankDiameter": "12mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC50", "price": "¥220", "priceUSD": "$31.5", "application": "超深孔高效加工", "stock": "现货"},
+            {"model": "ICD-8D-16", "diameter": "16mm", "ratio": "8D", "length": "240mm", "overallLength": "290mm", "coolant": "中心出水", "shankDiameter": "16mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC50", "price": "¥315", "priceUSD": "$45", "application": "超深孔高效加工", "stock": "现货"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "taps",
+      "name": "丝锥系列",
+      "nameEn": "Taps",
+      "icon": "🌀",
+      "heroImage": "tap-hero",
+      "description": "机用丝锥、挤压丝锥、螺纹铣刀。M系列、UN系列公制英制齐全，适用于各种材料的螺纹加工。",
+      "features": ["M系列公制", "UN系列英制", "机用/挤压/螺旋槽", "H2/H3精度等级"],
+      "subcategories": [
+        {
+          "id": "machine-taps",
+          "name": "机用丝锥",
+          "nameEn": "Machine Taps",
+          "description": "标准机用丝锥，直槽/螺旋槽设计，适用于通孔和盲孔",
+          "specs": {"sizeRange": "M3-M24", "type": "直槽/螺旋槽", "material": "HSS-E", "coating": "TiN/TiAlN"},
+          "products": [
+            {"model": "MT-S-M3", "size": "M3", "pitch": "0.5", "type": "直槽", "length": "48mm", "material": "HSS-E", "coating": "TiN", "price": "¥28", "priceUSD": "$4", "application": "通孔螺纹", "stock": "现货"},
+            {"model": "MT-S-M4", "size": "M4", "pitch": "0.7", "type": "直槽", "length": "53mm", "material": "HSS-E", "coating": "TiN", "price": "¥32", "priceUSD": "$4.6", "application": "通孔螺纹", "stock": "现货"},
+            {"model": "MT-S-M5", "size": "M5", "pitch": "0.8", "type": "直槽", "length": "58mm", "material": "HSS-E", "coating": "TiN", "price": "¥36", "priceUSD": "$5.2", "application": "通孔螺纹", "stock": "现货"},
+            {"model": "MT-S-M6", "size": "M6", "pitch": "1.0", "type": "直槽", "length": "66mm", "material": "HSS-E", "coating": "TiN", "price": "¥42", "priceUSD": "$6", "application": "通孔螺纹", "stock": "现货"},
+            {"model": "MT-S-M8", "size": "M8", "pitch": "1.25", "type": "直槽", "length": "72mm", "material": "HSS-E", "coating": "TiN", "price": "¥52", "priceUSD": "$7.5", "application": "通孔螺纹", "stock": "现货"},
+            {"model": "MT-S-M10", "size": "M10", "pitch": "1.5", "type": "直槽", "length": "80mm", "material": "HSS-E", "coating": "TiN", "price": "¥65", "priceUSD": "$9.3", "application": "通孔螺纹", "stock": "现货"},
+            {"model": "MT-S-M12", "size": "M12", "pitch": "1.75", "type": "直槽", "length": "89mm", "material": "HSS-E", "coating": "TiN", "price": "¥82", "priceUSD": "$11.8", "application": "通孔螺纹", "stock": "现货"},
+            {"model": "MT-H-M3", "size": "M3", "pitch": "0.5", "type": "螺旋槽", "length": "48mm", "material": "HSS-E", "coating": "TiAlN", "price": "¥35", "priceUSD": "$5", "application": "盲孔螺纹", "stock": "现货"},
+            {"model": "MT-H-M4", "size": "M4", "pitch": "0.7", "type": "螺旋槽", "length": "53mm", "material": "HSS-E", "coating": "TiAlN", "price": "¥40", "priceUSD": "$5.7", "application": "盲孔螺纹", "stock": "现货"},
+            {"model": "MT-H-M5", "size": "M5", "pitch": "0.8", "type": "螺旋槽", "length": "58mm", "material": "HSS-E", "coating": "TiAlN", "price": "¥45", "priceUSD": "$6.5", "application": "盲孔螺纹", "stock": "现货"},
+            {"model": "MT-H-M6", "size": "M6", "pitch": "1.0", "type": "螺旋槽", "length": "66mm", "material": "HSS-E", "coating": "TiAlN", "price": "¥52", "priceUSD": "$7.5", "application": "盲孔螺纹", "stock": "现货"},
+            {"model": "MT-H-M8", "size": "M8", "pitch": "1.25", "type": "螺旋槽", "length": "72mm", "material": "HSS-E", "coating": "TiAlN", "price": "¥65", "priceUSD": "$9.3", "application": "盲孔螺纹", "stock": "现货"},
+            {"model": "MT-H-M10", "size": "M10", "pitch": "1.5", "type": "螺旋槽", "length": "80mm", "material": "HSS-E", "coating": "TiAlN", "price": "¥78", "priceUSD": "$11.2", "application": "盲孔螺纹", "stock": "现货"},
+            {"model": "MT-H-M12", "size": "M12", "pitch": "1.75", "type": "螺旋槽", "length": "89mm", "material": "HSS-E", "coating": "TiAlN", "price": "¥95", "priceUSD": "$13.6", "application": "盲孔螺纹", "stock": "现货"}
+          ]
+        },
+        {
+          "id": "forming-taps",
+          "name": "挤压丝锥",
+          "nameEn": "Forming Taps",
+          "description": "挤压丝锥，无屑加工，适用于延展性材料",
+          "specs": {"sizeRange": "M3-M16", "material": "HSS-E", "coating": "TiN"},
+          "products": [
+            {"model": "FT-M3", "size": "M3", "pitch": "0.5", "length": "48mm", "material": "HSS-E", "coating": "TiN", "price": "¥38", "priceUSD": "$5.5", "application": "铝合金、铜合金", "stock": "现货"},
+            {"model": "FT-M4", "size": "M4", "pitch": "0.7", "length": "53mm", "material": "HSS-E", "coating": "TiN", "price": "¥42", "priceUSD": "$6", "application": "铝合金、铜合金", "stock": "现货"},
+            {"model": "FT-M5", "size": "M5", "pitch": "0.8", "length": "58mm", "material": "HSS-E", "coating": "TiN", "price": "¥48", "priceUSD": "$6.9", "application": "铝合金、铜合金", "stock": "现货"},
+            {"model": "FT-M6", "size": "M6", "pitch": "1.0", "length": "66mm", "material": "HSS-E", "coating": "TiN", "price": "¥55", "priceUSD": "$7.9", "application": "铝合金、铜合金", "stock": "现货"},
+            {"model": "FT-M8", "size": "M8", "pitch": "1.25", "length": "72mm", "material": "HSS-E", "coating": "TiN", "price": "¥68", "priceUSD": "$9.8", "application": "铝合金、铜合金", "stock": "现货"},
+            {"model": "FT-M10", "size": "M10", "pitch": "1.5", "length": "80mm", "material": "HSS-E", "coating": "TiN", "price": "¥82", "priceUSD": "$11.8", "application": "铝合金、铜合金", "stock": "现货"},
+            {"model": "FT-M12", "size": "M12", "pitch": "1.75", "length": "89mm", "material": "HSS-E", "coating": "TiN", "price": "¥105", "priceUSD": "$15", "application": "铝合金、铜合金", "stock": "现货"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reamers",
+      "name": "铰刀系列",
+      "nameEn": "Reamers",
+      "icon": "⚙️",
+      "heroImage": "reamer-hero",
+      "description": "直柄铰刀、锥柄铰刀、可调铰刀、精镗刀。H7/H8精度等级，适用于精密孔加工。",
+      "features": ["H7/H8精度", "直柄/锥柄/可调", "机用/手用", "HRC45-55材料"],
+      "subcategories": [
+        {
+          "id": "straight-reamers",
+          "name": "直柄铰刀",
+          "nameEn": "Straight Shank Reamers",
+          "description": "标准直柄铰刀，H7/H8精度，适用于精密孔加工",
+          "specs": {"diameterRange": "3-20mm", "tolerance": "H7/H8", "material": "HSS-E", "coating": "TiN"},
+          "products": [
+            {"model": "SR-H7-3", "diameter": "3mm", "tolerance": "H7", "length": "60mm", "overallLength": "85mm", "shankDiameter": "3mm", "material": "HSS-E", "coating": "TiN", "price": "¥45", "priceUSD": "$6.5", "application": "精密孔加工", "stock": "现货"},
+            {"model": "SR-H7-4", "diameter": "4mm", "tolerance": "H7", "length": "70mm", "overallLength": "95mm", "shankDiameter": "4mm", "material": "HSS-E", "coating": "TiN", "price": "¥52", "priceUSD": "$7.5", "application": "精密孔加工", "stock": "现货"},
+            {"model": "SR-H7-5", "diameter": "5mm", "tolerance": "H7", "length": "75mm", "overallLength": "100mm", "shankDiameter": "5mm", "material": "HSS-E", "coating": "TiN", "price": "¥58", "priceUSD": "$8.3", "application": "精密孔加工", "stock": "现货"},
+            {"model": "SR-H7-6", "diameter": "6mm", "tolerance": "H7", "length": "80mm", "overallLength": "110mm", "shankDiameter": "6mm", "material": "HSS-E", "coating": "TiN", "price": "¥65", "priceUSD": "$9.3", "application": "精密孔加工", "stock": "现货"},
+            {"model": "SR-H7-8", "diameter": "8mm", "tolerance": "H7", "length": "90mm", "overallLength": "125mm", "shankDiameter": "8mm", "material": "HSS-E", "coating": "TiN", "price": "¥78", "priceUSD": "$11.2", "application": "精密孔加工", "stock": "现货"},
+            {"model": "SR-H7-10", "diameter": "10mm", "tolerance": "H7", "length": "100mm", "overallLength": "140mm", "shankDiameter": "10mm", "material": "HSS-E", "coating": "TiN", "price": "¥95", "priceUSD": "$13.6", "application": "精密孔加工", "stock": "现货"},
+            {"model": "SR-H7-12", "diameter": "12mm", "tolerance": "H7", "length": "110mm", "overallLength": "155mm", "shankDiameter": "12mm", "material": "HSS-E", "coating": "TiN", "price": "¥115", "priceUSD": "$16.5", "application": "精密孔加工", "stock": "现货"},
+            {"model": "SR-H8-6", "diameter": "6mm", "tolerance": "H8", "length": "80mm", "overallLength": "110mm", "shankDiameter": "6mm", "material": "HSS-E", "coating": "TiN", "price": "¥58", "priceUSD": "$8.3", "application": "一般精度孔加工", "stock": "现货"},
+            {"model": "SR-H8-8", "diameter": "8mm", "tolerance": "H8", "length": "90mm", "overallLength": "125mm", "shankDiameter": "8mm", "material": "HSS-E", "coating": "TiN", "price": "¥72", "priceUSD": "$10.3", "application": "一般精度孔加工", "stock": "现货"},
+            {"model": "SR-H8-10", "diameter": "10mm", "tolerance": "H8", "length": "100mm", "overallLength": "140mm", "shankDiameter": "10mm", "material": "HSS-E", "coating": "TiN", "price": "¥88", "priceUSD": "$12.6", "application": "一般精度孔加工", "stock": "现货"},
+            {"model": "SR-H8-12", "diameter": "12mm", "tolerance": "H8", "length": "110mm", "overallLength": "155mm", "shankDiameter": "12mm", "material": "HSS-E", "coating": "TiN", "price": "¥105", "priceUSD": "$15", "application": "一般精度孔加工", "stock": "现货"}
+          ]
+        },
+        {
+          "id": "adjustable-reamers",
+          "name": "可调铰刀",
+          "nameEn": "Adjustable Reamers",
+          "description": "可调铰刀，直径可调，适用于维修和单件生产",
+          "specs": {"diameterRange": "10-30mm", "adjustment": "±0.5mm", "material": "HSS"},
+          "products": [
+            {"model": "AR-10-12", "diameterRange": "10-12mm", "adjustment": "±0.5mm", "length": "120mm", "material": "HSS", "coating": "无", "price": "¥125", "priceUSD": "$17.9", "application": "维修、单件生产", "stock": "现货"},
+            {"model": "AR-12-15", "diameterRange": "12-15mm", "adjustment": "±0.5mm", "length": "135mm", "material": "HSS", "coating": "无", "price": "¥145", "priceUSD": "$20.8", "application": "维修、单件生产", "stock": "现货"},
+            {"model": "AR-15-18", "diameterRange": "15-18mm", "adjustment": "±0.5mm", "length": "150mm", "material": "HSS", "coating": "无", "price": "¥168", "priceUSD": "$24", "application": "维修、单件生产", "stock": "现货"},
+            {"model": "AR-18-22", "diameterRange": "18-22mm", "adjustment": "±0.5mm", "length": "170mm", "material": "HSS", "coating": "无", "price": "¥195", "priceUSD": "$28", "application": "维修、单件生产", "stock": "现货"},
+            {"model": "AR-22-26", "diameterRange": "22-26mm", "adjustment": "±0.5mm", "length": "190mm", "material": "HSS", "coating": "无", "price": "¥225", "priceUSD": "$32", "application": "维修、单件生产", "stock": "现货"},
+            {"model": "AR-26-30", "diameterRange": "26-30mm", "adjustment": "±0.5mm", "length": "210mm", "material": "HSS", "coating": "无", "price": "¥260", "priceUSD": "$37", "application": "维修、单件生产", "stock": "现货"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "inserts",
+      "name": "车刀片",
+      "nameEn": "Carbide Inserts",
+      "icon": "💎",
+      "heroImage": "insert-hero",
+      "description": "CNMG、WNMG、TNMG等标准型号车刀片。适用于钢件、不锈钢、铸铁、铝合金等材料的车削加工。",
+      "features": ["CNMG/WNMG/TNMG", "钢件/不锈钢/铸铁/铝合金", "CVD/PVD涂层", "正型/负型刀片"],
+      "subcategories": [
+        {
+          "id": "turning-inserts",
+          "name": "车削刀片",
+          "nameEn": "Turning Inserts",
+          "description": "标准车削刀片，CNMG/WNMG/TNMG等型号，适用于外圆车削、内孔车削",
+          "specs": {"shape": "CNMG/WNMG/TNMG", "material": "K20/K30", "coating": "CVD/PVD"},
+          "products": [
+            {"model": "CNMG120404", "shape": "CNMG", "size": "12mm", "thickness": "4.76mm", "radius": "0.4mm", "material": "K20", "coating": "CVD", "grade": "P30", "price": "¥18", "priceUSD": "$2.6", "application": "钢件车削", "stock": "现货"},
+            {"model": "CNMG120408", "shape": "CNMG", "size": "12mm", "thickness": "4.76mm", "radius": "0.8mm", "material": "K20", "coating": "CVD", "grade": "P30", "price": "¥20", "priceUSD": "$2.9", "application": "钢件车削", "stock": "现货"},
+            {"model": "CNMG120412", "shape": "CNMG", "size": "12mm", "thickness": "4.76mm", "radius": "1.2mm", "material": "K20", "coating": "CVD", "grade": "P30", "price": "¥22", "priceUSD": "$3.2", "application": "钢件车削", "stock": "现货"},
+            {"model": "WNMG080404", "shape": "WNMG", "size": "8mm", "thickness": "4.76mm", "radius": "0.4mm", "material": "K20", "coating": "CVD", "grade": "P30", "price": "¥16", "priceUSD": "$2.3", "application": "钢件车削", "stock": "现货"},
+            {"model": "WNMG080408", "shape": "WNMG", "size": "8mm", "thickness": "4.76mm", "radius": "0.8mm", "material": "K20", "coating": "CVD", "grade": "P30", "price": "¥18", "priceUSD": "$2.6", "application": "钢件车削", "stock": "现货"},
+            {"model": "TNMG160404", "shape": "TNMG", "size": "16mm", "thickness": "4.76mm", "radius": "0.4mm", "material": "K20", "coating": "CVD", "grade": "P30", "price": "¥22", "priceUSD": "$3.2", "application": "钢件车削", "stock": "现货"},
+            {"model": "TNMG160408", "shape": "TNMG", "size": "16mm", "thickness": "4.76mm", "radius": "0.8mm", "material": "K20", "coating": "CVD", "grade": "P30", "price": "¥25", "priceUSD": "$3.6", "application": "钢件车削", "stock": "现货"},
+            {"model": "CNMG120404-S", "shape": "CNMG", "size": "12mm", "thickness": "4.76mm", "radius": "0.4mm", "material": "K30", "coating": "PVD", "grade": "M20", "price": "¥25", "priceUSD": "$3.6", "application": "不锈钢车削", "stock": "现货"},
+            {"model": "CNMG120408-S", "shape": "CNMG", "size": "12mm", "thickness": "4.76mm", "radius": "0.8mm", "material": "K30", "coating": "PVD", "grade": "M20", "price": "¥28", "priceUSD": "$4", "application": "不锈钢车削", "stock": "现货"},
+            {"model": "WNMG080404-S", "shape": "WNMG", "size": "8mm", "thickness": "4.76mm", "radius": "0.4mm", "material": "K30", "coating": "PVD", "grade": "M20", "price": "¥22", "priceUSD": "$3.2", "application": "不锈钢车削", "stock": "现货"},
+            {"model": "TNMG160404-S", "shape": "TNMG", "size": "16mm", "thickness": "4.76mm", "radius": "0.4mm", "material": "K30", "coating": "PVD", "grade": "M20", "price": "¥28", "priceUSD": "$4", "application": "不锈钢车削", "stock": "现货"}
+          ]
+        },
+        {
+          "id": "milling-inserts",
+          "name": "铣削刀片",
+          "nameEn": "Milling Inserts",
+          "description": "铣削刀片，APKT/SEKT等型号，适用于面铣、立铣",
+          "specs": {"shape": "APKT/SEKT", "material": "K20/K30", "coating": "CVD/PVD"},
+          "products": [
+            {"model": "APKT1604PDR", "shape": "APKT", "size": "16mm", "thickness": "4.76mm", "radius": "0.8mm", "material": "K20", "coating": "CVD", "grade": "P30", "price": "¥28", "priceUSD": "$4", "application": "面铣、立铣", "stock": "现货"},
+            {"model": "APKT1604PDR-S", "shape": "APKT", "size": "16mm", "thickness": "4.76mm", "radius": "0.8mm", "material": "K30", "coating": "PVD", "grade": "M20", "price": "¥35", "priceUSD": "$5", "application": "不锈钢铣削", "stock": "现货"},
+            {"model": "SEKT1204AFTN", "shape": "SEKT", "size": "12mm", "thickness": "4.76mm", "radius": "0.8mm", "material": "K20", "coating": "CVD", "grade": "P30", "price": "¥32", "priceUSD": "$4.6", "application": "面铣", "stock": "现货"},
+            {"model": "SEKT1204AFTN-S", "shape": "SEKT", "size": "12mm", "thickness": "4.76mm", "radius": "0.8mm", "material": "K30", "coating": "PVD", "grade": "M20", "price": "¥38", "priceUSD": "$5.5", "application": "不锈钢面铣", "stock": "现货"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tool-holders",
+      "name": "刀柄刀杆",
+      "nameEn": "Tool Holders & Arbors",
+      "icon": "🛠️",
+      "heroImage": "toolholder-hero",
+      "description": "BT/HSK/ISO标准刀柄，ER弹簧夹头刀柄、液压刀柄、热缩刀柄、侧固式刀柄等，适用于各种加工中心。",
+      "features": ["BT30/BT40/BT50", "HSK-A63/HSK-A100", "ER16/ER20/ER32/ER40", "高精度动平衡"],
+      "subcategories": [
+        {
+          "id": "bt-holders",
+          "name": "BT刀柄",
+          "nameEn": "BT Tool Holders",
+          "description": "BT标准刀柄，BT30/BT40/BT50，适用于各类加工中心",
+          "specs": {"taper": "BT30/BT40/BT50", "accuracy": "AT3", "balance": "G2.5@15000rpm"},
+          "products": [
+            {"model": "BT40-ER32-100", "taper": "BT40", "type": "ER弹簧夹头", "colletSize": "ER32", "length": "100mm", "accuracy": "AT3", "balance": "G2.5", "price": "¥185", "priceUSD": "$26.5", "application": "通用夹持", "stock": "现货"},
+            {"model": "BT40-ER32-150", "taper": "BT40", "type": "ER弹簧夹头", "colletSize": "ER32", "length": "150mm", "accuracy": "AT3", "balance": "G2.5", "price": "¥210", "priceUSD": "$30", "application": "通用夹持", "stock": "现货"},
+            {"model": "BT40-ER40-100", "taper": "BT40", "type": "ER弹簧夹头", "colletSize": "ER40", "length": "100mm", "accuracy": "AT3", "balance": "G2.5", "price": "¥225", "priceUSD": "$32", "application": "大直径夹持", "stock": "现货"},
+            {"model": "BT50-ER32-100", "taper": "BT50", "type": "ER弹簧夹头", "colletSize": "ER32", "length": "100mm", "accuracy": "AT3", "balance": "G2.5", "price": "¥265", "priceUSD": "$38", "application": "重型加工", "stock": "现货"},
+            {"model": "BT40-SF12-100", "taper": "BT40", "type": "侧固式", "shankSize": "12mm", "length": "100mm", "accuracy": "AT3", "balance": "G2.5", "price": "¥195", "priceUSD": "$28", "application": "侧固夹持", "stock": "现货"},
+            {"model": "BT40-SF20-100", "taper": "BT40", "type": "侧固式", "shankSize": "20mm", "length": "100mm", "accuracy": "AT3", "balance": "G2.5", "price": "¥220", "priceUSD": "$31.5", "application": "侧固夹持", "stock": "现货"},
+            {"model": "BT40-HY20-100", "taper": "BT40", "type": "液压刀柄", "shankSize": "20mm", "length": "100mm", "accuracy": "AT3", "balance": "G2.5", "price": "¥485", "priceUSD": "$69.5", "application": "高精度加工", "stock": "现货"},
+            {"model": "BT40-HY32-100", "taper": "BT40", "type": "液压刀柄", "shankSize": "32mm", "length": "100mm", "accuracy": "AT3", "balance": "G2.5", "price": "¥565", "priceUSD": "$81", "application": "高精度加工", "stock": "现货"}
+          ]
+        },
+        {
+          "id": "hsk-holders",
+          "name": "HSK刀柄",
+          "nameEn": "HSK Tool Holders",
+          "description": "HSK标准刀柄，HSK-A63/HSK-A100，高速加工首选",
+          "specs": {"taper": "HSK-A63/HSK-A100", "accuracy": "AT3", "balance": "G2.5@25000rpm"},
+          "products": [
+            {"model": "HSK63A-ER32-100", "taper": "HSK-A63", "type": "ER弹簧夹头", "colletSize": "ER32", "length": "100mm", "accuracy": "AT3", "balance": "G2.5", "price": "¥385", "priceUSD": "$55", "application": "高速加工", "stock": "现货"},
+            {"model": "HSK63A-ER32-160", "taper": "HSK-A63", "type": "ER弹簧夹头", "colletSize": "ER32", "length": "160mm", "accuracy": "AT3", "balance": "G2.5", "price": "¥425", "priceUSD": "$61", "application": "高速加工", "stock": "现货"},
+            {"model": "HSK63A-ER40-100", "taper": "HSK-A63", "type": "ER弹簧夹头", "colletSize": "ER40", "length": "100mm", "accuracy": "AT3", "balance": "G2.5", "price": "¥445", "priceUSD": "$63.7", "application": "高速加工", "stock": "现货"},
+            {"model": "HSK100A-ER32-100", "taper": "HSK-A100", "type": "ER弹簧夹头", "colletSize": "ER32", "length": "100mm", "accuracy": "AT3", "balance": "G2.5", "price": "¥585", "priceUSD": "$83.8", "application": "重型高速加工", "stock": "现货"},
+            {"model": "HSK63A-HY20-100", "taper": "HSK-A63", "type": "液压刀柄", "shankSize": "20mm", "length": "100mm", "accuracy": "AT3", "balance": "G2.5", "price": "¥685", "priceUSD": "$98", "application": "超精密加工", "stock": "现货"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "collets",
+      "name": "卡簧夹头",
+      "nameEn": "Collets",
+      "icon": "🔩",
+      "heroImage": "collet-hero",
+      "description": "ER弹簧夹头、OZ夹头、C型直夹头等，高精度夹持，适用于各种刀柄和夹具。",
+      "features": ["ER16/ER20/ER32/ER40", "精度0.008mm", "65Mn弹簧钢", "全系列规格"],
+      "subcategories": [
+        {
+          "id": "er-collets",
+          "name": "ER弹簧夹头",
+          "nameEn": "ER Spring Collets",
+          "description": "ER标准弹簧夹头，ER16/ER20/ER32/ER40，高精度夹持",
+          "specs": {"type": "ER16/ER20/ER32/ER40", "accuracy": "0.008mm", "material": "65Mn"},
+          "products": [
+            {"model": "ER16-3", "type": "ER16", "clampingRange": "3mm", "accuracy": "0.008mm", "length": "27mm", "material": "65Mn", "price": "¥12", "priceUSD": "$1.7", "application": "精密夹持", "stock": "现货"},
+            {"model": "ER16-4", "type": "ER16", "clampingRange": "4mm", "accuracy": "0.008mm", "length": "27mm", "material": "65Mn", "price": "¥12", "priceUSD": "$1.7", "application": "精密夹持", "stock": "现货"},
+            {"model": "ER16-6", "type": "ER16", "clampingRange": "6mm", "accuracy": "0.008mm", "length": "27mm", "material": "65Mn", "price": "¥12", "priceUSD": "$1.7", "application": "精密夹持", "stock": "现货"},
+            {"model": "ER20-3", "type": "ER20", "clampingRange": "3mm", "accuracy": "0.008mm", "length": "31mm", "material": "65Mn", "price": "¥15", "priceUSD": "$2.2", "application": "精密夹持", "stock": "现货"},
+            {"model": "ER20-6", "type": "ER20", "clampingRange": "6mm", "accuracy": "0.008mm", "length": "31mm", "material": "65Mn", "price": "¥15", "priceUSD": "$2.2", "application": "精密夹持", "stock": "现货"},
+            {"model": "ER20-10", "type": "ER20", "clampingRange": "10mm", "accuracy": "0.008mm", "length": "31mm", "material": "65Mn", "price": "¥15", "priceUSD": "$2.2", "application": "精密夹持", "stock": "现货"},
+            {"model": "ER32-6", "type": "ER32", "clampingRange": "6mm", "accuracy": "0.008mm", "length": "40mm", "material": "65Mn", "price": "¥22", "priceUSD": "$3.2", "application": "精密夹持", "stock": "现货"},
+            {"model": "ER32-10", "type": "ER32", "clampingRange": "10mm", "accuracy": "0.008mm", "length": "40mm", "material": "65Mn", "price": "¥22", "priceUSD": "$3.2", "application": "精密夹持", "stock": "现货"},
+            {"model": "ER32-16", "type": "ER32", "clampingRange": "16mm", "accuracy": "0.008mm", "length": "40mm", "material": "65Mn", "price": "¥22", "priceUSD": "$3.2", "application": "精密夹持", "stock": "现货"},
+            {"model": "ER32-20", "type": "ER32", "clampingRange": "20mm", "accuracy": "0.008mm", "length": "40mm", "material": "65Mn", "price": "¥25", "priceUSD": "$3.6", "application": "精密夹持", "stock": "现货"},
+            {"model": "ER40-10", "type": "ER40", "clampingRange": "10mm", "accuracy": "0.008mm", "length": "46mm", "material": "65Mn", "price": "¥32", "priceUSD": "$4.6", "application": "精密夹持", "stock": "现货"},
+            {"model": "ER40-20", "type": "ER40", "clampingRange": "20mm", "accuracy": "0.008mm", "length": "46mm", "material": "65Mn", "price": "¥32", "priceUSD": "$4.6", "application": "精密夹持", "stock": "现货"},
+            {"model": "ER40-26", "type": "ER40", "clampingRange": "26mm", "accuracy": "0.008mm", "length": "46mm", "material": "65Mn", "price": "¥35", "priceUSD": "$5", "application": "精密夹持", "stock": "现货"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "arbors",
+      "name": "刀盘刀杆",
+      "nameEn": "Arbors & Cutter Heads",
+      "icon": "⚙️",
+      "heroImage": "arbor-hero",
+      "description": "面铣刀盘、立铣刀杆、T型槽铣刀、角度铣刀等，适用于各种铣削加工。",
+      "features": ["面铣刀盘", "立铣刀杆", "T型槽铣刀", "角度铣刀"],
+      "subcategories": [
+        {
+          "id": "face-mills",
+          "name": "面铣刀盘",
+          "nameEn": "Face Mills",
+          "description": "面铣刀盘，45°/75°/90°角度，适用于平面加工",
+          "specs": {"diameterRange": "50-200mm", "angle": "45°/75°/90°", "insert": "APKT/SEKT"},
+          "products": [
+            {"model": "FM-50-45", "diameter": "50mm", "angle": "45°", "insert": "APKT1604", "shank": "22mm", "price": "¥285", "priceUSD": "$40.8", "application": "平面加工", "stock": "现货"},
+            {"model": "FM-63-45", "diameter": "63mm", "angle": "45°", "insert": "APKT1604", "shank": "22mm", "price": "¥345", "priceUSD": "$49.5", "application": "平面加工", "stock": "现货"},
+            {"model": "FM-80-45", "diameter": "80mm", "angle": "45°", "insert": "APKT1604", "shank": "27mm", "price": "¥425", "priceUSD": "$60.9", "application": "平面加工", "stock": "现货"},
+            {"model": "FM-100-45", "diameter": "100mm", "angle": "45°", "insert": "APKT1604", "shank": "32mm", "price": "¥565", "priceUSD": "$81", "application": "平面加工", "stock": "现货"},
+            {"model": "FM-125-75", "diameter": "125mm", "angle": "75°", "insert": "SEKT1204", "shank": "40mm", "price": "¥785", "priceUSD": "$112.5", "application": "平面加工", "stock": "现货"},
+            {"model": "FM-160-75", "diameter": "160mm", "angle": "75°", "insert": "SEKT1204", "shank": "40mm", "price": "¥1050", "priceUSD": "$150", "application": "平面加工", "stock": "现货"}
+          ]
+        },
+        {
+          "id": "end-mill-holders",
+          "name": "立铣刀杆",
+          "nameEn": "End Mill Holders",
+          "description": "立铣刀杆，侧固式/螺钉式，适用于立铣刀夹持",
+          "specs": {"shank": "BT40/BT50", "type": "侧固式/螺钉式", "accuracy": "AT3"},
+          "products": [
+            {"model": "EMH-BT40-20-100", "taper": "BT40", "shankSize": "20mm", "length": "100mm", "type": "侧固式", "accuracy": "AT3", "price": "¥225", "priceUSD": "$32", "application": "立铣刀夹持", "stock": "现货"},
+            {"model": "EMH-BT40-25-100", "taper": "BT40", "shankSize": "25mm", "length": "100mm", "type": "侧固式", "accuracy": "AT3", "price": "¥245", "priceUSD": "$35", "application": "立铣刀夹持", "stock": "现货"},
+            {"model": "EMH-BT40-32-100", "taper": "BT40", "shankSize": "32mm", "length": "100mm", "type": "侧固式", "accuracy": "AT3", "price": "¥265", "priceUSD": "$38", "application": "立铣刀夹持", "stock": "现货"},
+            {"model": "EMH-BT50-32-100", "taper": "BT50", "shankSize": "32mm", "length": "100mm", "type": "侧固式", "accuracy": "AT3", "price": "¥325", "priceUSD": "$46.5", "application": "立铣刀夹持", "stock": "现货"}
+          ]
+        }
+      ]
     }
   ]
 }
