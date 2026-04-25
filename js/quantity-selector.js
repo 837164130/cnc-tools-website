@@ -1,72 +1,117 @@
-// Quantity Selector
+// Product Quantity Selector
 class QuantitySelector {
   constructor() {
     this.init();
   }
 
   init() {
-    document.querySelectorAll('[data-quantity]').forEach(container => {
-      this.setupSelector(container);
-    });
+    this.displayQuantitySelector();
   }
 
-  setupSelector(container) {
-    const min = parseInt(container.dataset.min) || 1;
-    const max = parseInt(container.dataset.max) || 999;
-    const step = parseInt(container.dataset.step) || 1;
+  displayQuantitySelector() {
+    const container = document.querySelector('[data-quantity-selector]');
+    if (!container) return;
+
+    const config = JSON.parse(container.dataset.quantitySelector || '{}');
 
     container.innerHTML = `
-      <div style="display: inline-flex; align-items: center; border: 2px solid var(--border); border-radius: 8px; overflow: hidden;">
-        <button class="qty-decrease" style="width: 40px; height: 40px; background: var(--bg-secondary); border: none; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; transition: background 0.2s;">−</button>
-        <input type="number" class="qty-input" value="${min}" min="${min}" max="${max}" step="${step}" style="width: 60px; height: 40px; border: none; text-align: center; font-size: 16px; font-weight: 600; -moz-appearance: textfield;" onwheel="return false;">
-        <button class="qty-increase" style="width: 40px; height: 40px; background: var(--bg-secondary); border: none; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; transition: background 0.2s;">+</button>
+      <div style="
+        display: inline-flex;
+        align-items: center;
+        background: var(--bg-secondary);
+        border-radius: 8px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+      ">
+        <button class="qty-minus" style="
+          width: 40px;
+          height: 40px;
+          background: transparent;
+          border: none;
+          cursor: pointer;
+          font-size: 18px;
+          color: var(--text-primary);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        ">−</button>
+        
+        <input type="number" class="qty-input" value="${config.min || 1}" min="${config.min || 1}" max="${config.max || 99}" style="
+          width: 60px;
+          height: 40px;
+          text-align: center;
+          border: none;
+          border-left: 1px solid var(--border);
+          border-right: 1px solid var(--border);
+          font-size: 16px;
+          background: var(--bg-primary);
+          color: var(--text-primary);
+          -moz-appearance: textfield;
+        ">
+        
+        <button class="qty-plus" style="
+          width: 40px;
+          height: 40px;
+          background: transparent;
+          border: none;
+          cursor: pointer;
+          font-size: 18px;
+          color: var(--text-primary);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        ">+</button>
       </div>
     `;
 
     const input = container.querySelector('.qty-input');
-    const decreaseBtn = container.querySelector('.qty-decrease');
-    const increaseBtn = container.querySelector('.qty-increase');
+    const minusBtn = container.querySelector('.qty-minus');
+    const plusBtn = container.querySelector('.qty-plus');
 
-    const updateValue = (delta) => {
-      let value = parseInt(input.value) || min;
-      value += delta;
-      value = Math.max(min, Math.min(max, value));
-      input.value = value;
-      input.dispatchEvent(new Event('change'));
-    };
+    if (minusBtn) {
+      minusBtn.addEventListener('click', () => {
+        const current = parseInt(input.value) || 1;
+        const min = parseInt(input.min) || 1;
+        if (current > min) {
+          input.value = current - 1;
+          this.updatePrice(container, config);
+        }
+      });
+    }
 
-    decreaseBtn.addEventListener('click', () => updateValue(-step));
-    increaseBtn.addEventListener('click', () => updateValue(step));
+    if (plusBtn) {
+      plusBtn.addEventListener('click', () => {
+        const current = parseInt(input.value) || 1;
+        const max = parseInt(input.max) || 99;
+        if (current < max) {
+          input.value = current + 1;
+          this.updatePrice(container, config);
+        }
+      });
+    }
 
-    input.addEventListener('change', () => {
-      let value = parseInt(input.value) || min;
-      value = Math.max(min, Math.min(max, value));
-      input.value = value;
-    });
+    if (input) {
+      input.addEventListener('change', () => {
+        let value = parseInt(input.value) || 1;
+        const min = parseInt(input.min) || 1;
+        const max = parseInt(input.max) || 99;
+        value = Math.max(min, Math.min(max, value));
+        input.value = value;
+        this.updatePrice(container, config);
+      });
+    }
+  }
 
-    input.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowUp') {
-        e.preventDefault();
-        updateValue(step);
-      } else if (e.key === 'ArrowDown') {
-        e.preventDefault();
-        updateValue(-step);
-      }
-    });
+  updatePrice(container, config) {
+    const input = container.querySelector('.qty-input');
+    const quantity = parseInt(input.value) || 1;
+    const unitPrice = parseFloat(config.unitPrice?.replace(/[^0-9.]/g, '') || 0);
+    const total = quantity * unitPrice;
 
-    // Hover effects
-    decreaseBtn.addEventListener('mouseenter', () => {
-      decreaseBtn.style.background = 'var(--bg-tertiary)';
-    });
-    decreaseBtn.addEventListener('mouseleave', () => {
-      decreaseBtn.style.background = 'var(--bg-secondary)';
-    });
-    increaseBtn.addEventListener('mouseenter', () => {
-      increaseBtn.style.background = 'var(--bg-tertiary)';
-    });
-    increaseBtn.addEventListener('mouseleave', () => {
-      increaseBtn.style.background = 'var(--bg-secondary)';
-    });
+    // Dispatch custom event for price update
+    container.dispatchEvent(new CustomEvent('quantityChange', {
+      detail: { quantity, total: `¥${total.toFixed(2)}` }
+    }));
   }
 }
 
