@@ -1,63 +1,91 @@
-// FAQ Accordion
-class FAQAccordion {
+// Product FAQ Accordion
+class ProductFAQ {
   constructor() {
     this.init();
   }
 
   init() {
-    document.querySelectorAll('[data-faq]').forEach(container => {
-      this.setupFAQ(container);
-    });
+    this.displayFAQ();
   }
 
-  setupFAQ(container) {
+  displayFAQ() {
+    const container = document.querySelector('[data-faq]');
+    if (!container) return;
+
     const faqs = JSON.parse(container.dataset.faq || '[]');
     if (faqs.length === 0) return;
 
-    container.innerHTML = `
-      <h3 style="margin-bottom: 24px;">常见问题</h3>
-      <div class="faq-list" style="display: flex; flex-direction: column; gap: 12px;">
-        ${faqs.map((faq, index) => `
-          <div class="faq-item" style="border: 1px solid var(--border); border-radius: 12px; overflow: hidden;">
-            <button class="faq-question" style="width: 100%; padding: 20px; background: var(--bg-secondary); border: none; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-size: 16px; font-weight: 600; transition: background 0.2s;" data-index="${index}">
-              <span>${faq.question}</span>
-              <span class="faq-icon" style="transition: transform 0.3s;">▼</span>
-            </button>
-            <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s;">
-              <div style="padding: 0 20px 20px; color: var(--text-secondary); line-height: 1.8;">
-                ${faq.answer}
-              </div>
-            </div>
-          </div>
-        `).join('')}
-      </div>
-    `;
+    container.innerHTML = '<h3 style="margin-bottom: 24px;">常见问题</h3>';
 
-    container.querySelectorAll('.faq-question').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const item = btn.parentElement;
-        const answer = item.querySelector('.faq-answer');
-        const icon = btn.querySelector('.faq-icon');
-        const isOpen = answer.style.maxHeight !== '0px' && answer.style.maxHeight !== '';
+    const accordion = document.createElement('div');
+    accordion.style.cssText = 'display: grid; gap: 12px;';
 
+    faqs.forEach((faq, index) => {
+      const item = document.createElement('div');
+      item.style.cssText = `
+        background: var(--bg-secondary);
+        border-radius: 12px;
+        overflow: hidden;
+      `;
+
+      const header = document.createElement('button');
+      header.style.cssText = `
+        width: 100%;
+        padding: 16px 20px;
+        background: none;
+        border: none;
+        text-align: left;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 16px;
+        font-weight: 600;
+      `;
+      header.innerHTML = `
+        <span>${faq.question}</span>
+        <span class="faq-icon" style="transition: transform 0.3s;">▼</span>
+      `;
+
+      const content = document.createElement('div');
+      content.style.cssText = `
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+      `;
+      content.innerHTML = `
+        <div style="padding: 0 20px 16px; color: var(--text-secondary); line-height: 1.6;">
+          ${faq.answer}
+        </div>
+      `;
+
+      header.addEventListener('click', () => {
+        const isOpen = content.style.maxHeight !== '0px' && content.style.maxHeight !== '';
+        
         // Close all others
-        container.querySelectorAll('.faq-answer').forEach(a => {
-          a.style.maxHeight = '0px';
+        accordion.querySelectorAll('[style*="max-height"]').forEach(el => {
+          el.style.maxHeight = '0px';
         });
-        container.querySelectorAll('.faq-icon').forEach(i => {
-          i.style.transform = 'rotate(0deg)';
+        accordion.querySelectorAll('.faq-icon').forEach(icon => {
+          icon.style.transform = 'rotate(0deg)';
         });
 
         if (!isOpen) {
-          answer.style.maxHeight = answer.scrollHeight + 'px';
-          icon.style.transform = 'rotate(180deg)';
+          content.style.maxHeight = content.scrollHeight + 'px';
+          header.querySelector('.faq-icon').style.transform = 'rotate(180deg)';
         }
       });
+
+      item.appendChild(header);
+      item.appendChild(content);
+      accordion.appendChild(item);
     });
+
+    container.appendChild(accordion);
   }
 }
 
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-  new FAQAccordion();
+  new ProductFAQ();
 });
