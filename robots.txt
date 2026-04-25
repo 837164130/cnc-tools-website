@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cccnc.ru/sitemap.xml
