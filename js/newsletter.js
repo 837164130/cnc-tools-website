@@ -1,5 +1,5 @@
-// Newsletter Subscription
-class Newsletter {
+// Product Newsletter Subscription
+class ProductNewsletter {
   constructor() {
     this.init();
   }
@@ -20,33 +20,26 @@ class Newsletter {
         color: white;
         text-align: center;
       ">
-        <h3 style="margin-bottom: 8px; font-size: 24px;">订阅资讯</h3>
-        <p style="margin-bottom: 24px; opacity: 0.9;">获取最新产品信息、技术文章和优惠活动</p>
+        <h3 style="margin-bottom: 8px; color: white;">订阅产品资讯</h3>
+        <p style="margin-bottom: 24px; opacity: 0.9;">获取最新产品信息、技术文章和行业动态</p>
         
-        <form class="newsletter-form" style="
-          display: flex;
-          gap: 12px;
-          max-width: 500px;
-          margin: 0 auto;
-        ">
+        <form class="newsletter-form" style="display: flex; gap: 12px; max-width: 500px; margin: 0 auto;">
           <input type="email" placeholder="输入您的邮箱" required style="
             flex: 1;
-            padding: 14px 20px;
+            padding: 12px 16px;
             border: none;
             border-radius: 8px;
             font-size: 16px;
-            outline: none;
           ">
           <button type="submit" style="
-            padding: 14px 28px;
+            padding: 12px 24px;
             background: white;
             color: #0071e3;
             border: none;
             border-radius: 8px;
+            cursor: pointer;
             font-size: 16px;
             font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.2s;
           ">订阅</button>
         </form>
         
@@ -67,5 +60,5 @@ class Newsletter {
 
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-  new Newsletter();
+  new ProductNewsletter();
 });
