@@ -1,0 +1,82 @@
+/* Print Styles for CCCNC Website */
+
+@media print {
+  /* Hide navigation and interactive elements */
+  .nav-wrapper,
+  .mobile-menu-btn,
+  .mobile-menu-overlay,
+  .mobile-menu-panel,
+  .catalog-dropdown,
+  .quick-view-btn,
+  .wishlist-btn,
+  .compare-btn,
+  #backToTop,
+  .cta-section,
+  .footer {
+    display: none !important;
+  }
+
+  /* Adjust page layout */
+  body {
+    font-size: 12pt;
+    line-height: 1.5;
+    color: #000;
+    background: #fff;
+  }
+
+  /* Ensure product cards print nicely */
+  .product-card {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+  }
+
+  /* Show URLs for links */
+  a[href]:after {
+    content: " (" attr(href) ")";
+    font-size: 10pt;
+    color: #666;
+  }
+
+  a[href^="/"]:after {
+    content: " (https://cccnc.ru" attr(href) ")";
+  }
+
+  /* Hide non-essential decorative elements */
+  .product-image::before,
+  .shimmer,
+  .animate-fade-in-up {
+    animation: none !important;
+  }
+
+  /* Ensure tables print well */
+  .specs-table,
+  .comparison-table {
+    font-size: 10pt;
+    width: 100%;
+  }
+
+  .specs-table th,
+  .specs-table td,
+  .comparison-table th,
+  .comparison-table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+  }
+
+  /* Page breaks */
+  .section {
+    page-break-before: auto;
+  }
+
+  h2, h3 {
+    page-break-after: avoid;
+  }
+
+  /* SVG drawings */
+  svg {
+    max-width: 100%;
+    height: auto;
+  }
+}
