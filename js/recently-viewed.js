@@ -1,8 +1,8 @@
 // Recently Viewed Products
 class RecentlyViewed {
   constructor() {
+    this.storageKey = 'recentlyViewed';
     this.maxItems = 10;
-    this.items = JSON.parse(localStorage.getItem('recentlyViewed') || '[]');
     this.init();
   }
 
@@ -12,66 +12,60 @@ class RecentlyViewed {
   }
 
   trackCurrentPage() {
-    const productId = document.querySelector('[data-product-id]')?.dataset.productId;
+    const productId = document.body.dataset.productId;
     if (!productId) return;
 
     const product = {
       id: productId,
-      name: document.querySelector('h1')?.textContent || 'Product',
+      name: document.querySelector('h1')?.textContent || '',
       url: window.location.href,
-      image: document.querySelector('[data-product-image]')?.dataset.productImage || '',
+      image: document.querySelector('[data-product-image]')?.src || '',
       timestamp: Date.now()
     };
 
-    // Remove if already exists
-    this.items = this.items.filter(item => item.id !== productId);
-    
-    // Add to beginning
-    this.items.unshift(product);
-    
-    // Limit to max items
-    if (this.items.length > this.maxItems) {
-      this.items = this.items.slice(0, this.maxItems);
-    }
+    let items = this.getItems();
+    items = items.filter(item => item.id !== productId);
+    items.unshift(product);
+    items = items.slice(0, this.maxItems);
 
-    this.save();
+    localStorage.setItem(this.storageKey, JSON.stringify(items));
+  }
+
+  getItems() {
+    try {
+      return JSON.parse(localStorage.getItem(this.storageKey)) || [];
+    } catch {
+      return [];
+    }
   }
 
   displayRecentlyViewed() {
     const container = document.querySelector('[data-recently-viewed]');
-    if (!container || this.items.length === 0) return;
+    if (!container) return;
 
-    container.innerHTML = '<h3 style="margin-bottom: 16px;">最近浏览</h3>';
-    
-    const grid = document.createElement('div');
-    grid.style.cssText = 'display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 16px;';
+    const items = this.getItems();
+    if (items.length === 0) {
+      container.style.display = 'none';
+      return;
+    }
 
-    this.items.slice(0, 4).forEach(item => {
-      const card = document.createElement('a');
-      card.href = item.url;
-      card.style.cssText = `
-        display: block;
-        padding: 12px;
-        background: var(--bg-secondary);
-        border-radius: 8px;
-        text-decoration: none;
-        color: inherit;
-        transition: transform 0.2s;
-      `;
-      card.innerHTML = `
-        <div style="width: 100%; height: 100px; background: var(--bg-tertiary); border-radius: 4px; margin-bottom: 8px; display: flex; align-items: center; justify-content: center;">
-          ${item.image ? `<img src="${item.image}" alt="" style="max-width: 100%; max-height: 100%; object-fit: cover;">` : '🔧'}
-        </div>
-        <div style="font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${item.name}</div>
-      `;
-      grid.appendChild(card);
-    });
-
-    container.appendChild(grid);
-  }
-
-  save() {
-    localStorage.setItem('recentlyViewed', JSON.stringify(this.items));
+    container.innerHTML = `
+      <h3 style="margin-bottom: 16px;">最近浏览</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px;">
+        ${items.map(item => `
+          <a href="${item.url}" style="text-decoration: none; color: inherit;">
+            <div style="background: var(--bg-secondary); border-radius: 12px; overflow: hidden; transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+              <div style="aspect-ratio: 1; background: var(--bg-tertiary); display: flex; align-items: center; justify-content: center;">
+                ${item.image ? `<img src="${item.image}" alt="" style="width: 100%; height: 100%; object-fit: cover;">` : '<span style="font-size: 48px;">🔧</span>'}
+              </div>
+              <div style="padding: 12px;">
+                <div style="font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${item.name}</div>
+              </div>
+            </div>
+          </a>
+        `).join('')}
+      </div>
+    `;
   }
 }
 
