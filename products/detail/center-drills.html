@@ -364,10 +364,42 @@
             
     <div class="product-detail-card" data-model="CD-A1">
       <div class="product-detail-image">
-        <svg viewBox="0 0 200 100" class="tool-svg">
-          <rect x="20" y="45" width="140" height="10" fill="#666" rx="2"/>
-    <rect x="160" y="40" width="30" height="20" fill="#444" rx="3"/>
-        </svg>
+        <svg viewBox="0 0 400 200" class="tool-svg" style="width: 200px; height: 100px;">
+    <!-- Center drill body -->
+    <rect x="50" y="88" width="280" height="24" fill="url(#metalGradient)" rx="2"/>
+    <!-- Center drill point (60 degree) -->
+    <polygon points="330,88 360,100 330,112" fill="url(#pointGradient)"/>
+    <!-- Pilot -->
+    <rect x="310" y="94" width="20" height="12" fill="url(#pilotGradient)" rx="1"/>
+    <!-- Shank -->
+    <rect x="50" y="90" width="100" height="20" fill="url(#shankGradient)" rx="1"/>
+    <!-- Dimensions -->
+    <line x1="50" y1="78" x2="330" y2="78" stroke="#666" stroke-width="1" stroke-dasharray="4"/>
+    <text x="190" y="73" text-anchor="middle" fill="#666" font-size="11">L - 总长</text>
+    <text x="100" y="102" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">D - 柄径</text>
+    <text x="280" y="102" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">d - 导向径</text>
+    <text x="345" y="102" text-anchor="middle" fill="#666" font-size="10">60°</text>
+    <defs>
+      <linearGradient id="metalGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#c0c0c0"/>
+        <stop offset="50%" style="stop-color:#e8e8e8"/>
+        <stop offset="100%" style="stop-color:#a0a0a0"/>
+      </linearGradient>
+      <linearGradient id="pointGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#d0d0d0"/>
+        <stop offset="100%" style="stop-color:#a0a0a0"/>
+      </linearGradient>
+      <linearGradient id="pilotGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#b8b8b8"/>
+        <stop offset="100%" style="stop-color:#989898"/>
+      </linearGradient>
+      <linearGradient id="shankGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#b0b0b0"/>
+        <stop offset="50%" style="stop-color:#d0d0d0"/>
+        <stop offset="100%" style="stop-color:#909090"/>
+      </linearGradient>
+    </defs>
+  </svg>
         <div class="product-badge">现货</div>
       </div>
       <div class="product-detail-info">

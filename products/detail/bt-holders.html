@@ -364,10 +364,44 @@
             
     <div class="product-detail-card" data-model="BT40-ER32-100">
       <div class="product-detail-image">
-        <svg viewBox="0 0 200 100" class="tool-svg">
-          <rect x="20" y="45" width="140" height="10" fill="#666" rx="2"/>
-    <rect x="160" y="40" width="30" height="20" fill="#444" rx="3"/>
-        </svg>
+        <svg viewBox="0 0 400 200" class="tool-svg" style="width: 200px; height: 100px;">
+    <!-- BT Holder body -->
+    <rect x="50" y="80" width="100" height="40" fill="url(#holderGradient)" rx="2"/>
+    <!-- Taper -->
+    <polygon points="150,80 250,85 250,115 150,120" fill="url(#taperGradient)"/>
+    <!-- Flange -->
+    <rect x="240" y="70" width="20" height="60" fill="url(#flangeGradient)" rx="2"/>
+    <!-- Collet area -->
+    <rect x="260" y="88" width="80" height="24" fill="url(#colletGradient)" rx="2"/>
+    <!-- Pull stud hole -->
+    <circle cx="100" cy="100" r="12" fill="#333"/>
+    <!-- Dimensions -->
+    <text x="100" y="75" text-anchor="middle" fill="#666" font-size="10">BT30/40/50</text>
+    <text x="200" y="75" text-anchor="middle" fill="#666" font-size="10">锥度 7:24</text>
+    <text x="300" y="85" text-anchor="middle" fill="#666" font-size="10">ER16/20/32</text>
+    <text x="300" y="120" text-anchor="middle" fill="#666" font-size="10">夹持范围</text>
+    <defs>
+      <linearGradient id="holderGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#c0c0c0"/>
+        <stop offset="50%" style="stop-color:#e0e0e0"/>
+        <stop offset="100%" style="stop-color:#a0a0a0"/>
+      </linearGradient>
+      <linearGradient id="taperGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#b0b0b0"/>
+        <stop offset="100%" style="stop-color:#d0d0d0"/>
+      </linearGradient>
+      <linearGradient id="flangeGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#d0d0d0"/>
+        <stop offset="50%" style="stop-color:#f0f0f0"/>
+        <stop offset="100%" style="stop-color:#b0b0b0"/>
+      </linearGradient>
+      <linearGradient id="colletGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#a0a0a0"/>
+        <stop offset="50%" style="stop-color:#c0c0c0"/>
+        <stop offset="100%" style="stop-color:#808080"/>
+      </linearGradient>
+    </defs>
+  </svg>
         <div class="product-badge">现货</div>
       </div>
       <div class="product-detail-info">
