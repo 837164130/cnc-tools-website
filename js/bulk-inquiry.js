@@ -5,88 +5,142 @@ class BulkInquiry {
   }
 
   init() {
-    document.querySelectorAll('[data-bulk-inquiry]').forEach(container => {
-      this.setupForm(container);
+    this.attachEventListeners();
+  }
+
+  attachEventListeners() {
+    document.querySelectorAll('[data-bulk-inquiry]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        this.showBulkInquiryModal(btn.dataset.bulkInquiry);
+      });
     });
   }
 
-  setupForm(container) {
-    container.innerHTML = `
-      <div style="background: var(--bg-secondary); border-radius: 16px; padding: 32px;">
-        <h3 style="margin-bottom: 8px;">批量询价</h3>
-        <p style="color: var(--text-secondary); margin-bottom: 24px;">填写以下信息，我们将在24小时内为您提供报价</p>
+  showBulkInquiryModal(productId) {
+    const modal = document.createElement('div');
+    modal.className = 'bulk-inquiry-modal';
+    modal.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      padding: 40px;
+    `;
+
+    modal.innerHTML = `
+      <div style="background: var(--bg-primary); border-radius: 16px; max-width: 500px; width: 100%; padding: 32px; position: relative;">
+        <button class="close-bulk-modal" style="position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 24px; cursor: pointer;">✕</button>
+        <h3 style="margin-bottom: 24px;">批量询价</h3>
         
-        <form class="bulk-inquiry-form" style="display: flex; flex-direction: column; gap: 16px;">
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-            <div>
-              <label style="display: block; margin-bottom: 8px; font-weight: 600; font-size: 14px;">联系人 *</label>
-              <input type="text" name="name" required style="width: 100%; padding: 12px; border: 2px solid var(--border); border-radius: 8px; background: var(--bg-primary); font-size: 14px;" placeholder="您的姓名">
-            </div>
-            <div>
-              <label style="display: block; margin-bottom: 8px; font-weight: 600; font-size: 14px;">联系电话 *</label>
-              <input type="tel" name="phone" required style="width: 100%; padding: 12px; border: 2px solid var(--border); border-radius: 8px; background: var(--bg-primary); font-size: 14px;" placeholder="您的电话">
-            </div>
+        <form class="bulk-inquiry-form">
+          <div style="margin-bottom: 16px;">
+            <label style="display: block; margin-bottom: 8px; font-weight: 600;">产品型号</label>
+            <input type="text" value="${productId}" readonly style="
+              width: 100%;
+              padding: 12px;
+              border: 1px solid var(--border);
+              border-radius: 8px;
+              background: var(--bg-secondary);
+            ">
           </div>
-
-          <div>
-            <label style="display: block; margin-bottom: 8px; font-weight: 600; font-size: 14px;">公司名称</label>
-            <input type="text" name="company" style="width: 100%; padding: 12px; border: 2px solid var(--border); border-radius: 8px; background: var(--bg-primary); font-size: 14px;" placeholder="您的公司名称">
+          
+          <div style="margin-bottom: 16px;">
+            <label style="display: block; margin-bottom: 8px; font-weight: 600;">数量 *</label>
+            <input type="number" name="quantity" required min="10" placeholder="最少10件" style="
+              width: 100%;
+              padding: 12px;
+              border: 1px solid var(--border);
+              border-radius: 8px;
+            ">
           </div>
-
-          <div>
-            <label style="display: block; margin-bottom: 8px; font-weight: 600; font-size: 14px;">产品需求 *</label>
-            <textarea name="requirements" required rows="4" style="width: 100%; padding: 12px; border: 2px solid var(--border); border-radius: 8px; background: var(--bg-primary); font-size: 14px; resize: vertical;" placeholder="请描述您需要的产品规格、数量、用途等"></textarea>
+          
+          <div style="margin-bottom: 16px;">
+            <label style="display: block; margin-bottom: 8px; font-weight: 600;">公司名称</label>
+            <input type="text" name="company" placeholder="您的公司名称" style="
+              width: 100%;
+              padding: 12px;
+              border: 1px solid var(--border);
+              border-radius: 8px;
+            ">
           </div>
-
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-            <div>
-              <label style="display: block; margin-bottom: 8px; font-weight: 600; font-size: 14px;">预估数量</label>
-              <input type="number" name="quantity" min="1" style="width: 100%; padding: 12px; border: 2px solid var(--border); border-radius: 8px; background: var(--bg-primary); font-size: 14px;" placeholder="数量">
-            </div>
-            <div>
-              <label style="display: block; margin-bottom: 8px; font-weight: 600; font-size: 14px;">期望交期</label>
-              <input type="date" name="deadline" style="width: 100%; padding: 12px; border: 2px solid var(--border); border-radius: 8px; background: var(--bg-primary); font-size: 14px;">
-            </div>
+          
+          <div style="margin-bottom: 16px;">
+            <label style="display: block; margin-bottom: 8px; font-weight: 600;">联系人 *</label>
+            <input type="text" name="contact" required placeholder="您的姓名" style="
+              width: 100%;
+              padding: 12px;
+              border: 1px solid var(--border);
+              border-radius: 8px;
+            ">
           </div>
-
-          <button type="submit" class="btn btn-primary" style="padding: 16px; font-size: 16px; margin-top: 8px;">
-            提交询价
-          </button>
+          
+          <div style="margin-bottom: 16px;">
+            <label style="display: block; margin-bottom: 8px; font-weight: 600;">联系电话 *</label>
+            <input type="tel" name="phone" required placeholder="您的联系电话" style="
+              width: 100%;
+              padding: 12px;
+              border: 1px solid var(--border);
+              border-radius: 8px;
+            ">
+          </div>
+          
+          <div style="margin-bottom: 24px;">
+            <label style="display: block; margin-bottom: 8px; font-weight: 600;">备注需求</label>
+            <textarea name="notes" rows="3" placeholder="其他特殊要求..." style="
+              width: 100%;
+              padding: 12px;
+              border: 1px solid var(--border);
+              border-radius: 8px;
+              resize: vertical;
+            "></textarea>
+          </div>
+          
+          <button type="submit" style="
+            width: 100%;
+            padding: 14px;
+            background: #0071e3;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+          ">提交询价</button>
         </form>
       </div>
     `;
 
-    const form = container.querySelector('.bulk-inquiry-form');
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      this.handleSubmit(form);
+    document.body.appendChild(modal);
+    document.body.style.overflow = 'hidden';
+
+    // Close handlers
+    modal.querySelector('.close-bulk-modal').addEventListener('click', () => {
+      modal.remove();
+      document.body.style.overflow = '';
     });
-  }
 
-  handleSubmit(form) {
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.remove();
+        document.body.style.overflow = '';
+      }
+    });
 
-    // Simulate submission
-    const submitBtn = form.querySelector('button[type="submit"]');
-    submitBtn.textContent = '提交中...';
-    submitBtn.disabled = true;
-
-    setTimeout(() => {
-      submitBtn.textContent = '提交成功！';
-      submitBtn.style.background = '#34c759';
-
+    // Form submission
+    modal.querySelector('.bulk-inquiry-form').addEventListener('submit', (e) => {
+      e.preventDefault();
       if (window.notifications) {
         window.notifications.show('询价已提交，我们将尽快与您联系', 'success');
       }
-
-      setTimeout(() => {
-        form.reset();
-        submitBtn.textContent = '提交询价';
-        submitBtn.style.background = '';
-        submitBtn.disabled = false;
-      }, 3000);
-    }, 1500);
+      modal.remove();
+      document.body.style.overflow = '';
+    });
   }
 }
 
