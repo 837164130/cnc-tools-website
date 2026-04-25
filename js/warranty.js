@@ -1,64 +1,67 @@
-// Warranty Information
-class WarrantyInfo {
+// Product Warranty
+class ProductWarranty {
   constructor() {
     this.init();
   }
 
   init() {
-    document.querySelectorAll('[data-warranty]').forEach(container => {
-      this.setupWarranty(container);
-    });
+    this.displayWarranty();
   }
 
-  setupWarranty(container) {
+  displayWarranty() {
+    const container = document.querySelector('[data-warranty]');
+    if (!container) return;
+
     const warranty = JSON.parse(container.dataset.warranty || '{}');
 
     container.innerHTML = `
-      <div style="background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary)); border-radius: 16px; padding: 32px;">
-        <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
-          <div style="width: 60px; height: 60px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px;">
-            🛡️
-          </div>
+      <div style="
+        padding: 24px;
+        background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+        border-radius: 12px;
+        border: 1px solid var(--border);
+      ">
+        <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
+          <div style="font-size: 48px;">🛡️</div>
           <div>
-            <h3 style="margin: 0;">质量保证</h3>
-            <p style="color: var(--text-secondary); margin: 4px 0 0;">${warranty.period || '12个月'}质保承诺</p>
+            <h3 style="margin: 0; font-size: 20px;">质保服务</h3>
+            <p style="margin: 4px 0 0; color: var(--text-secondary);">${warranty.period || '12个月'}质保期</p>
           </div>
+        </div>
+        
+        <div style="display: grid; gap: 12px;">
+          ${(warranty.features || []).map(feature => `
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <div style="
+                width: 24px;
+                height: 24px;
+                background: #34c759;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 14px;
+                flex-shrink: 0;
+              ">✓</div>
+              <div>${feature}</div>
+            </div>
+          `).join('')}
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px;">
-          <div style="background: var(--bg-primary); border-radius: 12px; padding: 20px;">
-            <div style="font-size: 32px; margin-bottom: 8px;">📅</div>
-            <div style="font-weight: 600; margin-bottom: 4px;">质保期限</div>
-            <div style="color: var(--text-secondary); font-size: 14px;">${warranty.period || '12个月'}</div>
+        ${warranty.registration ? `
+          <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border);">
+            <button style="
+              padding: 12px 24px;
+              background: #0071e3;
+              color: white;
+              border: none;
+              border-radius: 8px;
+              cursor: pointer;
+              font-size: 14px;
+            ">注册质保</button>
           </div>
-          <div style="background: var(--bg-primary); border-radius: 12px; padding: 20px;">
-            <div style="font-size: 32px; margin-bottom: 8px;">🔄</div>
-            <div style="font-weight: 600; margin-bottom: 4px;">退换政策</div>
-            <div style="color: var(--text-secondary); font-size: 14px;">${warranty.returnPolicy || '7天无理由退换'}</div>
-          </div>
-          <div style="background: var(--bg-primary); border-radius: 12px; padding: 20px;">
-            <div style="font-size: 32px; margin-bottom: 8px;">🔧</div>
-            <div style="font-weight: 600; margin-bottom: 4px;">维修服务</div>
-            <div style="color: var(--text-secondary); font-size: 14px;">${warranty.repairService || '终身免费维修'}</div>
-          </div>
-          <div style="background: var(--bg-primary); border-radius: 12px; padding: 20px;">
-            <div style="font-size: 32px; margin-bottom: 8px;">📞</div>
-            <div style="font-weight: 600; margin-bottom: 4px;">售后支持</div>
-            <div style="color: var(--text-secondary); font-size: 14px;">${warranty.support || '24/7在线客服'}</div>
-          </div>
-        </div>
-
-        <div style="background: var(--bg-primary); border-radius: 12px; padding: 20px;">
-          <h4 style="margin-bottom: 12px;">质保条款</h4>
-          <ul style="margin: 0; padding-left: 20px; color: var(--text-secondary); line-height: 2;">
-            ${(warranty.terms || [
-              '正常使用条件下，产品出现质量问题可免费更换',
-              '人为损坏、不当使用不在质保范围内',
-              '质保期内提供免费技术咨询服务',
-              '产品终身享受成本价维修服务'
-            ]).map(term => `<li>${term}</li>`).join('')}
-          </ul>
-        </div>
+        ` : ''}
       </div>
     `;
   }
@@ -66,5 +69,5 @@ class WarrantyInfo {
 
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-  new WarrantyInfo();
+  new ProductWarranty();
 });
