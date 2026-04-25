@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>产品对比 - CCCNC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/enhanced.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #0071e3;
+            --text: #1d1d1f;
+            --text-secondary: #86868b;
+            --bg: #ffffff;
+            --bg-secondary: #f5f5f7;
+            --border: #d2d2d7;
+        }
+        body { 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; 
+            color: var(--text); 
+            background: var(--bg);
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 22px; }
+        
+        /* Navigation */
+        .nav-wrapper {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 9999;
+            background: rgba(251, 251, 253, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .nav {
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-logo { font-size: 21px; font-weight: 700; color: var(--text); text-decoration: none; }
+        .nav-links { display: flex; gap: 36px; align-items: center; }
+        .nav-links a { font-size: 12px; color: var(--text); text-decoration: none; opacity: 0.8; }
+        .nav-links a:hover { opacity: 1; }
+        
+        /* Page Header */
+        .page-header {
+            padding: 120px 0 60px;
+            text-align: center;
+            background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg) 100%);
+        }
+        .page-title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .page-desc {
+            font-size: 18px;
+            color: var(--text-secondary);
+        }
+        
+        /* Product Selector */
+        .selector-section {
+            padding: 40px 0;
+            background: var(--bg-secondary);
+        }
+        .selector-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .product-selector {
+            background: var(--bg);
+            border-radius: 20px;
+            padding: 24px;
+            text-align: center;
+        }
+        .selector-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+        .selector-select {
+            width: 100%;
+            padding: 12px 16px;
+            font-size: 15px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: var(--bg);
+            font-family: inherit;
+            cursor: pointer;
+        }
+        .selector-select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        /* Comparison Table */
+        .comparison-section {
+            padding: 60px 0;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: var(--bg);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+        }
+        .comparison-table th,
+        .comparison-table td {
+            padding: 20px 24px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        .comparison-table th {
+            background: var(--bg-secondary);
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+        }
+        .comparison-table td {
+            font-size: 15px;
+        }
+        .comparison-table tr:hover td {
+            background: rgba(0,113,227,0.02);
+        }
+        .product-header {
+            text-align: center;
+            padding: 30px 24px;
+        }
+        .product-header-name {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .product-header-model {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        .highlight {
+            background: rgba(0,113,227,0.08);
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        /* Action Buttons */
+        .action-section {
+            padding: 40px 0 80px;
+            text-align: center;
+        }
+        .btn {
+            display: inline-block;
+            padding: 16px 32px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            margin: 0 8px;
+            transition: all 0.3s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,113,227,0.3);
+        }
+        .btn-secondary {
+            background: var(--bg-secondary);
+            color: var(--text);
+        }
+        .btn-secondary:hover {
+            background: var(--border);
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-wrapper">
+        <div class="container">
+            <nav class="nav">
+                <a href="/" class="nav-logo">CCCNC</a>
+                <div class="nav-links">
+                    <a href="/">首页</a>
+                    <a href="/products/endmills.html">铣刀</a>
+                    <a href="/products/drills.html">钻头</a>
+                    <a href="/products/taps.html">丝锥</a>
+                    <a href="/products/reamers.html">铰刀</a>
+                    <a href="/products/inserts.html">刀片</a>
+                    <a href="/search.html">搜索</a>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <header class="page-header">
+        <div class="container">
+            <h1 class="page-title">产品对比</h1>
+            <p class="page-desc">选择最多3款产品进行详细对比</p>
+        </div>
+    </header>
+
+    <section class="selector-section">
+        <div class="container">
+            <div class="selector-grid">
+                <div class="product-selector">
+                    <div class="selector-label">产品 1</div>
+                    <select class="selector-select" id="product1">
+                        <option value="">选择产品</option>
+                        <optgroup label="铣刀">
+                            <option value="em2f">2刃平底铣刀 EM-2F</option>
+                            <option value="em4f">4刃平底铣刀 EM-4F</option>
+                            <option value="bm2f">2刃球头铣刀 BM-2F</option>
+                            <option value="crm4f">4刃圆鼻铣刀 CRM-4F</option>
+                        </optgroup>
+                        <optgroup label="钻头">
+                            <option value="td3d">3D麻花钻 TD-3D</option>
+                            <option value="td5d">5D深孔钻 TD-5D</option>
+                            <option value="icd3d">3D内冷钻 ICD-3D</option>
+                        </optgroup>
+                        <optgroup label="丝锥">
+                            <option value="mtm">公制机用丝锥 MT-M</option>
+                            <option value="ftm">公制挤压丝锥 FT-M</option>
+                        </optgroup>
+                    </select>
+                </div>
+                <div class="product-selector">
+                    <div class="selector-label">产品 2</div>
+                    <select class="selector-select" id="product2">
+                        <option value="">选择产品</option>
+                        <optgroup label="铣刀">
+                            <option value="em2f">2刃平底铣刀 EM-2F</option>
+                            <option value="em4f">4刃平底铣刀 EM-4F</option>
+                            <option value="bm2f">2刃球头铣刀 BM-2F</option>
+                            <option value="crm4f">4刃圆鼻铣刀 CRM-4F</option>
+                        </optgroup>
+                        <optgroup label="钻头">
+                            <option value="td3d">3D麻花钻 TD-3D</option>
+                            <option value="td5d">5D深孔钻 TD-5D</option>
+                            <option value="icd3d">3D内冷钻 ICD-3D</option>
+                        </optgroup>
+                        <optgroup label="丝锥">
+                            <option value="mtm">公制机用丝锥 MT-M</option>
+                            <option value="ftm">公制挤压丝锥 FT-M</option>
+                        </optgroup>
+                    </select>
+                </div>
+                <div class="product-selector">
+                    <div class="selector-label">产品 3</div>
+                    <select class="selector-select" id="product3">
+                        <option value="">选择产品</option>
+                        <optgroup label="铣刀">
+                            <option value="em2f">2刃平底铣刀 EM-2F</option>
+                            <option value="em4f">4刃平底铣刀 EM-4F</option>
+                            <option value="bm2f">2刃球头铣刀 BM-2F</option>
+                            <option value="crm4f">4刃圆鼻铣刀 CRM-4F</option>
+                        </optgroup>
+                        <optgroup label="钻头">
+                            <option value="td3d">3D麻花钻 TD-3D</option>
+                            <option value="td5d">5D深孔钻 TD-5D</option>
+                            <option value="icd3d">3D内冷钻 ICD-3D</option>
+                        </optgroup>
+                        <optgroup label="丝锥">
+                            <option value="mtm">公制机用丝锥 MT-M</option>
+                            <option value="ftm">公制挤压丝锥 FT-M</option>
+                        </optgroup>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="comparison-section">
+        <div class="container">
+            <table class="comparison-table" id="comparisonTable">
+                <thead>
+                    <tr>
+                        <th style="width: 20%;">参数</th>
+                        <th style="width: 26.66%;" id="header1">产品 1</th>
+                        <th style="width: 26.66%;" id="header2">产品 2</th>
+                        <th style="width: 26.66%;" id="header3">产品 3</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <tr>
+                        <td colspan="4" style="text-align: center; padding: 60px; color: var(--text-secondary);">
+                            请选择产品进行对比
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="action-section">
+        <div class="container">
+            <a href="/contact.html" class="btn">获取报价</a>
+            <a href="/products/endmills.html" class="btn btn-secondary">浏览全部产品</a>
+        </div>
+    </section>
+
+    <script>
+        // Product data
+        const productData = {
+            em2f: {
+                name: '2刃平底铣刀',
+                model: 'EM-2F',
+                type: '平底铣刀',
+                flutes: '2',
+                helix: '35°',
+                coating: 'TiAlN',
+                diameter: '1-20mm',
+                length: '3D, 5D',
+                material: '硬质合金',
+                hardness: 'HRC 45',
+                application: '通用加工、槽铣',
+                price: '¥45-180'
+            },
+            em4f: {
+                name: '4刃平底铣刀',
+                model: 'EM-4F',
+                type: '平底铣刀',
+                flutes: '4',
+                helix: '35°',
+                coating: 'TiAlN',
+                diameter: '1-20mm',
+                length: '3D, 5D',
+                material: '硬质合金',
+                hardness: 'HRC 50',
+                application: '侧铣、精加工',
+                price: '¥55-220'
+            },
+            bm2f: {
+                name: '2刃球头铣刀',
+                model: 'BM-2F',
+                type: '球头铣刀',
+                flutes: '2',
+                helix: '30°',
+                coating: 'TiAlN',
+                diameter: 'R0.5-R10',
+                length: '2D, 3D',
+                material: '硬质合金',
+                hardness: 'HRC 45',
+                application: '3D曲面、模具',
+                price: '¥65-280'
+            },
+            crm4f: {
+                name: '4刃圆鼻铣刀',
+                model: 'CRM-4F',
+                type: '圆鼻铣刀',
+                flutes: '4',
+                helix: '35°',
+                coating: 'TiSiN',
+                diameter: '2-20mm',
+                length: '3D, 5D',
+                material: '硬质合金',
+                hardness: 'HRC 55',
+                application: '圆角加工、模具',
+                price: '¥75-320'
+            },
+            td3d: {
+                name: '3D麻花钻',
+                model: 'TD-3D',
+                type: '麻花钻',
+                flutes: '2',
+                helix: '30°',
+                coating: 'TiAlN',
+                diameter: '1-20mm',
+                length: '3D',
+                material: '硬质合金',
+                hardness: 'HRC 45',
+                application: '通用钻孔',
+                price: '¥35-150'
+            },
+            td5d: {
+                name: '5D深孔钻',
+                model: 'TD-5D',
+                type: '深孔钻',
+                flutes: '2',
+                helix: '25°',
+                coating: 'TiAlN',
+                diameter: '3-20mm',
+                length: '5D',
+                material: '硬质合金',
+                hardness: 'HRC 45',
+                application: '深孔加工',
+                price: '¥55-200'
+            },
+            icd3d: {
+                name: '3D内冷钻',
+                model: 'ICD-3D',
+                type: '内冷钻',
+                flutes: '2',
+                helix: '30°',
+                coating: 'TiAlN',
+                diameter: '3-20mm',
+                length: '3D',
+                material: '硬质合金',
+                hardness: 'HRC 50',
+                application: '深孔、排屑困难',
+                price: '¥85-350'
+            },
+            mtm: {
+                name: '公制机用丝锥',
+                model: 'MT-M',
+                type: '机用丝锥',
+                flutes: '3',
+                helix: '-',
+                coating: 'TiN',
+                diameter: 'M3-M20',
+                length: '标准',
+                material: '高速钢',
+                hardness: 'HRC 62',
+                application: '通孔、盲孔',
+                price: '¥25-120'
+            },
+            ftm: {
+                name: '公制挤压丝锥',
+                model: 'FT-M',
+                type: '挤压丝锥',
+                flutes: '-',
+                helix: '-',
+                coating: 'TiN',
+                diameter: 'M3-M16',
+                length: '标准',
+                material: '高速钢',
+                hardness: 'HRC 62',
+                application: '无屑加工、盲孔',
+                price: '¥35-150'
+            }
+        };
+
+        function updateComparison() {
+            const p1 = document.getElementById('product1').value;
+            const p2 = document.getElementById('product2').value;
+            const p3 = document.getElementById('product3').value;
+            
+            const products = [p1, p2, p3].filter(p => p);
+            
+            if (products.length === 0) {
+                document.getElementById('tableBody').innerHTML = `
+                    <tr>
+                        <td colspan="4" style="text-align: center; padding: 60px; color: var(--text-secondary);">
+                            请选择产品进行对比
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            // Update headers
+            document.getElementById('header1').innerHTML = p1 ? `<div class="product-header"><div class="product-header-name">${productData[p1].name}</div><div class="product-header-model">${productData[p1].model}</div></div>` : '产品 1';
+            document.getElementById('header2').innerHTML = p2 ? `<div class="product-header"><div class="product-header-name">${productData[p2].name}</div><div class="product-header-model">${productData[p2].model}</div></div>` : '产品 2';
+            document.getElementById('header3').innerHTML = p3 ? `<div class="product-header"><div class="product-header-name">${productData[p3].name}</div><div class="product-header-model">${productData[p3].model}</div></div>` : '产品 3';
+            
+            // Generate comparison rows
+            const fields = [
+                { key: 'type', label: '类型' },
+                { key: 'flutes', label: '刃数' },
+                { key: 'helix', label: '螺旋角' },
+                { key: 'coating', label: '涂层' },
+                { key: 'diameter', label: '直径范围' },
+                { key: 'length', label: '长度规格' },
+                { key: 'material', label: '材质' },
+                { key: 'hardness', label: '适用硬度' },
+                { key: 'application', label: '应用领域' },
+                { key: 'price', label: '参考价格' }
+            ];
+            
+            let html = '';
+            fields.forEach(field => {
+                const values = products.map(p => productData[p][field.key]);
+                const isSame = values.every(v => v === values[0]);
+                
+                html += `<tr>
+                    <td style="font-weight: 600;">${field.label}</td>
+                    <td ${!isSame && values[0] ? 'class="highlight"' : ''}>${p1 ? productData[p1][field.key] : '-'}</td>
+                    <td ${!isSame && values[1] ? 'class="highlight"' : ''}>${p2 ? productData[p2][field.key] : '-'}</td>
+                    <td ${!isSame && values[2] ? 'class="highlight"' : ''}>${p3 ? productData[p3][field.key] : '-'}</td>
+                </tr>`;
+            });
+            
+            document.getElementById('tableBody').innerHTML = html;
+        }
+
+        // Event listeners
+        document.getElementById('product1').addEventListener('change', updateComparison);
+        document.getElementById('product2').addEventListener('change', updateComparison);
+        document.getElementById('product3').addEventListener('change', updateComparison);
+    </script>
+</body>
+</html>
