@@ -1,5 +1,5 @@
-// Product Feedback Form
-class ProductFeedback {
+// Customer Feedback Form
+class CustomerFeedback {
   constructor() {
     this.init();
   }
@@ -18,45 +18,61 @@ class ProductFeedback {
         background: var(--bg-secondary);
         border-radius: 12px;
       ">
-        <h3 style="margin-bottom: 16px;">产品反馈</h3>
-        <p style="margin-bottom: 24px; color: var(--text-secondary);">您的意见对我们很重要，帮助我们改进产品</p>
+        <h3 style="margin-bottom: 16px;">意见反馈</h3>
         
         <form class="feedback-form">
           <div style="margin-bottom: 16px;">
             <label style="display: block; margin-bottom: 8px; font-weight: 600;">反馈类型</label>
-            <select name="type" style="
+            <select style="
               width: 100%;
               padding: 12px;
               border: 1px solid var(--border);
               border-radius: 8px;
               background: var(--bg-primary);
+              font-size: 14px;
             ">
-              <option value="suggestion">产品建议</option>
-              <option value="bug">问题反馈</option>
-              <option value="praise">产品好评</option>
-              <option value="other">其他</option>
+              <option>产品建议</option>
+              <option>网站问题</option>
+              <option>服务投诉</option>
+              <option>其他</option>
             </select>
           </div>
           
           <div style="margin-bottom: 16px;">
-            <label style="display: block; margin-bottom: 8px; font-weight: 600;">反馈内容 *</label>
-            <textarea name="message" rows="4" required placeholder="请详细描述您的反馈..." style="
+            <label style="display: block; margin-bottom: 8px; font-weight: 600;">您的姓名</label>
+            <input type="text" placeholder="请输入姓名" style="
               width: 100%;
               padding: 12px;
               border: 1px solid var(--border);
               border-radius: 8px;
-              resize: vertical;
-            "></textarea>
+              background: var(--bg-primary);
+              font-size: 14px;
+            ">
+          </div>
+          
+          <div style="margin-bottom: 16px;">
+            <label style="display: block; margin-bottom: 8px; font-weight: 600;">联系电话</label>
+            <input type="tel" placeholder="请输入电话" style="
+              width: 100%;
+              padding: 12px;
+              border: 1px solid var(--border);
+              border-radius: 8px;
+              background: var(--bg-primary);
+              font-size: 14px;
+            ">
           </div>
           
           <div style="margin-bottom: 24px;">
-            <label style="display: block; margin-bottom: 8px; font-weight: 600;">联系方式（选填）</label>
-            <input type="text" name="contact" placeholder="邮箱或电话，方便我们回复您" style="
+            <label style="display: block; margin-bottom: 8px; font-weight: 600;">反馈内容 *</label>
+            <textarea rows="4" placeholder="请详细描述您的意见或建议..." required style="
               width: 100%;
               padding: 12px;
               border: 1px solid var(--border);
               border-radius: 8px;
-            ">
+              background: var(--bg-primary);
+              font-size: 14px;
+              resize: vertical;
+            "></textarea>
           </div>
           
           <button type="submit" style="
@@ -74,11 +90,10 @@ class ProductFeedback {
       </div>
     `;
 
-    // Form submission
     container.querySelector('.feedback-form').addEventListener('submit', (e) => {
       e.preventDefault();
       if (window.notifications) {
-        window.notifications.show('感谢您的反馈！我们会认真考虑您的建议', 'success');
+        window.notifications.show('感谢您的反馈！我们会尽快处理', 'success');
       }
       e.target.reset();
     });
@@ -87,5 +102,5 @@ class ProductFeedback {
 
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-  new ProductFeedback();
+  new CustomerFeedback();
 });
