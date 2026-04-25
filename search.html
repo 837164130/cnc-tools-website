@@ -5,460 +5,169 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>产品搜索 - CCCNC</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/enhanced.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
             --primary: #0071e3;
-            --primary-dark: #0077ed;
             --text: #1d1d1f;
             --text-secondary: #86868b;
             --bg: #ffffff;
             --bg-secondary: #f5f5f7;
-            --bg-dark: #000000;
             --border: #d2d2d7;
         }
-        
         body { 
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; 
             color: var(--text); 
-            line-height: 1.47059;
-            font-weight: 400;
-            letter-spacing: -0.022em;
             background: var(--bg);
         }
-        
         .container { max-width: 1024px; margin: 0 auto; padding: 0 22px; }
         
         /* Navigation */
         .nav-wrapper {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             z-index: 9999;
             background: rgba(251, 251, 253, 0.8);
             backdrop-filter: saturate(180%) blur(20px);
             border-bottom: 1px solid rgba(0,0,0,0.05);
         }
-        
         .nav {
             height: 52px;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
-        
-        .nav-logo {
-            font-size: 21px;
-            font-weight: 700;
-            color: var(--text);
-            text-decoration: none;
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 36px;
-            align-items: center;
-        }
-        
-        .nav-links a {
-            font-size: 12px;
-            color: var(--text);
-            text-decoration: none;
-            opacity: 0.8;
-            transition: opacity 0.3s;
-        }
-        
+        .nav-logo { font-size: 21px; font-weight: 700; color: var(--text); text-decoration: none; }
+        .nav-links { display: flex; gap: 36px; align-items: center; }
+        .nav-links a { font-size: 12px; color: var(--text); text-decoration: none; opacity: 0.8; }
         .nav-links a:hover { opacity: 1; }
-        .nav-links a.active { opacity: 1; font-weight: 500; }
-        
-        .lang-switcher {
-            display: flex;
-            gap: 4px;
-            background: rgba(0,0,0,0.05);
-            padding: 3px;
-            border-radius: 12px;
-        }
-        
-        .lang-btn {
-            padding: 4px 10px;
-            border: none;
-            background: transparent;
-            color: var(--text);
-            font-size: 11px;
-            font-weight: 500;
-            cursor: pointer;
-            border-radius: 9px;
-            transition: all 0.3s;
-        }
-        
-        .lang-btn.active {
-            background: white;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-        
-        .catalog-btn {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 14px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 980px;
-            font-size: 12px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .catalog-btn:hover { background: var(--primary-dark); }
-        
-        .catalog-dropdown {
-            position: fixed;
-            top: 52px;
-            left: 0;
-            right: 0;
-            background: rgba(251, 251, 253, 0.95);
-            backdrop-filter: saturate(180%) blur(20px);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease;
-            z-index: 9998;
-        }
-        
-        .catalog-dropdown.active { max-height: 600px; }
-        
-        .catalog-content {
-            max-width: 1024px;
-            margin: 0 auto;
-            padding: 30px 22px;
-        }
-        
-        .catalog-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-        }
-        
-        .catalog-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 14px 16px;
-            border-radius: 12px;
-            text-decoration: none;
-            color: var(--text);
-            transition: all 0.2s;
-            cursor: pointer;
-        }
-        
-        .catalog-item:hover { background: rgba(0,0,0,0.04); }
-        
-        .catalog-icon {
-            width: 36px;
-            height: 36px;
-            background: var(--bg-secondary);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            flex-shrink: 0;
-        }
-        
-        .catalog-text {
-            flex: 1;
-            font-size: 14px;
-            font-weight: 500;
-        }
-        
-        .catalog-arrow {
-            color: var(--text-secondary);
-            font-size: 12px;
-        }
         
         /* Search Section */
         .search-section {
-            padding: 140px 0 60px;
-            background: var(--bg);
+            padding: 120px 0 60px;
             text-align: center;
+            background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg) 100%);
         }
-        
-        .search-eyebrow {
-            font-size: 17px;
-            color: var(--primary);
-            font-weight: 600;
-            margin-bottom: 12px;
-            display: block;
-        }
-        
         .search-title {
             font-size: 48px;
             font-weight: 700;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
         }
-        
         .search-box {
+            max-width: 600px;
+            margin: 0 auto;
             position: relative;
-            max-width: 700px;
-            margin: 0 auto 40px;
         }
-        
-        .search-input {
+        .search-box input {
             width: 100%;
-            padding: 20px 60px 20px 24px;
-            border: 2px solid var(--border);
+            padding: 16px 24px 16px 52px;
+            font-size: 17px;
+            border: 1px solid var(--border);
             border-radius: 16px;
-            font-size: 18px;
-            font-family: inherit;
             background: var(--bg);
+            outline: none;
             transition: all 0.3s;
         }
-        
-        .search-input:focus {
-            outline: none;
+        .search-box input:focus {
             border-color: var(--primary);
             box-shadow: 0 0 0 4px rgba(0,113,227,0.1);
         }
-        
-        .search-btn {
+        .search-box::before {
+            content: '🔍';
             position: absolute;
-            right: 8px;
+            left: 18px;
             top: 50%;
             transform: translateY(-50%);
-            padding: 12px 24px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
+            font-size: 20px;
         }
         
-        .search-btn:hover { background: var(--primary-dark); }
-        
-        /* Filters */
-        .filters {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 40px;
-        }
-        
-        .filter-btn {
-            padding: 10px 20px;
-            border: 1px solid var(--border);
-            background: var(--bg);
-            border-radius: 20px;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .filter-btn:hover { background: var(--bg-secondary); }
-        .filter-btn.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-        
-        /* Results Section */
+        /* Results */
         .results-section {
             padding: 40px 0 80px;
-            min-height: 400px;
         }
-        
-        .results-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-        
-        .results-count {
-            font-size: 16px;
-            color: var(--text-secondary);
-        }
-        
-        .results-count span {
-            color: var(--text);
-            font-weight: 600;
-        }
-        
-        .sort-select {
-            padding: 10px 16px;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            font-size: 14px;
-            background: var(--bg);
-            cursor: pointer;
-        }
-        
-        /* Product Grid */
         .results-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 24px;
         }
-        
-        .product-card {
+        .result-card {
             background: var(--bg-secondary);
             border-radius: 20px;
             padding: 24px;
             transition: all 0.3s;
-            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }
-        
-        .product-card:hover {
+        .result-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
-        
-        .product-image {
-            width: 100%;
-            height: 160px;
-            background: linear-gradient(135deg, #e8e8ed 0%, #d2d2d7 100%);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 64px;
-            margin-bottom: 16px;
-        }
-        
-        .product-category {
+        .result-category {
             font-size: 12px;
             color: var(--primary);
             font-weight: 600;
             text-transform: uppercase;
             margin-bottom: 8px;
         }
-        
-        .product-name {
-            font-size: 16px;
+        .result-name {
+            font-size: 18px;
             font-weight: 600;
-            margin-bottom: 8px;
-            line-height: 1.3;
+            margin-bottom: 4px;
         }
-        
-        .product-desc {
+        .result-model {
             font-size: 14px;
             color: var(--text-secondary);
-            line-height: 1.4;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
-        
-        .product-specs {
+        .result-keywords {
             display: flex;
-            gap: 12px;
             flex-wrap: wrap;
+            gap: 6px;
         }
-        
-        .product-spec {
+        .result-keyword {
             font-size: 12px;
             padding: 4px 10px;
             background: var(--bg);
-            border-radius: 6px;
+            border-radius: 8px;
             color: var(--text-secondary);
         }
         
-        /* No Results */
+        /* Categories */
+        .categories-section {
+            padding: 40px 0;
+            background: var(--bg-secondary);
+        }
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 16px;
+        }
+        .category-btn {
+            padding: 16px;
+            background: var(--bg);
+            border: none;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .category-btn:hover, .category-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+        
         .no-results {
             text-align: center;
-            padding: 80px 20px;
+            padding: 60px 20px;
+            color: var(--text-secondary);
         }
-        
         .no-results-icon {
-            font-size: 80px;
-            margin-bottom: 20px;
-        }
-        
-        .no-results h3 {
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-        
-        .no-results p {
-            font-size: 16px;
-            color: var(--text-secondary);
-        }
-        
-        /* Popular Searches */
-        .popular-searches {
-            margin-top: 40px;
-        }
-        
-        .popular-title {
-            font-size: 14px;
-            color: var(--text-secondary);
+            font-size: 64px;
             margin-bottom: 16px;
-        }
-        
-        .popular-tags {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        
-        .popular-tag {
-            padding: 8px 16px;
-            background: var(--bg-secondary);
-            border-radius: 20px;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        
-        .popular-tag:hover {
-            background: var(--border);
-        }
-        
-        /* Footer */
-        .footer {
-            background: var(--bg-secondary);
-            padding: 40px 0 20px;
-            border-top: 1px solid var(--border);
-        }
-        
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-bottom: 20px;
-            border-bottom: 1px solid var(--border);
-            margin-bottom: 20px;
-        }
-        
-        .footer-links {
-            display: flex;
-            gap: 30px;
-        }
-        
-        .footer-links a {
-            font-size: 12px;
-            color: var(--text-secondary);
-            text-decoration: none;
-        }
-        
-        .footer-bottom {
-            font-size: 12px;
-            color: var(--text-secondary);
-            text-align: center;
-        }
-        
-        @media (max-width: 768px) {
-            .search-title { font-size: 32px; }
-            .results-grid { grid-template-columns: 1fr; }
-            .catalog-grid { grid-template-columns: repeat(2, 1fr); }
-            .nav-links { display: none; }
-            .results-header { flex-direction: column; gap: 16px; }
         }
     </style>
 </head>
@@ -468,23 +177,15 @@
             <nav class="nav">
                 <a href="/" class="nav-logo">CCCNC</a>
                 <div class="nav-links">
-                    <button class="catalog-btn" id="catalogBtn">
-                        <span>�?/span>
-                        <span>目录</span>
-                    </button>
                     <a href="/">首页</a>
                     <a href="/products/endmills.html">铣刀</a>
                     <a href="/products/drills.html">钻头</a>
                     <a href="/products/taps.html">丝锥</a>
                     <a href="/products/reamers.html">铰刀</a>
-                    <a href="/products/inserts.html">刀�?/a>
-                    <a href="/calculator.html">计算�?/a>
-                    <a href="/about.html">关于</a>
-                    <a href="/contact.html">联系</a>
-                    <div class="lang-switcher">
-                        <button class="lang-btn active" data-lang="zh">�?/button>
-                        <button class="lang-btn" data-lang="ru">RU</button>
-                    </div>
+                    <a href="/products/inserts.html">刀片</a>
+                    <a href="/products/tool-holders.html">刀柄</a>
+                    <a href="/products/collets.html">卡簧</a>
+                    <a href="/products/arbors.html">刀盘</a>
                 </div>
             </nav>
         </div>
@@ -492,289 +193,160 @@
 
     <section class="search-section">
         <div class="container">
-            <span class="search-eyebrow">Product Search</span>
-            <h1 class="search-title">搜索产品</h1>
-            
+            <h1 class="search-title">产品搜索</h1>
             <div class="search-box">
-                <input type="text" class="search-input" id="searchInput" placeholder="输入产品名称、型号或关键�?..">
-                <button class="search-btn" onclick="performSearch()">搜索</button>
+                <input type="text" id="searchInput" placeholder="输入产品型号、名称或关键词..." autofocus>
             </div>
-            
-            <div class="filters">
-                <button class="filter-btn active" data-filter="all">全部</button>
-                <button class="filter-btn" data-filter="endmills">铣刀</button>
-                <button class="filter-btn" data-filter="drills">钻头</button>
-                <button class="filter-btn" data-filter="taps">丝锥</button>
-                <button class="filter-btn" data-filter="reamers">铰刀</button>
-                <button class="filter-btn" data-filter="inserts">刀�?/button>
-            </div>
-            
-            <div class="popular-searches">
-                <p class="popular-title">热门搜索</p>
-                <div class="popular-tags">
-                    <span class="popular-tag" onclick="quickSearch('铝用铣刀')">铝用铣刀</span>
-                    <span class="popular-tag" onclick="quickSearch('不锈钢钻�?)">不锈钢钻�?/span>
-                    <span class="popular-tag" onclick="quickSearch('M6丝锥')">M6丝锥</span>
-                    <span class="popular-tag" onclick="quickSearch('球头铣刀')">球头铣刀</span>
-                    <span class="popular-tag" onclick="quickSearch('内冷�?)">内冷�?/span>
-                    <span class="popular-tag" onclick="quickSearch('CNMG刀�?)">CNMG刀�?/span>
-                </div>
+        </div>
+    </section>
+
+    <section class="categories-section">
+        <div class="container">
+            <div class="categories-grid">
+                <button class="category-btn active" data-category="all">全部</button>
+                <button class="category-btn" data-category="endmills">铣刀</button>
+                <button class="category-btn" data-category="drills">钻头</button>
+                <button class="category-btn" data-category="taps">丝锥</button>
+                <button class="category-btn" data-category="reamers">铰刀</button>
+                <button class="category-btn" data-category="inserts">刀片</button>
+                <button class="category-btn" data-category="tool-holders">刀柄</button>
+                <button class="category-btn" data-category="collets">卡簧</button>
+                <button class="category-btn" data-category="arbors">刀盘</button>
             </div>
         </div>
     </section>
 
     <section class="results-section">
         <div class="container">
-            <div class="results-header">
-                <p class="results-count">找到 <span id="resultCount">0</span> 个产�?/p>
-                <select class="sort-select" id="sortSelect" onchange="sortResults()">
-                    <option value="relevance">相关度排�?/option>
-                    <option value="name">名称排序</option>
-                    <option value="category">类别排序</option>
-                </select>
-            </div>
-            
-            <div class="results-grid" id="resultsGrid">
-                <!-- Results will be populated by JavaScript -->
-            </div>
-            
-            <div class="no-results" id="noResults" style="display: none;">
-                <div class="no-results-icon">🔍</div>
-                <h3>未找到相关产�?/h3>
-                <p>请尝试其他关键词或浏览我们的产品目录</p>
-            </div>
+            <div id="resultsContainer" class="results-grid"></div>
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <a href="/" class="nav-logo">CCCNC</a>
-                <div class="footer-links">
-                    <a href="/products/endmills.html">铣刀</a>
-                    <a href="/products/drills.html">钻头</a>
-                    <a href="/products/taps.html">丝锥</a>
-                    <a href="/contact.html">联系</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                © 2025 CCCNC. All rights reserved.
-            </div>
-        </div>
-    </footer>
-
-    <!-- Catalog Dropdown -->
-    <div class="catalog-dropdown" id="catalogDropdown">
-        <div class="catalog-content">
-            <div class="catalog-grid">
-                <a href="/products/inserts.html" class="catalog-item">
-                    <div class="catalog-icon">💎</div>
-                    <span class="catalog-text">车刀�?/span>
-                    <span class="catalog-arrow">�?/span>
-                </a>
-                <a href="/products/endmills.html" class="catalog-item">
-                    <div class="catalog-icon">🔧</div>
-                    <span class="catalog-text">硬质合金铣刀</span>
-                    <span class="catalog-arrow">�?/span>
-                </a>
-                <a href="/products/drills.html" class="catalog-item">
-                    <div class="catalog-icon">🔩</div>
-                    <span class="catalog-text">硬质合金钻头</span>
-                    <span class="catalog-arrow">�?/span>
-                </a>
-                <a href="/products/reamers.html" class="catalog-item">
-                    <div class="catalog-icon">⚙️</div>
-                    <span class="catalog-text">铰刀系列</span>
-                    <span class="catalog-arrow">�?/span>
-                </a>
-                <a href="/products/taps.html" class="catalog-item">
-                    <div class="catalog-icon">🌀</div>
-                    <span class="catalog-text">丝锥系列</span>
-                    <span class="catalog-arrow">�?/span>
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <script src="js/i18n.js"></script>
     <script>
-        // Product Database
+        // Product database
         const products = [
-            // Endmills
-            { id: 'em2f', name: '2刃平底铣刀 EM-2F', category: 'endmills', desc: '通用�?刃设计，适合粗加工和精加�?, specs: ['D1-D20mm', 'HRC45-65'], link: '/products/endmills.html' },
-            { id: 'em3f', name: '3刃平底铣刀 EM-3F', category: 'endmills', desc: '高效�?刃设计，兼顾排屑和刚�?, specs: ['D2-D20mm', 'HRC45-65'], link: '/products/endmills.html' },
-            { id: 'em4f', name: '4刃平底铣刀 EM-4F', category: 'endmills', desc: '高刚�?刃设计，适合精加�?, specs: ['D2-D20mm', 'HRC45-65'], link: '/products/endmills.html' },
-            { id: 'emball', name: '球头铣刀 EM-BALL', category: 'endmills', desc: '精密球头设计，适合3D曲面加工', specs: ['R0.5-R10mm', 'HRC45-65'], link: '/products/endmills.html' },
-            { id: 'em2fal', name: '铝用铣刀 EM-2F-AL', category: 'endmills', desc: '大容屑槽设计，铝加工镜面效果', specs: ['D1-D20mm', '铝专�?], link: '/products/endmills.html' },
-            { id: 'emrough', name: '粗皮铣刀 EM-ROUGH', category: 'endmills', desc: '波纹刃设计，大切削量高效�?, specs: ['D6-D20mm', '重切�?], link: '/products/endmills.html' },
-            
-            // Drills
-            { id: 'dr3d', name: '3D麻花�?DR-TWIST-3D', category: 'drills', desc: '标准3倍径麻花钻，通用性强', specs: ['D1-D20mm', '3D槽长'], link: '/products/drills.html' },
-            { id: 'dr5d', name: '5D麻花�?DR-TWIST-5D', category: 'drills', desc: '5倍径设计，适合较深孔加�?, specs: ['D3-D20mm', '5D槽长'], link: '/products/drills.html' },
-            { id: 'drcoolant', name: '内冷�?DR-COOLANT', category: 'drills', desc: '内部冷却通道，深孔加工专�?, specs: ['D3-D20mm', '内冷'], link: '/products/drills.html' },
-            { id: 'drdeep', name: '深孔�?DR-DEEP', category: 'drills', desc: '12D/20D枪钻，深孔加工专�?, specs: ['D3-D16mm', '12D/20D'], link: '/products/drills.html' },
-            { id: 'dral', name: '铝用钻头 DR-AL', category: 'drills', desc: '大螺旋角设计，铝加工无积�?, specs: ['D1-D16mm', '铝专�?], link: '/products/drills.html' },
-            
-            // Taps
-            { id: 'tapm', name: '公制机用丝锥 TAP-M', category: 'taps', desc: 'M系列机用丝锥，通孔盲孔通用', specs: ['M3-M20', 'H2精度'], link: '/products/taps.html' },
-            { id: 'tapform', name: '挤压丝锥 TAP-FORM', category: 'taps', desc: '无屑加工，适合延展性材�?, specs: ['M3-M12', '挤压成型'], link: '/products/taps.html' },
-            { id: 'tapspiral', name: '螺旋槽丝�?TAP-SPIRAL', category: 'taps', desc: '35°/45°螺旋槽，盲孔专用', specs: ['M3-M20', '盲孔专用'], link: '/products/taps.html' },
-            { id: 'tappipe', name: '管螺纹丝�?TAP-PIPE', category: 'taps', desc: 'RC/RP/NPT管螺纹加�?, specs: ['RC1/8-RC2', '管螺�?], link: '/products/taps.html' },
-            
-            // Reamers
-            { id: 'rms', name: '直柄铰刀 RM-STRAIGHT', category: 'reamers', desc: '6�?4刃直柄铰刀，高精度铰孔', specs: ['D3-D20mm', 'H7精度'], link: '/products/reamers.html' },
-            { id: 'rmmt', name: '莫氏锥柄铰刀 RM-MT', category: 'reamers', desc: '莫氏锥柄设计，大直径铰孔', specs: ['D10-D50mm', '莫氏锥柄'], link: '/products/reamers.html' },
-            { id: 'rmadj', name: '可调铰刀 RM-ADJUST', category: 'reamers', desc: '直径可调，范�?.5mm', specs: ['D10-D50mm', '可调'], link: '/products/reamers.html' },
-            { id: 'rmtaper', name: '锥度铰刀 RM-TAPER', category: 'reamers', desc: '1:50锥度铰刀，销孔加�?, specs: ['D3-D20mm', '1:50锥度'], link: '/products/reamers.html' },
-            
-            // Inserts
-            { id: 'cnmg', name: 'CNMG车刀�?, category: 'inserts', desc: '80°菱形刀片，通用车削', specs: ['CNMG1204', '多材�?], link: '/products/inserts.html' },
-            { id: 'wnmg', name: 'WNMG车刀�?, category: 'inserts', desc: '80°六边形刀片，重切�?, specs: ['WNMG0804', '重切�?], link: '/products/inserts.html' },
-            { id: 'tnmg', name: 'TNMG车刀�?, category: 'inserts', desc: '60°三角形刀片，精车', specs: ['TNMG1604', '精加�?], link: '/products/inserts.html' },
-            { id: 'dnmg', name: 'DNMG车刀�?, category: 'inserts', desc: '55°菱形刀片，仿形车削', specs: ['DNMG1506', '仿形'], link: '/products/inserts.html' },
-            { id: 'ccmt', name: 'CCMT铝用刀�?, category: 'inserts', desc: '高光铝用，镜面效�?, specs: ['CCMT09T3', '铝专�?], link: '/products/inserts.html' }
+            { name: '2刃平底铣刀', model: 'EM-2F', category: 'endmills', url: '/products/detail/flat-endmills.html', keywords: ['铣刀', '平底', '2刃', '通用'] },
+            { name: '3刃平底铣刀', model: 'EM-3F', category: 'endmills', url: '/products/detail/flat-endmills.html', keywords: ['铣刀', '平底', '3刃', '铝用'] },
+            { name: '4刃平底铣刀', model: 'EM-4F', category: 'endmills', url: '/products/detail/flat-endmills.html', keywords: ['铣刀', '平底', '4刃', '钢用'] },
+            { name: '2刃球头铣刀', model: 'BM-2F', category: 'endmills', url: '/products/detail/ball-endmills.html', keywords: ['铣刀', '球头', '2刃', '3D'] },
+            { name: '4刃球头铣刀', model: 'BM-4F', category: 'endmills', url: '/products/detail/ball-endmills.html', keywords: ['铣刀', '球头', '4刃', '精加工'] },
+            { name: '4刃圆鼻铣刀', model: 'CRM-4F', category: 'endmills', url: '/products/detail/corner-radius.html', keywords: ['铣刀', '圆鼻', '4刃', 'R角'] },
+            { name: '6刃圆鼻铣刀', model: 'CRM-6F', category: 'endmills', url: '/products/detail/corner-radius.html', keywords: ['铣刀', '圆鼻', '6刃', '精加工'] },
+            { name: '3刃粗皮铣刀', model: 'RM-3F', category: 'endmills', url: '/products/detail/roughing.html', keywords: ['铣刀', '粗皮', '3刃', '开粗'] },
+            { name: '4刃粗皮铣刀', model: 'RM-4F', category: 'endmills', url: '/products/detail/roughing.html', keywords: ['铣刀', '粗皮', '4刃', '重切削'] },
+            { name: '3D麻花钻', model: 'TD-3D', category: 'drills', url: '/products/detail/twist-drills.html', keywords: ['钻头', '麻花钻', '3D', '通用'] },
+            { name: '5D深孔钻', model: 'TD-5D', category: 'drills', url: '/products/detail/twist-drills.html', keywords: ['钻头', '深孔', '5D', '深孔加工'] },
+            { name: '8D超深孔钻', model: 'TD-8D', category: 'drills', url: '/products/detail/twist-drills.html', keywords: ['钻头', '超深孔', '8D', '深孔加工'] },
+            { name: '60度中心钻', model: 'CD-60', category: 'drills', url: '/products/detail/center-drills.html', keywords: ['钻头', '中心钻', '60度', '定位'] },
+            { name: '90度中心钻', model: 'CD-90', category: 'drills', url: '/products/detail/center-drills.html', keywords: ['钻头', '中心钻', '90度', '倒角'] },
+            { name: '3D内冷钻', model: 'ICD-3D', category: 'drills', url: '/products/detail/internal-coolant.html', keywords: ['钻头', '内冷', '3D', '深孔'] },
+            { name: '5D内冷钻', model: 'ICD-5D', category: 'drills', url: '/products/detail/internal-coolant.html', keywords: ['钻头', '内冷', '5D', '深孔'] },
+            { name: '公制机用丝锥', model: 'MT-M', category: 'taps', url: '/products/detail/machine-taps.html', keywords: ['丝锥', '机用', '公制', '螺纹'] },
+            { name: 'UNC机用丝锥', model: 'MT-UNC', category: 'taps', url: '/products/detail/machine-taps.html', keywords: ['丝锥', '机用', 'UNC', '美制'] },
+            { name: 'UNF机用丝锥', model: 'MT-UNF', category: 'taps', url: '/products/detail/machine-taps.html', keywords: ['丝锥', '机用', 'UNF', '美制细牙'] },
+            { name: '公制挤压丝锥', model: 'FT-M', category: 'taps', url: '/products/detail/forming-taps.html', keywords: ['丝锥', '挤压', '公制', '无屑'] },
+            { name: 'UNC挤压丝锥', model: 'FT-UNC', category: 'taps', url: '/products/detail/forming-taps.html', keywords: ['丝锥', '挤压', 'UNC', '无屑'] },
+            { name: 'H7直柄铰刀', model: 'SR-H7', category: 'reamers', url: '/products/detail/straight-reamers.html', keywords: ['铰刀', '直柄', 'H7', '精加工'] },
+            { name: 'H8直柄铰刀', model: 'SR-H8', category: 'reamers', url: '/products/detail/straight-reamers.html', keywords: ['铰刀', '直柄', 'H8', '精加工'] },
+            { name: '6mm可调铰刀', model: 'AR-6', category: 'reamers', url: '/products/detail/adjustable-reamers.html', keywords: ['铰刀', '可调', '6mm', '范围加工'] },
+            { name: '10mm可调铰刀', model: 'AR-10', category: 'reamers', url: '/products/detail/adjustable-reamers.html', keywords: ['铰刀', '可调', '10mm', '范围加工'] },
+            { name: '20mm可调铰刀', model: 'AR-20', category: 'reamers', url: '/products/detail/adjustable-reamers.html', keywords: ['铰刀', '可调', '20mm', '范围加工'] },
+            { name: 'CNMG车刀片', model: 'CNMG', category: 'inserts', url: '/products/detail/turning-inserts.html', keywords: ['刀片', '车削', 'CNMG', '菱形'] },
+            { name: 'WNMG车刀片', model: 'WNMG', category: 'inserts', url: '/products/detail/turning-inserts.html', keywords: ['刀片', '车削', 'WNMG', '六边形'] },
+            { name: 'TNMG车刀片', model: 'TNMG', category: 'inserts', url: '/products/detail/turning-inserts.html', keywords: ['刀片', '车削', 'TNMG', '三角形'] },
+            { name: 'APKT铣刀片', model: 'APKT', category: 'inserts', url: '/products/detail/milling-inserts.html', keywords: ['刀片', '铣削', 'APKT', '方形'] },
+            { name: 'RPMT圆刀片', model: 'RPMT', category: 'inserts', url: '/products/detail/milling-inserts.html', keywords: ['刀片', '铣削', 'RPMT', '圆形'] },
+            { name: 'BT30-ER16刀柄', model: 'BT30-ER16', category: 'tool-holders', url: '/products/detail/bt-holders.html', keywords: ['刀柄', 'BT30', 'ER16', '弹簧夹头'] },
+            { name: 'BT40-ER32刀柄', model: 'BT40-ER32', category: 'tool-holders', url: '/products/detail/bt-holders.html', keywords: ['刀柄', 'BT40', 'ER32', '弹簧夹头'] },
+            { name: 'BT50-ER40刀柄', model: 'BT50-ER40', category: 'tool-holders', url: '/products/detail/bt-holders.html', keywords: ['刀柄', 'BT50', 'ER40', '弹簧夹头'] },
+            { name: 'BT40液压刀柄', model: 'BT40-HY', category: 'tool-holders', url: '/products/detail/bt-holders.html', keywords: ['刀柄', 'BT40', '液压', '高精度'] },
+            { name: 'HSK63A-ER32刀柄', model: 'HSK63A-ER32', category: 'tool-holders', url: '/products/detail/hsk-holders.html', keywords: ['刀柄', 'HSK63A', 'ER32', '高速'] },
+            { name: 'ER16弹簧夹头', model: 'ER16', category: 'collets', url: '/products/detail/er-collets.html', keywords: ['夹头', 'ER16', '弹簧', '1-10mm'] },
+            { name: 'ER32弹簧夹头', model: 'ER32', category: 'collets', url: '/products/detail/er-collets.html', keywords: ['夹头', 'ER32', '弹簧', '2-20mm'] },
+            { name: 'ER40弹簧夹头', model: 'ER40', category: 'collets', url: '/products/detail/er-collets.html', keywords: ['夹头', 'ER40', '弹簧', '3-26mm'] },
+            { name: '50mm面铣刀盘', model: 'FM50', category: 'arbors', url: '/products/detail/face-mills.html', keywords: ['刀盘', '面铣', '50mm', '平面加工'] },
+            { name: '80mm面铣刀盘', model: 'FM80', category: 'arbors', url: '/products/detail/face-mills.html', keywords: ['刀盘', '面铣', '80mm', '平面加工'] },
+            { name: '100mm面铣刀盘', model: 'FM100', category: 'arbors', url: '/products/detail/face-mills.html', keywords: ['刀盘', '面铣', '100mm', '平面加工'] },
+            { name: '20mm立铣刀杆', model: 'EMH20', category: 'arbors', url: '/products/detail/end-mill-holders.html', keywords: ['刀杆', '立铣', '20mm', '侧固式'] },
+            { name: '32mm立铣刀杆', model: 'EMH32', category: 'arbors', url: '/products/detail/end-mill-holders.html', keywords: ['刀杆', '立铣', '32mm', '侧固式'] }
         ];
-        
-        let currentFilter = 'all';
-        let searchResults = [];
-        
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            performSearch();
+
+        let currentCategory = 'all';
+        let currentQuery = '';
+
+        function renderResults() {
+            const container = document.getElementById('resultsContainer');
             
-            // Search input enter key
-            document.getElementById('searchInput').addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    performSearch();
-                }
-            });
+            let filtered = products;
             
-            // Filter buttons
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                    currentFilter = this.getAttribute('data-filter');
-                    performSearch();
+            // Filter by category
+            if (currentCategory !== 'all') {
+                filtered = filtered.filter(p => p.category === currentCategory);
+            }
+            
+            // Filter by search query
+            if (currentQuery) {
+                const q = currentQuery.toLowerCase();
+                filtered = filtered.filter(p => {
+                    const text = `${p.name} ${p.model} ${p.keywords.join(' ')}`.toLowerCase();
+                    return text.includes(q);
                 });
-            });
-        });
-        
-        function performSearch() {
-            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            }
             
-            searchResults = products.filter(product => {
-                // Filter by category
-                if (currentFilter !== 'all' && product.category !== currentFilter) {
-                    return false;
-                }
-                
-                // Filter by search query
-                if (query) {
-                    return product.name.toLowerCase().includes(query) ||
-                           product.desc.toLowerCase().includes(query) ||
-                           product.specs.some(spec => spec.toLowerCase().includes(query));
-                }
-                
-                return true;
-            });
-            
-            displayResults();
-        }
-        
-        function quickSearch(term) {
-            document.getElementById('searchInput').value = term;
-            performSearch();
-        }
-        
-        function displayResults() {
-            const grid = document.getElementById('resultsGrid');
-            const countEl = document.getElementById('resultCount');
-            const noResults = document.getElementById('noResults');
-            
-            countEl.textContent = searchResults.length;
-            
-            if (searchResults.length === 0) {
-                grid.innerHTML = '';
-                noResults.style.display = 'block';
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div class="no-results" style="grid-column: 1 / -1;">
+                        <div class="no-results-icon">🔍</div>
+                        <h3>未找到相关产品</h3>
+                        <p>请尝试其他关键词或浏览全部分类</p>
+                    </div>
+                `;
                 return;
             }
             
-            noResults.style.display = 'none';
-            
-            grid.innerHTML = searchResults.map(product => `
-                <div class="product-card" onclick="window.location.href='${product.link}'">
-                    <div class="product-image">${getCategoryIcon(product.category)}</div>
-                    <div class="product-category">${getCategoryName(product.category)}</div>
-                    <h3 class="product-name">${product.name}</h3>
-                    <p class="product-desc">${product.desc}</p>
-                    <div class="product-specs">
-                        ${product.specs.map(spec => `<span class="product-spec">${spec}</span>`).join('')}
+            container.innerHTML = filtered.map(p => `
+                <a href="${p.url}" class="result-card">
+                    <div class="result-category">${getCategoryName(p.category)}</div>
+                    <div class="result-name">${p.name}</div>
+                    <div class="result-model">${p.model}</div>
+                    <div class="result-keywords">
+                        ${p.keywords.map(k => `<span class="result-keyword">${k}</span>`).join('')}
                     </div>
-                </div>
+                </a>
             `).join('');
         }
-        
-        function sortResults() {
-            const sortType = document.getElementById('sortSelect').value;
-            
-            switch(sortType) {
-                case 'name':
-                    searchResults.sort((a, b) => a.name.localeCompare(b.name));
-                    break;
-                case 'category':
-                    searchResults.sort((a, b) => a.category.localeCompare(b.category));
-                    break;
-                default:
-                    // relevance - no sort
-                    break;
-            }
-            
-            displayResults();
-        }
-        
-        function getCategoryIcon(category) {
-            const icons = {
-                endmills: '🔧',
-                drills: '🔩',
-                taps: '🌀',
-                reamers: '⚙️',
-                inserts: '💎'
-            };
-            return icons[category] || '📦';
-        }
-        
-        function getCategoryName(category) {
+
+        function getCategoryName(cat) {
             const names = {
-                endmills: '铣刀',
-                drills: '钻头',
-                taps: '丝锥',
-                reamers: '铰刀',
-                inserts: '刀�?
+                'endmills': '铣刀',
+                'drills': '钻头',
+                'taps': '丝锥',
+                'reamers': '铰刀',
+                'inserts': '刀片',
+                'tool-holders': '刀柄',
+                'collets': '卡簧',
+                'arbors': '刀盘'
             };
-            return names[category] || category;
+            return names[cat] || cat;
         }
-        
-        // Catalog hover functionality
-        const catalogBtn = document.getElementById('catalogBtn');
-        const catalogDropdown = document.getElementById('catalogDropdown');
-        let hoverTimeout;
-        
-        function showCatalog() {
-            clearTimeout(hoverTimeout);
-            catalogDropdown.classList.add('active');
-        }
-        
-        function hideCatalog() {
-            hoverTimeout = setTimeout(() => {
-                catalogDropdown.classList.remove('active');
-            }, 200);
-        }
-        
-        catalogBtn.addEventListener('mouseenter', showCatalog);
-        catalogBtn.addEventListener('mouseleave', hideCatalog);
-        catalogDropdown.addEventListener('mouseenter', showCatalog);
-        catalogDropdown.addEventListener('mouseleave', hideCatalog);
+
+        // Event listeners
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            currentQuery = e.target.value;
+            renderResults();
+        });
+
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentCategory = btn.dataset.category;
+                renderResults();
+            });
+        });
+
+        // Initial render
+        renderResults();
     </script>
 </body>
 </html>
