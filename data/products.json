@@ -1,0 +1,143 @@
+{
+  "categories": [
+    {
+      "id": "endmills",
+      "name": "硬质合金铣刀",
+      "nameEn": "Carbide End Mills",
+      "icon": "🔧",
+      "description": "平底铣刀、球头铣刀、圆鼻铣刀、粗皮铣刀。2/3/4刃可选，适用于钢件、不锈钢、铝合金加工。",
+      "subcategories": [
+        {
+          "id": "flat-endmills",
+          "name": "平底铣刀",
+          "nameEn": "Flat End Mills",
+          "description": "通用型平底铣刀，适用于平面加工、型腔加工",
+          "products": [
+            {"model": "EM-2F-3", "diameter": "3mm", "flutes": 2, "length": "50mm", "material": "K40", "coating": "TiAlN", "price": "¥45", "application": "钢件、不锈钢"},
+            {"model": "EM-2F-4", "diameter": "4mm", "flutes": 2, "length": "50mm", "material": "K40", "coating": "TiAlN", "price": "¥52", "application": "钢件、不锈钢"},
+            {"model": "EM-2F-6", "diameter": "6mm", "flutes": 2, "length": "50mm", "material": "K40", "coating": "TiAlN", "price": "¥68", "application": "钢件、不锈钢"},
+            {"model": "EM-2F-8", "diameter": "8mm", "flutes": 2, "length": "60mm", "material": "K40", "coating": "TiAlN", "price": "¥85", "application": "钢件、不锈钢"},
+            {"model": "EM-2F-10", "diameter": "10mm", "flutes": 2, "length": "75mm", "material": "K40", "coating": "TiAlN", "price": "¥110", "application": "钢件、不锈钢"},
+            {"model": "EM-2F-12", "diameter": "12mm", "flutes": 2, "length": "75mm", "material": "K40", "coating": "TiAlN", "price": "¥135", "application": "钢件、不锈钢"},
+            {"model": "EM-3F-3", "diameter": "3mm", "flutes": 3, "length": "50mm", "material": "K40", "coating": "TiSiN", "price": "¥52", "application": "铝合金、铜合金"},
+            {"model": "EM-3F-4", "diameter": "4mm", "flutes": 3, "length": "50mm", "material": "K40", "coating": "TiSiN", "price": "¥60", "application": "铝合金、铜合金"},
+            {"model": "EM-3F-6", "diameter": "6mm", "flutes": 3, "length": "50mm", "material": "K40", "coating": "TiSiN", "price": "¥78", "application": "铝合金、铜合金"},
+            {"model": "EM-3F-8", "diameter": "8mm", "flutes": 3, "length": "60mm", "material": "K40", "coating": "TiSiN", "price": "¥95", "application": "铝合金、铜合金"},
+            {"model": "EM-4F-4", "diameter": "4mm", "flutes": 4, "length": "50mm", "material": "K40", "coating": "AlCrN", "price": "¥65", "application": "淬硬钢、钛合金"},
+            {"model": "EM-4F-6", "diameter": "6mm", "flutes": 4, "length": "50mm", "material": "K40", "coating": "AlCrN", "price": "¥82", "application": "淬硬钢、钛合金"},
+            {"model": "EM-4F-8", "diameter": "8mm", "flutes": 4, "length": "60mm", "material": "K40", "coating": "AlCrN", "price": "¥105", "application": "淬硬钢、钛合金"},
+            {"model": "EM-4F-10", "diameter": "10mm", "flutes": 4, "length": "75mm", "material": "K40", "coating": "AlCrN", "price": "¥130", "application": "淬硬钢、钛合金"},
+            {"model": "EM-4F-12", "diameter": "12mm", "flutes": 4, "length": "75mm", "material": "K40", "coating": "AlCrN", "price": "¥160", "application": "淬硬钢、钛合金"},
+            {"model": "EM-4F-16", "diameter": "16mm", "flutes": 4, "length": "100mm", "material": "K40", "coating": "AlCrN", "price": "¥220", "application": "淬硬钢、钛合金"},
+            {"model": "EM-4F-20", "diameter": "20mm", "flutes": 4, "length": "100mm", "material": "K40", "coating": "AlCrN", "price": "¥310", "application": "淬硬钢、钛合金"}
+          ]
+        },
+        {
+          "id": "ball-endmills",
+          "name": "球头铣刀",
+          "nameEn": "Ball Nose End Mills",
+          "description": "球头铣刀，适用于3D曲面加工、模具加工",
+          "products": [
+            {"model": "BM-2F-R1", "radius": "R1", "diameter": "2mm", "flutes": 2, "length": "50mm", "material": "K40", "coating": "TiAlN", "price": "¥48", "application": "3D曲面、模具"},
+            {"model": "BM-2F-R2", "radius": "R2", "diameter": "4mm", "flutes": 2, "length": "50mm", "material": "K40", "coating": "TiAlN", "price": "¥58", "application": "3D曲面、模具"},
+            {"model": "BM-2F-R3", "radius": "R3", "diameter": "6mm", "flutes": 2, "length": "50mm", "material": "K40", "coating": "TiAlN", "price": "¥75", "application": "3D曲面、模具"},
+            {"model": "BM-2F-R4", "radius": "R4", "diameter": "8mm", "flutes": 2, "length": "60mm", "material": "K40", "coating": "TiAlN", "price": "¥95", "application": "3D曲面、模具"},
+            {"model": "BM-2F-R5", "radius": "R5", "diameter": "10mm", "flutes": 2, "length": "75mm", "material": "K40", "coating": "TiAlN", "price": "¥120", "application": "3D曲面、模具"},
+            {"model": "BM-2F-R6", "radius": "R6", "diameter": "12mm", "flutes": 2, "length": "75mm", "material": "K40", "coating": "TiAlN", "price": "¥145", "application": "3D曲面、模具"},
+            {"model": "BM-2F-R8", "radius": "R8", "diameter": "16mm", "flutes": 2, "length": "100mm", "material": "K40", "coating": "TiAlN", "price": "¥195", "application": "3D曲面、模具"},
+            {"model": "BM-2F-R10", "radius": "R10", "diameter": "20mm", "flutes": 2, "length": "100mm", "material": "K40", "coating": "TiAlN", "price": "¥280", "application": "3D曲面、模具"}
+          ]
+        },
+        {
+          "id": "corner-radius",
+          "name": "圆鼻铣刀",
+          "nameEn": "Corner Radius End Mills",
+          "description": "圆鼻铣刀，兼顾平底和球头的优点，适用于圆角加工",
+          "products": [
+            {"model": "CRM-4F-6R0.5", "diameter": "6mm", "cornerRadius": "R0.5", "flutes": 4, "length": "50mm", "material": "K40", "coating": "TiAlN", "price": "¥85", "application": "圆角、型腔"},
+            {"model": "CRM-4F-8R0.5", "diameter": "8mm", "cornerRadius": "R0.5", "flutes": 4, "length": "60mm", "material": "K40", "coating": "TiAlN", "price": "¥105", "application": "圆角、型腔"},
+            {"model": "CRM-4F-10R1", "diameter": "10mm", "cornerRadius": "R1", "flutes": 4, "length": "75mm", "material": "K40", "coating": "TiAlN", "price": "¥135", "application": "圆角、型腔"},
+            {"model": "CRM-4F-12R1", "diameter": "12mm", "cornerRadius": "R1", "flutes": 4, "length": "75mm", "material": "K40", "coating": "TiAlN", "price": "¥165", "application": "圆角、型腔"},
+            {"model": "CRM-4F-16R2", "diameter": "16mm", "cornerRadius": "R2", "flutes": 4, "length": "100mm", "material": "K40", "coating": "TiAlN", "price": "¥235", "application": "圆角、型腔"}
+          ]
+        },
+        {
+          "id": "roughing",
+          "name": "粗皮铣刀",
+          "nameEn": "Roughing End Mills",
+          "description": "粗皮铣刀，高效率粗加工，快速去除余量",
+          "products": [
+            {"model": "RM-3F-6", "diameter": "6mm", "flutes": 3, "length": "50mm", "material": "K40", "coating": "TiAlN", "price": "¥72", "application": "粗加工、去余量"},
+            {"model": "RM-3F-8", "diameter": "8mm", "flutes": 3, "length": "60mm", "material": "K40", "coating": "TiAlN", "price": "¥88", "application": "粗加工、去余量"},
+            {"model": "RM-3F-10", "diameter": "10mm", "flutes": 3, "length": "75mm", "material": "K40", "coating": "TiAlN", "price": "¥115", "application": "粗加工、去余量"},
+            {"model": "RM-3F-12", "diameter": "12mm", "flutes": 3, "length": "75mm", "material": "K40", "coating": "TiAlN", "price": "¥140", "application": "粗加工、去余量"},
+            {"model": "RM-3F-16", "diameter": "16mm", "flutes": 3, "length": "100mm", "material": "K40", "coating": "TiAlN", "price": "¥195", "application": "粗加工、去余量"},
+            {"model": "RM-3F-20", "diameter": "20mm", "flutes": 3, "length": "100mm", "material": "K40", "coating": "TiAlN", "price": "¥275", "application": "粗加工、去余量"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "drills",
+      "name": "硬质合金钻头",
+      "nameEn": "Carbide Drills",
+      "icon": "🔩",
+      "description": "麻花钻、中心钻、深孔钻、内冷钻。3D/5D/8D倍径可选。",
+      "subcategories": [
+        {
+          "id": "twist-drills",
+          "name": "麻花钻",
+          "nameEn": "Twist Drills",
+          "description": "标准麻花钻，通用钻孔加工",
+          "products": [
+            {"model": "TD-3D-3", "diameter": "3mm", "ratio": "3D", "length": "40mm", "material": "K40", "coating": "TiAlN", "price": "¥38", "application": "通用钻孔"},
+            {"model": "TD-3D-4", "diameter": "4mm", "ratio": "3D", "length": "45mm", "material": "K40", "coating": "TiAlN", "price": "¥42", "application": "通用钻孔"},
+            {"model": "TD-3D-5", "diameter": "5mm", "ratio": "3D", "length": "55mm", "material": "K40", "coating": "TiAlN", "price": "¥48", "application": "通用钻孔"},
+            {"model": "TD-3D-6", "diameter": "6mm", "ratio": "3D", "length": "65mm", "material": "K40", "coating": "TiAlN", "price": "¥55", "application": "通用钻孔"},
+            {"model": "TD-3D-8", "diameter": "8mm", "ratio": "3D", "length": "80mm", "material": "K40", "coating": "TiAlN", "price": "¥72", "application": "通用钻孔"},
+            {"model": "TD-3D-10", "diameter": "10mm", "ratio": "3D", "length": "95mm", "material": "K40", "coating": "TiAlN", "price": "¥88", "application": "通用钻孔"},
+            {"model": "TD-3D-12", "diameter": "12mm", "ratio": "3D", "length": "110mm", "material": "K40", "coating": "TiAlN", "price": "¥105", "application": "通用钻孔"},
+            {"model": "TD-5D-6", "diameter": "6mm", "ratio": "5D", "length": "85mm", "material": "K40", "coating": "TiAlN", "price": "¥68", "application": "深孔加工"},
+            {"model": "TD-5D-8", "diameter": "8mm", "ratio": "5D", "length": "105mm", "material": "K40", "coating": "TiAlN", "price": "¥88", "application": "深孔加工"},
+            {"model": "TD-5D-10", "diameter": "10mm", "ratio": "5D", "length": "125mm", "material": "K40", "coating": "TiAlN", "price": "¥108", "application": "深孔加工"},
+            {"model": "TD-5D-12", "diameter": "12mm", "ratio": "5D", "length": "145mm", "material": "K40", "coating": "TiAlN", "price": "¥128", "application": "深孔加工"},
+            {"model": "TD-8D-8", "diameter": "8mm", "ratio": "8D", "length": "140mm", "material": "K40", "coating": "TiAlN", "price": "¥105", "application": "超深孔加工"},
+            {"model": "TD-8D-10", "diameter": "10mm", "ratio": "8D", "length": "165mm", "material": "K40", "coating": "TiAlN", "price": "¥130", "application": "超深孔加工"},
+            {"model": "TD-8D-12", "diameter": "12mm", "ratio": "8D", "length": "190mm", "material": "K40", "coating": "TiAlN", "price": "¥155", "application": "超深孔加工"}
+          ]
+        },
+        {
+          "id": "center-drills",
+          "name": "中心钻",
+          "nameEn": "Center Drills",
+          "description": "中心钻，用于定位孔加工",
+          "products": [
+            {"model": "CD-A1", "type": "A型", "diameter": "1mm", "angle": "60°", "length": "35mm", "material": "K40", "coating": "无", "price": "¥25", "application": "中心定位"},
+            {"model": "CD-A2", "type": "A型", "diameter": "2mm", "angle": "60°", "length": "40mm", "material": "K40", "coating": "无", "price": "¥28", "application": "中心定位"},
+            {"model": "CD-A3", "type": "A型", "diameter": "3mm", "angle": "60°", "length": "45mm", "material": "K40", "coating": "无", "price": "¥32", "application": "中心定位"},
+            {"model": "CD-A4", "type": "A型", "diameter": "4mm", "angle": "60°", "length": "50mm", "material": "K40", "coating": "无", "price": "¥38", "application": "中心定位"},
+            {"model": "CD-A5", "type": "A型", "diameter": "5mm", "angle": "60°", "length": "55mm", "material": "K40", "coating": "无", "price": "¥45", "application": "中心定位"},
+            {"model": "CD-B2", "type": "B型", "diameter": "2mm", "angle": "60°", "length": "40mm", "material": "K40", "coating": "无", "price": "¥30", "application": "带护锥中心孔"},
+            {"model": "CD-B3", "type": "B型", "diameter": "3mm", "angle": "60°", "length": "45mm", "material": "K40", "coating": "无", "price": "¥35", "application": "带护锥中心孔"},
+            {"model": "CD-B4", "type": "B型", "diameter": "4mm", "angle": "60°", "length": "50mm", "material": "K40", "coating": "无", "price": "¥42", "application": "带护锥中心孔"}
+          ]
+        },
+        {
+          "id": "internal-coolant",
+          "name": "内冷钻",
+          "nameEn": "Internal Coolant Drills",
+          "description": "内冷钻头，中心出水，高效排屑",
+          "products": [
+            {"model": "ICD-5D-6", "diameter": "6mm", "ratio": "5D", "length": "85mm", "coolant": "中心出水", "material": "K40", "coating": "TiAlN", "price": "¥95", "application": "高效深孔加工"},
+            {"model": "ICD-5D-8", "diameter": "8mm", "ratio": "5D", "length": "105mm", "coolant": "中心出水", "material": "K40", "coating": "TiAlN", "price": "¥125", "application": "高效深孔加工"},
+            {"model": "ICD-5D-10", "diameter": "10mm", "ratio": "5D", "length": "125mm", "coolant": "中心出水", "material": "K40", "coating": "TiAlN", "price": "¥155", "application": "高效深孔加工"},
+            {"model": "ICD-5D-12", "diameter": "12mm", "ratio": "5D", "length": "145mm", "coolant": "中心出水", "material": "K40", "coating": "TiAlN", "price": "¥185", "application": "高效深孔加工"},
+            {"model": "ICD-8D-8", "diameter": "8mm", "ratio": "8D", "length": "140mm", "coolant": "中心出水", "material": "K40", "coating": "TiAlN", "price": "¥145", "application": "超深孔高效加工"},
+            {"model": "ICD-8D-10", "diameter": "10mm", "ratio": "8D", "length": "165mm", "coolant": "中心出水", "material": "K40", "coating": "TiAlN", "price": "¥180", "application": "超深孔高效加工"},
+            {"model": "ICD-8D-12", "diameter": "12mm", "ratio": "8D", "length": "190mm", "coolant": "中心出水", "material": "K40", "coating": "TiAlN", "price": "¥220", "application": "超深孔高效加工"}
+          ]
+        }
+      ]
+    }
+  ]
+}

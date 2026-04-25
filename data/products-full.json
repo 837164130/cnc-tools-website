@@ -1,0 +1,90 @@
+{
+  "version": "2.0",
+  "lastUpdated": "2026-04-26",
+  "categories": [
+    {
+      "id": "endmills",
+      "name": "硬质合金铣刀",
+      "nameEn": "Carbide End Mills",
+      "icon": "🔧",
+      "heroImage": "endmill-hero",
+      "description": "高精度硬质合金铣刀，适用于钢件、不锈钢、铝合金、钛合金等材料的高效加工。",
+      "features": ["2/3/4刃可选", "TiAlN/TiSiN/AlCrN涂层", "HRC45-65材料加工", "精度等级h6"],
+      "subcategories": [
+        {
+          "id": "flat-endmills",
+          "name": "平底铣刀",
+          "nameEn": "Flat End Mills",
+          "description": "通用型平底铣刀，2刃/4刃设计，适用于平面加工、型腔加工、侧面加工",
+          "specs": {"diameterRange": "1-20mm", "lengthRange": "3D-5D", "material": "K40/K44", "coating": "TiAlN/AlCrN"},
+          "products": [
+            {"model": "EM-2F-3", "diameter": "3mm", "flutes": 2, "length": "50mm", "overallLength": "50mm", "shankDiameter": "3mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC45", "price": "¥45", "priceUSD": "$6.5", "application": "钢件、不锈钢、预硬钢", "stock": "现货"},
+            {"model": "EM-2F-4", "diameter": "4mm", "flutes": 2, "length": "50mm", "overallLength": "50mm", "shankDiameter": "4mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC45", "price": "¥52", "priceUSD": "$7.5", "application": "钢件、不锈钢、预硬钢", "stock": "现货"},
+            {"model": "EM-2F-6", "diameter": "6mm", "flutes": 2, "length": "50mm", "overallLength": "50mm", "shankDiameter": "6mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC45", "price": "¥68", "priceUSD": "$9.8", "application": "钢件、不锈钢、预硬钢", "stock": "现货"},
+            {"model": "EM-2F-8", "diameter": "8mm", "flutes": 2, "length": "60mm", "overallLength": "60mm", "shankDiameter": "8mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC45", "price": "¥85", "priceUSD": "$12.2", "application": "钢件、不锈钢、预硬钢", "stock": "现货"},
+            {"model": "EM-2F-10", "diameter": "10mm", "flutes": 2, "length": "75mm", "overallLength": "75mm", "shankDiameter": "10mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC45", "price": "¥110", "priceUSD": "$15.8", "application": "钢件、不锈钢、预硬钢", "stock": "现货"},
+            {"model": "EM-2F-12", "diameter": "12mm", "flutes": 2, "length": "75mm", "overallLength": "75mm", "shankDiameter": "12mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC45", "price": "¥135", "priceUSD": "$19.4", "application": "钢件、不锈钢、预硬钢", "stock": "现货"},
+            {"model": "EM-2F-16", "diameter": "16mm", "flutes": 2, "length": "100mm", "overallLength": "100mm", "shankDiameter": "16mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC45", "price": "¥195", "priceUSD": "$28", "application": "钢件、不锈钢、预硬钢", "stock": "现货"},
+            {"model": "EM-2F-20", "diameter": "20mm", "flutes": 2, "length": "100mm", "overallLength": "100mm", "shankDiameter": "20mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC45", "price": "¥280", "priceUSD": "$40", "application": "钢件、不锈钢、预硬钢", "stock": "现货"},
+            {"model": "EM-4F-4", "diameter": "4mm", "flutes": 4, "length": "50mm", "overallLength": "50mm", "shankDiameter": "4mm", "material": "K40", "coating": "AlCrN", "hardness": "HRC55", "price": "¥65", "priceUSD": "$9.3", "application": "淬硬钢、钛合金、镍基合金", "stock": "现货"},
+            {"model": "EM-4F-6", "diameter": "6mm", "flutes": 4, "length": "50mm", "overallLength": "50mm", "shankDiameter": "6mm", "material": "K40", "coating": "AlCrN", "hardness": "HRC55", "price": "¥82", "priceUSD": "$11.8", "application": "淬硬钢、钛合金、镍基合金", "stock": "现货"},
+            {"model": "EM-4F-8", "diameter": "8mm", "flutes": 4, "length": "60mm", "overallLength": "60mm", "shankDiameter": "8mm", "material": "K40", "coating": "AlCrN", "hardness": "HRC55", "price": "¥105", "priceUSD": "$15", "application": "淬硬钢、钛合金、镍基合金", "stock": "现货"},
+            {"model": "EM-4F-10", "diameter": "10mm", "flutes": 4, "length": "75mm", "overallLength": "75mm", "shankDiameter": "10mm", "material": "K40", "coating": "AlCrN", "hardness": "HRC55", "price": "¥130", "priceUSD": "$18.6", "application": "淬硬钢、钛合金、镍基合金", "stock": "现货"},
+            {"model": "EM-4F-12", "diameter": "12mm", "flutes": 4, "length": "75mm", "overallLength": "75mm", "shankDiameter": "12mm", "material": "K40", "coating": "AlCrN", "hardness": "HRC55", "price": "¥160", "priceUSD": "$23", "application": "淬硬钢、钛合金、镍基合金", "stock": "现货"},
+            {"model": "EM-4F-16", "diameter": "16mm", "flutes": 4, "length": "100mm", "overallLength": "100mm", "shankDiameter": "16mm", "material": "K40", "coating": "AlCrN", "hardness": "HRC55", "price": "¥220", "priceUSD": "$31.5", "application": "淬硬钢、钛合金、镍基合金", "stock": "现货"},
+            {"model": "EM-4F-20", "diameter": "20mm", "flutes": 4, "length": "100mm", "overallLength": "100mm", "shankDiameter": "20mm", "material": "K40", "coating": "AlCrN", "hardness": "HRC55", "price": "¥310", "priceUSD": "$44.5", "application": "淬硬钢、钛合金、镍基合金", "stock": "现货"}
+          ]
+        },
+        {
+          "id": "ball-endmills",
+          "name": "球头铣刀",
+          "nameEn": "Ball Nose End Mills",
+          "description": "高精度球头铣刀，适用于3D曲面加工、模具加工、叶轮加工",
+          "specs": {"radiusRange": "R0.5-R10", "flutes": "2刃", "material": "K40/K44", "coating": "TiAlN/TiSiN"},
+          "products": [
+            {"model": "BM-2F-R1", "radius": "R1", "diameter": "2mm", "flutes": 2, "length": "50mm", "overallLength": "50mm", "shankDiameter": "4mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC45", "price": "¥48", "priceUSD": "$6.9", "application": "3D曲面、模具型腔", "stock": "现货"},
+            {"model": "BM-2F-R2", "radius": "R2", "diameter": "4mm", "flutes": 2, "length": "50mm", "overallLength": "50mm", "shankDiameter": "4mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC45", "price": "¥58", "priceUSD": "$8.3", "application": "3D曲面、模具型腔", "stock": "现货"},
+            {"model": "BM-2F-R3", "radius": "R3", "diameter": "6mm", "flutes": 2, "length": "50mm", "overallLength": "50mm", "shankDiameter": "6mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC45", "price": "¥75", "priceUSD": "$10.8", "application": "3D曲面、模具型腔", "stock": "现货"},
+            {"model": "BM-2F-R4", "radius": "R4", "diameter": "8mm", "flutes": 2, "length": "60mm", "overallLength": "60mm", "shankDiameter": "8mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC45", "price": "¥95", "priceUSD": "$13.6", "application": "3D曲面、模具型腔", "stock": "现货"},
+            {"model": "BM-2F-R5", "radius": "R5", "diameter": "10mm", "flutes": 2, "length": "75mm", "overallLength": "75mm", "shankDiameter": "10mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC45", "price": "¥120", "priceUSD": "$17.2", "application": "3D曲面、模具型腔", "stock": "现货"},
+            {"model": "BM-2F-R6", "radius": "R6", "diameter": "12mm", "flutes": 2, "length": "75mm", "overallLength": "75mm", "shankDiameter": "12mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC45", "price": "¥145", "priceUSD": "$20.8", "application": "3D曲面、模具型腔", "stock": "现货"},
+            {"model": "BM-2F-R8", "radius": "R8", "diameter": "16mm", "flutes": 2, "length": "100mm", "overallLength": "100mm", "shankDiameter": "16mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC45", "price": "¥195", "priceUSD": "$28", "application": "3D曲面、模具型腔", "stock": "现货"},
+            {"model": "BM-2F-R10", "radius": "R10", "diameter": "20mm", "flutes": 2, "length": "100mm", "overallLength": "100mm", "shankDiameter": "20mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC45", "price": "¥280", "priceUSD": "$40", "application": "3D曲面、模具型腔", "stock": "现货"}
+          ]
+        },
+        {
+          "id": "corner-radius",
+          "name": "圆鼻铣刀",
+          "nameEn": "Corner Radius End Mills",
+          "description": "圆鼻铣刀，兼顾平底和球头的优点，适用于圆角加工、型腔加工",
+          "specs": {"diameterRange": "4-20mm", "radiusRange": "R0.2-R3", "flutes": "4刃", "material": "K40", "coating": "TiAlN"},
+          "products": [
+            {"model": "CRM-4F-4R0.5", "diameter": "4mm", "cornerRadius": "R0.5", "flutes": 4, "length": "50mm", "overallLength": "50mm", "shankDiameter": "4mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC50", "price": "¥72", "priceUSD": "$10.3", "application": "圆角、型腔、模具", "stock": "现货"},
+            {"model": "CRM-4F-6R0.5", "diameter": "6mm", "cornerRadius": "R0.5", "flutes": 4, "length": "50mm", "overallLength": "50mm", "shankDiameter": "6mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC50", "price": "¥85", "priceUSD": "$12.2", "application": "圆角、型腔、模具", "stock": "现货"},
+            {"model": "CRM-4F-8R0.5", "diameter": "8mm", "cornerRadius": "R0.5", "flutes": 4, "length": "60mm", "overallLength": "60mm", "shankDiameter": "8mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC50", "price": "¥105", "priceUSD": "$15", "application": "圆角、型腔、模具", "stock": "现货"},
+            {"model": "CRM-4F-10R1", "diameter": "10mm", "cornerRadius": "R1", "flutes": 4, "length": "75mm", "overallLength": "75mm", "shankDiameter": "10mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC50", "price": "¥135", "priceUSD": "$19.4", "application": "圆角、型腔、模具", "stock": "现货"},
+            {"model": "CRM-4F-12R1", "diameter": "12mm", "cornerRadius": "R1", "flutes": 4, "length": "75mm", "overallLength": "75mm", "shankDiameter": "12mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC50", "price": "¥165", "priceUSD": "$23.7", "application": "圆角、型腔、模具", "stock": "现货"},
+            {"model": "CRM-4F-16R2", "diameter": "16mm", "cornerRadius": "R2", "flutes": 4, "length": "100mm", "overallLength": "100mm", "shankDiameter": "16mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC50", "price": "¥235", "priceUSD": "$33.7", "application": "圆角、型腔、模具", "stock": "现货"},
+            {"model": "CRM-4F-20R3", "diameter": "20mm", "cornerRadius": "R3", "flutes": 4, "length": "100mm", "overallLength": "100mm", "shankDiameter": "20mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC50", "price": "¥325", "priceUSD": "$46.6", "application": "圆角、型腔、模具", "stock": "现货"}
+          ]
+        },
+        {
+          "id": "roughing",
+          "name": "粗皮铣刀",
+          "nameEn": "Roughing End Mills",
+          "description": "高效率粗皮铣刀，波纹刃设计，快速去除余量，适用于粗加工",
+          "specs": {"diameterRange": "6-25mm", "flutes": "3/4刃", "material": "K40", "coating": "TiAlN"},
+          "products": [
+            {"model": "RM-3F-6", "diameter": "6mm", "flutes": 3, "length": "50mm", "overallLength": "50mm", "shankDiameter": "6mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC45", "price": "¥72", "priceUSD": "$10.3", "application": "粗加工、去余量", "stock": "现货"},
+            {"model": "RM-3F-8", "diameter": "8mm", "flutes": 3, "length": "60mm", "overallLength": "60mm", "shankDiameter": "8mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC45", "price": "¥88", "priceUSD": "$12.6", "application": "粗加工、去余量", "stock": "现货"},
+            {"model": "RM-3F-10", "diameter": "10mm", "flutes": 3, "length": "75mm", "overallLength": "75mm", "shankDiameter": "10mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC45", "price": "¥115", "priceUSD": "$16.5", "application": "粗加工、去余量", "stock": "现货"},
+            {"model": "RM-3F-12", "diameter": "12mm", "flutes": 3, "length": "75mm", "overallLength": "75mm", "shankDiameter": "12mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC45", "price": "¥140", "priceUSD": "$20", "application": "粗加工、去余量", "stock": "现货"},
+            {"model": "RM-3F-16", "diameter": "16mm", "flutes": 3, "length": "100mm", "overallLength": "100mm", "shankDiameter": "16mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC45", "price": "¥195", "priceUSD": "$28", "application": "粗加工、去余量", "stock": "现货"},
+            {"model": "RM-3F-20", "diameter": "20mm", "flutes": 3, "length": "100mm", "overallLength": "100mm", "shankDiameter": "20mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC45", "price": "¥275", "priceUSD": "$39.5", "application": "粗加工、去余量", "stock": "现货"},
+            {"model": "RM-3F-25", "diameter": "25mm", "flutes": 3, "length": "120mm", "overallLength": "120mm", "shankDiameter": "25mm", "material": "K40", "coating": "TiAlN", "hardness": "HRC45", "price": "¥385", "priceUSD": "$55", "application": "粗加工、去余量", "stock": "现货"}
+          ]
+        }
+      ]
+    }
+  ]
+}
