@@ -1,22 +1,19 @@
-// Drag and Drop Sorting
+// Drag and Sort
 class DragSort {
   constructor() {
     this.init();
   }
 
   init() {
-    document.querySelectorAll('[data-sortable]').forEach(container => {
-      this.setupSortable(container);
+    document.querySelectorAll('[data-drag-sort]').forEach(container => {
+      this.setupDragSort(container);
     });
   }
 
-  setupSortable(container) {
+  setupDragSort(container) {
     let draggedItem = null;
 
-    container.querySelectorAll('[data-sortable-item]').forEach(item => {
-      item.draggable = true;
-      item.style.cursor = 'move';
-
+    container.querySelectorAll('[draggable]').forEach(item => {
       item.addEventListener('dragstart', (e) => {
         draggedItem = item;
         item.style.opacity = '0.5';
@@ -34,9 +31,9 @@ class DragSort {
 
         if (draggedItem && draggedItem !== item) {
           const rect = item.getBoundingClientRect();
-          const midY = rect.top + rect.height / 2;
+          const midpoint = rect.top + rect.height / 2;
 
-          if (e.clientY < midY) {
+          if (e.clientY < midpoint) {
             container.insertBefore(draggedItem, item);
           } else {
             container.insertBefore(draggedItem, item.nextSibling);
