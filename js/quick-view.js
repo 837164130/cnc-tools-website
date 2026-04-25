@@ -1,4 +1,4 @@
-// Quick View Modal
+// Quick View Modal for Products
 class QuickView {
   constructor() {
     this.init();
@@ -8,12 +8,13 @@ class QuickView {
     document.querySelectorAll('[data-quick-view]').forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
-        this.openQuickView(btn.dataset.quickView);
+        const productId = btn.dataset.quickView;
+        this.showQuickView(productId);
       });
     });
   }
 
-  openQuickView(productId) {
+  showQuickView(productId) {
     const modal = document.createElement('div');
     modal.className = 'quick-view-modal';
     modal.style.cssText = `
@@ -22,19 +23,34 @@ class QuickView {
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgba(0,0,0,0.8);
+      background: rgba(0,0,0,0.5);
       display: flex;
       align-items: center;
       justify-content: center;
       z-index: 10000;
-      padding: 40px;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 0.3s;
     `;
 
     modal.innerHTML = `
-      <div style="background: var(--bg-primary); border-radius: 16px; max-width: 800px; width: 100%; max-height: 90vh; overflow-y: auto; position: relative;">
-        <button class="close-quick-view" style="position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 24px; cursor: pointer; z-index: 10;">✕</button>
+      <div style="background: var(--bg-primary); border-radius: 16px; max-width: 800px; width: 100%; max-height: 90vh; overflow-y: auto; position: relative; transform: scale(0.9); transition: transform 0.3s;">
+        <button class="close-modal" style="position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 24px; cursor: pointer; z-index: 10;">✕</button>
         <div class="quick-view-content" style="padding: 32px;">
-          <div class="loading-spinner" style="text-align: center; padding: 40px;">加载中...</div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px;">
+            <div style="background: var(--bg-secondary); border-radius: 12px; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;">
+              <span style="font-size: 64px;">🔧</span>
+            </div>
+            <div>
+              <h2 style="margin-bottom: 16px;">产品名称</h2>
+              <p style="color: var(--text-secondary); margin-bottom: 16px;">产品描述...</p>
+              <div style="font-size: 24px; font-weight: 700; color: var(--accent); margin-bottom: 24px;">¥0.00</div>
+              <div style="display: flex; gap: 12px;">
+                <a href="products/detail/${productId}.html" class="btn btn-primary">查看详情</a>
+                <button class="btn btn-secondary" onclick="window.favorites?.toggle('${productId}')">收藏</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     `;
@@ -42,39 +58,25 @@ class QuickView {
     document.body.appendChild(modal);
     document.body.style.overflow = 'hidden';
 
-    // Close handlers
-    modal.querySelector('.close-quick-view').addEventListener('click', () => this.closeModal(modal));
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) this.closeModal(modal);
+    requestAnimationFrame(() => {
+      modal.style.opacity = '1';
+      modal.querySelector('div > div').style.transform = 'scale(1)';
     });
 
-    // Load product data
-    this.loadProductData(productId, modal);
-  }
-
-  async loadProductData(productId, modal) {
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 500));
-
-    const content = modal.querySelector('.quick-view-content');
-    content.innerHTML = `
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px;">
-        <div class="product-image" style="background: var(--bg-secondary); border-radius: 12px; min-height: 300px; display: flex; align-items: center; justify-content: center;">
-          <span style="font-size: 64px;">🔧</span>
-        </div>
-        <div class="product-info">
-          <h2 style="margin-bottom: 16px;">产品 ${productId}</h2>
-          <p style="color: var(--text-secondary); margin-bottom: 16px;">产品描述信息...</p>
-          <div class="price" style="font-size: 24px; font-weight: 600; margin-bottom: 24px;">¥0.00</div>
-          <button class="btn-primary" style="width: 100%;">查看详情</button>
-        </div>
-      </div>
-    `;
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal || e.target.classList.contains('close-modal')) {
+        this.closeModal(modal);
+      }
+    });
   }
 
   closeModal(modal) {
-    modal.remove();
-    document.body.style.overflow = '';
+    modal.style.opacity = '0';
+    modal.querySelector('div > div').style.transform = 'scale(0.9)';
+    setTimeout(() => {
+      modal.remove();
+      document.body.style.overflow = '';
+    }, 300);
   }
 }
 
