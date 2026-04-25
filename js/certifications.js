@@ -12,46 +12,41 @@ class ProductCertifications {
     const container = document.querySelector('[data-certifications]');
     if (!container) return;
 
-    const certs = JSON.parse(container.dataset.certifications || '[]');
-    if (certs.length === 0) return;
+    const certifications = JSON.parse(container.dataset.certifications || '[]');
+    if (certifications.length === 0) return;
 
-    container.innerHTML = '<h3 style="margin-bottom: 16px;">产品认证</h3>';
+    container.innerHTML = '<h3 style="margin-bottom: 24px;">产品认证</h3>';
 
     const grid = document.createElement('div');
-    grid.style.cssText = 'display: flex; flex-wrap: wrap; gap: 16px;';
+    grid.style.cssText = 'display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px;';
 
-    certs.forEach(cert => {
-      const badge = document.createElement('div');
-      badge.style.cssText = `
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 16px 20px;
+    certifications.forEach(cert => {
+      const card = document.createElement('div');
+      card.style.cssText = `
+        padding: 24px;
         background: var(--bg-secondary);
         border-radius: 12px;
-        border: 1px solid var(--border);
+        text-align: center;
+        transition: transform 0.2s, box-shadow 0.2s;
       `;
 
-      badge.innerHTML = `
-        <div style="
-          width: 48px;
-          height: 48px;
-          background: linear-gradient(135deg, #0071e3, #5856d6);
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: white;
-          font-size: 20px;
-          flex-shrink: 0;
-        ">✓</div>
-        <div>
-          <div style="font-weight: 600;">${cert.name}</div>
-          <div style="font-size: 12px; color: var(--text-secondary);">${cert.standard || ''}</div>
-        </div>
+      card.innerHTML = `
+        <div style="font-size: 48px; margin-bottom: 12px;">${cert.icon || '🏆'}</div>
+        <div style="font-weight: 600; margin-bottom: 4px;">${cert.name}</div>
+        <div style="font-size: 14px; color: var(--text-secondary);">${cert.description || ''}</div>
       `;
 
-      grid.appendChild(badge);
+      card.addEventListener('mouseenter', () => {
+        card.style.transform = 'translateY(-4px)';
+        card.style.boxShadow = '0 8px 24px rgba(0,0,0,0.1)';
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+        card.style.boxShadow = '';
+      });
+
+      grid.appendChild(card);
     });
 
     container.appendChild(grid);
