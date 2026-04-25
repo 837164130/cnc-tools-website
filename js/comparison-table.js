@@ -5,79 +5,66 @@ class ComparisonTable {
   }
 
   init() {
-    this.displayComparison();
+    document.querySelectorAll('[data-comparison-table]').forEach(container => {
+      this.setupTable(container);
+    });
   }
 
-  displayComparison() {
-    const container = document.querySelector('[data-comparison]');
-    if (!container) return;
-
-    const products = JSON.parse(container.dataset.comparison || '[]');
+  setupTable(container) {
+    const products = JSON.parse(container.dataset.comparisonTable || '[]');
     if (products.length < 2) return;
 
-    container.innerHTML = '<h3 style="margin-bottom: 16px;">产品对比</h3>';
+    const allSpecs = [...new Set(products.flatMap(p => Object.keys(p.specs || {})))];
 
-    const table = document.createElement('div');
-    table.style.cssText = 'overflow-x: auto;';
-
-    // Get all unique specs
-    const allSpecs = new Set();
-    products.forEach(p => {
-      Object.keys(p.specs || {}).forEach(spec => allSpecs.add(spec));
-    });
-
-    let html = '<table style="width: 100%; border-collapse: collapse; min-width: 500px;">';
-    
-    // Header row with product names
-    html += '<tr style="border-bottom: 2px solid var(--border);">';
-    html += '<th style="padding: 12px; text-align: left; background: var(--bg-secondary);">规格</th>';
-    products.forEach(p => {
-      html += `<th style="padding: 12px; text-align: center; background: var(--bg-secondary); min-width: 150px;">${p.name}</th>`;
-    });
-    html += '</tr>';
-
-    // Spec rows
-    Array.from(allSpecs).forEach((spec, index) => {
-      html += `<tr style="border-bottom: 1px solid var(--border); ${index % 2 === 0 ? 'background: var(--bg-primary);' : ''}">`;
-      html += `<td style="padding: 12px; font-weight: 600;">${spec}</td>`;
-      products.forEach(p => {
-        const value = p.specs?.[spec] || '-';
-        html += `<td style="padding: 12px; text-align: center;">${value}</td>`;
-      });
-      html += '</tr>';
-    });
-
-    // Price row
-    html += '<tr style="border-bottom: 2px solid var(--border); background: var(--bg-secondary);">';
-    html += '<td style="padding: 12px; font-weight: 600;">价格</td>';
-    products.forEach(p => {
-      html += `<td style="padding: 12px; text-align: center; font-weight: 700; color: #0071e3;">${p.price || '-'}</td>`;
-    });
-    html += '</tr>';
-
-    // Action row
-    html += '<tr>';
-    html += '<td style="padding: 12px;"></td>';
-    products.forEach(p => {
-      html += `
-        <td style="padding: 12px; text-align: center;">
-          <a href="${p.url || '#'}" style="
-            display: inline-block;
-            padding: 8px 16px;
-            background: #0071e3;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-size: 14px;
-          ">查看详情</a>
-        </td>
-      `;
-    });
-    html += '</tr>';
-
-    html += '</table>';
-    table.innerHTML = html;
-    container.appendChild(table);
+    container.innerHTML = `
+      <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 14px; min-width: 600px;">
+          <thead>
+            <tr>
+              <th style="padding: 16px; text-align: left; font-weight: 600; border-bottom: 2px solid var(--border); background: var(--bg-secondary); position: sticky; left: 0; z-index: 10;">规格参数</th>
+              ${products.map(product => `
+                <th style="padding: 16px; text-align: center; font-weight: 600; border-bottom: 2px solid var(--border); background: var(--bg-secondary); min-width: 150px;">
+                  <div style="font-size: 24px; margin-bottom: 8px;">${product.icon}</div>
+                  <div>${product.name}</div>
+                </th>
+              `).join('')}
+            </tr>
+          </thead>
+          <tbody>
+            ${allSpecs.map((spec, index) => `
+              <tr style="background: ${index % 2 === 0 ? 'var(--bg-primary)' : 'var(--bg-secondary)'};">
+                <td style="padding: 14px 16px; border-bottom: 1px solid var(--border); font-weight: 600; position: sticky; left: 0; background: inherit; z-index: 5;">${spec}</td>
+                ${products.map(product => {
+                  const value = product.specs?.[spec] || '-';
+                  const isBest = product.bestSpecs?.includes(spec);
+                  return `
+                    <td style="padding: 14px 16px; border-bottom: 1px solid var(--border); text-align: center; ${isBest ? 'color: var(--accent); font-weight: 700; background: rgba(0, 113, 227, 0.05);' : ''}">
+                      ${isBest ? '★ ' : ''}${value}
+                    </td>
+                  `;
+                }).join('')}
+              </tr>
+            `).join('')}
+            <tr style="background: var(--bg-secondary);">
+              <td style="padding: 16px; border-bottom: 1px solid var(--border); font-weight: 600; position: sticky; left: 0; background: inherit;">价格</td>
+              ${products.map(product => `
+                <td style="padding: 16px; border-bottom: 1px solid var(--border); text-align: center;">
+                  <div style="font-size: 20px; font-weight: 700; color: var(--accent);">${product.price}</div>
+                </td>
+              `).join('')}
+            </tr>
+            <tr>
+              <td style="padding: 16px; position: sticky; left: 0; background: inherit;"></td>
+              ${products.map(product => `
+                <td style="padding: 16px; text-align: center;">
+                  <a href="${product.url}" class="btn btn-primary" style="padding: 10px 20px; font-size: 14px;">查看详情</a>
+                </td>
+              `).join('')}
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    `;
   }
 }
 
