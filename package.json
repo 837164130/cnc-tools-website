@@ -1,0 +1,34 @@
+{
+  "name": "cnc-tools-website",
+  "version": "1.0.0",
+  "description": "CCCNC - 专业硬质合金刀具网站",
+  "main": "index.html",
+  "scripts": {
+    "build": "node scripts/build-products.js",
+    "update-nav": "node scripts/update-nav.js",
+    "update-links": "node scripts/update-links.js",
+    "enhance-details": "node scripts/enhance-details.js",
+    "add-features": "node scripts/add-features.js",
+    "enhance-svgs": "node scripts/enhance-svgs.js"
+  },
+  "keywords": [
+    "cnc",
+    "tools",
+    "carbide",
+    "endmills",
+    "drills",
+    "taps",
+    "reamers",
+    "inserts"
+  ],
+  "author": "CCCNC",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/837164130/cnc-tools-website.git"
+  },
+  "bugs": {
+    "url": "https://github.com/837164130/cnc-tools-website/issues"
+  },
+  "homepage": "https://cccnc.ru"
+}
